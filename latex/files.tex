@@ -1,0 +1,15 @@
+\doxysection{File List}
+Here is a list of all files with brief descriptions\+:\begin{DoxyCompactList}
+\item\contentsline{section}{build/\+CMake\+Files/3.\+16.\+3/\+Compiler\+Id\+C/\mbox{\hyperlink{CMakeCCompilerId_8c}{CMake\+CCompiler\+Id.\+c}} }{\pageref{CMakeCCompilerId_8c}}{}
+\item\contentsline{section}{build/\+CMake\+Files/3.\+16.\+3/\+Compiler\+Id\+CXX/\mbox{\hyperlink{CMakeCXXCompilerId_8cpp}{CMake\+CXXCompiler\+Id.\+cpp}} }{\pageref{CMakeCXXCompilerId_8cpp}}{}
+\item\contentsline{section}{src/mvc\+\_\+pattern/\mbox{\hyperlink{dummy_8cpp}{dummy.\+cpp}} }{\pageref{dummy_8cpp}}{}
+\item\contentsline{section}{src/mvc\+\_\+pattern/\mbox{\hyperlink{mvc__pattern_8h}{mvc\+\_\+pattern.\+h}} \\*Model-\/\+View-\/\+Control(MVC) pattern example. ~\newline
+MVC 패턴은 사용자 인터페이스로부터 비즈니스 로직을 분리하여, 애플리케이션의 시각적 요소나 그 이면에서 실행되는 비즈니스 로직을 서로 영향없이 쉽게 고칠 수 있는 애플리케이션을 구현할 수 있습니다. MVC에서 모델은 애플리케이션의 정보(데이터)를 나타내며, 뷰는 텍스트, 체크박스 항목 등과 같은 인터페이스 요소를 나타내고, 컨트롤러는 데이터와 비즈니스 로직 사이의 상호동작을 관리합니다 }{\pageref{mvc__pattern_8h}}{}
+\item\contentsline{section}{src/mvc\+\_\+pattern/application/\mbox{\hyperlink{input_8h}{input.\+h}} \\*MVC 패턴에서 Model 클래스의 역할을 수행하는 Input 클래스입니다. Input 클래스에서는 센서로부터 들어오는 입력 정보를 받아 저장하고, 필요한 정보를 Tracking 클래스에 전달하는 역할을 수행합니다 }{\pageref{input_8h}}{}
+\item\contentsline{section}{src/mvc\+\_\+pattern/application/\mbox{\hyperlink{object__tracking_8h}{object\+\_\+tracking.\+h}} \\*MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외부로 전송하는 애플리케이션입니다. 객체 추적에 MVC 패턴을 적용한다면 다음과 같습니다. 외부 환경을 인지한 센서의 입력 정보는 저장하는 곳은 Model 클래스가 됩니다. 입력 정보를 비즈니스 로직에 해당하는 추적 알고리즘에 넣어주고 그 결과로 타겟 정보들을 받는 역할을 수행하는 곳은 Controller 클래스가 됩니다. 마지막으로 컨트롤러에서 생성한 타겟 정보를 객체 추적의 클라이언트에게 송출하는 역할은 View 클래스가 담당하게 됩니다. 각각의 Model, View, 그리고 Controller 클래스의 이름을 객체 추적에 맞게 변경하면 순서대로 Input, Output, 그리고 Tracking에 해당하게 됩니다 }{\pageref{object__tracking_8h}}{}
+\item\contentsline{section}{src/mvc\+\_\+pattern/application/\mbox{\hyperlink{output_8h}{output.\+h}} \\*MVC 패턴에서 View 클래스의 역할을 수행하는 Output 클래스입니다. Output 클래스는 Tracking으로부터 전달 받은 정보를 외부로 출력해주는 역할을 수행합니다 }{\pageref{output_8h}}{}
+\item\contentsline{section}{src/mvc\+\_\+pattern/application/\mbox{\hyperlink{tracking_8h}{tracking.\+h}} \\*MVC 패턴에서 Controller 클래스의 역할을 수행하는 Tracking 클래스입니다. Tracking 클래스는 Input으로부터 입력 정보를 받아 비즈니스 로직에 해당하는 Tracker에게 전달해주고, Tracker가 계산한 결과를 Output에게 다시 전송해줍니다 }{\pageref{tracking_8h}}{}
+\item\contentsline{section}{test/\mbox{\hyperlink{hello__test_8cpp}{hello\+\_\+test.\+cpp}} }{\pageref{hello__test_8cpp}}{}
+\item\contentsline{section}{test/mvc\+\_\+pattern/\mbox{\hyperlink{mvc__pattern__test_8cpp}{mvc\+\_\+pattern\+\_\+test.\+cpp}} }{\pageref{mvc__pattern__test_8cpp}}{}
+\item\contentsline{section}{test/mvc\+\_\+pattern/\mbox{\hyperlink{object__tracking__test_8cpp}{object\+\_\+tracking\+\_\+test.\+cpp}} }{\pageref{object__tracking__test_8cpp}}{}
+\end{DoxyCompactList}

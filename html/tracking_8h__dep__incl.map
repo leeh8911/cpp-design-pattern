@@ -1,0 +1,5 @@
+<map id="src/mvc_pattern/application/tracking.h" name="src/mvc_pattern/application/tracking.h">
+<area shape="rect" id="node1" title="MVC 패턴에서 Controller 클래스의 역할을 수행하는 Tracking 클래스입니다. Tracking 클래스는 Input으로부터 입력 정보를 받아 비즈니스 로직에 해당하는 Tr..." alt="" coords="127,5,399,31"/>
+<area shape="rect" id="node2" href="$object__tracking_8h.html" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="5,79,324,104"/>
+<area shape="rect" id="node3" href="$object__tracking__test_8cpp.html" title=" " alt="" coords="115,152,411,177"/>
+</map>

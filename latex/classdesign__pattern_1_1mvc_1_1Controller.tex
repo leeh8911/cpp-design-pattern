@@ -1,0 +1,136 @@
+\hypertarget{classdesign__pattern_1_1mvc_1_1Controller}{}\doxysection{Controller Class Reference}
+\label{classdesign__pattern_1_1mvc_1_1Controller}\index{Controller@{Controller}}
+
+
+MVC 패턴에서의 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스입니다. \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스는 데이터와 비즈니스 로직 사이의 상호 동작을 관리합니다. \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스는 Model에 명령을 보냄으로써 Model의 상태를 변경할 수 있습니다.  
+
+
+
+
+{\ttfamily \#include $<$mvc\+\_\+pattern.\+h$>$}
+
+
+
+Collaboration diagram for Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1Controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_a7de8434d2c10d72634183e07465a0b51}{Controller}} (const \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} \&other)
+\item 
+\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_ad8ef9ef187ce04a63bb7e911dac55757}{Controller}} (\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Model}{Model}} $\ast$model, \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}} $\ast$view)
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_a1e0051bfc859add6de8ce76daaf00b65}{Update\+View}} ()
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_a136f54683d5a7c788245bb2997046b55}{Property1}} (std\+::string property1)
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_a5135ab67e7c036884d4efff0b2b7578a}{Property2}} (std\+::string property2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Model}{Model}} $\ast$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_a33868065bc07a9c94fba332fd89fc502}{model\+\_\+}}
+\item 
+\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}} $\ast$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller_a26a09281a3931cae638b6ab2288b9430}{view\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+MVC 패턴에서의 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스입니다. \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스는 데이터와 비즈니스 로직 사이의 상호 동작을 관리합니다. \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스는 Model에 명령을 보냄으로써 Model의 상태를 변경할 수 있습니다. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_a7de8434d2c10d72634183e07465a0b51}\label{classdesign__pattern_1_1mvc_1_1Controller_a7de8434d2c10d72634183e07465a0b51}} 
+\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{Controller()}{Controller()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_ad8ef9ef187ce04a63bb7e911dac55757}\label{classdesign__pattern_1_1mvc_1_1Controller_ad8ef9ef187ce04a63bb7e911dac55757}} 
+\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{Controller()}{Controller()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Model}{Model}} $\ast$}]{model,  }\item[{\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}} $\ast$}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_a136f54683d5a7c788245bb2997046b55}\label{classdesign__pattern_1_1mvc_1_1Controller_a136f54683d5a7c788245bb2997046b55}} 
+\index{Controller@{Controller}!Property1@{Property1}}
+\index{Property1@{Property1}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{Property1()}{Property1()}}
+{\footnotesize\ttfamily void Property1 (\begin{DoxyParamCaption}\item[{std\+::string}]{property1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1Controller_a136f54683d5a7c788245bb2997046b55_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classdesign__pattern_1_1mvc_1_1Controller_a136f54683d5a7c788245bb2997046b55_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_a5135ab67e7c036884d4efff0b2b7578a}\label{classdesign__pattern_1_1mvc_1_1Controller_a5135ab67e7c036884d4efff0b2b7578a}} 
+\index{Controller@{Controller}!Property2@{Property2}}
+\index{Property2@{Property2}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{Property2()}{Property2()}}
+{\footnotesize\ttfamily void Property2 (\begin{DoxyParamCaption}\item[{std\+::string}]{property2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1Controller_a5135ab67e7c036884d4efff0b2b7578a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_a1e0051bfc859add6de8ce76daaf00b65}\label{classdesign__pattern_1_1mvc_1_1Controller_a1e0051bfc859add6de8ce76daaf00b65}} 
+\index{Controller@{Controller}!UpdateView@{UpdateView}}
+\index{UpdateView@{UpdateView}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{UpdateView()}{UpdateView()}}
+{\footnotesize\ttfamily void Update\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1Controller_a1e0051bfc859add6de8ce76daaf00b65_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classdesign__pattern_1_1mvc_1_1Controller_a1e0051bfc859add6de8ce76daaf00b65_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_a33868065bc07a9c94fba332fd89fc502}\label{classdesign__pattern_1_1mvc_1_1Controller_a33868065bc07a9c94fba332fd89fc502}} 
+\index{Controller@{Controller}!model\_@{model\_}}
+\index{model\_@{model\_}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{model\_}{model\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Model}{Model}}$\ast$ model\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1Controller_a26a09281a3931cae638b6ab2288b9430}\label{classdesign__pattern_1_1mvc_1_1Controller_a26a09281a3931cae638b6ab2288b9430}} 
+\index{Controller@{Controller}!view\_@{view\_}}
+\index{view\_@{view\_}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{view\_}{view\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}}$\ast$ view\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mvc\+\_\+pattern/\mbox{\hyperlink{mvc__pattern_8h}{mvc\+\_\+pattern.\+h}}\end{DoxyCompactItemize}
