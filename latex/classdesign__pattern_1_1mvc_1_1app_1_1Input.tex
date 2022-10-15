@@ -11,22 +11,29 @@
 
 
 
-Collaboration diagram for Input\+:\nopagebreak
+Collaboration diagram for Input\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=265pt]{classdesign__pattern_1_1mvc_1_1app_1_1Input__coll__graph}
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Input__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input_a5a96d6c8fadf24e21e1ac0bbdc332cf0}{Input}} ()=default
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input_a49105de436317f985bbf0b094f7d69ad}{Update}} (const std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} $>$ \&sensor\+\_\+vector)
+\item 
+const \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} \& \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input_afb23d9ba507f3f30d965225be52ba8a1}{Get\+Item}} (size\+\_\+t idx) const
+\item 
+size\+\_\+t \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input_a58f4b9e873b7c1c7d512bd9f7d1489d8}{Size}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} $>$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input_a4e9aaa968de250363b1c13e749de971e}{container\+\_\+}}
+std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} $>$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input_a4e9aaa968de250363b1c13e749de971e}{container\+\_\+}}
 \end{DoxyCompactItemize}
 
 
@@ -44,15 +51,61 @@ std\+::vector$<$ \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structd
 
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Input_afb23d9ba507f3f30d965225be52ba8a1}\label{classdesign__pattern_1_1mvc_1_1app_1_1Input_afb23d9ba507f3f30d965225be52ba8a1}} 
+\index{Input@{Input}!GetItem@{GetItem}}
+\index{GetItem@{GetItem}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetItem()}{GetItem()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} \& Get\+Item (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Input_afb23d9ba507f3f30d965225be52ba8a1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Input_a58f4b9e873b7c1c7d512bd9f7d1489d8}\label{classdesign__pattern_1_1mvc_1_1app_1_1Input_a58f4b9e873b7c1c7d512bd9f7d1489d8}} 
+\index{Input@{Input}!Size@{Size}}
+\index{Size@{Size}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily size\+\_\+t Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Input_a58f4b9e873b7c1c7d512bd9f7d1489d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Input_a49105de436317f985bbf0b094f7d69ad}\label{classdesign__pattern_1_1mvc_1_1app_1_1Input_a49105de436317f985bbf0b094f7d69ad}} 
+\index{Input@{Input}!Update@{Update}}
+\index{Update@{Update}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Update (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} $>$ \&}]{sensor\+\_\+vector }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Input_a49105de436317f985bbf0b094f7d69ad_icgraph}
+\end{center}
+\end{figure}
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Input_a4e9aaa968de250363b1c13e749de971e}\label{classdesign__pattern_1_1mvc_1_1app_1_1Input_a4e9aaa968de250363b1c13e749de971e}} 
 \index{Input@{Input}!container\_@{container\_}}
 \index{container\_@{container\_}!Input@{Input}}
 \doxysubsubsection{\texorpdfstring{container\_}{container\_}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}}$>$ container\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}}$>$ container\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/mvc\+\_\+pattern/application/\mbox{\hyperlink{input_8h}{input.\+h}}\end{DoxyCompactItemize}
+src/mvc\+\_\+pattern/application/\mbox{\hyperlink{input_8h}{input.\+h}}\item 
+src/mvc\+\_\+pattern/application/\mbox{\hyperlink{input_8cpp}{input.\+cpp}}\end{DoxyCompactItemize}

@@ -1,4 +1,5 @@
 <map id="src/mvc_pattern/application/object_tracking.h" name="src/mvc_pattern/application/object_tracking.h">
-<area shape="rect" id="node1" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="5,5,324,31"/>
-<area shape="rect" id="node2" href="$object__tracking__test_8cpp.html" title=" " alt="" coords="17,79,313,104"/>
+<area shape="rect" id="node1" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="183,5,501,31"/>
+<area shape="rect" id="node2" href="$object__tracking_8cpp.html" title=" " alt="" coords="5,79,340,104"/>
+<area shape="rect" id="node3" href="$object__tracking__test_8cpp.html" title=" " alt="" coords="365,79,661,104"/>
 </map>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../CMakeCCompilerId_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../hello__test_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;hello_test.cpp']]],
-  ['model_1',['Model',['../classdesign__pattern_1_1mvc_1_1Model.html#a764ce21e09827f3f449682ffd7bb66dd',1,'design_pattern::mvc::Model']]]
+  ['input_0',['Input',['../classdesign__pattern_1_1mvc_1_1app_1_1Input.html#a5a96d6c8fadf24e21e1ac0bbdc332cf0',1,'design_pattern::mvc::app::Input']]],
+  ['inputsensor_1',['InputSensor',['../classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking.html#aca3db367164a4da53ace5794371f440d',1,'design_pattern::mvc::app::ObjectTracking::InputSensor()'],['../classdesign__pattern_1_1mvc_1_1app_1_1Tracking.html#aca3db367164a4da53ace5794371f440d',1,'design_pattern::mvc::app::Tracking::InputSensor()']]],
+  ['inputsize_2',['InputSize',['../classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking.html#a5a4c4984aa897a28d516e638e7ea5308',1,'design_pattern::mvc::app::ObjectTracking::InputSize()'],['../classdesign__pattern_1_1mvc_1_1app_1_1Tracking.html#a5a4c4984aa897a28d516e638e7ea5308',1,'design_pattern::mvc::app::Tracking::InputSize()']]]
 ];

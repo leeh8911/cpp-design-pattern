@@ -11,17 +11,29 @@ MVC 패턴에서 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}} �
 
 
 
-Collaboration diagram for Output\+:\nopagebreak
+Collaboration diagram for Output\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=262pt]{classdesign__pattern_1_1mvc_1_1app_1_1Output__coll__graph}
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Output__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab22499e074e28a2edab14265d6c24b05}{Output}} ()=default
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output_a4bc5813c95a357ae30840659981aabc6}{Update}} (const std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} $>$ \&target\+\_\+vector)
+\item 
+\mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output_aac37d18636330476884f7fba9bc55aad}{Get\+Item}} (size\+\_\+t idx) const
+\item 
+size\+\_\+t \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output_a58f4b9e873b7c1c7d512bd9f7d1489d8}{Size}} () const
+\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} $>$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab86ab5558723a77fe3c44079804360f3}{container\+\_\+}}
+std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} $>$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab86ab5558723a77fe3c44079804360f3}{container\+\_\+}}
 \end{DoxyCompactItemize}
 
 
@@ -30,15 +42,70 @@ MVC 패턴에서 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}} �
 
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab22499e074e28a2edab14265d6c24b05}\label{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab22499e074e28a2edab14265d6c24b05}} 
+\index{Output@{Output}!Output@{Output}}
+\index{Output@{Output}!Output@{Output}}
+\doxysubsubsection{\texorpdfstring{Output()}{Output()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output}{Output}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Output_aac37d18636330476884f7fba9bc55aad}\label{classdesign__pattern_1_1mvc_1_1app_1_1Output_aac37d18636330476884f7fba9bc55aad}} 
+\index{Output@{Output}!GetItem@{GetItem}}
+\index{GetItem@{GetItem}!Output@{Output}}
+\doxysubsubsection{\texorpdfstring{GetItem()}{GetItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} Get\+Item (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Output_aac37d18636330476884f7fba9bc55aad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Output_a58f4b9e873b7c1c7d512bd9f7d1489d8}\label{classdesign__pattern_1_1mvc_1_1app_1_1Output_a58f4b9e873b7c1c7d512bd9f7d1489d8}} 
+\index{Output@{Output}!Size@{Size}}
+\index{Size@{Size}!Output@{Output}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily size\+\_\+t Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Output_a58f4b9e873b7c1c7d512bd9f7d1489d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Output_a4bc5813c95a357ae30840659981aabc6}\label{classdesign__pattern_1_1mvc_1_1app_1_1Output_a4bc5813c95a357ae30840659981aabc6}} 
+\index{Output@{Output}!Update@{Update}}
+\index{Update@{Update}!Output@{Output}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Update (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} $>$ \&}]{target\+\_\+vector }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1Output_a4bc5813c95a357ae30840659981aabc6_icgraph}
+\end{center}
+\end{figure}
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab86ab5558723a77fe3c44079804360f3}\label{classdesign__pattern_1_1mvc_1_1app_1_1Output_ab86ab5558723a77fe3c44079804360f3}} 
 \index{Output@{Output}!container\_@{container\_}}
 \index{container\_@{container\_}!Output@{Output}}
 \doxysubsubsection{\texorpdfstring{container\_}{container\_}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}}$>$ container\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}}$>$ container\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/mvc\+\_\+pattern/application/\mbox{\hyperlink{output_8h}{output.\+h}}\end{DoxyCompactItemize}
+src/mvc\+\_\+pattern/application/\mbox{\hyperlink{output_8h}{output.\+h}}\item 
+src/mvc\+\_\+pattern/application/\mbox{\hyperlink{output_8cpp}{output.\+cpp}}\end{DoxyCompactItemize}

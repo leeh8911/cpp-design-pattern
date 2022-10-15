@@ -11,7 +11,8 @@
 
 
 
-Collaboration diagram for Object\+Tracking\+:\nopagebreak
+Collaboration diagram for Object\+Tracking\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,6 +25,16 @@ Collaboration diagram for Object\+Tracking\+:\nopagebreak
 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a2e40c24c7f83f738046adc24792b70c3}{Object\+Tracking}} ()
 \item 
 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_af11bee8d96a679d8ab783552f3cd8952}{$\sim$\+Object\+Tracking}} ()
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aca3db367164a4da53ace5794371f440d}{Input\+Sensor}} (const std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} $>$ \&sensor\+\_\+vector)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} $>$ \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a8e434bd1f2cfa90a571912fb7d37b4e6}{Output\+Target}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a5a4c4984aa897a28d516e638e7ea5308}{Input\+Size}} () const
+\item 
+size\+\_\+t \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a99c1d948c984b9e76fb5e37e2145427a}{Output\+Size}} () const
+\item 
+void \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aec0783b5a136e042adcc47bae4fe5291}{Update}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -56,6 +67,119 @@ Collaboration diagram for Object\+Tracking\+:\nopagebreak
 
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aca3db367164a4da53ace5794371f440d}\label{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aca3db367164a4da53ace5794371f440d}} 
+\index{ObjectTracking@{ObjectTracking}!InputSensor@{InputSensor}}
+\index{InputSensor@{InputSensor}!ObjectTracking@{ObjectTracking}}
+\doxysubsubsection{\texorpdfstring{InputSensor()}{InputSensor()}}
+{\footnotesize\ttfamily void Input\+Sensor (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}} $>$ \&}]{sensor\+\_\+vector }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aca3db367164a4da53ace5794371f440d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aca3db367164a4da53ace5794371f440d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a5a4c4984aa897a28d516e638e7ea5308}\label{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a5a4c4984aa897a28d516e638e7ea5308}} 
+\index{ObjectTracking@{ObjectTracking}!InputSize@{InputSize}}
+\index{InputSize@{InputSize}!ObjectTracking@{ObjectTracking}}
+\doxysubsubsection{\texorpdfstring{InputSize()}{InputSize()}}
+{\footnotesize\ttfamily size\+\_\+t Input\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a5a4c4984aa897a28d516e638e7ea5308_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a5a4c4984aa897a28d516e638e7ea5308_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a99c1d948c984b9e76fb5e37e2145427a}\label{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a99c1d948c984b9e76fb5e37e2145427a}} 
+\index{ObjectTracking@{ObjectTracking}!OutputSize@{OutputSize}}
+\index{OutputSize@{OutputSize}!ObjectTracking@{ObjectTracking}}
+\doxysubsubsection{\texorpdfstring{OutputSize()}{OutputSize()}}
+{\footnotesize\ttfamily size\+\_\+t Output\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a99c1d948c984b9e76fb5e37e2145427a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a99c1d948c984b9e76fb5e37e2145427a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a8e434bd1f2cfa90a571912fb7d37b4e6}\label{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a8e434bd1f2cfa90a571912fb7d37b4e6}} 
+\index{ObjectTracking@{ObjectTracking}!OutputTarget@{OutputTarget}}
+\index{OutputTarget@{OutputTarget}!ObjectTracking@{ObjectTracking}}
+\doxysubsubsection{\texorpdfstring{OutputTarget()}{OutputTarget()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}} $>$ Output\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a8e434bd1f2cfa90a571912fb7d37b4e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a8e434bd1f2cfa90a571912fb7d37b4e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aec0783b5a136e042adcc47bae4fe5291}\label{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aec0783b5a136e042adcc47bae4fe5291}} 
+\index{ObjectTracking@{ObjectTracking}!Update@{Update}}
+\index{Update@{Update}!ObjectTracking@{ObjectTracking}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aec0783b5a136e042adcc47bae4fe5291_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_aec0783b5a136e042adcc47bae4fe5291_icgraph}
+\end{center}
+\end{figure}
+
+
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a05ad8dade4cd2cd563b6415dd37b778b}\label{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking_a05ad8dade4cd2cd563b6415dd37b778b}} 
 \index{ObjectTracking@{ObjectTracking}!input\_@{input\_}}
@@ -77,6 +201,7 @@ Collaboration diagram for Object\+Tracking\+:\nopagebreak
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/mvc\+\_\+pattern/application/\mbox{\hyperlink{object__tracking_8h}{object\+\_\+tracking.\+h}}\end{DoxyCompactItemize}
+src/mvc\+\_\+pattern/application/\mbox{\hyperlink{object__tracking_8h}{object\+\_\+tracking.\+h}}\item 
+src/mvc\+\_\+pattern/application/\mbox{\hyperlink{object__tracking_8cpp}{object\+\_\+tracking.\+cpp}}\end{DoxyCompactItemize}

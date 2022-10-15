@@ -92,7 +92,8 @@ $(function() {
 
 <p>MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외부로 전송하는 애플리케이션입니다. 객체 추적에 MVC 패턴을 적용한다면 다음과 같습니다. 외부 환경을 인지한 센서의 입력 정보는 저장하는 곳은 Model 클래스가 됩니다. 입력 정보를 비즈니스 로직에 해당하는 추적 알고리즘에 넣어주고 그 결과로 타겟 정보들을 받는 역할을 수행하는 곳은 Controller 클래스가 됩니다. 마지막으로 컨트롤러에서 생성한 타겟 정보를 객체 추적의 클라이언트에게 송출하는 역할은 View 클래스가 담당하게 됩니다. 각각의 Model, View, 그리고 Controller 클래스의 이름을 객체 추적에 맞게 변경하면 순서대로 Input, Output, 그리고 Tracking에 해당하게 됩니다.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="input_8h_source.html">src/mvc_pattern/application/input.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="input_8h_source.html">src/mvc_pattern/application/input.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="output_8h_source.html">src/mvc_pattern/application/output.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tracking_8h_source.html">src/mvc_pattern/application/tracking.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -100,11 +101,11 @@ Include dependency graph for object_tracking.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="object__tracking_8h__incl.png" border="0" usemap="#asrc_2mvc__pattern_2application_2object__tracking_8h" alt=""/></div>
 <map name="asrc_2mvc__pattern_2application_2object__tracking_8h" id="asrc_2mvc__pattern_2application_2object__tracking_8h">
-<area shape="rect" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="113,5,432,31"/>
-<area shape="rect" href="input_8h.html" title="MVC 패턴에서 Model 클래스의 역할을 수행하는 Input 클래스입니다. Input 클래스에서는 센서로부터 들어오는 입력 정보를 받아 저장하고,..." alt="" coords="5,152,257,177"/>
-<area shape="rect" href="output_8h.html" title="MVC 패턴에서 View 클래스의 역할을 수행하는 Output 클래스입니다. Output 클래스는 Tracking으로부터 전달 받은 정보를 외부로 출력해주는 역할을 수행합니다." alt="" coords="282,152,543,177"/>
-<area shape="rect" href="tracking_8h.html" title="MVC 패턴에서 Controller 클래스의 역할을 수행하는 Tracking 클래스입니다. Tracking 클래스는 Input으로부터 입력 정보를 받아 비즈니스 로직에 해당하는 Tr..." alt="" coords="137,79,409,104"/>
-<area shape="rect" title=" " alt="" coords="240,225,303,251"/>
+<area shape="rect" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="10,5,328,31"/>
+<area shape="rect" title=" " alt="" coords="116,225,179,251"/>
+<area shape="rect" href="input_8h.html" title="MVC 패턴에서 Model 클래스의 역할을 수행하는 Input 클래스입니다. Input 클래스에서는 센서로부터 들어오는 입력 정보를 받아 저장하고,..." alt="" coords="22,152,274,177"/>
+<area shape="rect" href="output_8h.html" title="MVC 패턴에서 View 클래스의 역할을 수행하는 Output 클래스입니다. Output 클래스는 Tracking으로부터 전달 받은 정보를 외부로 출력해주는 역할을 수행합니다." alt="" coords="298,152,560,177"/>
+<area shape="rect" href="tracking_8h.html" title="MVC 패턴에서 Controller 클래스의 역할을 수행하는 Tracking 클래스입니다. Tracking 클래스는 Input으로부터 입력 정보를 받아 비즈니스 로직에 해당하는 Tr..." alt="" coords="120,79,392,104"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -112,8 +113,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="object__tracking_8h__dep__incl.png" border="0" usemap="#asrc_2mvc__pattern_2application_2object__tracking_8hdep" alt=""/></div>
 <map name="asrc_2mvc__pattern_2application_2object__tracking_8hdep" id="asrc_2mvc__pattern_2application_2object__tracking_8hdep">
-<area shape="rect" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="5,5,324,31"/>
-<area shape="rect" href="object__tracking__test_8cpp.html" title=" " alt="" coords="17,79,313,104"/>
+<area shape="rect" title="MVC 패턴을 객체 추적 애플리케이션(이하 객체 추적) 구현에 적용한 예시입니다. 객체 추적은 센서로부터 환경 정보를 입력 받아, 내부에서 관리하고 있는 타겟 정보를 업데이트하여 외..." alt="" coords="183,5,501,31"/>
+<area shape="rect" href="object__tracking_8cpp.html" title=" " alt="" coords="5,79,340,104"/>
+<area shape="rect" href="object__tracking__test_8cpp.html" title=" " alt="" coords="365,79,661,104"/>
 </map>
 </div>
 </div>

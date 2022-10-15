@@ -9,72 +9,11 @@ class \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking}{Obj
 \begin{DoxyCompactList}\small\item\em 객체 추적을 모사하기 위한 클래스입니다. 객체 추적의 세부 클래스인 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Input}{Input}}, \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output}{Output}}, 그리고 Tracking을 통합하는 역할을 수행합니다. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output}{Output}}
 \begin{DoxyCompactList}\small\item\em MVC 패턴에서 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1View}{View}} 클래스의 역할을 수행하는 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output}{Output}} 클래스입니다. \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Output}{Output}} 클래스는 Tracking으로부터 전달 받은 정보를 외부로 출력해주는 역할을 수행합니다. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}}
-\begin{DoxyCompactList}\small\item\em 센서 입력 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다.  \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{More...}}\end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}}
-\begin{DoxyCompactList}\small\item\em 타겟 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다.  \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Target}{More...}}\end{DoxyCompactList}\item 
-class \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_classdesign__pattern_1_1mvc_1_1app_1_1Tracker}{Tracker}}
-\begin{DoxyCompactList}\small\item\em 비즈니스 모델의 역할을 수행하는 \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_classdesign__pattern_1_1mvc_1_1app_1_1Tracker}{Tracker}} 클래스입니다. 요구사항에 따라 더 복잡한 기능을 수행하지만, MVC 모델 설명에 불필요한 내용은 생략하였습니다.  \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_classdesign__pattern_1_1mvc_1_1app_1_1Tracker}{More...}}\end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}{Sensor}}
+\begin{DoxyCompactList}\small\item\em 센서 입력 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdesign__pattern_1_1mvc_1_1app_1_1Target}{Target}}
+\begin{DoxyCompactList}\small\item\em 타겟 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Tracker}{Tracker}}
+\begin{DoxyCompactList}\small\item\em 비즈니스 모델의 역할을 수행하는 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Tracker}{Tracker}} 클래스입니다. 요구사항에 따라 더 복잡한 기능을 수행하지만, MVC 모델 설명에 불필요한 내용은 생략하였습니다. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Tracking}{Tracking}}
 \begin{DoxyCompactList}\small\item\em MVC 패턴에서 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1Controller}{Controller}} 클래스의 역할을 수행하는 \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Tracking}{Tracking}} 클래스입니다. \mbox{\hyperlink{classdesign__pattern_1_1mvc_1_1app_1_1Tracking}{Tracking}} 클래스는 Input으로부터 입력 정보를 받아 비즈니스 로직에 해당하는 Tracker에게 전달해주고, Tracker가 계산한 결과를 Output에게 다시 전송해줍니다. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Class Documentation}
-\index{design\_pattern::mvc::app::Sensor@{design\_pattern::mvc::app::Sensor}}\label{structdesign__pattern_1_1mvc_1_1app_1_1Sensor}
-\Hypertarget{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Sensor}
-\doxysubsubsection{struct design\+\_\+pattern\+::mvc\+::app\+::Sensor}
-센서 입력 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다. 
-
-
-
-Collaboration diagram for Sensor\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=148pt]{structdesign__pattern_1_1mvc_1_1app_1_1Sensor__coll__graph}
-\end{center}
-\end{figure}
-\begin{DoxyFields}{Class Members}
-\mbox{\Hypertarget{namespacedesign__pattern_1_1mvc_1_1app_a3670f4bed50c88882ceba330ffeb095c}\label{namespacedesign__pattern_1_1mvc_1_1app_a3670f4bed50c88882ceba330ffeb095c}} 
-size\_t&
-id&
-\\
-\hline
-
-\end{DoxyFields}
-\index{design\_pattern::mvc::app::Target@{design\_pattern::mvc::app::Target}}\label{structdesign__pattern_1_1mvc_1_1app_1_1Target}
-\Hypertarget{namespacedesign__pattern_1_1mvc_1_1app_structdesign__pattern_1_1mvc_1_1app_1_1Target}
-\doxysubsubsection{struct design\+\_\+pattern\+::mvc\+::app\+::Target}
-타겟 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다. 
-
-
-
-Collaboration diagram for Target\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=148pt]{structdesign__pattern_1_1mvc_1_1app_1_1Target__coll__graph}
-\end{center}
-\end{figure}
-\begin{DoxyFields}{Class Members}
-\mbox{\Hypertarget{namespacedesign__pattern_1_1mvc_1_1app_a3670f4bed50c88882ceba330ffeb095c}\label{namespacedesign__pattern_1_1mvc_1_1app_a3670f4bed50c88882ceba330ffeb095c}} 
-size\_t&
-id&
-\\
-\hline
-
-\end{DoxyFields}
-\index{design\_pattern::mvc::app::Tracker@{design\_pattern::mvc::app::Tracker}}\label{classdesign__pattern_1_1mvc_1_1app_1_1Tracker}
-\Hypertarget{namespacedesign__pattern_1_1mvc_1_1app_classdesign__pattern_1_1mvc_1_1app_1_1Tracker}
-\doxysubsubsection{class design\+\_\+pattern\+::mvc\+::app\+::Tracker}
-비즈니스 모델의 역할을 수행하는 \mbox{\hyperlink{namespacedesign__pattern_1_1mvc_1_1app_classdesign__pattern_1_1mvc_1_1app_1_1Tracker}{Tracker}} 클래스입니다. 요구사항에 따라 더 복잡한 기능을 수행하지만, MVC 모델 설명에 불필요한 내용은 생략하였습니다. 
-
-
-
-Collaboration diagram for Tracker\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=131pt]{classdesign__pattern_1_1mvc_1_1app_1_1Tracker__coll__graph}
-\end{center}
-\end{figure}

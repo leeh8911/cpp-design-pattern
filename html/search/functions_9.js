@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eobjecttracking_0',['~ObjectTracking',['../classdesign__pattern_1_1mvc_1_1app_1_1ObjectTracking.html#af11bee8d96a679d8ab783552f3cd8952',1,'design_pattern::mvc::app::ObjectTracking']]]
+  ['view_0',['View',['../classdesign__pattern_1_1mvc_1_1View.html#a30a9f2e809c26263132b4afd8ea98562',1,'design_pattern::mvc::View']]]
 ];
