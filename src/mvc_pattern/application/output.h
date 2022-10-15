@@ -40,9 +40,10 @@ struct Target
 class Output
 {
  public:
-    void Update(const std::vector<Target>& target_vector) {}
-    Target GetItem(size_t idx) const { return Target{0}; }
-    size_t Size() const { return 0; }
+    Output() = default;
+    void Update(const std::vector<Target>& target_vector);
+    Target GetItem(size_t idx) const;
+    size_t Size() const;
 
  private:
     std::vector<Target> container_;

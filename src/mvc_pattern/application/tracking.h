@@ -28,6 +28,8 @@ namespace design_pattern::mvc::app
  */
 class Tracker
 {
+ public:
+    void Update(Input* input, Output* output);
 };
 
 /**
@@ -40,19 +42,14 @@ class Tracker
 class Tracking
 {
  public:
-    Tracking(Input* input, Output* output)
-        : input_(input), output_(output), tracker_(nullptr)
-    {
-    }
-    void InputSensor(const std::vector<Sensor>& sensor_vector) {}
-    void Update() {}
-    std::vector<Target> OutputTarget()
-    {
-        return std::vector<Target>({{0}, {0}, {0}});
-    }
+    Tracking(Input* input, Output* output);
+    ~Tracking();
+    void InputSensor(const std::vector<Sensor>& sensor_vector);
+    void Update();
+    std::vector<Target> OutputTarget();
 
-    size_t InputSize() const { return 0; }
-    size_t OutputSize() const { return 0; }
+    size_t InputSize() const;
+    size_t OutputSize() const;
 
  private:
     Input* input_;
