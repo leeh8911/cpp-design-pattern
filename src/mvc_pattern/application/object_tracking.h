@@ -39,29 +39,16 @@ namespace design_pattern::mvc::app
 class ObjectTracking
 {
  public:
-    ObjectTracking()
-    {
-        input_ = new Input;
-        output_ = new Output;
-        tracking_ = new Tracking(input_, output_);
-    }
-    ~ObjectTracking()
-    {
-        delete input_;
-        delete output_;
-        delete tracking_;
-    }
+    ObjectTracking();
+    ~ObjectTracking();
 
-    void InputSensor(const std::vector<Sensor>& sensor_vector) {}
-    std::vector<Target> OutputTarget()
-    {
-        return std::vector<Target>({{0}, {0}, {0}});
-    }
+    void InputSensor(const std::vector<Sensor>& sensor_vector);
+    std::vector<Target> OutputTarget();
 
-    size_t InputSize() const { return 0; }
-    size_t OutputSize() const { return 0; }
+    size_t InputSize() const;
+    size_t OutputSize() const;
 
-    void Update() {}
+    void Update();
 
  private:
     Input* input_;
