@@ -9,27 +9,19 @@ ARG NUM_CORES=8
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## Install packages
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y
+RUN apt-get update && apt-get autoremove -y
 
 # Basics
-RUN apt-get install -qq -y ca-certificates
-RUN apt-get install -qq -y libgoogle-glog-dev
-RUN apt-get install -qq -y libgtest-dev
-RUN apt-get install -qq -y automake
-RUN apt-get install -qq -y wget
-RUN apt-get install -qq -y curl
-RUN apt-get install -qq -y unzip
-RUN apt-get install -qq -y autoconf
-RUN apt-get install -qq -y libtool
-RUN apt-get install -qq -y g++ 
-RUN apt-get install -qq -y cmake
-RUN apt-get install -qq -y git
-RUN apt-get install -qq -y clang-format-10
-RUN apt-get install -qq -y clang-tidy
+RUN apt-get install -qq -y ca-certificates libgoogle-glog-dev \
+    libgtest-dev automake wget curl unzip autoconf libtool g++ \
+    cmake git
+
 # BLAS & LAPACK
 RUN apt-get install -qq -y libatlas-base-dev
+
 # Eigen3
 RUN apt-get install -qq -y libeigen3-dev
+
 # SuiteSparse and CXSparse (optional)
 # - If you want to build Ceres as a *static* library (the default)
 #   you can use the SuiteSparse package in the main Ubuntu package
@@ -38,8 +30,14 @@ RUN apt-get install -qq -y libsuitesparse-dev
 # Sphinx (for documentation)
 RUN apt-get install -qq -y sphinx-doc sphinx-common
 
+# code linter and formatter
 RUN apt-get install -qq -y clang clang-tidy clang-format
 RUN apt-get install -qq -y cppcheck
+
+# For doxygen
+RUN apt install -qq -y graphviz
+RUN apt-get install -qq -y npm
+RUN npm install mathjax
 
 WORKDIR /tmp
 RUN git clone --depth=1 https://ceres-solver.googlesource.com/ceres-solver
@@ -64,7 +62,3 @@ WORKDIR /tmp/doxygen/build
 RUN cmake -G "Unix Makefiles" ..
 RUN make
 RUN make install
-
-RUN apt install -qq -y graphviz
-RUN apt-get install -qq -y npm
-RUN npm install mathjax
