@@ -5,8 +5,9 @@
 디자인 패턴에 대한 스터디 내용을 하나씩 정리하기 위한 프로젝트입니다.
 
 ## 구현된 패턴들
-
-### MVC Pattern
+[] Creational patterns
+  [] Abstract factory
+  [] Builder
 
 ## Note
 
