@@ -4,7 +4,7 @@
 ## Introduction
 디자인 패턴에 대한 스터디 내용을 하나씩 정리하기 위한 프로젝트입니다.
 
-[doxygen link](doc/Doxygen/html/index.html)
+[doxygen link](docs/Doxygen/html/index.html)
 
 ## 구현된 패턴들
 - [ ] Creational patterns
