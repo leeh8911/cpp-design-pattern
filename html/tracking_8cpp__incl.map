@@ -1,7 +1,0 @@
-<map id="src/mvc_pattern/application/tracking.cpp" name="src/mvc_pattern/application/tracking.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="129,5,416,31"/>
-<area shape="rect" id="node2" href="$tracking_8h.html" title="MVC 패턴에서 Controller 클래스의 역할을 수행하는 Tracking 클래스입니다. Tracking 클래스는 Input으로부터 입력 정보를 받아 비즈니스 로직에 해당하는 Tr..." alt="" coords="137,79,409,104"/>
-<area shape="rect" id="node3" href="$input_8h.html" title="MVC 패턴에서 Model 클래스의 역할을 수행하는 Input 클래스입니다. Input 클래스에서는 센서로부터 들어오는 입력 정보를 받아 저장하고,..." alt="" coords="5,152,257,177"/>
-<area shape="rect" id="node5" href="$output_8h.html" title="MVC 패턴에서 View 클래스의 역할을 수행하는 Output 클래스입니다. Output 클래스는 Tracking으로부터 전달 받은 정보를 외부로 출력해주는 역할을 수행합니다." alt="" coords="282,152,543,177"/>
-<area shape="rect" id="node4" title=" " alt="" coords="240,225,303,251"/>
-</map>

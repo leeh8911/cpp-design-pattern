@@ -19,6 +19,9 @@
 #include "src/mvc_pattern/application/output.h"
 #include "src/mvc_pattern/application/tracking.h"
 
+namespace design_pattern::test
+{
+
 using namespace design_pattern::mvc::app;  // NOLINT
 
 class ObjectTrackingTest : public testing::Test
@@ -115,3 +118,5 @@ TEST_F(ObjectTrackingTest, ObjectTracking)
     EXPECT_EQ(output[1], target_vector[1]);
     EXPECT_EQ(output[2], target_vector[2]);
 }
+
+}  // namespace design_pattern::test

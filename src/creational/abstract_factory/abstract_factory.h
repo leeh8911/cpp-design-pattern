@@ -22,32 +22,34 @@ namespace design_pattern::creational::abstract_factory
 
 struct IProduct
 {
-    virtual ~ProductA() = default;
+    virtual ~IProduct() = default;
 };
 
 class ConcreteProductA : public IProduct
 {
+ public:
     ConcreteProductA()
     {
         std::cout << "Construct concrete product A instance" << std::endl;
     }
-    ~ConcreteProductA()
+    ~ConcreteProductA() override
     {
         std::cout << "Destruct concrete product A instance" << std::endl;
     }
-}
+};
 
 class ConcreteProductB : public IProduct
 {
+ public:
     ConcreteProductB()
     {
         std::cout << "Construct concrete product B instance" << std::endl;
     }
-    ~ConcreteProductB()
+    ~ConcreteProductB() override
     {
         std::cout << "Destruct concrete product B instance" << std::endl;
     }
-}
+};
 
 struct AbstractFactory
 {

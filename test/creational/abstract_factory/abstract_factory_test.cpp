@@ -13,17 +13,20 @@
 
 #include <gtest/gtest.h>
 
-using design_pattern::creational::abstract_factory::AbstractFactory;
-using design_pattern::creational::abstract_factory::FactoryA;
-using design_pattern::creational::abstract_factory::FactoryB;
-
-TEST_F(AbstractFactoryTest, Sample)
+namespace design_pattern::test
 {
-    const AbstractFactory* factory_a = new FactoryA();
-    const AbstractFactory* factory_b = new FactoryB();
+using creational::abstract_factory::AbstractFactory;
+using creational::abstract_factory::FactoryA;
+using creational::abstract_factory::FactoryB;
+
+TEST(AbstractFactoryTest, Sample)
+{
+    AbstractFactory* factory_a = new FactoryA();
+    AbstractFactory* factory_b = new FactoryB();
 
     auto product_a = factory_a->CreateProduct();
     auto product_b = factory_b->CreateProduct();
 
     EXPECT_EQ(1, 1);
 }
+}  // namespace design_pattern::test

@@ -1,6 +1,0 @@
-<map id="design_pattern::mvc::Controller::UpdateView" name="design_pattern::mvc::Controller::UpdateView">
-<area shape="rect" id="node1" title=" " alt="" coords="5,69,187,109"/>
-<area shape="rect" id="node2" href="$classdesign__pattern_1_1mvc_1_1View.html#a1f0e03accdf9711126fb1a956692e961" title=" " alt="" coords="235,5,389,45"/>
-<area shape="rect" id="node3" href="$classdesign__pattern_1_1mvc_1_1Model.html#a4024c8c5be731ac2b44f98daf19f1219" title=" " alt="" coords="235,69,389,109"/>
-<area shape="rect" id="node4" href="$classdesign__pattern_1_1mvc_1_1Model.html#a9d0bc3ce19dc8b791eb1d284ada3422b" title=" " alt="" coords="235,133,389,173"/>
-</map>

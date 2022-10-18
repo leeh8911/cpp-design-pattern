@@ -15,6 +15,8 @@
 
 using namespace design_pattern::mvc;
 
+namespace design_pattern::test
+{
 class MvcPatternTest : public testing::Test
 {
  public:
@@ -43,3 +45,5 @@ TEST_F(MvcPatternTest, CreateController)
 
     controller->UpdateView();
 }
+
+}  // namespace design_pattern::test
