@@ -9,11 +9,11 @@
  *
  */
 
-#include "src/mvc_pattern/application/output.h"
+#include "src/etc/mvc_pattern/application/output.h"
 
 #include <vector>
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 size_t Output::Size() const { return container_.size(); }
 
@@ -23,4 +23,4 @@ void Output::Update(const std::vector<Target>& target_vector)
 {
     container_ = target_vector;
 }
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app

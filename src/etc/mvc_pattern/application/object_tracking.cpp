@@ -9,13 +9,13 @@
  *
  */
 
-#include "src/mvc_pattern/application/object_tracking.h"
+#include "src/etc/mvc_pattern/application/object_tracking.h"
 
-#include "src/mvc_pattern/application/input.h"
-#include "src/mvc_pattern/application/output.h"
-#include "src/mvc_pattern/application/tracking.h"
+#include "src/etc/mvc_pattern/application/input.h"
+#include "src/etc/mvc_pattern/application/output.h"
+#include "src/etc/mvc_pattern/application/tracking.h"
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 ObjectTracking::ObjectTracking()
 {
@@ -45,4 +45,4 @@ size_t ObjectTracking::InputSize() const { return tracking_->InputSize(); }
 size_t ObjectTracking::OutputSize() const { return tracking_->OutputSize(); }
 
 void ObjectTracking::Update() { tracking_->Update(); }
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app

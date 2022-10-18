@@ -25,7 +25,7 @@
 #include <utility>
 #include <vector>
 
-namespace design_pattern::mvc
+namespace design_pattern::etc::mvc
 {
 /**
  * @brief MVC 패턴에서의 Model 클래스입니다.
@@ -105,5 +105,5 @@ class Controller
     View* view_;
 };
 
-}  // namespace design_pattern::mvc
+}  // namespace design_pattern::etc::mvc
 #endif  // SRC_MVC_PATTERN_MVC_PATTERN_H_

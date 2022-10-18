@@ -16,7 +16,7 @@
 
 #include <vector>
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 
 /**
@@ -48,5 +48,5 @@ class Output
  private:
     std::vector<Target> container_;
 };
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app
 #endif  // SRC_MVC_PATTERN_APPLICATION_OUTPUT_H_

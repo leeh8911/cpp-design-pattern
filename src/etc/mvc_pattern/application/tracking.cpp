@@ -9,12 +9,12 @@
  *
  */
 
-#include "src/mvc_pattern/application/tracking.h"
+#include "src/etc/mvc_pattern/application/tracking.h"
 
-#include "src/mvc_pattern/application/input.h"
-#include "src/mvc_pattern/application/output.h"
+#include "src/etc/mvc_pattern/application/input.h"
+#include "src/etc/mvc_pattern/application/output.h"
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 
 void Tracker::Update(Input* input, Output* output)
@@ -57,4 +57,4 @@ std::vector<Target> Tracking::OutputTarget()
 size_t Tracking::InputSize() const { return input_->Size(); }
 size_t Tracking::OutputSize() const { return output_->Size(); }
 
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app

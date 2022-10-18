@@ -15,7 +15,7 @@
 
 #include <vector>
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 
 /**
@@ -46,5 +46,5 @@ class Input
     std::vector<Sensor> container_;
 };
 
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app
 #endif  // SRC_MVC_PATTERN_APPLICATION_INPUT_H_

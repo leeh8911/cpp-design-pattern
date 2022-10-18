@@ -9,11 +9,11 @@
  *
  */
 
-#include "src/mvc_pattern/application/input.h"
+#include "src/etc/mvc_pattern/application/input.h"
 
 #include <vector>
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 void Input::Update(const std::vector<Sensor>& sensor_vector)
 {
@@ -23,4 +23,4 @@ void Input::Update(const std::vector<Sensor>& sensor_vector)
 const Sensor& Input::GetItem(size_t idx) const { return container_[idx]; }
 
 size_t Input::Size() const { return container_.size(); }
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app

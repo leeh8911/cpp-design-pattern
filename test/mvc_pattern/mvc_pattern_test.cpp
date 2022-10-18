@@ -9,11 +9,11 @@
  *
  */
 
-#include "src/mvc_pattern/mvc_pattern.h"
+#include "src/etc/mvc_pattern/mvc_pattern.h"
 
 #include <gtest/gtest.h>
 
-using namespace design_pattern::mvc;
+using namespace design_pattern::etc::mvc;
 
 namespace design_pattern::test
 {

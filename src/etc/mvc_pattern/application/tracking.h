@@ -15,10 +15,10 @@
 #ifndef SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
 #define SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
 
-#include "src/mvc_pattern/application/input.h"
-#include "src/mvc_pattern/application/output.h"
+#include "src/etc/mvc_pattern/application/input.h"
+#include "src/etc/mvc_pattern/application/output.h"
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 
 /**
@@ -56,5 +56,5 @@ class Tracking
     Output* output_;
     Tracker* tracker_;
 };
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app
 #endif  // SRC_MVC_PATTERN_APPLICATION_TRACKING_H_

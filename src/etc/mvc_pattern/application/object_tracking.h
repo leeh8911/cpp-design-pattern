@@ -24,11 +24,11 @@
 
 #include <vector>
 
-#include "src/mvc_pattern/application/input.h"
-#include "src/mvc_pattern/application/output.h"
-#include "src/mvc_pattern/application/tracking.h"
+#include "src/etc/mvc_pattern/application/input.h"
+#include "src/etc/mvc_pattern/application/output.h"
+#include "src/etc/mvc_pattern/application/tracking.h"
 
-namespace design_pattern::mvc::app
+namespace design_pattern::etc::mvc::app
 {
 
 /**
@@ -55,5 +55,5 @@ class ObjectTracking
     Output* output_;
     Tracking* tracking_;
 };
-}  // namespace design_pattern::mvc::app
+}  // namespace design_pattern::etc::mvc::app
 #endif  // SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_

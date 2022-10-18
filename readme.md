@@ -8,8 +8,65 @@
 
 ## 구현된 패턴들
 - [ ] Creational patterns
-  - [ ] Abstract factory
+  - [X] Abstract factory
   - [ ] Builder
+  - [ ] Dependency injection
+  - [ ] Factory method
+  - [ ] Multiton
+  - [ ] Object pool
+  - [ ] Prototype
+  - [ ] Resource acquisition is initialization
+  - [ ] Singleton
+- [ ] Structural patterns
+  - [ ] Adapter(Wrapper, translator)
+  - [ ] Bridge
+  - [ ] Composite
+  - [ ] Decorator
+  - [ ] Extension object
+  - [ ] Facade
+  - [ ] Front controller
+  - [ ] Marker
+  - [ ] Module
+  - [ ] Proxy
+  - [ ] Twin
+- [ ] Behavioral pattern
+  - [ ] Blackboard
+  - [ ] Chain of responsibility
+  - [ ] Command
+  - [ ] Interpreter
+  - [ ] Iterator
+  - [ ] Mediator
+  - [ ] Memento
+  - [ ] Null object
+  - [ ] Observer (or Publish/subscribe)
+  - [ ] Servant
+  - [ ] Specification
+  - [ ] State
+  - [ ] Strategy
+  - [ ] Template method
+  - [ ] Visitor
+  - [ ] Fluent Interface
+- [ ] Concurrency pattern
+  - [ ] Activate object
+  - [ ] Balking
+  - [ ] Binding properties
+  - [ ] Compute kernel
+  - [ ] Double-checked locking
+  - [ ] Event-based asynchronous
+  - [ ] Guarded suspension
+  - [ ] Join
+  - [ ] Lock
+  - [ ] Messaging design pattern(MDP)
+  - [ ] Monitor object
+  - [ ] Reactor
+  - [ ] Read-write lock
+  - [ ] Scheduler
+  - [ ] Thread pool
+  - [ ] Tread-specific storage
+  - [ ] Safe Concurrency with Exclusive Ownership
+  - [ ] CPU atomic operation
+- [ ] ETC
+  - [ ] Model-View-Controller
 
 ## Note
 

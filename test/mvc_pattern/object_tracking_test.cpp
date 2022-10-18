@@ -9,20 +9,20 @@
  *
  */
 
-#include "src/mvc_pattern/application/object_tracking.h"
+#include "src/etc/mvc_pattern/application/object_tracking.h"
 
 #include <gtest/gtest.h>
 
 #include <vector>
 
-#include "src/mvc_pattern/application/input.h"
-#include "src/mvc_pattern/application/output.h"
-#include "src/mvc_pattern/application/tracking.h"
+#include "src/etc/mvc_pattern/application/input.h"
+#include "src/etc/mvc_pattern/application/output.h"
+#include "src/etc/mvc_pattern/application/tracking.h"
 
 namespace design_pattern::test
 {
 
-using namespace design_pattern::mvc::app;  // NOLINT
+using namespace design_pattern::etc::mvc::app;  // NOLINT
 
 class ObjectTrackingTest : public testing::Test
 {
