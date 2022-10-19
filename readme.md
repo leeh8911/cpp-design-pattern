@@ -9,7 +9,7 @@
 ## 구현된 패턴들
 - [ ] Creational patterns
   - [X] Abstract factory
-  - [ ] Builder
+  - [X] Builder
   - [ ] Dependency injection
   - [ ] Factory method
   - [ ] Multiton
