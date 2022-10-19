@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.11.3)
 
 project(CPP_DESIGN_PATTERN)
 
+message("${CMAKE_CURRENT_BINARY_DIR}")
+
 set(PROJECT_NAME CPP_DESIGN_PATTERN)
 set(TEST_NAME CPP_DESIGN_PATTERN_TEST)
 
@@ -18,8 +20,13 @@ else()
 message(SEND_ERROR "clang-tidy requested but executable not found")
 endif()
 
+
 add_subdirectory(src)
 
 add_subdirectory(test)
 
 add_dependencies(${TEST_NAME} ${PROJECT_NAME})
+
+message(STATUS "Build documentation open")
+include(cmake/build_doxygen.cmake)
+build_doxygen()
