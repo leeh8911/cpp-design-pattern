@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 
+RUN useradd guest
 LABEL description="Container for use with Visual Studio" 
 LABEL author="leeh8911@gmail.com"
 
@@ -9,14 +10,12 @@ ARG NUM_CORES=8
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## Install packages
-RUN apt-get update && apt-get autoremove -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get autoremove -y
 
 # Basics
-RUN apt-get install -qq -y  --no-install-recommends \
+RUN apt-get update && apt-get install -qq -y -f --no-install-recommends \
     ca-certificates libgoogle-glog-dev \
-    libgtest-dev automake wget curl unzip autoconf libtool g++ \
+    libgtest-dev automake wget curl unzip autoconf libtool g++ gcc make \
     cmake git
 
 # BLAS & LAPACK
@@ -65,4 +64,6 @@ RUN cmake -G "Unix Makefiles" ..
 RUN make
 RUN make install
 
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 USER guest
