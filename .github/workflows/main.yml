@@ -26,7 +26,7 @@ jobs:
           git clone https://github.com/leeh8911/cpp-design-pattern.git
           mkdir cpp-design-pattern/build && cd cpp-design-pattern/build
           cmake -DOPTION_BUILD_DOCS=ON ..
-          make 
+          make docs
 
       # Deploy to GitHub Pages
       - name: Deploy

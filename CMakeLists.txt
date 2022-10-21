@@ -7,6 +7,10 @@ message("${CMAKE_CURRENT_BINARY_DIR}")
 set(PROJECT_NAME CPP_DESIGN_PATTERN)
 set(TEST_NAME CPP_DESIGN_PATTERN_TEST)
 
+set(CMAKE_MODULE_PATH 
+    ${CMAKE_MODULE_PATH} 
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 # Set the C++ standard we will use
 set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_STANDARD 17)
@@ -27,10 +31,7 @@ add_subdirectory(src)
 
 add_subdirectory(test)
 
+add_subdirectory(docs)
+
 add_dependencies(${TEST_NAME} ${PROJECT_NAME})
 
-if(OPTION_BUILD_DOCS)
-message(STATUS "Build documentation open")
-include(cmake/build_doxygen.cmake)
-build_doxygen()
-endif()
