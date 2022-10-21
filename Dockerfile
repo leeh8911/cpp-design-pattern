@@ -3,7 +3,8 @@ FROM ubuntu:20.04
 LABEL description="Container for use with Visual Studio" 
 LABEL author="leeh8911@gmail.com"
 
-USER root
+RUN groupadd -r postgres && useradd --no-log-init -r -g postgres postgres
+# USER root
 ARG NUM_CORES=8
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -46,3 +47,5 @@ RUN apt-get update && apt-get install -qq -y -f --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN npm install mathjax
+
+# USER GUEST
