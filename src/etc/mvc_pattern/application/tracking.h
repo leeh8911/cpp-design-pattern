@@ -20,7 +20,6 @@
 
 namespace design_pattern::etc::mvc::app
 {
-
 /**
  * @brief 비즈니스 모델의 역할을 수행하는 Tracker 클래스입니다. 요구사항에 따라
  * 더 복잡한 기능을 수행하지만, MVC 모델 설명에 불필요한 내용은 생략하였습니다.

@@ -21,7 +21,6 @@
 
 namespace design_pattern::test
 {
-
 using namespace design_pattern::etc::mvc::app;  // NOLINT
 
 class ObjectTrackingTest : public testing::Test

@@ -30,7 +30,6 @@
 
 namespace design_pattern::etc::mvc::app
 {
-
 /**
  * @brief 객체 추적을 모사하기 위한 클래스입니다. 객체 추적의 세부 클래스인
  * Input, Output, 그리고 Tracking을 통합하는 역할을 수행합니다.

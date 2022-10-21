@@ -18,7 +18,6 @@
 
 namespace design_pattern::etc::mvc::app
 {
-
 /**
  * @brief 타겟 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더
  * 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다.

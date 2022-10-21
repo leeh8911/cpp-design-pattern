@@ -31,7 +31,6 @@
 
 namespace design_pattern::creational::builder
 {
-
 /**
  * @brief 빌더 패턴에서 사용하고자 하는 "복합 객체"로서 class Bicycle을
  * 사용합니다. 해당 예제에선 단순히 getter/setter를 통해 string과 int 정보만

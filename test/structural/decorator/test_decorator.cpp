@@ -24,10 +24,10 @@ TEST(DecoratorTest, Sample)
 {
     Circle circle1;
 
-    std::cout << circle1.name() << std::endl;
+    std::cout << circle1.Name() << std::endl;
 
     ColoredShape colored_circle("RED", &circle1);
 
-    std::cout << colored_circle.name() << std::endl;
+    std::cout << colored_circle.Name() << std::endl;
 }
 }  // namespace

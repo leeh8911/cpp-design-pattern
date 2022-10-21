@@ -9,6 +9,7 @@ DerivePointerAlignment: false
 PointerAlignment: Left
 BreakBeforeBraces: Allman
 AccessModifierOffset: -3
+NamespaceIndentation : None
 ---
 Language: JavaScript
 # Use 100 columns for JS.

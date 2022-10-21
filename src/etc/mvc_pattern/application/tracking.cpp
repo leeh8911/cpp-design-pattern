@@ -16,7 +16,6 @@
 
 namespace design_pattern::etc::mvc::app
 {
-
 void Tracker::Update(Input* input, Output* output)
 {
     std::vector<Target> target_vector{};

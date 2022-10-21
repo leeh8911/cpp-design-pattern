@@ -19,7 +19,6 @@
 
 namespace design_pattern::creational::abstract_factory
 {
-
 struct IProduct
 {
     virtual ~IProduct() = default;
