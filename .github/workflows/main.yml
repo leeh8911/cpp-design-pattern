@@ -23,17 +23,14 @@ jobs:
       # 3. Create the doxygen pages.
       - name: Create the doxygen
         run: |
-          git clone https://github.com/metacall/core.git
-          mkdir core/build && cd core/build
+          git clone https://github.com/leeh8911/cpp-design-pattern.git
+          mkdir cpp-design-pattern/build && cd cpp-design-pattern/build
           cmake -DOPTION_BUILD_DOCS=ON ..
-          make api-docs
-      - name: Moving Files
-        run: |
-          mv ./core/build/docs/api-docs ./api
+          make 
 
       # Deploy to GitHub Pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./docs/html

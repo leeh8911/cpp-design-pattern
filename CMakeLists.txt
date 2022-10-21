@@ -11,6 +11,8 @@ set(TEST_NAME CPP_DESIGN_PATTERN_TEST)
 set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_STANDARD 17)
 
+option(OPTION_BUILD_DOCS		"Build documentation."										OFF)
+
 find_program(CLANGTIDY clang-tidy)
 if(CLANGTIDY)
 message(STATUS "activate clang-tidy")
@@ -27,6 +29,8 @@ add_subdirectory(test)
 
 add_dependencies(${TEST_NAME} ${PROJECT_NAME})
 
+if(OPTION_BUILD_DOCS)
 message(STATUS "Build documentation open")
 include(cmake/build_doxygen.cmake)
 build_doxygen()
+endif()
