@@ -1,0 +1,7 @@
+<map id="src/etc/mvc_pattern/mvc_pattern.h" name="src/etc/mvc_pattern/mvc_pattern.h">
+<area shape="rect" id="node1" title="Model&#45;View&#45;Control(MVC) pattern example. &#160;MVC 패턴은 사용자 인터페이스로부터 비즈니스 로직을 분리하여, 애플리케이션의 시각적 요소나 그 이면에서 ..." alt="" coords="105,5,255,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,85,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="109,95,168,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="193,95,253,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="277,95,339,121"/>
+</map>
