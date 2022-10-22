@@ -20,14 +20,14 @@ format:
 build:
 	mkdir -p build
 	cd build && \
-	cmake .. && \
+	cmake -DOPTION_BUILD_DOCS=OFF .. && \
 	make
 
 .PHONY: test
 test:
 	mkdir -p build
 	cd build && \
-	cmake .. && \
+	cmake -DOPTION_BUILD_DOCS=OFF ..&& \
 	make &&\
 	test/CPP_DESIGN_PATTERN_TEST
 
@@ -48,5 +48,8 @@ clean:
 	rm -rf build
 
 .PHONY: doc
-doc: 
-	doxygen Doxyfile
+doc:
+	mkdir -p build
+	cd build && \
+	cmake -DOPTION_BUILD_DOCS=ON .. && \
+	make

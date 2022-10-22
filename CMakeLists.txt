@@ -15,7 +15,7 @@ set(CMAKE_MODULE_PATH
 set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_STANDARD 17)
 
-option(OPTION_BUILD_DOCS		"Build documentation."										OFF)
+option(OPTION_BUILD_DOCS "Build documentation." OFF)
 
 find_program(CLANGTIDY clang-tidy)
 if(CLANGTIDY)
@@ -26,12 +26,17 @@ else()
 message(SEND_ERROR "clang-tidy requested but executable not found")
 endif()
 
+message(STATUS ${OPTION_BUILD_DOCS})
+message(STATUS OPTION_BUILD_DOCS)
 
-add_subdirectory(src)
-
-add_subdirectory(test)
-
+if(OPTION_BUILD_DOCS)
+message(STATUS "Build only documentation")
 add_subdirectory(docs)
-
+else()
+message(STATUS "Build source and test files")
+add_subdirectory(src)
+add_subdirectory(test)
 add_dependencies(${TEST_NAME} ${PROJECT_NAME})
+endif()
+
 

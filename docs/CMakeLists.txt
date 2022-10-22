@@ -1,5 +1,3 @@
-if(OPTION_BUILD_DOCS)
 message(STATUS "Build documentation open")
 include(build_doxygen)
 build_doxygen()
-endif()
