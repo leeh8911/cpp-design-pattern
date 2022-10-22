@@ -28,12 +28,7 @@ jobs:
           make doc
 
       - name: Move documents
-        run: |
-          ls ./cpp-design-pattern/docs/
-          ls ./cpp-design-pattern/docs/Doxygen/
-          ls ./docs
-          ls ./docs/Doxygen
-          mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen/html
+        run: mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen/html
 
       # Deploy to GitHub Pages
       - name: Deploy
