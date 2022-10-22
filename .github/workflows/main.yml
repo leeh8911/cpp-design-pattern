@@ -29,8 +29,7 @@ jobs:
 
       - name: Move files
         run: |
-          pwd
-          ls ./cpp-design-pattern/build/docs/
+          ls ./cpp-design-pattern/build/docs
           mv ./cpp-design-pattern/build/docs/html ./docs/html
 
       # Deploy to GitHub Pages
