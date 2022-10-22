@@ -52,4 +52,4 @@ doc:
 	mkdir -p build
 	cd build && \
 	cmake -DOPTION_BUILD_DOCS=ON .. && \
-	make
+	make docs
