@@ -32,7 +32,7 @@ jobs:
         run: |
           pwd
           ls
-          mv ./build/docs/html ../../docs/html
+          mv ./cpp-design-pattern/build/docs/html ./docs/html
 
 
 
