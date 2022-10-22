@@ -28,8 +28,14 @@ jobs:
           cmake -DOPTION_BUILD_DOCS=ON ..
           make docs
 
+      - name: Move files
+        run: mv ./cpp-design-pattern/build/docs/html ./docs/html
+
+
+
       # Deploy to GitHub Pages
       - name: Deploy
+
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
