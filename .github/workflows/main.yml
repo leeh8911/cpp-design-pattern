@@ -27,6 +27,10 @@ jobs:
           mkdir cpp-design-pattern/build && cd cpp-design-pattern
           make doc
 
+      - name: Move documents
+        run: |
+          ls ./cpp-design-pattern/docs/
+          ls ./cpp-design-pattern/docs/Doxygen/
           mv ./cpp-design-pattern/docs/Doxygen/html .docs/Doxygen/html
 
       # Deploy to GitHub Pages
