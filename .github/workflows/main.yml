@@ -29,7 +29,7 @@ jobs:
           make docs
 
       - name: Move files
-        run: mv ./cpp-design-pattern/build/docs/html ./docs/html
+        run: mv ./docs/html ../docs/html
 
 
 
