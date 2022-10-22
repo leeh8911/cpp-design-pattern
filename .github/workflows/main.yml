@@ -26,7 +26,9 @@ jobs:
           git clone https://github.com/leeh8911/cpp-design-pattern.git
           mkdir cpp-design-pattern/build && cd cpp-design-pattern
           make doc
-          
+
+          mv ./cpp-design-pattern/docs/Doxygen/html .docs/Doxygen/html
+
       # Deploy to GitHub Pages
       - name: Deploy
 
