@@ -73,34 +73,38 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#autotoc_md1">Introduction</a></li>
-<li class="level1"><a href="#autotoc_md2">구현된 패턴들</a></li>
-<li class="level1"><a href="#autotoc_md3">Note</a><ul><li class="level2"><a href="#autotoc_md4">클린 아키텍처</a></li>
-<li class="level2"><a href="#autotoc_md5">아키텍처 패턴의 종류</a><ul><li class="level3"><a href="#autotoc_md6">Layered pattern</a></li>
-<li class="level3"><a href="#autotoc_md7">Client-server pattern</a></li>
-<li class="level3"><a href="#autotoc_md8">Master-slave pattern</a></li>
-<li class="level3"><a href="#autotoc_md9">Pipe-filter pattern</a></li>
-<li class="level3"><a href="#autotoc_md10">Broker pattern</a></li>
-<li class="level3"><a href="#autotoc_md11">Peer-to-peer pattern</a></li>
-<li class="level3"><a href="#autotoc_md12">Event-bus pattern</a></li>
-<li class="level3"><a href="#autotoc_md13">MVC pattern</a></li>
-<li class="level3"><a href="#autotoc_md14">Backboard pattern</a></li>
-<li class="level3"><a href="#autotoc_md15">Interpreter pattern</a></li>
-<li class="level3"><a href="#autotoc_md16">전체 비교</a></li>
+<ul><li class="level1"><a href="#autotoc_md1">Badges</a></li>
+<li class="level1"><a href="#autotoc_md2">Introduction</a></li>
+<li class="level1"><a href="#autotoc_md3">구현된 패턴들</a></li>
+<li class="level1"><a href="#autotoc_md4">Note</a><ul><li class="level2"><a href="#autotoc_md5">클린 아키텍처</a></li>
+<li class="level2"><a href="#autotoc_md6">아키텍처 패턴의 종류</a><ul><li class="level3"><a href="#autotoc_md7">Layered pattern</a></li>
+<li class="level3"><a href="#autotoc_md8">Client-server pattern</a></li>
+<li class="level3"><a href="#autotoc_md9">Master-slave pattern</a></li>
+<li class="level3"><a href="#autotoc_md10">Pipe-filter pattern</a></li>
+<li class="level3"><a href="#autotoc_md11">Broker pattern</a></li>
+<li class="level3"><a href="#autotoc_md12">Peer-to-peer pattern</a></li>
+<li class="level3"><a href="#autotoc_md13">Event-bus pattern</a></li>
+<li class="level3"><a href="#autotoc_md14">MVC pattern</a></li>
+<li class="level3"><a href="#autotoc_md15">Backboard pattern</a></li>
+<li class="level3"><a href="#autotoc_md16">Interpreter pattern</a></li>
+<li class="level3"><a href="#autotoc_md17">전체 비교</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md17">아키텍처와 디자인 패턴의 차이</a></li>
+<li class="level2"><a href="#autotoc_md18">아키텍처와 디자인 패턴의 차이</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#autotoc_md18">Docker</a></li>
-<li class="level1"><a href="#autotoc_md19">Github</a></li>
+<li class="level1"><a href="#autotoc_md19">Docker</a></li>
+<li class="level1"><a href="#autotoc_md20">Github</a></li>
 </ul>
 </div>
 <div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+Badges</h1>
+<p><a href="https://github.com/leeh8911/cpp-design-pattern/actions/workflows/main.yml"><object type="image/svg+xml" data="https://github.com/leeh8911/cpp-design-pattern/actions/workflows/main.yml/badge.svg" style="pointer-events: none;">Doxygen</object></a></p>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Introduction</h1>
 <p>디자인 패턴에 대한 스터디 내용을 하나씩 정리하기 위한 프로젝트입니다.</p>
 <p><a href="https://leeh8911.github.io/cpp-design-pattern/">doxygen link</a></p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 구현된 패턴들</h1>
 <ul>
 <li>[ ] Creational patterns<ul>
@@ -174,9 +178,9 @@ Introduction</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Note</h1>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 클린 아키텍처</h2>
 <p>클린 아키텍처란 설계의 철학과 원칙, 그리고 아키텍처 청사진의 관점에서 볼수 있습니다. 설계의 철학과 원칙에는 OOP를 대표하는 5가지 원칙을 중심으로 설명하고 있습니다. 5가지 원칙은 다음과 같습니다.</p>
 <ul>
@@ -193,10 +197,10 @@ Note</h1>
 <li>험블 객체: 프리젠테이션 계층의 테스트 가능성, 가독성, 유지보수성을 향상시킴</li>
 <li>의존선 역정: 모듈러한 프로젝트 구조의 확산</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 아키텍처 패턴의 종류</h2>
 <p><a href="https://mingrammer.com/translation-10-common-software-architectural-patterns-in-a-nutshell/">10가지 소프트웨어 아키텍처 패턴 요약</a></p>
-<h3><a class="anchor" id="autotoc_md6"></a>
+<h3><a class="anchor" id="autotoc_md7"></a>
 Layered pattern</h3>
 <p>N-티어 아키텍처 패턴이라고도 불린다. 하위 모듈들의 그룹으로 나눌 수 있는 구조화된 프로그램에서 주로 사용한다. 각 하위 모듈은 특정한 수준의 추상화를 제공한다. 각 계층은 다음 상위 계층에 서비스를 제공한다.</p>
 <ul>
@@ -206,7 +210,7 @@ Layered pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md7"></a>
+<h3><a class="anchor" id="autotoc_md8"></a>
 Client-server pattern</h3>
 <p>하나의 서버와 다수의 클라이언트, 두 부분으로 구성된다. 서버 컴포넌트의 다수의 클라이언트 컴포넌트로 서비스를 제공한다. 클라이언트가 서버에 서비스를 요청하면 서버는 클라이언트에게 적절한 서비스를 제공한다. 또한 서버는 계속 클라이언트로부터의 요청을 대기한다.</p>
 <ul>
@@ -215,7 +219,7 @@ Client-server pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<h3><a class="anchor" id="autotoc_md9"></a>
 Master-slave pattern</h3>
 <p>마스터와 슬레이브, 두 부분으로 구성된다. 마스터 컴포넌트는 동등한 구조를 지닌 슬레이브 컴포넌트들로 작업을 분산하고, 슬레이브가 반환한 결과값으로부터 최종 결과값을 계산한다.</p>
 <ul>
@@ -225,7 +229,7 @@ Master-slave pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md9"></a>
+<h3><a class="anchor" id="autotoc_md10"></a>
 Pipe-filter pattern</h3>
 <p>데이터 스트림을 생성하고 처리하는 시스템에서 사용할 수 있다. 각 처리 과정은 필터 컴포넌트에서 이루어지며, 처리되는 데이터는 파이프를 통해 흐른다. 이 파이프는 버퍼링 또는 동기화 목적으로 사용될 수 있다.</p>
 <ul>
@@ -235,7 +239,7 @@ Pipe-filter pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md11"></a>
 Broker pattern</h3>
 <p>분리된 컴포넌트들로 이루어진 분산 시스템에서 사용된다. 이 컴포넌트들은 원격 서비스 실행을 통해 서로 상호 작요 할 수 있다. 브로커 컴포넌트는 컴포넌트간의 통신을 조정하는 역할을 한다.</p>
 <ul>
@@ -244,7 +248,7 @@ Broker pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md12"></a>
 Peer-to-peer pattern</h3>
 <p>각 컴포넌트들을 피어라 부른다. 피어는 클라이언트로서 피어에게 서비스를 요청할 수 있고, 서버로서 각 피어에게 서비스를 제공할 수 있다. 피어는 클라이언트 또는 서버 혹은 둘 모두로서 동작할 수 있으며, 시간이 지남에 따라 역할이 유동적으로 바뀔 수 있다.</p>
 <ul>
@@ -255,7 +259,7 @@ Peer-to-peer pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md12"></a>
+<h3><a class="anchor" id="autotoc_md13"></a>
 Event-bus pattern</h3>
 <p>이 패턴은 주로 이벤트를 처리하며 이벤트 소스, 이벤트 리스너, 채널, 그리고 이벤트 버스의 4가지 주요 컴포넌트들을 갖는다. 소스는 이벤트 버스를 통해 특정 채널로 메시지를 발행하며, 리스너는 특정 채널에서 메시지를 구독한다. 리스너는 이전에 구독한 채널에 발행된 메시지에 대한 알림을 받는다.</p>
 <ul>
@@ -265,7 +269,7 @@ Event-bus pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md14"></a>
 MVC pattern</h3>
 <p>대화형 애플리케이션을 다음의 세 부분으로 나눈다.</p><ol type="1">
 <li>Model: 핵심 기능과 데이터를 포함</li>
@@ -280,7 +284,7 @@ MVC pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md15"></a>
 Backboard pattern</h3>
 <p>결정 가능한 해결 전략이 알려지지 않은 문제에 유용하다. 이 패턴은 3가지 주요 컴포넌트로 구성된다.</p><ol type="1">
 <li>Blackboard: 솔루션의 객체를 포함하는 구조화된 전역 메모리</li>
@@ -297,7 +301,7 @@ Backboard pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md15"></a>
+<h3><a class="anchor" id="autotoc_md16"></a>
 Interpreter pattern</h3>
 <p>특정 언어로 작성된 프로그램을 해석하는 컴포넌트를 설계할 때 사용된다. 이는 주로 특정 언어로 작성된 문장 혹은 표현식이라고 하는 프로그램의 각 라인을 수행하는 방법을 지정한다. 기본 아이디어는 언어의 각 기호에 대해 클래스를 만드는 것이다.</p>
 <ul>
@@ -307,7 +311,7 @@ Interpreter pattern</h3>
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md17"></a>
 전체 비교</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -333,7 +337,7 @@ Interpreter pattern</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">10 </td><td class="markdownTableBodyNone">인터프리터 (Interpreter) </td><td class="markdownTableBodyNone">매우 동적인 설계가 가능하다. 최종 사용자가 프로그래밍하기 좋다. 인터프리터 프로그램을 쉽게 교체할 수 있기 때문에 유연성이 향상된다. </td><td class="markdownTableBodyNone">인터프리터 언어는 일반적으로 컴파일 언어보다 느리기 때문에 성능 문제가 발생할 수 있다.  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 아키텍처와 디자인 패턴의 차이</h2>
 <p><a href="https://singhdivesh.medium.com/according-to-wikipedia-b1afa6de08c">Differences between Architecture and design pattern</a></p>
 <ul>
@@ -359,13 +363,13 @@ Interpreter pattern</h3>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 Docker</h1>
 <div class="fragment"><div class="line">wsl</div>
 <div class="line"> </div>
 <div class="line">docker build -t cpp-design-pattern .</div>
 <div class="line">docker run -it --rm -v ${PWD}:/develop cpp-design-pattern</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
 Github</h1>
 <div class="fragment"><div class="line">ssh-keygen -t ed25519 -C &quot;your@email.com&quot;</div>
 <div class="line">eval &quot;$(ssh-agent -s)&quot;</div>
