@@ -27,10 +27,11 @@ jobs:
           mkdir cpp-design-pattern/build && cd cpp-design-pattern/build
           cmake -DOPTION_BUILD_DOCS=ON ..
           make docs
-          ls
 
       - name: Move files
-        run: mv ./docs/html ../docs/html
+        run: |
+          pwd
+          mv ./docs/html ../docs/html
 
 
 
