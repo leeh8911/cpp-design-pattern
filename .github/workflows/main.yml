@@ -24,17 +24,14 @@ jobs:
       - name: Create the doxygen
         run: |
           git clone https://github.com/leeh8911/cpp-design-pattern.git
-          mkdir cpp-design-pattern/build && cd cpp-design-pattern/build
-          cmake -DOPTION_BUILD_DOCS=ON ..
-          make docs
+          mkdir cpp-design-pattern/build && cd cpp-design-pattern
+          make doc
 
       - name: Move files
         run: |
           pwd
-          ls
+          ls ./cpp-design-pattern/build/docs/
           mv ./cpp-design-pattern/build/docs/html ./docs/html
-
-
 
       # Deploy to GitHub Pages
       - name: Deploy
