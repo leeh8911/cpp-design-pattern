@@ -31,7 +31,10 @@ jobs:
         run: |
           ls ./cpp-design-pattern/docs/
           ls ./cpp-design-pattern/docs/Doxygen/
-          mv ./cpp-design-pattern/docs/Doxygen/html .docs/Doxygen/html
+          ls ./docs
+          ls ./docs/Doxygen
+          ls ./docs/Doxygen/html
+          mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen/html
 
       # Deploy to GitHub Pages
       - name: Deploy
