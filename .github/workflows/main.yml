@@ -32,6 +32,9 @@ jobs:
         run: |
           pwd
           ls
+          ls ./cpp-design-pattern
+          ls ./cpp-design-pattern/build
+          ls ./cpp-design-pattern/build/docs
           mv ./cpp-design-pattern/build/docs/html ./docs/html
 
 
