@@ -33,7 +33,6 @@ jobs:
           ls ./cpp-design-pattern/docs/Doxygen/
           ls ./docs
           ls ./docs/Doxygen
-          ls ./docs/Doxygen/html
           mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen/html
 
       # Deploy to GitHub Pages
