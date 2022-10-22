@@ -14,13 +14,21 @@
 
 #include <iostream>
 
-namespace design_pattern::etc::register
+namespace design_pattern::etc::apollo
 {
-    class Any
+class Any
+{
+ public:
+    Any() : content_(NULL) {}
+
+ private:
+    class PlaceHolder
     {
-     public:
-     private:
+     public
+        virtual ~PlaceHolder() {}
     };
-}  // namespace design_pattern::etc::register
+    PlaceHolder* content_;
+};
+}  // namespace design_pattern::etc::apollo
 
 #endif  // SRC_ETC_REGISTER_REGISTER_H_
