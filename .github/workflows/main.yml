@@ -31,7 +31,7 @@ jobs:
       - name: Move files
         run: |
           pwd
-          mv ./docs/html ../docs/html
+          mv ./build/docs/html ../../docs/html
 
 
 
