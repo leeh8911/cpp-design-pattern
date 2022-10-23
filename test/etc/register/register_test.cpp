@@ -26,19 +26,25 @@ class BaseClass
     virtual std::string Name() const { return "BaseClass1"; }
 };
 
-class DerivedClass : BaseClass
+class DerivedClass1 : BaseClass
 {
  public:
-    DerivedClass() = default;
-    ~DerivedClass() = default;
+    DerivedClass1() = default;
+    ~DerivedClass1() = default;
     std::string Name() const override { return "DerivedClass1"; }
 };
+
+PERCEPTION_REGISTER_REGISTERER(BaseClass);
+#define PERCEPTION_REGISTER_TEST(name) \
+    PERCEPTION_REGISTER_CLASS(BaseClass, name)
+
+PERCEPTION_REGISTER_TEST(DerivedClass1);
 
 TEST(RegistererTest, Test)
 {
     BaseClass* ptr = nullptr;
-    ptr = BaseClassRegisterer::GetInstanceByName("DerivedClass1")
-        ASSERT_TRUE(ptr != nullptr);
+    ptr = BaseClassRegisterer::GetInstanceByName("DerivedClass1");
+    ASSERT_TRUE(ptr != nullptr);
     EXPECT_EQ(ptr->Name(), "DerivedClass1");
 
     ptr = BaseClassRegisterer::GetInstanceByName("NetExists");
@@ -52,5 +58,13 @@ TEST(RegistererTest, Test)
 
     std::vector<std::string> derived_classes;
     EXPECT_TRUE(GetRegisteredClasses("BaseClass", &derived_classes));
+    EXPECT_FALSE(GetRegisteredClasses("BaseClass2", &derived_classes));
+    EXPECT_EQ(derived_classes.size(), 1u);
+    EXPECT_EQ(derived_classes[0], "DerivedClass1");
+    ObjectFactoryDerivedClass1 obj_factory_drived1;
+    obj_factory_drived1.NewInstance();
+    Any any;
+    // TODO(all) enable this check
+    // EXPECT_EQ(any.content_, nullptr);
 }
 }  // namespace

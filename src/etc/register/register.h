@@ -13,13 +13,22 @@
 #define SRC_ETC_REGISTER_REGISTER_H_
 
 #include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+
+#define CHECK_EQ(a, b)                 \
+    if (a != b)                        \
+    {                                  \
+        std::cout << a << " != " << b; \
+    }
 
 namespace design_pattern::etc::apollo
 {
 class Any
 {
  public:
-    Any() : content_(NULL) {}
+    Any() : content_(nullptr) {}
 
     template <typename ValueType>
     explicit Any(const ValueType& value)
@@ -43,7 +52,7 @@ class Any
     class PlaceHolder
     {
      public:
-        virtual ~PlaceHolder() {}
+        virtual ~PlaceHolder() = default;
         virtual PlaceHolder* Clone() const = 0;
     };
 
@@ -52,8 +61,8 @@ class Any
     {
      public:
         explicit Holder(const ValueType& value) : held_(value) {}
-        virtual ~Holder() {}
-        virtual PlaceHolder* Clone() const { return new Holder(held_); }
+        ~Holder() override = default;
+        PlaceHolder* Clone() const override { return new Holder(held_); }
 
         ValueType held_;
     };
@@ -63,8 +72,8 @@ class Any
 class ObjectFactory
 {
  public:
-    ObjectFactory() {}
-    virtual ~ObjectFactory() {}
+    ObjectFactory() = default;
+    virtual ~ObjectFactory() = default;
     virtual Any NewInstance() { return Any(); }
 
     // 복사 생성자 및 복사 할당자 제거
@@ -72,7 +81,92 @@ class ObjectFactory
     ObjectFactory& operator=(const ObjectFactory&) = delete;
 
  private:
-}
+};
+
+typedef std::map<std::string, ObjectFactory*> FactoryMap;
+typedef std::map<std::string, FactoryMap> BaseClassMap;
+BaseClassMap& GlobalFactoryMap();
+
 }  // namespace design_pattern::etc::apollo
 
+#define PERCEPTION_REGISTER_REGISTERER(base_class)                            \
+    class base_class##Registerer                                              \
+    {                                                                         \
+        typedef ::design_pattern::etc::apollo::Any Any;                       \
+        typedef ::design_pattern::etc::apollo::FactoryMap FactoryMap;         \
+                                                                              \
+     public:                                                                  \
+        static base_class* GetInstanceByName(const ::std::string& name)       \
+        {                                                                     \
+            FactoryMap& map1 =                                                \
+                ::apollo::perception::lib::GlobalFactoryMap()[#base_class];   \
+            FactoryMap::iterator iter = map1.find(name);                      \
+            if (iter == map1.end())                                           \
+            {                                                                 \
+                for (auto c : map1)                                           \
+                {                                                             \
+                    std::cout << "Instance: " << c.first << std::endl;        \
+                }                                                             \
+                std::cout << "Get instance " << name << " failed.\n";         \
+                return nullptr;                                               \
+            }                                                                 \
+            Any object = iter->second->NewInstance();                         \
+            return *(object.AnyCast<base_class*>());                          \
+        }                                                                     \
+        static std::vector<base_class*> GetAllInstance()                      \
+        {                                                                     \
+            std::vector<base_class*> instances;                               \
+            FactoryMap& map1 =                                                \
+                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
+            instances.reverse(map1.size());                                   \
+            for (auto item : map1)                                            \
+            {                                                                 \
+                Any object = item.second->NewInstance();                      \
+                instances.push_back(*(object.AnyCast<base_class*>()));        \
+            }                                                                 \
+            return instances;                                                 \
+        }                                                                     \
+        static const ::std::string GetUniqInstanceName()                      \
+        {                                                                     \
+            FactoryMap& map1 =                                                \
+                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
+            CHECK_EQ(map1.size(), 1U) << map1.size();                         \
+            return map1.begin()->first;                                       \
+        }                                                                     \
+        static base_class* GetUniqInstance()                                  \
+        {                                                                     \
+            FactoryMap* map1 =                                                \
+                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
+            CHECK_EQ(map1.size(), 1U) << map1.size();                         \
+            Any object = map1.begin()->second->NewInstance();                 \
+            return *(object.AnyCast<base_class*>());                          \
+        }                                                                     \
+        static bool IsValid(const ::std::string& name)                        \
+        {                                                                     \
+            FactoryMap& map1 =                                                \
+                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
+            return map1.find(name) != map1.end();                             \
+        }                                                                     \
+    };
+#define PERCEPTION_REGISTER_CLASS(clazz, name)                       \
+    namespace                                                        \
+    {                                                                \
+    class ObjectFactory##name                                        \
+        : public design_pattern::etc::apollo::ObjectFactory          \
+    {                                                                \
+     public:                                                         \
+        virtual ~ObjectFactory##name() {}                            \
+        virtual design_pattern::etc::apollo::Any NewInstance()       \
+        {                                                            \
+            return design_pattern::etc::apollo::Any(new name());     \
+        }                                                            \
+    };                                                               \
+    __attribute__((constructor)) void RegisterFactory##name()        \
+    {                                                                \
+        design_pattern::etc::apollo::FactoryMap& map1 =              \
+            design_pattern::etc::apollo::GlobalFactoryMap()[#clazz]; \
+        if (map1.find(#name) == map1.end())                          \
+            map1[#name] = new ObjectFactory##name();                 \
+    }                                                                \
+    }   // namespace
 #endif  // SRC_ETC_REGISTER_REGISTER_H_
