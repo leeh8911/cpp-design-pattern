@@ -11,40 +11,49 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Basics
 RUN apt-get update && apt-get install -qq -y -f --no-install-recommends \
-    # Base dependencies
+    # install linux dependencies
+    ## Base dependencies
     ca-certificates libgoogle-glog-dev \
     libgtest-dev automake wget curl unzip autoconf libtool g++ gcc make \
     cmake git vim \
-    # Security
+    ## Security
     openssh-client \
-    # BLAS & LAPACK
+    ## BLAS & LAPACK
     libatlas-base-dev \
-    # Eigen3
+    ## Eigen3
     libeigen3-dev \
-    # SuiteSparse and CXSparse (optional)
-    # - If you want to build Ceres as a *static* library (the default)
-    #   you can use the SuiteSparse package in the main Ubuntu package
-    #   repository:
+    ## SuiteSparse and CXSparse (optional)
+    ## - If you want to build Ceres as a *static* library (the default)
+    ##   you can use the SuiteSparse package in the main Ubuntu package
+    ##   repository:
     libsuitesparse-dev \
-    # Sphinx (for documentation)
+    ## Sphinx (for documentation)
     sphinx-doc sphinx-common \
-    # code linter and formatter
+    ## code linter and formatter
     cppcheck clang clang-tidy clang-format \
-    # For doxygen
+    ## python pip for cpplint
+    python3-pip \
+    ## For doxygen
     graphviz npm flex bison && \
+    # build and install
+    ## ceres-solver
     mkdir temp && cd temp && \
     git clone --depth=1 https://ceres-solver.googlesource.com/ceres-solver && \
     cd ceres-solver && mkdir build && cd build && \
     cmake .. && make -j $NUM_CORES && make test && make install && \
     cd ../../ && \
+    ## doxygen
     git clone https://github.com/doxygen/doxygen.git && \
     cd doxygen && mkdir build && cd build && \
     cmake -G "Unix Makefiles" .. && make && make install && \
     cd ../../ && \
+    ## google test
     git clone https://github.com/google/googletest.git && \
     cd googletest && mkdir build && cd build && \
     cmake .. && \
     cmake --build . --target install && \
+    # cpplint
+    pip install cpplint && \ 
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
