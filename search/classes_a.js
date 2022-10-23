@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sensor_166',['Sensor',['../structdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Sensor.html',1,'design_pattern::etc::mvc::app']]],
-  ['shape_167',['Shape',['../classdesign__pattern_1_1structural_1_1decorator_1_1Shape.html',1,'design_pattern::structural::decorator']]]
+  ['placeholder_179',['PlaceHolder',['../classdesign__pattern_1_1etc_1_1apollo_1_1Any_1_1PlaceHolder.html',1,'design_pattern::etc::apollo::Any']]],
+  ['punchedshape_180',['PunchedShape',['../classdesign__pattern_1_1structural_1_1decorator_1_1PunchedShape.html',1,'design_pattern::structural::decorator']]]
 ];

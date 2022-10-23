@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['resize_240',['Resize',['../classdesign__pattern_1_1structural_1_1decorator_1_1Circle.html#aca4eea34900ccde5c6358a6199900118',1,'design_pattern::structural::decorator::Circle']]]
+  ['objectfactory_249',['ObjectFactory',['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html#ac0cd2467c5a33a2d9294bb2eeec6d4cb',1,'design_pattern::etc::apollo::ObjectFactory::ObjectFactory()=default'],['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html#a60a3d7df7d8da4f1464250fdce55484e',1,'design_pattern::etc::apollo::ObjectFactory::ObjectFactory(const ObjectFactory &amp;)=delete']]],
+  ['objecttracking_250',['ObjectTracking',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#a2e40c24c7f83f738046adc24792b70c3',1,'design_pattern::etc::mvc::app::ObjectTracking']]],
+  ['operator_3d_251',['operator=',['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html#ab0a03f0262d71b333af4e3bb68c5a369',1,'design_pattern::etc::apollo::ObjectFactory']]],
+  ['operator_3d_3d_252',['operator==',['../structdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Sensor.html#a7f113efad2db93b66f90975124b748ab',1,'design_pattern::etc::mvc::app::Sensor::operator==()'],['../structdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Target.html#a6a5b5c5deb8771780b819709dc65cbae',1,'design_pattern::etc::mvc::app::Target::operator==()']]],
+  ['output_253',['Output',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Output.html#ab22499e074e28a2edab14265d6c24b05',1,'design_pattern::etc::mvc::app::Output']]],
+  ['outputsize_254',['OutputSize',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#a99c1d948c984b9e76fb5e37e2145427a',1,'design_pattern::etc::mvc::app::ObjectTracking::OutputSize()'],['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Tracking.html#a99c1d948c984b9e76fb5e37e2145427a',1,'design_pattern::etc::mvc::app::Tracking::OutputSize()']]],
+  ['outputtarget_255',['OutputTarget',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#a8e434bd1f2cfa90a571912fb7d37b4e6',1,'design_pattern::etc::mvc::app::ObjectTracking::OutputTarget()'],['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Tracking.html#a8e434bd1f2cfa90a571912fb7d37b4e6',1,'design_pattern::etc::mvc::app::Tracking::OutputTarget()']]]
 ];

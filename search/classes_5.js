@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['holder_153',['Holder',['../classdesign__pattern_1_1etc_1_1apollo_1_1Any_1_1Holder.html',1,'design_pattern::etc::apollo::Any']]]
+  ['gtbuilder_167',['GTBuilder',['../classdesign__pattern_1_1creational_1_1builder_1_1GTBuilder.html',1,'design_pattern::creational::builder']]]
 ];

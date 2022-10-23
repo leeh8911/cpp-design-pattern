@@ -74,7 +74,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">register.h File Reference</div>  </div>
 </div><!--header-->
@@ -83,13 +86,28 @@ $(function() {
 <p>apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for register.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="register_8h__incl.png" border="0" usemap="#src_2etc_2register_2register_8h" alt=""/></div>
 <map name="src_2etc_2register_2register_8h" id="src_2etc_2register_2register_8h">
+<area shape="rect" title="apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일" alt="" coords="81,5,265,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,85,107"/>
+<area shape="rect" title=" " alt="" coords="109,80,160,107"/>
+<area shape="rect" title=" " alt="" coords="184,80,243,107"/>
+<area shape="rect" title=" " alt="" coords="267,80,330,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="register_8h__dep__incl.png" border="0" usemap="#src_2etc_2register_2register_8hdep" alt=""/></div>
+<map name="src_2etc_2register_2register_8hdep" id="src_2etc_2register_2register_8hdep">
 <area shape="rect" title="apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일" alt="" coords="5,5,189,32"/>
-<area shape="rect" title=" " alt="" coords="57,80,137,107"/>
+<area shape="rect" href="register__test_8cpp.html" title=" " alt="" coords="8,80,187,121"/>
 </map>
 </div>
 </div>
@@ -114,6 +132,27 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacedesign__pattern_1_1etc_1_1apollo"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html">design_pattern::etc::apollo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:abc966756c9622b65c37a842ea9159f44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8h.html#abc966756c9622b65c37a842ea9159f44">CHECK_EQ</a>(a,  b)</td></tr>
+<tr class="separator:abc966756c9622b65c37a842ea9159f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad96b5d1446964500bdb048440e8b56b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8h.html#ad96b5d1446964500bdb048440e8b56b1">PERCEPTION_REGISTER_REGISTERER</a>(base_class)</td></tr>
+<tr class="separator:ad96b5d1446964500bdb048440e8b56b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ec7af4fe057a9909e0cfd65c130b5f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8h.html#a76ec7af4fe057a9909e0cfd65c130b5f">PERCEPTION_REGISTER_CLASS</a>(clazz,  name)</td></tr>
+<tr class="separator:a76ec7af4fe057a9909e0cfd65c130b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a699d139337706ad6235f1b4f923060ce"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, ObjectFactory * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">FactoryMap</a></td></tr>
+<tr class="separator:a699d139337706ad6235f1b4f923060ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf59876b05d1614920b9e4e189351041"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, FactoryMap &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html#acf59876b05d1614920b9e4e189351041">BaseClassMap</a></td></tr>
+<tr class="separator:acf59876b05d1614920b9e4e189351041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a53d071bdfd29d664cf64c0ff199e9aae"><td class="memItemLeft" align="right" valign="top">BaseClassMap &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">GlobalFactoryMap</a> ()</td></tr>
+<tr class="separator:a53d071bdfd29d664cf64c0ff199e9aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일 </p>
@@ -121,7 +160,110 @@ Namespaces</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2022-10-21</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abc966756c9622b65c37a842ea9159f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc966756c9622b65c37a842ea9159f44">&#9670;&nbsp;</a></span>CHECK_EQ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CHECK_EQ</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (a != b)                        \</div>
+<div class="line">    {                                  \</div>
+<div class="line">        std::cout &lt;&lt; a &lt;&lt; <span class="stringliteral">&quot; != &quot;</span> &lt;&lt; b; \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad96b5d1446964500bdb048440e8b56b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad96b5d1446964500bdb048440e8b56b1">&#9670;&nbsp;</a></span>PERCEPTION_REGISTER_REGISTERER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PERCEPTION_REGISTER_REGISTERER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">base_class</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76ec7af4fe057a9909e0cfd65c130b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76ec7af4fe057a9909e0cfd65c130b5f">&#9670;&nbsp;</a></span>PERCEPTION_REGISTER_CLASS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PERCEPTION_REGISTER_CLASS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">clazz, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">namespace                                                        </span>\</div>
+<div class="line">    {                                                                \</div>
+<div class="line">    class ObjectFactory##name                                        \</div>
+<div class="line">        : <span class="keyword">public</span> <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a>          \</div>
+<div class="line">    {                                                                \</div>
+<div class="line">     public:                                                         \</div>
+<div class="line">        virtual ~ObjectFactory##name() {}                            \</div>
+<div class="line">        virtual <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a> NewInstance()       \</div>
+<div class="line">        {                                                            \</div>
+<div class="line">            return <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a>(<span class="keyword">new</span> name());     \</div>
+<div class="line">        }                                                            \</div>
+<div class="line">    };                                                               \</div>
+<div class="line">    __attribute__((constructor)) <span class="keywordtype">void</span> RegisterFactory##name()        \</div>
+<div class="line">    {                                                                <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">\</a></div>
+<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">        design_pattern::etc::apollo::FactoryMap</a>&amp; map1 =              <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">\</a></div>
+<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">            design_pattern::etc::apollo::GlobalFactoryMap</a>()[#clazz]; \</div>
+<div class="line">        if (map1.find(#name) == map1.end())                          \</div>
+<div class="line">            map1[#name] = <span class="keyword">new</span> ObjectFactory##name();                 \</div>
+<div class="line">    }                                                                \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1Any_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a></div><div class="ttdef"><b>Definition:</b> register.h:28</div></div>
+<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a699d139337706ad6235f1b4f923060ce"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">design_pattern::etc::apollo::FactoryMap</a></div><div class="ttdeci">std::map&lt; std::string, ObjectFactory * &gt; FactoryMap</div><div class="ttdef"><b>Definition:</b> register.h:86</div></div>
+<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a53d071bdfd29d664cf64c0ff199e9aae"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">design_pattern::etc::apollo::GlobalFactoryMap</a></div><div class="ttdeci">BaseClassMap &amp; GlobalFactoryMap()</div></div>
+<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a></div><div class="ttdef"><b>Definition:</b> register.h:72</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

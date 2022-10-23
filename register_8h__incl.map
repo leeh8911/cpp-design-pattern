@@ -1,4 +1,7 @@
 <map id="src/etc/register/register.h" name="src/etc/register/register.h">
-<area shape="rect" id="node1" title="apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일" alt="" coords="5,5,189,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="57,80,137,107"/>
+<area shape="rect" id="node1" title="apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일" alt="" coords="81,5,265,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,85,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="109,80,160,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="184,80,243,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="267,80,330,107"/>
 </map>

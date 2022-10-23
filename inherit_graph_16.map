@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Target.html" title="타겟 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다." alt="" coords="5,5,68,32"/>
+<area shape="rect" id="node1" href="$classdesign__pattern_1_1structural_1_1decorator_1_1Shape.html" title=" " alt="" coords="5,56,68,83"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1structural_1_1decorator_1_1Circle.html" title=" " alt="" coords="145,5,204,32"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1structural_1_1decorator_1_1ColoredShape.html" title=" " alt="" coords="119,56,231,83"/>
+<area shape="rect" id="node4" href="$classdesign__pattern_1_1structural_1_1decorator_1_1PunchedShape.html" title=" " alt="" coords="116,107,233,133"/>
 </map>
