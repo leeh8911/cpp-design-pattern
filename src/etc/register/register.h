@@ -17,11 +17,7 @@
 #include <string>
 #include <vector>
 
-#define CHECK_EQ(a, b)                 \
-    if (a != b)                        \
-    {                                  \
-        std::cout << a << " != " << b; \
-    }
+#define CHECK_EQ(a, b) std::cout << a << " != " << b
 
 namespace design_pattern::etc::apollo
 {
@@ -87,66 +83,68 @@ typedef std::map<std::string, ObjectFactory*> FactoryMap;
 typedef std::map<std::string, FactoryMap> BaseClassMap;
 BaseClassMap& GlobalFactoryMap();
 
+bool GetRegisteredClasses(
+    const std::string& base_class_name,
+    std::vector<std::string>* registered_derived_classes_names);
+
 }  // namespace design_pattern::etc::apollo
 
-#define PERCEPTION_REGISTER_REGISTERER(base_class)                            \
-    class base_class##Registerer                                              \
-    {                                                                         \
-        typedef ::design_pattern::etc::apollo::Any Any;                       \
-        typedef ::design_pattern::etc::apollo::FactoryMap FactoryMap;         \
-                                                                              \
-     public:                                                                  \
-        static base_class* GetInstanceByName(const ::std::string& name)       \
-        {                                                                     \
-            FactoryMap& map1 =                                                \
-                ::apollo::perception::lib::GlobalFactoryMap()[#base_class];   \
-            FactoryMap::iterator iter = map1.find(name);                      \
-            if (iter == map1.end())                                           \
-            {                                                                 \
-                for (auto c : map1)                                           \
-                {                                                             \
-                    std::cout << "Instance: " << c.first << std::endl;        \
-                }                                                             \
-                std::cout << "Get instance " << name << " failed.\n";         \
-                return nullptr;                                               \
-            }                                                                 \
-            Any object = iter->second->NewInstance();                         \
-            return *(object.AnyCast<base_class*>());                          \
-        }                                                                     \
-        static std::vector<base_class*> GetAllInstance()                      \
-        {                                                                     \
-            std::vector<base_class*> instances;                               \
-            FactoryMap& map1 =                                                \
-                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
-            instances.reverse(map1.size());                                   \
-            for (auto item : map1)                                            \
-            {                                                                 \
-                Any object = item.second->NewInstance();                      \
-                instances.push_back(*(object.AnyCast<base_class*>()));        \
-            }                                                                 \
-            return instances;                                                 \
-        }                                                                     \
-        static const ::std::string GetUniqInstanceName()                      \
-        {                                                                     \
-            FactoryMap& map1 =                                                \
-                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
-            CHECK_EQ(map1.size(), 1U) << map1.size();                         \
-            return map1.begin()->first;                                       \
-        }                                                                     \
-        static base_class* GetUniqInstance()                                  \
-        {                                                                     \
-            FactoryMap* map1 =                                                \
-                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
-            CHECK_EQ(map1.size(), 1U) << map1.size();                         \
-            Any object = map1.begin()->second->NewInstance();                 \
-            return *(object.AnyCast<base_class*>());                          \
-        }                                                                     \
-        static bool IsValid(const ::std::string& name)                        \
-        {                                                                     \
-            FactoryMap& map1 =                                                \
-                design_pattern::etc::apollo::GlobalFactoryMap()[#base_class]; \
-            return map1.find(name) != map1.end();                             \
-        }                                                                     \
+#define PERCEPTION_REGISTER_REGISTERER(base_class)                      \
+    class base_class##Registerer                                        \
+    {                                                                   \
+        typedef design_pattern::etc::apollo::Any Any;                   \
+        typedef design_pattern::etc::apollo::FactoryMap FactoryMap;     \
+        using GlobalFactoryMap =                                        \
+            design_pattern::etc::apollo::GlobalFactoryMap;              \
+                                                                        \
+     public:                                                            \
+        static base_class* GetInstanceByName(const ::std::string& name) \
+        {                                                               \
+            FactoryMap& map1 = GlobalFactoryMap()[#base_class];         \
+            FactoryMap::iterator iter = map1.find(name);                \
+            if (iter == map1.end())                                     \
+            {                                                           \
+                for (auto c : map1)                                     \
+                {                                                       \
+                    std::cout << "Instance: " << c.first << std::endl;  \
+                }                                                       \
+                std::cout << "Get instance " << name << " failed.\n";   \
+                return nullptr;                                         \
+            }                                                           \
+            Any object = iter->second->NewInstance();                   \
+            return *(object.AnyCast<base_class*>());                    \
+        }                                                               \
+        static std::vector<base_class*> GetAllInstance()                \
+        {                                                               \
+            std::vector<base_class*> instances;                         \
+            FactoryMap& map1 = GlobalFactoryMap()[#base_class];         \
+            instances.reverse(map1.begin(), map1.end());                \
+            for (auto item : map1)                                      \
+            {                                                           \
+                Any object = item.second->NewInstance();                \
+                instances.push_back(*(object.AnyCast<base_class*>()));  \
+            }                                                           \
+            return instances;                                           \
+        }                                                               \
+        static const ::std::string GetUniqInstanceName()                \
+        {                                                               \
+            FactoryMap& map1 = GlobalFactoryMap()[#base_class];         \
+            CHECK_EQ(map1.size(), 1U) << map1.size();                   \
+            return map1.begin()->first;                                 \
+        }                                                               \
+        static base_class* GetUniqInstance()                            \
+        {                                                               \
+            std::string name = #base_class;                             \
+            FactoryMap* map1 = GlobalFactoryMap()[name];                \
+            CHECK_EQ(map1.size(), 1U) << map1.size();                   \
+            Any object = map1.begin()->second->NewInstance();           \
+            return *(object.AnyCast<base_class*>());                    \
+        }                                                               \
+        static bool IsValid(const ::std::string& name)                  \
+        {                                                               \
+            FactoryMap& map1 = GlobalFactoryMap()[#base_class];         \
+            return map1.find(name) != map1.end();                       \
+        }                                                               \
     };
 #define PERCEPTION_REGISTER_CLASS(clazz, name)                       \
     namespace                                                        \
