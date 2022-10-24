@@ -106,8 +106,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="register_8h__dep__incl.png" border="0" usemap="#src_2etc_2register_2register_8hdep" alt=""/></div>
 <map name="src_2etc_2register_2register_8hdep" id="src_2etc_2register_2register_8hdep">
-<area shape="rect" title="apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일" alt="" coords="5,5,189,32"/>
-<area shape="rect" href="register__test_8cpp.html" title=" " alt="" coords="8,80,187,121"/>
+<area shape="rect" title="apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일" alt="" coords="119,5,303,32"/>
+<area shape="rect" href="register_8cpp.html" title=" " alt="" coords="5,87,204,114"/>
+<area shape="rect" href="register__test_8cpp.html" title=" " alt="" coords="229,80,407,121"/>
 </map>
 </div>
 </div>
@@ -135,7 +136,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:abc966756c9622b65c37a842ea9159f44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8h.html#abc966756c9622b65c37a842ea9159f44">CHECK_EQ</a>(a,  b)</td></tr>
+<tr class="memitem:abc966756c9622b65c37a842ea9159f44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8h.html#abc966756c9622b65c37a842ea9159f44">CHECK_EQ</a>(a,  b)&#160;&#160;&#160;std::cout &lt;&lt; a &lt;&lt; &quot; != &quot; &lt;&lt; b</td></tr>
 <tr class="separator:abc966756c9622b65c37a842ea9159f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad96b5d1446964500bdb048440e8b56b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="register_8h.html#ad96b5d1446964500bdb048440e8b56b1">PERCEPTION_REGISTER_REGISTERER</a>(base_class)</td></tr>
 <tr class="separator:ad96b5d1446964500bdb048440e8b56b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,8 +152,10 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a53d071bdfd29d664cf64c0ff199e9aae"><td class="memItemLeft" align="right" valign="top">BaseClassMap &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">GlobalFactoryMap</a> ()</td></tr>
-<tr class="separator:a53d071bdfd29d664cf64c0ff199e9aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98a72a6647a539520276a56b4198118"><td class="memItemLeft" align="right" valign="top">BaseClassMap &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">GlobalFactoryMap</a> ()</td></tr>
+<tr class="separator:ae98a72a6647a539520276a56b4198118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11378bab174022df4fe2b12e08da0c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ab11378bab174022df4fe2b12e08da0c8">GetRegisteredClasses</a> (const std::string &amp;base_class_name, std::vector&lt; std::string &gt; *registered_derived_classes_names)</td></tr>
+<tr class="separator:ab11378bab174022df4fe2b12e08da0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>apollo 에서 사용하는 register의 기능을 구현해보기 위한 헤더파일 </p>
@@ -182,15 +185,11 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td>&#160;&#160;&#160;std::cout &lt;&lt; a &lt;&lt; &quot; != &quot; &lt;&lt; b</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (a != b)                        \</div>
-<div class="line">    {                                  \</div>
-<div class="line">        std::cout &lt;&lt; a &lt;&lt; <span class="stringliteral">&quot; != &quot;</span> &lt;&lt; b; \</div>
-<div class="line">    }</div>
-</div><!-- fragment -->
+
 </div>
 </div>
 <a id="ad96b5d1446964500bdb048440e8b56b1"></a>
@@ -250,8 +249,8 @@ Functions</h2></td></tr>
 <div class="line">    };                                                               \</div>
 <div class="line">    __attribute__((constructor)) <span class="keywordtype">void</span> RegisterFactory##name()        \</div>
 <div class="line">    {                                                                <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">\</a></div>
-<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">        design_pattern::etc::apollo::FactoryMap</a>&amp; map1 =              <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">\</a></div>
-<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">            design_pattern::etc::apollo::GlobalFactoryMap</a>()[#clazz]; \</div>
+<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">        design_pattern::etc::apollo::FactoryMap</a>&amp; map1 =              <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">\</a></div>
+<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">            design_pattern::etc::apollo::GlobalFactoryMap</a>()[#clazz]; \</div>
 <div class="line">        if (map1.find(#name) == map1.end())                          \</div>
 <div class="line">            map1[#name] = <span class="keyword">new</span> ObjectFactory##name();                 \</div>
 <div class="line">    }                                                                \</div>
@@ -260,10 +259,10 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1Any_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a></div><div class="ttdef"><b>Definition:</b> register.h:28</div></div>
-<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a699d139337706ad6235f1b4f923060ce"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">design_pattern::etc::apollo::FactoryMap</a></div><div class="ttdeci">std::map&lt; std::string, ObjectFactory * &gt; FactoryMap</div><div class="ttdef"><b>Definition:</b> register.h:86</div></div>
-<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a53d071bdfd29d664cf64c0ff199e9aae"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a53d071bdfd29d664cf64c0ff199e9aae">design_pattern::etc::apollo::GlobalFactoryMap</a></div><div class="ttdeci">BaseClassMap &amp; GlobalFactoryMap()</div></div>
-<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a></div><div class="ttdef"><b>Definition:</b> register.h:72</div></div>
+<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1Any_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a></div><div class="ttdef"><b>Definition:</b> register.h:24</div></div>
+<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_ae98a72a6647a539520276a56b4198118"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">design_pattern::etc::apollo::GlobalFactoryMap</a></div><div class="ttdeci">BaseClassMap &amp; GlobalFactoryMap()</div><div class="ttdef"><b>Definition:</b> register.cpp:19</div></div>
+<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a699d139337706ad6235f1b4f923060ce"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a699d139337706ad6235f1b4f923060ce">design_pattern::etc::apollo::FactoryMap</a></div><div class="ttdeci">std::map&lt; std::string, ObjectFactory * &gt; FactoryMap</div><div class="ttdef"><b>Definition:</b> register.h:82</div></div>
+<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a></div><div class="ttdef"><b>Definition:</b> register.h:68</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
