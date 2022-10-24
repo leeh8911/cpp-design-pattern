@@ -121,6 +121,7 @@ bool GetRegisteredClasses(
             auto GlobalFactoryMap =                                     \
                 design_pattern::etc::apollo::GlobalFactoryMap;          \
             FactoryMap& map1 = GlobalFactoryMap()[#base_class];         \
+            instances.reserve(map1.size());                             \
             for (auto item : map1)                                      \
             {                                                           \
                 Any object = item.second->NewInstance();                \
