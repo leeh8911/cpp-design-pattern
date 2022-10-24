@@ -53,7 +53,7 @@ RUN apt-get update && apt-get install -qq -y -f --no-install-recommends \
     cmake .. && \
     cmake --build . --target install && \
     # cpplint
-    pip install cpplint && \ 
+    pip install --no-cache-dir cpplint && \ 
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
