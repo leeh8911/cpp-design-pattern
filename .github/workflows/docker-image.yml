@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag cpp-design-pattern:$(date +%s)
+      
+    - name: Push the Docker image to docker hub
+      run: |
+        docker tag cpp-deisgn-pattern:$(date +%s) leeh8911/cpp-design-pattern:$(date + %s)
+        docker push leeh8911/cpp-design-pattern:$(date + %s)
+       
