@@ -231,6 +231,8 @@ wsl
 
 docker build -t cpp-design-pattern .
 docker run -it --rm -v ${PWD}:/develop cpp-design-pattern
+docker tag cpp-design-pattern leeh8911/cpp-design-pattern:latest
+docker push leeh8911/cpp-design-pattern:latest
 ```
 
 ## Github
