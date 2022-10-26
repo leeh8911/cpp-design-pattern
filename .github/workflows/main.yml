@@ -16,6 +16,9 @@ jobs:
       - uses: actions/checkout@master
       - name: call doxy-doc
         uses: ./.github/actions/doxy-doc
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/Doxygen/html
 
   docker-image:
     runs-on: ubuntu-latest
