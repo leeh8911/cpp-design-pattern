@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@master
       - name: call doxy-doc
         uses: ./.github/actions/doxy-doc.yml
-        
+
   docker-image:
     runs-on: ubuntu-latest
     # which needs the following steps to be executed:

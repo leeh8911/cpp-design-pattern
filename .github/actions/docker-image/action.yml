@@ -21,4 +21,3 @@ jobs:
       run: |
         docker tag cpp-deisgn-pattern:$(date +%s) leeh8911/cpp-design-pattern:$(date + %s)
         docker push leeh8911/cpp-design-pattern:$(date + %s)
-       
