@@ -14,11 +14,11 @@ jobs:
     # which needs the following steps to be executed:
     steps:
       - name: call doxy-doc
-        uses: ./.github/actions/doxy-doc
+        uses: ./.github/actions/doxy-doc.yml
         
   docker-image:
     runs-on: ubuntu-latest
     # which needs the following steps to be executed:
     steps:
       - name: call docker-image
-        uses: ./.github/actions/docker-image
+        uses: ./.github/actions/docker-image.yml
