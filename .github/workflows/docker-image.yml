@@ -28,4 +28,4 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: leeh8911/cpp-design-pattern:$(date +%s)
+        tags: cpp-design-pattern:$(date +%s)
