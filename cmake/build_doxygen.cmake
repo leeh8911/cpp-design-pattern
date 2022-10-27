@@ -3,11 +3,10 @@ macro(build_doxygen)
 # check if Doxygen is installed
 find_package(Doxygen)
 
-option(BUILD_DOCUMENTATION "Create and install the HTML based API        
-documentation (requires Doxygen)" ${DOXYGEN_FOUND})
+message(STATUS OPTION_BUILD_DOCS ${OPTION_BUILD_DOCS})
+message(STATUS DOXYGEN_FOUND ${DOXYGEN_FOUND})
 
-
-if (BUILD_DOCUMENTATION)
+if (OPTION_BUILD_DOCS)
 if (DOXYGEN_FOUND)
     # set input and output files
     set(DOXYGEN_IN ${PROJECT_SOURCE_DIR}/Doxyfile)
@@ -25,5 +24,5 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
     message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
-endif(BUILD_DOCUMENTATION)
+endif(OPTION_BUILD_DOCS)
 endmacro()

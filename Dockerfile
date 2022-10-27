@@ -35,23 +35,6 @@ RUN apt-get update && apt-get install -qq -y -f --no-install-recommends \
     python3-pip \
     ## For doxygen
     graphviz npm flex bison && \
-    # build and install
-    ## ceres-solver
-    mkdir temp && cd temp && \
-    git clone --depth=1 https://ceres-solver.googlesource.com/ceres-solver && \
-    cd ceres-solver && mkdir build && cd build && \
-    cmake .. && make -j $NUM_CORES && make test && make install && \
-    cd ../../ && \
-    ## doxygen
-    git clone https://github.com/doxygen/doxygen.git && \
-    cd doxygen && mkdir build && cd build && \
-    cmake -G "Unix Makefiles" .. && make && make install && \
-    cd ../../ && \
-    ## google test
-    git clone https://github.com/google/googletest.git && \
-    cd googletest && mkdir build && cd build && \
-    cmake .. && \
-    cmake --build . --target install && \
     # cpplint
     pip install --no-cache-dir cpplint && \ 
     apt-get autoremove -y && \
@@ -59,4 +42,24 @@ RUN apt-get update && apt-get install -qq -y -f --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 RUN npm install mathjax
 
-# USER GUEST
+## ceres-solver
+WORKDIR /thirdparty/repo
+RUN git clone --depth=1 https://ceres-solver.googlesource.com/ceres-solver && \
+    cd ceres-solver && mkdir build && cd build && \
+    cmake .. && cmake --build . --target install && \
+    cd ../../
+# build and install
+## doxygen
+WORKDIR /thirdparty/repo
+RUN git clone https://github.com/doxygen/doxygen.git && \
+    cd doxygen && mkdir build && cd build && \
+    cmake -G "Unix Makefiles" .. && \
+    cmake --build . --target install && \
+    cd ../../
+## google test
+WORKDIR /thirdparty/repo
+RUN git clone https://github.com/google/googletest.git && \
+    cd googletest && mkdir build && cd build && \
+    cmake .. && \
+    cmake --build . --target install && \
+    cd ../../
