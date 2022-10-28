@@ -27,7 +27,15 @@ build:
 test:
 	mkdir -p build
 	cd build && \
-	cmake -DOPTION_BUILD_DOCS=OFF ..&& \
+	cmake -DOPTION_BUILD_DOCS=OFF -DOPTION_TEST_ALL=OFF ..&& \
+	make &&\
+	test/CPP_DESIGN_PATTERN_TEST
+
+.PHONY: test-all
+test-all:
+	mkdir -p build
+	cd build && \
+	cmake -DOPTION_BUILD_DOCS=OFF -DOPTION_TEST_ALL=ON ..&& \
 	make &&\
 	test/CPP_DESIGN_PATTERN_TEST
 

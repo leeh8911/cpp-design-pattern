@@ -16,6 +16,11 @@ set(CMAKE_CXX_FLAGS "-std=c++17")
 set(CMAKE_CXX_STANDARD 17)
 
 option(OPTION_BUILD_DOCS "Build documentation." OFF)
+option(OPTION_TEST_ALL "Execute all test" OFF)
+
+if (OPTION_TEST_ALL)
+add_compile_definitions(TEST_ALL)
+endif(OPTION_TEST_ALL)
 
 find_program(CLANGTIDY clang-tidy)
 if(CLANGTIDY)
