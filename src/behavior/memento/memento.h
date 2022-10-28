@@ -19,6 +19,8 @@ namespace design_pattern::behavior::memento
 {
 using Timepoint = std::chrono::time_point<std::chrono::system_clock>;
 
+/// @brief 메멘토 구현을 위한 인터페이스 클래스
+///
 class IMemento
 {
  public:
@@ -32,6 +34,8 @@ class IMemento
 
 using IMementoPtr = std::unique_ptr<IMemento>;
 
+/// @brief 메멘토의 구현 클래스
+///
 class Memento : public IMemento
 {
  public:
@@ -52,6 +56,8 @@ class Memento : public IMemento
 
 using MementoPtr = std::unique_ptr<Memento>;
 
+/// @brief 상태를 생성하는 클래스
+///
 class Originator : public Memento
 {
  public:
@@ -70,6 +76,8 @@ class Originator : public Memento
     Timepoint timestamp_;
 };
 
+/// @brief 현재 상태를 제어하는 클래스
+///
 class Caretaker
 {
  public:

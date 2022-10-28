@@ -92,8 +92,7 @@ void Caretaker::Update(std::string state)
 
 void Caretaker::Undo()
 {
-    IMementoPtr m;
-    std::swap(m, history[history.size() - 1]);
+    IMementoPtr m = std::move(history.back());
     history.pop_back();
 
     originator_.Restore(std::move(m));
