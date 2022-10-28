@@ -1,0 +1,11 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title=" " alt="" coords="5,130,60,157"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Caretaker.html#a7756ba3ee2357d4e3d5dd8b53da3dca8" title=" " alt="" coords="128,9,335,51"/>
+<area shape="rect" id="node4" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Caretaker.html#a618e73e167c771d2183955a94c5649fd" title=" " alt="" coords="108,83,355,124"/>
+<area shape="rect" id="node6" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Caretaker.html#a251dc16f349ac47b155a41f09fe28735" title=" " alt="" coords="128,155,335,196"/>
+<area shape="rect" id="node8" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Caretaker.html#a077089ef7b4046670599c5bd1f4486ff" title=" " alt="" coords="122,224,341,265"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Originator.html#a6152e85775aa75f8b50edf3d97eed56f" title=" " alt="" coords="403,5,611,47"/>
+<area shape="rect" id="node5" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Originator.html#accab17952426f65b83626583288644ec" title=" " alt="" coords="415,71,599,127"/>
+<area shape="rect" id="node7" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Originator.html#abb53e9c0d94fd02aa64572f65e584700" title=" " alt="" coords="415,151,599,207"/>
+<area shape="rect" id="node9" href="$classdesign__pattern_1_1behavior_1_1memento_1_1Originator.html#a9e7e075d39f93373c437b15ebde774b5" title=" " alt="" coords="403,232,610,273"/>
+</map>
