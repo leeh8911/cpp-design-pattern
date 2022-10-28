@@ -16,29 +16,36 @@
 namespace design_pattern::behavior::memento
 {
 Memento::Memento(std::string state) : state_(std::move(state)) {}
+
 std::string Memento::State() const { return state_; }
 
 Originator::Originator(std::string state) : state_(std::move(state)) {}
-Memento Originator::Save() const
+
+MementoPtr Originator::Save() const
 {
-    Memento m(state_);
+    MementoPtr m = std::make_unique<Memento>(state_);
     return m;
 }
-void Originator::Restore(const Memento m) { state_ = m.State(); }
+
+void Originator::Restore(MementoPtr m) { state_ = m->State(); }
+
 std::string Originator::State() const { return state_; }
 
 std::string Caretaker::State() const { return originator_.State(); }
+
 void Caretaker::Update(std::string state)
 {
-    Memento m = originator_.Save();
+    MementoPtr m = originator_.Save();
     originator_ = Originator(state);
-    history.emplace_back(m);
+    history.emplace_back(std::move(m));
 }
+
 void Caretaker::Undo()
 {
-    Memento m = history.back();
+    MementoPtr m;
+    std::swap(m, history[history.size() - 1]);
     history.pop_back();
 
-    originator_.Restore(m);
+    originator_.Restore(std::move(m));
 }
 }  // namespace design_pattern::behavior::memento

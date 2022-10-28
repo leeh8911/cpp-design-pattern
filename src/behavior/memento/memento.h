@@ -11,17 +11,31 @@
 #define SRC_BEHAVIOR_MEMENTO_MEMENTO_H_
 
 #include <deque>
+#include <memory>
 #include <string>
 
 namespace design_pattern::behavior::memento
 {
-class Memento
+
+class IMemento
+{
+ public:
+    IMemento() = default;
+    explicit IMemento(std::string state);
+    virtual ~IMemento() = default;
+    virtual std::string State() const = 0;
+};
+
+using MementoPtr = std::unique_ptr<IMemento>;
+
+class Memento : public IMemento
 {
  public:
     Memento() = default;
-    virtual ~Memento() = default;
     explicit Memento(std::string state);
-    virtual std::string State() const;
+
+    ~Memento() override = default;
+    std::string State() const override;
 
  private:
     std::string state_;
@@ -32,8 +46,8 @@ class Originator : public Memento
  public:
     Originator() = default;
     explicit Originator(std::string state);
-    Memento Save() const;
-    void Restore(const Memento m);
+    MementoPtr Save() const;
+    void Restore(const MementoPtr m);
     std::string State() const override;
 
  private:
@@ -49,7 +63,7 @@ class Caretaker
 
  private:
     Originator originator_;
-    std::deque<Memento> history;
+    std::deque<MementoPtr> history;
 };
 
 }  // namespace design_pattern::behavior::memento
