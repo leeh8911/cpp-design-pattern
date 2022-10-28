@@ -32,18 +32,17 @@ TEST(MementoTest, OriginatorCreate)
 TEST(MementoTest, OriginatorSave)
 {
     Originator o("state string");
-    Memento m = o.Save();
-    EXPECT_EQ(m.State(), "state string");
-    EXPECT_EQ(m.State(), o.State());
+    MementoPtr m = o.Save();
+    EXPECT_EQ(m->State(), "state string");
+    EXPECT_EQ(m->State(), o.State());
 }
 
 TEST(MementoTest, OriginatorRestore)
 {
-    Memento m("state string");
+    MementoPtr m = std::make_unique<Memento>("state string");
     Originator o;
-    o.Restore(m);
+    o.Restore(std::move(m));
     EXPECT_EQ(o.State(), "state string");
-    EXPECT_EQ(o.State(), m.State());
 }
 
 TEST(MementoTest, CaretakerCreate)
