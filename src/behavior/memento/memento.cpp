@@ -25,6 +25,7 @@ Memento Originator::Save() const
     return m;
 }
 void Originator::Restore(const Memento m) { state_ = m.State(); }
+std::string Originator::State() const { return state_; }
 
 std::string Caretaker::State() const { return originator_.State(); }
 void Caretaker::Update(std::string state)
@@ -33,5 +34,11 @@ void Caretaker::Update(std::string state)
     originator_ = Originator(state);
     history.emplace_back(m);
 }
-void Caretaker::Undo() {}
+void Caretaker::Undo()
+{
+    Memento m = history.back();
+    history.pop_back();
+
+    originator_.Restore(m);
+}
 }  // namespace design_pattern::behavior::memento

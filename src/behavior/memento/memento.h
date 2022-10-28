@@ -19,8 +19,9 @@ class Memento
 {
  public:
     Memento() = default;
+    virtual ~Memento() = default;
     explicit Memento(std::string state);
-    std::string State() const;
+    virtual std::string State() const;
 
  private:
     std::string state_;
@@ -33,6 +34,7 @@ class Originator : public Memento
     explicit Originator(std::string state);
     Memento Save() const;
     void Restore(const Memento m);
+    std::string State() const override;
 
  private:
     std::string state_;
