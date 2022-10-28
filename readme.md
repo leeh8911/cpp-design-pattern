@@ -4,6 +4,7 @@
 ## Badges
 
 [![Doxygen](https://github.com/leeh8911/cpp-design-pattern/actions/workflows/doxy-doc.yml/badge.svg)](https://github.com/leeh8911/cpp-design-pattern/actions/workflows/doxy-doc.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/leeh8911/cpp-design-pattern/badge)](https://www.codefactor.io/repository/github/leeh8911/cpp-design-pattern)
 
 ## Introduction
 디자인 패턴에 대한 스터디 내용을 하나씩 정리하기 위한 프로젝트입니다.
