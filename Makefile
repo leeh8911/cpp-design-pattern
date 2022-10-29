@@ -40,7 +40,7 @@ test-all:
 	test/CPP_DESIGN_PATTERN_TEST
 
 .PHONY: test-all-report
-test-all:
+test-all-report:
 	mkdir -p build
 	cd build && \
 	cmake -DOPTION_BUILD_DOCS=OFF -DOPTION_TEST_ALL=ON ..&& \
