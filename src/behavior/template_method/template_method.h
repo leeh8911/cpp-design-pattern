@@ -66,5 +66,32 @@ class Object : public IObject
     ObjectPtr meas_;
 };
 
+class BoxObject : public Object
+{
+ public:
+    BoxObject();
+    ~BoxObject() override;
+
+    Vector2D Position() const override;
+    Vector2D Velocity() const override;
+    virtual Vector2D Shape() const;
+    void Position(const Vector2D& src) override;
+    void Velocity(const Vector2D& src) override;
+    virtual void Shape(const Vector2D& src);
+
+    std::size_t AliveCount() const override;
+
+    void Assignment(ObjectPtr meas) override;
+    bool Update() override;
+
+    bool HasMeasurement() const override;
+
+ private:
+    Vector2D position_;
+    Vector2D velocity_;
+    std::size_t alive_count_;
+    ObjectPtr meas_;
+};
+
 }  // namespace design_pattern::behavior::template_method
 #endif  // SRC_BEHAVIOR_TEMPLATE_METHOD_TEMPLATE_METHOD_H_
