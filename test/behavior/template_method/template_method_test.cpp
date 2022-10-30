@@ -18,19 +18,36 @@ using namespace design_pattern::behavior::template_method;
 
 TEST(ObjectTest, ObjectSampleTest)
 {
-    Object o;
-    EXPECT_EQ(o.Position(), {0.0, 0.0});
-    EXPECT_EQ(o.Velocity(), {0.0, 0.0});
-    EXPECT_EQ(o.AliveCount(), 1);
+    auto obj = std::make_unique<Object>();
+    auto default_position = Vector2D({0.0, 0.0});
+    auto default_velocity = Vector2D({0.0, 0.0});
+    EXPECT_EQ(obj->Position(), default_position);
+    EXPECT_EQ(obj->Velocity(), default_velocity);
+    EXPECT_EQ(obj->AliveCount(), 1);
+
+    auto meas = std::make_unique<Object>();
+    auto meas_position = Vector2D({1.0, 1.0});
+    auto meas_velocity = Vector2D({1.0, 1.0});
+
+    meas->Position({1.0, 1.0});
+    meas->Velocity({1.0, 1.0});
+    EXPECT_EQ(meas->Position(), meas_position);
+    EXPECT_EQ(meas->Velocity(), meas_velocity);
+    EXPECT_EQ(meas->AliveCount(), 1);
+
+    obj->Assignment(std::move(meas));
+    EXPECT_TRUE(meas == nullptr);
+
+    EXPECT_TRUE(obj->HasMeasurement());
+
+    EXPECT_TRUE(obj->Update());
+
+    EXPECT_FALSE(obj->HasMeasurement());
+    EXPECT_EQ(obj->Position(), meas_position);
+    EXPECT_EQ(obj->Velocity(), meas_velocity);
+    EXPECT_EQ(obj->AliveCount(), 2);
+
+    EXPECT_FALSE(obj->Update());
 }
 
-TEST(BoxObjectTest, BoxObjectSampleTest)
-{
-    BoxObject bo;
-    EXPECT_EQ(o.Position(), {0.0, 0.0});
-    EXPECT_EQ(o.Velocity(), {0.0, 0.0});
-    EXPECT_EQ(o.Shape(), {0.0, 0.0});
-    EXPECT_EQ(o.Rotation(), 0.0);
-    EXPECT_EQ(o.AliveCount(), 1);
-}
 }  // namespace

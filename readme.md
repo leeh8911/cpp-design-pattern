@@ -40,7 +40,7 @@
   - [ ] Interpreter
   - [ ] Iterator
   - [ ] Mediator
-  - [ ] Memento
+  - [X] Memento
   - [ ] Null object
   - [ ] Observer (or Publish/subscribe)
   - [ ] Servant
