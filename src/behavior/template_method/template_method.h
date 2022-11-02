@@ -27,8 +27,12 @@ struct IObject
 
     virtual Vector2D Position() const = 0;
     virtual Vector2D Velocity() const = 0;
+    virtual Vector2D Shape() const = 0;
+    virtual double Rotation() const = 0;
     virtual void Position(const Vector2D& src) = 0;
     virtual void Velocity(const Vector2D& src) = 0;
+    virtual void Shape(const Vector2D& src) = 0;
+    virtual void Rotation(double src) = 0;
 
     virtual std::size_t AliveCount() const = 0;
 
@@ -50,8 +54,12 @@ class Object : public IObject
 
     Vector2D Position() const override;
     Vector2D Velocity() const override;
+    Vector2D Shape() const override;
+    double Rotation() const override;
     void Position(const Vector2D& src) override;
     void Velocity(const Vector2D& src) override;
+    void Shape(const Vector2D& src) override;
+    void Rotation(double src) override;
 
     std::size_t AliveCount() const override;
 
@@ -70,7 +78,7 @@ class Object : public IObject
 
 class BoxObject;
 using BoxObjectPtr = std::unique_ptr<BoxObject>;
-class BoxObject : public Object
+class BoxObject : public IObject
 {
  public:
     BoxObject();
@@ -79,17 +87,30 @@ class BoxObject : public Object
     BoxObject(const BoxObject& other);
     ~BoxObject() override = default;
 
-    virtual Vector2D Shape() const;
-    virtual double Rotation() const;
-    virtual void Shape(const Vector2D& src);
-    virtual void Rotation(double src);
+    Vector2D Position() const override;
+    Vector2D Velocity() const override;
+    Vector2D Shape() const override;
+    double Rotation() const override;
+    void Position(const Vector2D& src) override;
+    void Velocity(const Vector2D& src) override;
+    void Shape(const Vector2D& src) override;
+    void Rotation(double src) override;
 
+    std::size_t AliveCount() const override;
+
+    void Assignment(IObjectPtr meas) override;
     bool Update() override;
+
+    bool HasMeasurement() const override;
 
  protected:
     bool UpdateByMeas(BoxObjectPtr meas);
+    Vector2D position_;
+    Vector2D velocity_;
     Vector2D shape_;
     double rotation_;
+    std::size_t alive_count_;
+    IObjectPtr meas_;
 };
 
 }  // namespace design_pattern::behavior::template_method
