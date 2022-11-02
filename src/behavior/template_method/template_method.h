@@ -20,8 +20,7 @@ constexpr double kPi = 3.14159265358979323846264338327950288;
 using Vector2D = std::array<double, 2>;
 
 struct IObject;
-using ObjectPtr = std::unique_ptr<IObject>;
-
+using IObjectPtr = std::unique_ptr<IObject>;
 struct IObject
 {
     virtual ~IObject() = default;
@@ -33,18 +32,20 @@ struct IObject
 
     virtual std::size_t AliveCount() const = 0;
 
-    virtual void Assignment(ObjectPtr meas) = 0;
+    virtual void Assignment(IObjectPtr meas) = 0;
     virtual bool Update() = 0;
 
     virtual bool HasMeasurement() const = 0;
 };
 
-using ObjectPtr = std::unique_ptr<IObject>;
-
+class Object;
+using ObjectPtr = std::unique_ptr<Object>;
 class Object : public IObject
 {
  public:
     Object();
+    Object(Vector2D position, Vector2D velocity);
+    Object(const Object& other);
     ~Object() override;
 
     Vector2D Position() const override;
@@ -54,43 +55,41 @@ class Object : public IObject
 
     std::size_t AliveCount() const override;
 
-    void Assignment(ObjectPtr meas) override;
+    void Assignment(IObjectPtr meas) override;
     bool Update() override;
 
     bool HasMeasurement() const override;
 
- private:
+ protected:
+    bool UpdateByMeas(ObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
     std::size_t alive_count_;
-    ObjectPtr meas_;
+    IObjectPtr meas_;
 };
 
+class BoxObject;
+using BoxObjectPtr = std::unique_ptr<BoxObject>;
 class BoxObject : public Object
 {
  public:
     BoxObject();
-    ~BoxObject() override;
+    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape,
+              double rotation);
+    BoxObject(const BoxObject& other);
+    ~BoxObject() override = default;
 
-    Vector2D Position() const override;
-    Vector2D Velocity() const override;
     virtual Vector2D Shape() const;
-    void Position(const Vector2D& src) override;
-    void Velocity(const Vector2D& src) override;
+    virtual double Rotation() const;
     virtual void Shape(const Vector2D& src);
+    virtual void Rotation(double src);
 
-    std::size_t AliveCount() const override;
-
-    void Assignment(ObjectPtr meas) override;
     bool Update() override;
 
-    bool HasMeasurement() const override;
-
- private:
-    Vector2D position_;
-    Vector2D velocity_;
-    std::size_t alive_count_;
-    ObjectPtr meas_;
+ protected:
+    bool UpdateByMeas(BoxObjectPtr meas);
+    Vector2D shape_;
+    double rotation_;
 };
 
 }  // namespace design_pattern::behavior::template_method
