@@ -25,7 +25,10 @@ namespace design_pattern::etc::mvc::app
 struct Sensor
 {
     size_t id;
-    bool operator==(const Sensor& other) const { return id == other.id; }
+    bool operator==(const Sensor &other) const
+    {
+        return id == other.id;
+    }
 };
 
 /**
@@ -35,15 +38,15 @@ struct Sensor
  */
 class Input
 {
- public:
+  public:
     Input() = default;
-    void Update(const std::vector<Sensor>& sensor_vector);
-    const Sensor& GetItem(size_t idx) const;
+    void Update(const std::vector<Sensor> &sensor_vector);
+    const Sensor &GetItem(size_t idx) const;
     size_t Size() const;
 
- private:
+  private:
     std::vector<Sensor> container_;
 };
 
-}  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_INPUT_H_
+} // namespace design_pattern::etc::mvc::app
+#endif // SRC_MVC_PATTERN_APPLICATION_INPUT_H_

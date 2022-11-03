@@ -35,19 +35,30 @@ namespace design_pattern::etc::mvc
  */
 class Model
 {
- public:
-    Model(const std::string&& property1, const std::string&& property2)
-        : property1_(property1), property2_(property2)
+  public:
+    Model(const std::string &&property1, const std::string &&property2) : property1_(property1), property2_(property2)
     {
     }
 
-    void Property1(std::string property1) { property1_ = property1; }
-    std::string Property1() const { return property1_; }
+    void Property1(std::string property1)
+    {
+        property1_ = property1;
+    }
+    std::string Property1() const
+    {
+        return property1_;
+    }
 
-    void Property2(std::string property2) { property2_ = property2; }
-    std::string Property2() const { return property2_; }
+    void Property2(std::string property2)
+    {
+        property2_ = property2;
+    }
+    std::string Property2() const
+    {
+        return property2_;
+    }
 
- private:
+  private:
     std::string property1_;
     std::string property2_;
 };
@@ -61,7 +72,7 @@ class Model
  */
 class View
 {
- public:
+  public:
     View() = default;
     void Print(std::pair<std::string, std::string> src)
     {
@@ -81,13 +92,15 @@ class View
  */
 class Controller
 {
- public:
-    Controller(const Controller& other)
+  public:
+    Controller(const Controller &other)
     {
         model_ = other.model_;
         view_ = other.view_;
     }
-    Controller(Model* model, View* view) : model_(model), view_(view) {}
+    Controller(Model *model, View *view) : model_(model), view_(view)
+    {
+    }
 
     void UpdateView()
     {
@@ -97,13 +110,19 @@ class Controller
         view_->Print(result);
     }
 
-    void Property1(std::string property1) { model_->Property1(property1); }
-    void Property2(std::string property2) { model_->Property2(property2); }
+    void Property1(std::string property1)
+    {
+        model_->Property1(property1);
+    }
+    void Property2(std::string property2)
+    {
+        model_->Property2(property2);
+    }
 
- private:
-    Model* model_;
-    View* view_;
+  private:
+    Model *model_;
+    View *view_;
 };
 
-}  // namespace design_pattern::etc::mvc
-#endif  // SRC_MVC_PATTERN_MVC_PATTERN_H_
+} // namespace design_pattern::etc::mvc
+#endif // SRC_MVC_PATTERN_MVC_PATTERN_H_

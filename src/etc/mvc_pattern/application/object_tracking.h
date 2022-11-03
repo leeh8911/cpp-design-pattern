@@ -37,11 +37,11 @@ namespace design_pattern::etc::mvc::app
  */
 class ObjectTracking
 {
- public:
+  public:
     ObjectTracking();
     ~ObjectTracking();
 
-    void InputSensor(const std::vector<Sensor>& sensor_vector);
+    void InputSensor(const std::vector<Sensor> &sensor_vector);
     std::vector<Target> OutputTarget();
 
     size_t InputSize() const;
@@ -49,10 +49,10 @@ class ObjectTracking
 
     void Update();
 
- private:
-    Input* input_;
-    Output* output_;
-    Tracking* tracking_;
+  private:
+    Input *input_;
+    Output *output_;
+    Tracking *tracking_;
 };
-}  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+} // namespace design_pattern::etc::mvc::app
+#endif // SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_

@@ -23,7 +23,7 @@ using Timepoint = std::chrono::time_point<std::chrono::system_clock>;
 ///
 class IMemento
 {
- public:
+  public:
     IMemento() = default;
     IMemento(std::string state, Timepoint timestamp);
     virtual ~IMemento() = default;
@@ -38,7 +38,7 @@ using IMementoPtr = std::unique_ptr<IMemento>;
 ///
 class Memento : public IMemento
 {
- public:
+  public:
     Memento() = default;
     Memento(std::string state);
     Memento(std::string state, Timepoint timestamp);
@@ -49,7 +49,7 @@ class Memento : public IMemento
     std::string Timestamp() const override;
     Timepoint RawTimestamp() const override;
 
- private:
+  private:
     std::string state_;
     Timepoint timestamp_;
 };
@@ -60,7 +60,7 @@ using MementoPtr = std::unique_ptr<Memento>;
 ///
 class Originator : public Memento
 {
- public:
+  public:
     Originator() = default;
     explicit Originator(std::string state);
 
@@ -71,7 +71,7 @@ class Originator : public Memento
     std::string Timestamp() const override;
     Timepoint RawTimestamp() const override;
 
- private:
+  private:
     std::string state_;
     Timepoint timestamp_;
 };
@@ -80,16 +80,16 @@ class Originator : public Memento
 ///
 class Caretaker
 {
- public:
+  public:
     void Update(std::string state);
     std::string State() const;
     std::string Timestamp() const;
     void Undo();
 
- private:
+  private:
     Originator originator_;
     std::deque<IMementoPtr> history;
 };
 
-}  // namespace design_pattern::behavior::memento
-#endif  // SRC_BEHAVIOR_MEMENTO_MEMENTO_H_
+} // namespace design_pattern::behavior::memento
+#endif // SRC_BEHAVIOR_MEMENTO_MEMENTO_H_
