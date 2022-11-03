@@ -12,8 +12,8 @@ set(CMAKE_MODULE_PATH
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # Set the C++ standard we will use
-set(CMAKE_CXX_FLAGS "-std=c++17")
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 option(OPTION_BUILD_DOCS "Build documentation." OFF)
 option(OPTION_TEST_ALL "Execute all test" OFF)
