@@ -10,6 +10,7 @@
 
 #include "src/behavior/template_method/template_method.h"
 
+// #include <format>
 #include <sstream>
 
 namespace design_pattern::behavior::template_method
@@ -60,6 +61,53 @@ std::string HouseBuilder::MakeRooms()
 std::string HouseBuilder::End()
 {
     return "Build House End\n";
+}
+
+void ApartmentBuilder::BasementDepth(int depth)
+{
+    basement_depth = depth;
+}
+
+void ApartmentBuilder::NumberOfRooms(int num)
+{
+    number_of_rooms = num;
+}
+
+std::string ApartmentBuilder::Start()
+{
+    return "Build Apartment Start\n";
+}
+
+std::string ApartmentBuilder::MakeBasement()
+{
+    // std::string dst = std::format("Make Basement - {}m\n", basement_depth);
+    //
+    return "Make Basement\n";
+}
+
+std::string ApartmentBuilder::MakePillar()
+{
+    return "Make Pillar\n";
+}
+
+std::string ApartmentBuilder::MakeWall()
+{
+    return "Make Wall\n";
+}
+
+std::string ApartmentBuilder::MakeRoof()
+{
+    return "Make Roof\n";
+}
+
+std::string ApartmentBuilder::MakeRooms()
+{
+    return "Make Rooms\n";
+}
+
+std::string ApartmentBuilder::End()
+{
+    return "Build Apartment End\n";
 }
 
 } // namespace design_pattern::behavior::template_method

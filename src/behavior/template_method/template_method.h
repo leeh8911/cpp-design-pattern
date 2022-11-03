@@ -17,12 +17,21 @@
 namespace design_pattern::behavior::template_method
 {
 
-class HouseBuilder
+struct BuilderInterface
+{
+    BuilderInterface() = default;
+    virtual ~BuilderInterface() = default;
+    virtual std::stringstream Build() = 0;
+};
+
+class HouseBuilder : public BuilderInterface
 {
   public:
     HouseBuilder() = default;
-    virtual ~HouseBuilder() = default;
-    virtual std::stringstream Build();
+    ~HouseBuilder() override = default;
+    std::stringstream Build() final;
+
+  private:
     virtual std::string Start();
     virtual std::string MakeBasement();
     virtual std::string MakePillar();
@@ -30,8 +39,27 @@ class HouseBuilder
     virtual std::string MakeRoof();
     virtual std::string MakeRooms();
     virtual std::string End();
+};
+class ApartmentBuilder : public HouseBuilder
+{
+  public:
+    ApartmentBuilder() = default;
+    ~ApartmentBuilder() override = default;
+
+    void BasementDepth(int depth);
+    void NumberOfRooms(int num);
 
   private:
+    std::string Start() override;
+    std::string MakeBasement() override;
+    std::string MakePillar() override;
+    std::string MakeWall() override;
+    std::string MakeRoof() override;
+    std::string MakeRooms() override;
+    std::string End() override;
+
+    int basement_depth{};
+    int number_of_rooms{};
 };
 
 } // namespace design_pattern::behavior::template_method
