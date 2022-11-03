@@ -1,4 +1,4 @@
-/// @file template_method_test.cpp
+/// @file object_test.cpp
 /// @author sangwon (leeh8911@gmail.com)
 /// @brief
 /// @version 0.1
@@ -7,14 +7,14 @@
 /// @copyright Copyright (c) 2022
 ///
 
-#include "src/behavior/template_method/template_method.h"
+#include "src/behavior/template_method/object.h"
 
 #include <gtest/gtest.h>
 
 namespace
 {
 
-using namespace design_pattern::behavior::template_method;
+using namespace design_pattern::behavior::object;
 
 TEST(TemplateMethodTest, ObjectDefaultCreate)
 {

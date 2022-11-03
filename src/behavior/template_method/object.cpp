@@ -1,4 +1,4 @@
-/// @file template_method.cpp
+/// @file object.cpp
 /// @author sangwon (leeh8911@gmail.com)
 /// @brief
 /// @version 0.1
@@ -7,12 +7,12 @@
 /// @copyright Copyright (c) 2022
 ///
 
-#include "src/behavior/template_method/template_method.h"
+#include "src/behavior/template_method/object.h"
 
 #include <memory>
 #include <utility>
 
-namespace design_pattern::behavior::template_method
+namespace design_pattern::behavior::object
 {
 Object::Object()
     : position_(Vector2D{}),
@@ -160,4 +160,4 @@ BoxObject::BoxObject(const BoxObject& other)
 {
 }
 
-}  // namespace design_pattern::behavior::template_method
+}  // namespace design_pattern::behavior::object

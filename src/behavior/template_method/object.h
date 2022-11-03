@@ -1,4 +1,4 @@
-/// @file template_method.h
+/// @file object.h
 /// @author sangwon (leeh8911@gmail.com)
 /// @brief
 /// @version 0.1
@@ -7,13 +7,13 @@
 /// @copyright Copyright (c) 2022
 ///
 
-#ifndef SRC_BEHAVIOR_TEMPLATE_METHOD_TEMPLATE_METHOD_H_
-#define SRC_BEHAVIOR_TEMPLATE_METHOD_TEMPLATE_METHOD_H_
+#ifndef SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
+#define SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
 
 #include <array>
 #include <memory>
 
-namespace design_pattern::behavior::template_method
+namespace design_pattern::behavior::object
 {
 constexpr double kPi = 3.14159265358979323846264338327950288;
 
@@ -113,5 +113,5 @@ class BoxObject : public IObject
     IObjectPtr meas_;
 };
 
-}  // namespace design_pattern::behavior::template_method
-#endif  // SRC_BEHAVIOR_TEMPLATE_METHOD_TEMPLATE_METHOD_H_
+}  // namespace design_pattern::behavior::object
+#endif  // SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
