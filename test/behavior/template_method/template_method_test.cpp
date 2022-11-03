@@ -11,8 +11,36 @@
 
 #include <gtest/gtest.h>
 
+#include <sstream>
+#include <string>
+
+namespace
+{
+using namespace design_pattern::behavior::template_method;
+
 TEST(TemplateMethodTest, SampleTest)
 {
     HouseBuilder builder;
-    EXPECT_EQ(builder.Build(), "Build House");
+
+    std::stringstream ss = builder.Build();
+
+    std::stringstream expect_ss;
+    expect_ss << "Build House Start" << std::endl;
+    expect_ss << "Make Basement" << std::endl;
+    expect_ss << "Make Pillar" << std::endl;
+    expect_ss << "Make Wall" << std::endl;
+    expect_ss << "Make Roof" << std::endl;
+    expect_ss << "Make Rooms" << std::endl;
+    expect_ss << "Build House End" << std::endl;
+
+    std::string s = "";
+    std::string expect_s = "";
+    while (ss && expect_ss)
+    {
+        std::getline(ss, s);
+        std::getline(expect_ss, expect_s);
+
+        EXPECT_EQ(s, expect_s);
+    }
 }
+} // namespace
