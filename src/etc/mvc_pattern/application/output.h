@@ -27,7 +27,10 @@ struct Target
 {
     size_t id;
 
-    bool operator==(const Target& other) const { return id == other.id; }
+    bool operator==(const Target &other) const
+    {
+        return id == other.id;
+    }
 };
 
 /**
@@ -38,14 +41,14 @@ struct Target
  */
 class Output
 {
- public:
+  public:
     Output() = default;
-    void Update(const std::vector<Target>& target_vector);
+    void Update(const std::vector<Target> &target_vector);
     Target GetItem(size_t idx) const;
     size_t Size() const;
 
- private:
+  private:
     std::vector<Target> container_;
 };
-}  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_OUTPUT_H_
+} // namespace design_pattern::etc::mvc::app
+#endif // SRC_MVC_PATTERN_APPLICATION_OUTPUT_H_

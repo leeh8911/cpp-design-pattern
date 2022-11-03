@@ -29,9 +29,9 @@ struct IObject
     virtual Vector2D Velocity() const = 0;
     virtual Vector2D Shape() const = 0;
     virtual double Rotation() const = 0;
-    virtual void Position(const Vector2D& src) = 0;
-    virtual void Velocity(const Vector2D& src) = 0;
-    virtual void Shape(const Vector2D& src) = 0;
+    virtual void Position(const Vector2D &src) = 0;
+    virtual void Velocity(const Vector2D &src) = 0;
+    virtual void Shape(const Vector2D &src) = 0;
     virtual void Rotation(double src) = 0;
 
     virtual std::size_t AliveCount() const = 0;
@@ -46,19 +46,19 @@ class Object;
 using ObjectPtr = std::unique_ptr<Object>;
 class Object : public IObject
 {
- public:
+  public:
     Object();
     Object(Vector2D position, Vector2D velocity);
-    Object(const Object& other);
+    Object(const Object &other);
     ~Object() override;
 
     Vector2D Position() const override;
     Vector2D Velocity() const override;
     Vector2D Shape() const override;
     double Rotation() const override;
-    void Position(const Vector2D& src) override;
-    void Velocity(const Vector2D& src) override;
-    void Shape(const Vector2D& src) override;
+    void Position(const Vector2D &src) override;
+    void Velocity(const Vector2D &src) override;
+    void Shape(const Vector2D &src) override;
     void Rotation(double src) override;
 
     std::size_t AliveCount() const override;
@@ -68,7 +68,7 @@ class Object : public IObject
 
     bool HasMeasurement() const override;
 
- protected:
+  protected:
     bool UpdateByMeas(ObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
@@ -80,20 +80,19 @@ class BoxObject;
 using BoxObjectPtr = std::unique_ptr<BoxObject>;
 class BoxObject : public IObject
 {
- public:
+  public:
     BoxObject();
-    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape,
-              double rotation);
-    BoxObject(const BoxObject& other);
+    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape, double rotation);
+    BoxObject(const BoxObject &other);
     ~BoxObject() override = default;
 
     Vector2D Position() const override;
     Vector2D Velocity() const override;
     Vector2D Shape() const override;
     double Rotation() const override;
-    void Position(const Vector2D& src) override;
-    void Velocity(const Vector2D& src) override;
-    void Shape(const Vector2D& src) override;
+    void Position(const Vector2D &src) override;
+    void Velocity(const Vector2D &src) override;
+    void Shape(const Vector2D &src) override;
     void Rotation(double src) override;
 
     std::size_t AliveCount() const override;
@@ -103,7 +102,7 @@ class BoxObject : public IObject
 
     bool HasMeasurement() const override;
 
- protected:
+  protected:
     bool UpdateByMeas(BoxObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
@@ -113,5 +112,5 @@ class BoxObject : public IObject
     IObjectPtr meas_;
 };
 
-}  // namespace design_pattern::behavior::object
-#endif  // SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
+} // namespace design_pattern::behavior::object
+#endif // SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_

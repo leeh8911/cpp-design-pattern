@@ -27,8 +27,8 @@ namespace design_pattern::etc::mvc::app
  */
 class Tracker
 {
- public:
-    void Update(Input* input, Output* output);
+  public:
+    void Update(Input *input, Output *output);
 };
 
 /**
@@ -40,20 +40,20 @@ class Tracker
  */
 class Tracking
 {
- public:
-    Tracking(Input* input, Output* output);
+  public:
+    Tracking(Input *input, Output *output);
     ~Tracking();
-    void InputSensor(const std::vector<Sensor>& sensor_vector);
+    void InputSensor(const std::vector<Sensor> &sensor_vector);
     void Update();
     std::vector<Target> OutputTarget();
 
     size_t InputSize() const;
     size_t OutputSize() const;
 
- private:
-    Input* input_;
-    Output* output_;
-    Tracker* tracker_;
+  private:
+    Input *input_;
+    Output *output_;
+    Tracker *tracker_;
 };
-}  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
+} // namespace design_pattern::etc::mvc::app
+#endif // SRC_MVC_PATTERN_APPLICATION_TRACKING_H_

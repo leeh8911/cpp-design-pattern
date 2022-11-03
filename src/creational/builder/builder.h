@@ -39,17 +39,41 @@ namespace design_pattern::creational::builder
  */
 class Bicycle
 {
- public:
-    std::string Make() const { return make_; }
-    void Make(std::string make) { make_ = make; }
-    std::string Model() const { return model_; }
-    void Model(std::string model) { model_ = model; }
-    std::string Color() const { return color_; }
-    void Color(std::string color) { color_ = color; }
-    int Height() const { return height_; }
-    void Height(int height) { height_ = height; }
+  public:
+    std::string Make() const
+    {
+        return make_;
+    }
+    void Make(std::string make)
+    {
+        make_ = make;
+    }
+    std::string Model() const
+    {
+        return model_;
+    }
+    void Model(std::string model)
+    {
+        model_ = model;
+    }
+    std::string Color() const
+    {
+        return color_;
+    }
+    void Color(std::string color)
+    {
+        color_ = color;
+    }
+    int Height() const
+    {
+        return height_;
+    }
+    void Height(int height)
+    {
+        height_ = height;
+    }
 
- private:
+  private:
     std::string make_;
     std::string model_;
     std::string color_;
@@ -68,7 +92,7 @@ struct IBicycleBuilder
     virtual int Height() const = 0;
     virtual void Height(int height) = 0;
 
-    virtual std::optional<Bicycle*> GetResult() = 0;
+    virtual std::optional<Bicycle *> GetResult() = 0;
 };
 
 /**
@@ -77,17 +101,29 @@ struct IBicycleBuilder
  */
 class GTBuilder : public IBicycleBuilder
 {
- public:
-    std::string Color() const override { return color_; }
-    void Color(std::string color) override { color_ = color; }
-    int Height() const override { return height_; }
-    void Height(int height) override { height_ = height; }
+  public:
+    std::string Color() const override
+    {
+        return color_;
+    }
+    void Color(std::string color) override
+    {
+        color_ = color;
+    }
+    int Height() const override
+    {
+        return height_;
+    }
+    void Height(int height) override
+    {
+        height_ = height;
+    }
 
-    std::optional<Bicycle*> GetResult() override
+    std::optional<Bicycle *> GetResult() override
     {
         if (height_ == 29)
         {
-            Bicycle* res = new Bicycle;
+            Bicycle *res = new Bicycle;
             res->Make("GT");
             res->Model("Avalache");
             res->Height(height_);
@@ -101,7 +137,7 @@ class GTBuilder : public IBicycleBuilder
         }
     }
 
- private:
+  private:
     std::string color_;
     int height_{};
 };
@@ -113,19 +149,24 @@ class GTBuilder : public IBicycleBuilder
  */
 class MountainBikeBuildDirector
 {
- public:
+  public:
     MountainBikeBuildDirector() = delete;
-    MountainBikeBuildDirector(IBicycleBuilder& builder) : builder_(builder) {}
+    MountainBikeBuildDirector(IBicycleBuilder &builder) : builder_(builder)
+    {
+    }
 
     void Construct()
     {
         builder_.Color("Red");
         builder_.Height(29);
     }
-    std::optional<Bicycle*> GetResult() { return builder_.GetResult(); }
+    std::optional<Bicycle *> GetResult()
+    {
+        return builder_.GetResult();
+    }
 
- private:
-    IBicycleBuilder& builder_;
+  private:
+    IBicycleBuilder &builder_;
 };
-}  // namespace design_pattern::creational::builder
-#endif  // SRC_CREATIONAL_BUILDER_BUILDER_H_
+} // namespace design_pattern::creational::builder
+#endif // SRC_CREATIONAL_BUILDER_BUILDER_H_
