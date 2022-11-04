@@ -48,7 +48,7 @@
   - [ ] Specification
   - [ ] State
   - [ ] Strategy
-  - [ ] Template method
+  - [X] Template method
   - [ ] Visitor
   - [ ] Fluent Interface
 - [ ] Concurrency pattern
