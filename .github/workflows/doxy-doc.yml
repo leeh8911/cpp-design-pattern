@@ -29,8 +29,8 @@ jobs:
 
       - name: Move documents
         run: |
-          mkdir -p ./docs
-          mv ./cpp-design-pattern/docs/Doxygen/html ./docs
+          mkdir -p ./docs/Doxygen/html
+          mv ./cpp-design-pattern/docs/Doxygen/ ./docs/Doxygen/
 
       # Deploy to GitHub Pages
       - name: Deploy
