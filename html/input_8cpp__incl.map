@@ -1,5 +1,0 @@
-<map id="src/etc/mvc_pattern/application/input.cpp" name="src/etc/mvc_pattern/application/input.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="55,5,218,47"/>
-<area shape="rect" id="node2" href="$input_8h.html" title="MVC 패턴에서 Model 클래스의 역할을 수행하는 Input 클래스입니다. Input 클래스에서는 센서로부터 들어오는 입력 정보를 받아 저장하고,..." alt="" coords="5,95,156,136"/>
-<area shape="rect" id="node3" title=" " alt="" coords="105,184,168,211"/>
-</map>

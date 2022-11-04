@@ -1,6 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classdesign__pattern_1_1structural_1_1decorator_1_1Shape.html" title=" " alt="" coords="5,56,68,83"/>
-<area shape="rect" id="node2" href="$classdesign__pattern_1_1structural_1_1decorator_1_1Circle.html" title=" " alt="" coords="145,5,204,32"/>
-<area shape="rect" id="node3" href="$classdesign__pattern_1_1structural_1_1decorator_1_1ColoredShape.html" title=" " alt="" coords="119,56,231,83"/>
-<area shape="rect" id="node4" href="$classdesign__pattern_1_1structural_1_1decorator_1_1PunchedShape.html" title=" " alt="" coords="116,107,233,133"/>
-</map>
