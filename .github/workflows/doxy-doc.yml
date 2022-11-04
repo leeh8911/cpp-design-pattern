@@ -30,7 +30,9 @@ jobs:
       - name: Move documents
         run: |
           mkdir -p ./docs/Doxygen/html
-          mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen/html
+          ls ./cpp-design-pattern/docs/Doxygen
+          ls ./cpp-design-pattern/docs/Doxygen/html
+          mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen
           ls ./docs/Doxygen
           ls ./docs/Doxygen/html
 
