@@ -7,13 +7,13 @@
 /// @copyright Copyright (c) 2022
 ///
 
-#ifndef SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
-#define SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
+#ifndef SRC_ETC_OBJECT_OBJECT_H_
+#define SRC_ETC_OBJECT_OBJECT_H_
 
 #include <array>
 #include <memory>
 
-namespace design_pattern::behavior::object
+namespace design_pattern::etc::object
 {
 constexpr double kPi = 3.14159265358979323846264338327950288;
 
@@ -112,5 +112,5 @@ class BoxObject : public IObject
     IObjectPtr meas_;
 };
 
-} // namespace design_pattern::behavior::object
-#endif // SRC_BEHAVIOR_TEMPLATE_METHOD_OBJECT_H_
+} // namespace design_pattern::etc::object
+#endif // SRC_ETC_OBJECT_OBJECT_H_

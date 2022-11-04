@@ -7,14 +7,14 @@
 /// @copyright Copyright (c) 2022
 ///
 
-#include "src/behavior/template_method/object.h"
+#include "src/etc/object/object.h"
 
 #include <gtest/gtest.h>
 
 namespace
 {
 
-using namespace design_pattern::behavior::object;
+using namespace design_pattern::etc::object;
 
 TEST(ObjectTest, ObjectDefaultCreate)
 {

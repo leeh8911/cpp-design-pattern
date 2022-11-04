@@ -7,12 +7,12 @@
 /// @copyright Copyright (c) 2022
 ///
 
-#include "src/behavior/template_method/object.h"
+#include "src/etc/object/object.h"
 
 #include <memory>
 #include <utility>
 
-namespace design_pattern::behavior::object
+namespace design_pattern::etc::object
 {
 Object::Object() : position_(Vector2D{}), velocity_(Vector2D{}), alive_count_(1), meas_(nullptr)
 {
@@ -201,4 +201,4 @@ BoxObject::BoxObject(const BoxObject &other)
 {
 }
 
-} // namespace design_pattern::behavior::object
+} // namespace design_pattern::etc::object
