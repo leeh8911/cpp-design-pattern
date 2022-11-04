@@ -1,0 +1,4 @@
+<map id="IBicycleBuilder" name="IBicycleBuilder">
+<area shape="rect" id="node1" title="class Bicycle을 생성하기 위한 Builder들의 인터페이스 클래스입니다." alt="" coords="5,5,160,156"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1creational_1_1builder_1_1GTBuilder.html" title="&quot;GTBike&quot;를 생성하기 위한 빌더의 구현 클래스입니다." alt="" coords="27,204,138,355"/>
+</map>

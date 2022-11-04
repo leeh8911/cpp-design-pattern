@@ -1,0 +1,4 @@
+<map id="Memento" name="Memento">
+<area shape="rect" id="node1" title="메멘토의 구현 클래스" alt="" coords="5,204,155,384"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1memento_1_1IMemento.html" title="메멘토 구현을 위한 인터페이스 클래스" alt="" coords="5,5,155,156"/>
+</map>
