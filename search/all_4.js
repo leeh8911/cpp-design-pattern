@@ -14,7 +14,7 @@ var searchData=
   ['etc_60',['etc',['../namespacedesign__pattern_1_1etc.html',1,'design_pattern']]],
   ['memento_61',['memento',['../namespacedesign__pattern_1_1behavior_1_1memento.html',1,'design_pattern::behavior']]],
   ['mvc_62',['mvc',['../namespacedesign__pattern_1_1etc_1_1mvc.html',1,'design_pattern::etc']]],
-  ['object_63',['object',['../namespacedesign__pattern_1_1behavior_1_1object.html',1,'design_pattern::behavior']]],
+  ['object_63',['object',['../namespacedesign__pattern_1_1etc_1_1object.html',1,'design_pattern::etc']]],
   ['structural_64',['structural',['../namespacedesign__pattern_1_1structural.html',1,'design_pattern']]],
   ['template_5fmethod_65',['template_method',['../namespacedesign__pattern_1_1behavior_1_1template__method.html',1,'design_pattern::behavior']]],
   ['test_66',['test',['../namespacedesign__pattern_1_1creational_1_1builder_1_1test.html',1,'design_pattern::creational::builder::test'],['../namespacedesign__pattern_1_1test.html',1,'design_pattern::test']]]

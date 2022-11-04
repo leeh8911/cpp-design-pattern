@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['object_128',['Object',['../classdesign__pattern_1_1behavior_1_1object_1_1Object.html',1,'Object'],['../classdesign__pattern_1_1behavior_1_1object_1_1Object.html#ad97170a7be4b1b9ec11551cb0f457903',1,'design_pattern::behavior::object::Object::Object()'],['../classdesign__pattern_1_1behavior_1_1object_1_1Object.html#ab7066073d0f5841deb689711857e0a86',1,'design_pattern::behavior::object::Object::Object(Vector2D position, Vector2D velocity)'],['../classdesign__pattern_1_1behavior_1_1object_1_1Object.html#a6b2ca30633c352c35ee83d66bf3fe474',1,'design_pattern::behavior::object::Object::Object(const Object &amp;other)']]],
+  ['object_128',['Object',['../classdesign__pattern_1_1etc_1_1object_1_1Object.html',1,'Object'],['../classdesign__pattern_1_1etc_1_1object_1_1Object.html#ad97170a7be4b1b9ec11551cb0f457903',1,'design_pattern::etc::object::Object::Object()'],['../classdesign__pattern_1_1etc_1_1object_1_1Object.html#ab7066073d0f5841deb689711857e0a86',1,'design_pattern::etc::object::Object::Object(Vector2D position, Vector2D velocity)'],['../classdesign__pattern_1_1etc_1_1object_1_1Object.html#a6b2ca30633c352c35ee83d66bf3fe474',1,'design_pattern::etc::object::Object::Object(const Object &amp;other)']]],
   ['object_2ecpp_129',['object.cpp',['../object_8cpp.html',1,'']]],
   ['object_2eh_130',['object.h',['../object_8h.html',1,'']]],
   ['object_5ftest_2ecpp_131',['object_test.cpp',['../object__test_8cpp.html',1,'']]],
@@ -9,7 +9,7 @@ var searchData=
   ['object_5ftracking_5f_134',['object_tracking_',['../classdesign__pattern_1_1test_1_1ObjectTrackingTest.html#aa8dd0e00d011d73c2f3a236d97b68cc1',1,'design_pattern::test::ObjectTrackingTest']]],
   ['object_5ftracking_5ftest_2ecpp_135',['object_tracking_test.cpp',['../object__tracking__test_8cpp.html',1,'']]],
   ['objectfactory_136',['ObjectFactory',['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html',1,'ObjectFactory'],['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html#ac0cd2467c5a33a2d9294bb2eeec6d4cb',1,'design_pattern::etc::apollo::ObjectFactory::ObjectFactory()=default'],['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html#a60a3d7df7d8da4f1464250fdce55484e',1,'design_pattern::etc::apollo::ObjectFactory::ObjectFactory(const ObjectFactory &amp;)=delete']]],
-  ['objectptr_137',['ObjectPtr',['../namespacedesign__pattern_1_1behavior_1_1object.html#ab64d9d896245f2b9bba49e844a7725c5',1,'design_pattern::behavior::object']]],
+  ['objectptr_137',['ObjectPtr',['../namespacedesign__pattern_1_1etc_1_1object.html#ab64d9d896245f2b9bba49e844a7725c5',1,'design_pattern::etc::object']]],
   ['objecttracking_138',['ObjectTracking',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html',1,'ObjectTracking'],['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#a2e40c24c7f83f738046adc24792b70c3',1,'design_pattern::etc::mvc::app::ObjectTracking::ObjectTracking()']]],
   ['objecttrackingtest_139',['ObjectTrackingTest',['../classdesign__pattern_1_1test_1_1ObjectTrackingTest.html',1,'design_pattern::test']]],
   ['operator_3d_140',['operator=',['../classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html#ab0a03f0262d71b333af4e3bb68c5a369',1,'design_pattern::etc::apollo::ObjectFactory']]],

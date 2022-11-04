@@ -15,7 +15,7 @@ var searchData=
   ['input_5f_96',['input_',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#a05ad8dade4cd2cd563b6415dd37b778b',1,'design_pattern::etc::mvc::app::ObjectTracking::input_()'],['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Tracking.html#a05ad8dade4cd2cd563b6415dd37b778b',1,'design_pattern::etc::mvc::app::Tracking::input_()']]],
   ['inputsensor_97',['InputSensor',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#aca3db367164a4da53ace5794371f440d',1,'design_pattern::etc::mvc::app::ObjectTracking::InputSensor()'],['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Tracking.html#aca3db367164a4da53ace5794371f440d',1,'design_pattern::etc::mvc::app::Tracking::InputSensor()']]],
   ['inputsize_98',['InputSize',['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1ObjectTracking.html#a5a4c4984aa897a28d516e638e7ea5308',1,'design_pattern::etc::mvc::app::ObjectTracking::InputSize()'],['../classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Tracking.html#a5a4c4984aa897a28d516e638e7ea5308',1,'design_pattern::etc::mvc::app::Tracking::InputSize()']]],
-  ['iobject_99',['IObject',['../structdesign__pattern_1_1behavior_1_1object_1_1IObject.html',1,'design_pattern::behavior::object']]],
-  ['iobjectptr_100',['IObjectPtr',['../namespacedesign__pattern_1_1behavior_1_1object.html#a2524b13c24ac079df5f3cc890377bee2',1,'design_pattern::behavior::object']]],
+  ['iobject_99',['IObject',['../structdesign__pattern_1_1etc_1_1object_1_1IObject.html',1,'design_pattern::etc::object']]],
+  ['iobjectptr_100',['IObjectPtr',['../namespacedesign__pattern_1_1etc_1_1object.html#a2524b13c24ac079df5f3cc890377bee2',1,'design_pattern::etc::object']]],
   ['iproduct_101',['IProduct',['../structdesign__pattern_1_1creational_1_1abstract__factory_1_1IProduct.html',1,'design_pattern::creational::abstract_factory']]]
 ];
