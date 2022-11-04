@@ -10,7 +10,6 @@
 
 #include "src/behavior/template_method/template_method.h"
 
-// #include <format>
 #include <sstream>
 
 namespace design_pattern::behavior::template_method
@@ -80,9 +79,9 @@ std::string ApartmentBuilder::Start()
 
 std::string ApartmentBuilder::MakeBasement()
 {
-    // std::string dst = std::format("Make Basement - {}m\n", basement_depth);
-    //
-    return "Make Basement\n";
+    std::stringstream oss;
+    oss << "Make Basement - " << basement_depth << "m\n";
+    return oss.str();
 }
 
 std::string ApartmentBuilder::MakePillar()
@@ -102,7 +101,9 @@ std::string ApartmentBuilder::MakeRoof()
 
 std::string ApartmentBuilder::MakeRooms()
 {
-    return "Make Rooms\n";
+    std::stringstream oss;
+    oss << "Make Rooms - " << number_of_rooms << "\n";
+    return oss.str();
 }
 
 std::string ApartmentBuilder::End()
