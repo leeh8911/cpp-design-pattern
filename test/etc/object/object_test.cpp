@@ -11,12 +11,25 @@
 
 #include <gtest/gtest.h>
 
+#include <iostream>
+
 namespace
 {
 
 using namespace design_pattern::etc::object;
 
-TEST(ObjectTest, ObjectDefaultCreate)
+class ObjectTest : public testing::Test
+{
+  public:
+    void SetUp() override
+    {
+    }
+    void TearDown() override
+    {
+    }
+};
+
+TEST_F(ObjectTest, ObjectDefaultCreate)
 {
     auto obj = std::make_unique<Object>();
     auto default_position = Vector2D({0.0, 0.0});
@@ -26,7 +39,7 @@ TEST(ObjectTest, ObjectDefaultCreate)
     EXPECT_EQ(obj->AliveCount(), 1);
 }
 
-TEST(ObjectTest, ObjectMutate)
+TEST_F(ObjectTest, ObjectMutate)
 {
     auto obj = std::make_unique<Object>();
     auto position = Vector2D({1.0, 1.0});
@@ -39,7 +52,7 @@ TEST(ObjectTest, ObjectMutate)
     EXPECT_EQ(obj->AliveCount(), 1);
 }
 
-TEST(ObjectTest, ObjectMeasuredUpdate)
+TEST_F(ObjectTest, ObjectMeasuredUpdate)
 {
     auto meas_position = Vector2D({1.0, 1.0});
     auto meas_velocity = Vector2D({1.0, 1.0});
@@ -58,7 +71,7 @@ TEST(ObjectTest, ObjectMeasuredUpdate)
     EXPECT_FALSE(obj->Update());
 }
 
-TEST(ObjectTest, BoxObjectDefaultCreate)
+TEST_F(ObjectTest, BoxObjectDefaultCreate)
 {
     auto bo = std::make_unique<BoxObject>();
     auto default_position = Vector2D({0.0, 0.0});
@@ -70,7 +83,7 @@ TEST(ObjectTest, BoxObjectDefaultCreate)
     EXPECT_EQ(bo->Rotation(), 0.0);
     EXPECT_EQ(bo->AliveCount(), 1);
 }
-TEST(ObjectTest, BoxObjectMutate)
+TEST_F(ObjectTest, BoxObjectMutate)
 {
     auto meas = std::make_unique<BoxObject>();
     auto meas_position = Vector2D({1.0, 1.0});
@@ -87,7 +100,7 @@ TEST(ObjectTest, BoxObjectMutate)
     EXPECT_EQ(meas->Rotation(), kPi / 12);
     EXPECT_EQ(meas->AliveCount(), 1);
 }
-TEST(ObjectTest, BoxObjectMeasuredUpdate)
+TEST_F(ObjectTest, BoxObjectMeasuredUpdate)
 {
     auto meas_position = Vector2D({1.0, 1.0});
     auto meas_velocity = Vector2D({1.0, 1.0});
@@ -109,4 +122,5 @@ TEST(ObjectTest, BoxObjectMeasuredUpdate)
 
     EXPECT_FALSE(obj->Update());
 }
+
 } // namespace
