@@ -1,3 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classdesign__pattern_1_1etc_1_1mvc_1_1Model.html" title="MVC 패턴에서의 Model 클래스입니다. MVC 패턴에서 Model은 애플리케이션의 정보(데이터)를 의미합니다. Model 클래스는 자신의 상태 변화가 있을 때,..." alt="" coords="5,5,68,32"/>
+<area shape="rect" id="node1" href="$classdesign__pattern_1_1creational_1_1builder_1_1MountainBikeBuildDirector.html" title="Builder를 통해 직접 생성을 담당하는 Director 클래스 중 MountainBike를 담당하는 클래스입니다." alt="" coords="5,5,201,32"/>
 </map>
