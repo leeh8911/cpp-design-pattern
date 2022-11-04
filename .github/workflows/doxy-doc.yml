@@ -31,6 +31,8 @@ jobs:
         run: |
           mkdir -p ./docs/Doxygen/html
           mv ./cpp-design-pattern/docs/Doxygen/html ./docs/Doxygen/html
+          ls ./docs/Doxygen
+          ls ./docs/Doxygen/html
 
       # Deploy to GitHub Pages
       - name: Deploy
