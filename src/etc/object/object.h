@@ -52,6 +52,7 @@ class Object : public IObject
     Object(const Object &other);
     ~Object() override;
 
+    // TODO: 중복된 함수들을 제거해야 함
     Vector2D Position() const override;
     Vector2D Velocity() const override;
     Vector2D Shape() const override;
