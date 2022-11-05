@@ -52,4 +52,17 @@ Obstacle::Obstacle() : id_(GetEmptyId())
 {
     AllocateId(id_);
 }
+
+ObstacleRepository::ObstacleRepository() = default;
+
+std::size_t ObstacleRepository::Size()
+{
+    return repo_.size();
+}
+
+void ObstacleRepository::GenerateObstacle()
+{
+    Obstacle *obs = new Obstacle;
+    repo_[obs->Id()] = obs;
+}
 } // namespace design_pattern::behavior::observer

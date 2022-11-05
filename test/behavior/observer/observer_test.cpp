@@ -30,7 +30,6 @@ TEST(ObserverTest, ObstaclesHasDifferentIds)
 }
 
 // TODO: 데이터 객체를 Data Transfer Object로 출력하는 리포지토리
-// TODO: Id만을 갖는 Obstacle을 생성
 // TODO: 현재 저장된 Obstacle의 개수 출력
 // TODO: 원하는 index의 Obstacle을 출력
 // TODO: 원하는 id의 Obstacle을 출력
