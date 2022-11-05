@@ -26,7 +26,14 @@ TEST(ObserverTest, ObstaclesHasDifferentIds)
     EXPECT_NE(obs1.Id(), obs2.Id());
 
     // 현재 생성된 Obstacle이 총 2개인지 확인
+    // TODO: Obstacle의 개수 확인을 여기서 해야 하나?
     EXPECT_EQ(Obstacle::Size(), 2);
+
+    // TODO: Obstacle Id의 중복을 여기서 처리하는게 맞나?
+    Obstacle obs3(14);
+    EXPECT_EQ(obs3.Id(), 14);
+
+    EXPECT_ANY_THROW(Obstacle(14)); // NOLINT
 }
 
 // TODO: 데이터 객체를 Data Transfer Object로 출력하는 리포지토리

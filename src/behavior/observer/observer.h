@@ -22,6 +22,7 @@ class Obstacle
 {
   public:
     Obstacle();
+    explicit Obstacle(std::size_t id);
     ~Obstacle();
     std::size_t Id();
 
@@ -32,6 +33,7 @@ class Obstacle
 
     static std::unordered_set<std::size_t> allocated_id_set_;
     static std::size_t GetEmptyId();
+    static bool IsContainedId(std::size_t id);
     static void AllocateId(std::size_t id);
 };
 

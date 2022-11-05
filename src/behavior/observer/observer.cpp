@@ -10,6 +10,8 @@
 
 #include "src/behavior/observer/observer.h"
 
+#include <exception>
+#include <iostream>
 #include <unordered_set>
 #include <utility>
 
@@ -21,12 +23,17 @@ std::size_t Obstacle::GetEmptyId()
 {
     std::size_t id_candidate = 1;
 
-    while (Obstacle::allocated_id_set_.find(id_candidate) != Obstacle::allocated_id_set_.end())
+    while (Obstacle::IsContainedId(id_candidate))
     {
         id_candidate += 1;
     }
 
     return id_candidate;
+}
+
+bool Obstacle::IsContainedId(std::size_t id)
+{
+    return allocated_id_set_.find(id) != allocated_id_set_.end();
 }
 
 void Obstacle::AllocateId(std::size_t id)
@@ -51,6 +58,19 @@ std::size_t Obstacle::Id()
 Obstacle::Obstacle() : id_(GetEmptyId())
 {
     AllocateId(id_);
+}
+
+Obstacle::Obstacle(std::size_t id)
+{
+    if (Obstacle::IsContainedId(id))
+    {
+        throw std::invalid_argument("This id is contained");
+    }
+    else
+    {
+        id_ = id;
+        AllocateId(id_);
+    }
 }
 
 ObstacleRepository::ObstacleRepository() = default;
