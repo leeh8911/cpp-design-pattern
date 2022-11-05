@@ -9,10 +9,24 @@
 //
 
 #include "src/behavior/observer/observer.h"
+
+#include <unordered_set>
+#include <utility>
+
 namespace design_pattern::behavior::observer
 {
+auto Obstacle::allocated_id_set_ = std::unordered_set<std::size_t>{};
 
-Obstacle::Obstacle() : id_(1)
+Obstacle::Obstacle()
 {
+    std::size_t id_candidate = 1;
+
+    while (Obstacle::allocated_id_set_.find(id_candidate) != Obstacle::allocated_id_set_.end())
+    {
+        id_candidate += 1;
+    }
+
+    id_ = id_candidate;
+    Obstacle::allocated_id_set_.emplace(id_);
 }
 } // namespace design_pattern::behavior::observer

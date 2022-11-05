@@ -11,6 +11,7 @@
 #ifndef SRC_BEHAVIOR_OBSERVER_OBSERVER_H_
 #define SRC_BEHAVIOR_OBSERVER_OBSERVER_H_
 
+#include <unordered_set>
 #include <utility>
 
 namespace design_pattern::behavior::observer
@@ -23,6 +24,7 @@ class Obstacle
     Obstacle();
 
   private:
+    static std::unordered_set<std::size_t> allocated_id_set_;
 };
 
 } // namespace design_pattern::behavior::observer
