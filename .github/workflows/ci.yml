@@ -1,4 +1,5 @@
 name: Continuous-Integration
+# TODO : GoogleTest의 결과가 뱃지 형태로 SUCCESS/FAIL을 출력하도록
 
 on:
   pull_request:
