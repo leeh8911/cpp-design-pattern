@@ -17,7 +17,7 @@ namespace design_pattern::behavior::observer
 {
 auto Obstacle::allocated_id_set_ = std::unordered_set<std::size_t>{};
 
-Obstacle::Obstacle()
+std::size_t Obstacle::GetEmptyId()
 {
     std::size_t id_candidate = 1;
 
@@ -26,7 +26,16 @@ Obstacle::Obstacle()
         id_candidate += 1;
     }
 
-    id_ = id_candidate;
-    Obstacle::allocated_id_set_.emplace(id_);
+    return id_candidate;
+}
+
+void Obstacle::AllocateId(std::size_t id)
+{
+    allocated_id_set_.emplace(id);
+}
+
+Obstacle::Obstacle() : id_(GetEmptyId())
+{
+    AllocateId(id_);
 }
 } // namespace design_pattern::behavior::observer

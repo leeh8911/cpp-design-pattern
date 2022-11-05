@@ -25,6 +25,8 @@ class Obstacle
 
   private:
     static std::unordered_set<std::size_t> allocated_id_set_;
+    static std::size_t GetEmptyId();
+    static void AllocateId(std::size_t id);
 };
 
 } // namespace design_pattern::behavior::observer
