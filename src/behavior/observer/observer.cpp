@@ -34,6 +34,20 @@ void Obstacle::AllocateId(std::size_t id)
     allocated_id_set_.emplace(id);
 }
 
+std::size_t Obstacle::Size()
+{
+    return allocated_id_set_.size();
+}
+
+Obstacle::~Obstacle()
+{
+    allocated_id_set_.erase(id_);
+}
+std::size_t Obstacle::Id()
+{
+    return id_;
+}
+
 Obstacle::Obstacle() : id_(GetEmptyId())
 {
     AllocateId(id_);

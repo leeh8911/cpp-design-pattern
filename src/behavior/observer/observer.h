@@ -20,10 +20,15 @@ namespace design_pattern::behavior::observer
 class Obstacle
 {
   public:
-    std::size_t id_;
     Obstacle();
+    ~Obstacle();
+    std::size_t Id();
+
+    static std::size_t Size();
 
   private:
+    std::size_t id_;
+
     static std::unordered_set<std::size_t> allocated_id_set_;
     static std::size_t GetEmptyId();
     static void AllocateId(std::size_t id);
