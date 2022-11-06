@@ -12,6 +12,7 @@
 #ifndef SRC_BEHAVIOR_OBSERVER_OBSERVER_H_
 #define SRC_BEHAVIOR_OBSERVER_OBSERVER_H_
 
+#include <memory>
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
@@ -22,21 +23,16 @@ namespace design_pattern::behavior::observer
 class Obstacle
 {
   public:
-    Obstacle();
     explicit Obstacle(std::size_t id);
-    ~Obstacle();
+    ~Obstacle() = default;
     std::size_t Id();
 
     static std::size_t Size();
 
   private:
     std::size_t id_;
-
-    static std::unordered_set<std::size_t> allocated_id_set_;
-    static std::size_t GetEmptyId();
-    static bool IsContainedId(std::size_t id);
-    static void AllocateId(std::size_t id);
 };
+using ObstaclePtr = std::unique_ptr<Obstacle>;
 
 class ObstacleRepository
 {
@@ -47,10 +43,15 @@ class ObstacleRepository
     void GenerateObstacle();
     void GenerateObstacleById(std::size_t id);
 
+    void Erase(std::size_t id);
+
     std::unordered_set<std::size_t> GetUsedId() const;
+    const Obstacle *Find(std::size_t id) const;
+
+    std::size_t GetEmptyId() const;
 
   private:
-    std::unordered_map<std::size_t, Obstacle *> repo_;
+    std::unordered_map<std::size_t, ObstaclePtr> repo_;
 };
 
 } // namespace design_pattern::behavior::observer

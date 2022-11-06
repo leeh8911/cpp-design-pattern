@@ -17,60 +17,12 @@
 
 namespace design_pattern::behavior::observer
 {
-auto Obstacle::allocated_id_set_ = std::unordered_set<std::size_t>{};
-
-std::size_t Obstacle::GetEmptyId()
+Obstacle::Obstacle(std::size_t id) : id_(id)
 {
-    std::size_t id_candidate = 1;
-
-    while (Obstacle::IsContainedId(id_candidate))
-    {
-        id_candidate += 1;
-    }
-
-    return id_candidate;
-}
-
-bool Obstacle::IsContainedId(std::size_t id)
-{
-    return allocated_id_set_.find(id) != allocated_id_set_.end();
-}
-
-void Obstacle::AllocateId(std::size_t id)
-{
-    allocated_id_set_.emplace(id);
-}
-
-std::size_t Obstacle::Size()
-{
-    return allocated_id_set_.size();
-}
-
-Obstacle::~Obstacle()
-{
-    allocated_id_set_.erase(id_);
 }
 std::size_t Obstacle::Id()
 {
     return id_;
-}
-
-Obstacle::Obstacle() : id_(GetEmptyId())
-{
-    AllocateId(id_);
-}
-
-Obstacle::Obstacle(std::size_t id)
-{
-    if (Obstacle::IsContainedId(id))
-    {
-        throw std::invalid_argument("This id is contained");
-    }
-    else
-    {
-        id_ = id;
-        AllocateId(id_);
-    }
 }
 
 ObstacleRepository::ObstacleRepository() = default;
@@ -82,14 +34,28 @@ std::size_t ObstacleRepository::Size()
 
 void ObstacleRepository::GenerateObstacle()
 {
-    Obstacle *obs = new Obstacle;
-    repo_[obs->Id()] = obs;
+    auto obs = std::make_unique<Obstacle>(GetEmptyId());
+    repo_[obs->Id()] = std::move(obs);
 }
 
 void ObstacleRepository::GenerateObstacleById(std::size_t id)
 {
-    Obstacle *obs = new Obstacle(id);
-    repo_[obs->Id()] = obs;
+    auto obs = std::make_unique<Obstacle>(id);
+    repo_[obs->Id()] = std::move(obs);
+}
+
+void ObstacleRepository::Erase(std::size_t id)
+{
+    auto find_obstacle = repo_.find(id);
+    if (find_obstacle == repo_.end())
+    {
+        std::string err_msg = "id: " + std::to_string(id) + "cannot find";
+        throw std::invalid_argument(err_msg);
+    }
+
+    ObstaclePtr null_obstacle = nullptr;
+    std::swap(find_obstacle->second, null_obstacle);
+    repo_.erase(find_obstacle);
 }
 
 std::unordered_set<std::size_t> ObstacleRepository::GetUsedId() const
@@ -100,5 +66,29 @@ std::unordered_set<std::size_t> ObstacleRepository::GetUsedId() const
         result.emplace(elm.first);
     }
     return result;
+}
+
+const Obstacle *ObstacleRepository::Find(std::size_t id) const
+{
+    auto find_result = repo_.find(id);
+    if (find_result == repo_.end())
+    {
+        return nullptr;
+    }
+    else
+    {
+        return find_result->second.get();
+    }
+}
+
+std::size_t ObstacleRepository::GetEmptyId() const
+{
+    std::size_t candidate = 1;
+    while (repo_.find(candidate) != repo_.end())
+    {
+        candidate += 1;
+    }
+
+    return candidate;
 }
 } // namespace design_pattern::behavior::observer
