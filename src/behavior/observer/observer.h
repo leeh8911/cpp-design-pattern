@@ -1,6 +1,7 @@
 /// @file observer.h
 /// @author sangwon (leeh8911@gmail.com)
-/// @brief
+/// @brief Implement oberser pattern.
+/// reference: https://refactoring.guru/ko/design-patterns/observer
 /// @version 0.1
 /// @date 2022-11-05
 ///
@@ -42,8 +43,11 @@ class ObstacleRepository
   public:
     ObstacleRepository();
     std::size_t Size();
+
     void GenerateObstacle();
     void GenerateObstacleById(std::size_t id);
+
+    std::unordered_set<std::size_t> GetUsedId() const;
 
   private:
     std::unordered_map<std::size_t, Obstacle *> repo_;

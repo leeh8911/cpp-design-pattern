@@ -91,4 +91,14 @@ void ObstacleRepository::GenerateObstacleById(std::size_t id)
     Obstacle *obs = new Obstacle(id);
     repo_[obs->Id()] = obs;
 }
+
+std::unordered_set<std::size_t> ObstacleRepository::GetUsedId() const
+{
+    std::unordered_set<std::size_t> result{};
+    for (const auto &elm : repo_)
+    {
+        result.emplace(elm.first);
+    }
+    return result;
+}
 } // namespace design_pattern::behavior::observer

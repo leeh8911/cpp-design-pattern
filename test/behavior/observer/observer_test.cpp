@@ -37,7 +37,6 @@ TEST(ObserverTest, ObstaclesHasDifferentIds)
 }
 
 // TODO: 데이터 객체를 Data Transfer Object로 출력하는 리포지토리
-// TODO: Id 기반의 Obstacle 생성
 // TODO: 현재 저장된 Obstacle의 개수 출력
 // TODO: 현재 존재하는 Obstacle Id를 출력
 // TODO: 원하는 id의 Obstacle을 출력
@@ -47,11 +46,15 @@ TEST(ObserverTest, ImplementRepository)
 {
     ObstacleRepository repo;
 
-    repo.GenerateObstacle();
-    EXPECT_EQ(repo.Size(), 1);
-
     repo.GenerateObstacleById(42);
+    repo.GenerateObstacleById(23);
     EXPECT_EQ(repo.Size(), 2);
+
+    auto id_set = repo.GetUsedId();
+
+    EXPECT_TRUE(id_set.find(42) != id_set.end());
+    EXPECT_TRUE(id_set.find(23) != id_set.end());
+    EXPECT_TRUE(id_set.find(74) == id_set.end());
 }
 
 } // namespace
