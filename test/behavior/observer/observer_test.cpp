@@ -18,9 +18,6 @@
 namespace
 {
 using namespace design_pattern::behavior::observer;
-// TODO: 데이터 객체를 Data Transfer Object로 출력하는 리포지토리
-// TODO: 원하는 id의 Obstacle을 출력
-// TODO: 특정 id의 Obstacle을 삭제
 TEST(ObserverTest, ImplementRepository)
 {
     ObstacleRepository repo;
@@ -39,6 +36,20 @@ TEST(ObserverTest, ImplementRepository)
         repo.Erase(id);
     }
     EXPECT_EQ(repo.Size(), 0);
+}
+
+// TODO: Repository에는 subscriber를 등록/해제할 수 있는 기능이 있어야 함
+// TODO: Repository에서 subscriber에게 알림을 보내줘야 함
+TEST(ObserverTest, AddRemoveSubscriber)
+{
+    Subscriber subs;
+
+    ObstacleRepository repo;
+    repo.AddSubscriber(subs);
+    EXPECT_EQ(repo.SubscribedCount(), 1);
+
+    repo.RemoveSubscriber(subs);
+    EXPECT_EQ(repo.SubscribedCount(), 0);
 }
 
 } // namespace

@@ -20,14 +20,15 @@
 namespace design_pattern::behavior::observer
 {
 
+/// @brief 주변 환경의 장애물에 대한 클래스 정보입니다.
+/// Pattern에 초점을 맞추기 위해 식별자만 기능으로 추가합니다.
+///
 class Obstacle
 {
   public:
     explicit Obstacle(std::size_t id);
     ~Obstacle() = default;
     std::size_t Id();
-
-    static std::size_t Size();
 
   private:
     std::size_t id_;
@@ -43,10 +44,12 @@ class ObstacleRepository
     void GenerateObstacle();
     void GenerateObstacleById(std::size_t id);
 
+    // TODO: Erase와 Find의 소스코드가 중복된 기능을 표현함
+    // TODO: Find를 통해 출력된 id-obstcle은 완전 제거되어야 하나? (현재는 unique_ptr을 출력해야 해서 삭제해버림)
     void Erase(std::size_t id);
+    const ObstaclePtr Find(std::size_t id);
 
     std::unordered_set<std::size_t> GetUsedId() const;
-    const Obstacle *Find(std::size_t id) const;
 
     std::size_t GetEmptyId() const;
 

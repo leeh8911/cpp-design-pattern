@@ -44,20 +44,6 @@ void ObstacleRepository::GenerateObstacleById(std::size_t id)
     repo_[obs->Id()] = std::move(obs);
 }
 
-void ObstacleRepository::Erase(std::size_t id)
-{
-    auto find_obstacle = repo_.find(id);
-    if (find_obstacle == repo_.end())
-    {
-        std::string err_msg = "id: " + std::to_string(id) + "cannot find";
-        throw std::invalid_argument(err_msg);
-    }
-
-    ObstaclePtr null_obstacle = nullptr;
-    std::swap(find_obstacle->second, null_obstacle);
-    repo_.erase(find_obstacle);
-}
-
 std::unordered_set<std::size_t> ObstacleRepository::GetUsedId() const
 {
     std::unordered_set<std::size_t> result{};
@@ -68,17 +54,33 @@ std::unordered_set<std::size_t> ObstacleRepository::GetUsedId() const
     return result;
 }
 
-const Obstacle *ObstacleRepository::Find(std::size_t id) const
+void ObstacleRepository::Erase(std::size_t id)
 {
-    auto find_result = repo_.find(id);
-    if (find_result == repo_.end())
+    auto found = repo_.find(id);
+    if (found == repo_.end())
+    {
+        std::string err_msg = "id: " + std::to_string(id) + "cannot find";
+        throw std::invalid_argument(err_msg);
+    }
+
+    ObstaclePtr null_obstacle = nullptr;
+    std::swap(found->second, null_obstacle);
+    repo_.erase(found);
+}
+
+const ObstaclePtr ObstacleRepository::Find(std::size_t id)
+{
+    auto found = repo_.find(id);
+    if (found == repo_.end())
     {
         return nullptr;
     }
-    else
-    {
-        return find_result->second.get();
-    }
+
+    ObstaclePtr result = nullptr;
+    std::swap(found->second, result);
+    repo_.erase(found);
+
+    return result;
 }
 
 std::size_t ObstacleRepository::GetEmptyId() const
