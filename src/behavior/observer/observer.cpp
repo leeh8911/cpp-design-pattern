@@ -85,4 +85,10 @@ void ObstacleRepository::GenerateObstacle()
     Obstacle *obs = new Obstacle;
     repo_[obs->Id()] = obs;
 }
+
+void ObstacleRepository::GenerateObstacleById(std::size_t id)
+{
+    Obstacle *obs = new Obstacle(id);
+    repo_[obs->Id()] = obs;
+}
 } // namespace design_pattern::behavior::observer

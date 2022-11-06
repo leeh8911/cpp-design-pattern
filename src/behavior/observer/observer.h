@@ -43,6 +43,7 @@ class ObstacleRepository
     ObstacleRepository();
     std::size_t Size();
     void GenerateObstacle();
+    void GenerateObstacleById(std::size_t id);
 
   private:
     std::unordered_map<std::size_t, Obstacle *> repo_;
