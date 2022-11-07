@@ -18,7 +18,7 @@ jobs:
     container:
       image: docker://leeh8911/cpp-design-pattern:latest
       volumes: 
-        - ./cpp-design-pattern:develop
+        - /__w/cpp-design-pattern/cpp-design-pattern:~/repository
 
     steps:
     - uses: actions/checkout@v3
