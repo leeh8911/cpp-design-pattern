@@ -46,6 +46,8 @@ class Subscriber
     virtual void Update(ObstacleMap *obstacle_repo) = 0;
 };
 
+using SubscriberPtr = std::shared_ptr<Subscriber>;
+
 /// @brief ObstacleRepository 상태 중 Obstacle의 개수를 세어주는 클래스입니다.
 ///
 class ObstacleCounter : public Subscriber
@@ -89,14 +91,14 @@ class ObstacleRepository
 
     std::size_t GetEmptyId() const;
 
-    void AddSubscriber(Subscriber *sub);
+    void AddSubscriber(SubscriberPtr sub);
     std::size_t SubscribedCount();
-    void RemoveSubscriber(Subscriber *sub);
+    void RemoveSubscriber(SubscriberPtr sub);
     void Notify();
 
   private:
     ObstacleMap repo_;
-    std::vector<Subscriber *> subscribers;
+    std::vector<SubscriberPtr> subscribers;
 };
 
 } // namespace design_pattern::behavior::observer

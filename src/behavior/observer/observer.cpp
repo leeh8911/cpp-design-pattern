@@ -113,7 +113,7 @@ std::size_t ObstacleRepository::GetEmptyId() const
     return candidate;
 }
 
-void ObstacleRepository::AddSubscriber(Subscriber *sub)
+void ObstacleRepository::AddSubscriber(SubscriberPtr sub)
 {
     subscribers.emplace_back(sub);
 }
@@ -123,7 +123,7 @@ std::size_t ObstacleRepository::SubscribedCount()
     return subscribers.size();
 }
 
-void ObstacleRepository::RemoveSubscriber(Subscriber *sub)
+void ObstacleRepository::RemoveSubscriber(SubscriberPtr sub)
 {
     auto found = std::find(subscribers.begin(), subscribers.end(), sub);
     subscribers.erase(found);

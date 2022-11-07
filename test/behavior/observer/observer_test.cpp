@@ -37,8 +37,8 @@ TEST(ObserverTest, Should_MultipleSubscriber)
 {
     std::array<std::size_t, 3> given_ids{1, 2, 3};
 
-    ObstacleCounter *counter = new ObstacleCounter();
-    ObstacleIdChecker *id_checker = new ObstacleIdChecker();
+    auto counter = std::make_shared<ObstacleCounter>();
+    auto id_checker = std::make_shared<ObstacleIdChecker>();
 
     ObstacleRepository repo;
 
