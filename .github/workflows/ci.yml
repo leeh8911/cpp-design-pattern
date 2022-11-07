@@ -17,13 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://leeh8911/cpp-design-pattern:latest
-      volumes: .:develop
+      volumes: 
+        - ./cpp-design-pattern:develop
 
     steps:
     - uses: actions/checkout@v3
-  
-    - name: setup step
-      uses: docker://leeh8911/cpp-design-pattern:latest
 
       
     - name: build, test, and reporting
