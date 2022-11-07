@@ -1,0 +1,5 @@
+<map id="Subscriber" name="Subscriber">
+<area shape="rect" id="node1" title="ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber 클래스입니다." alt="" coords="87,5,214,97"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1observer_1_1ObstacleCounter.html" title="ObstacleRepository 상태 중 Obstacle의 개수를 세어주는 클래스입니다." alt="" coords="5,145,136,237"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1observer_1_1ObstacleIdChecker.html" title="ObstacleRepository 상태 중 Obstacle Id만 찾아주는 클래스입니다." alt="" coords="161,145,303,237"/>
+</map>

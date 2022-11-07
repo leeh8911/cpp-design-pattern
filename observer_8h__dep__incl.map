@@ -1,0 +1,5 @@
+<map id="src/behavior/observer/observer.h" name="src/behavior/observer/observer.h">
+<area shape="rect" id="node1" title="Implement oberser pattern. reference: https://refactoring.guru/ko/design&#45;patterns/observer." alt="" coords="100,5,263,47"/>
+<area shape="rect" id="node2" href="$observer_8cpp.html" title=" " alt="" coords="5,95,168,136"/>
+<area shape="rect" id="node3" href="$observer__test_8cpp.html" title=" " alt="" coords="193,95,362,136"/>
+</map>

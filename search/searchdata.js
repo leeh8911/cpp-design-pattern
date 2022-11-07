@@ -4,9 +4,9 @@ var indexSectionsWithContent =
   1: "abcdfghimopstv",
   2: "ad",
   3: "abcdimoprt",
-  4: "abcdeghimnoprstuv~",
+  4: "abcdefghimnoprstuv~",
   5: "abchikmnoprstv",
-  6: "bfimotv",
+  6: "bfimostv",
   7: "_acdhps",
   8: "c"
 };
