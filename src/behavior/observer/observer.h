@@ -16,6 +16,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
+#include <vector>
 
 namespace design_pattern::behavior::observer
 {
@@ -33,7 +34,20 @@ class Obstacle
   private:
     std::size_t id_;
 };
-using ObstaclePtr = std::unique_ptr<Obstacle>;
+
+// TODO: Obstacle의 정보를 shared_ptr로 전달해야 할까?
+using ObstaclePtr = std::shared_ptr<Obstacle>;
+using ObstacleMap = std::unordered_map<std::size_t, ObstaclePtr>;
+
+class Subscriber
+{
+  public:
+    std::size_t ObstacleCount();
+    void Update(ObstacleMap *obstacle_repo);
+
+  private:
+    std::size_t obstacle_count_;
+};
 
 class ObstacleRepository
 {
@@ -53,8 +67,14 @@ class ObstacleRepository
 
     std::size_t GetEmptyId() const;
 
+    void AddSubscriber(Subscriber *sub);
+    std::size_t SubscribedCount();
+    void RemoveSubscriber(Subscriber *sub);
+    void Notify();
+
   private:
-    std::unordered_map<std::size_t, ObstaclePtr> repo_;
+    ObstacleMap repo_;
+    std::vector<Subscriber *> subscribers;
 };
 
 } // namespace design_pattern::behavior::observer

@@ -25,6 +25,16 @@ std::size_t Obstacle::Id()
     return id_;
 }
 
+std::size_t Subscriber::ObstacleCount()
+{
+    return obstacle_count_;
+}
+
+void Subscriber::Update(ObstacleMap *obstacle_repo)
+{
+    obstacle_count_ = obstacle_repo->size();
+}
+
 ObstacleRepository::ObstacleRepository() = default;
 
 std::size_t ObstacleRepository::Size()
@@ -34,13 +44,13 @@ std::size_t ObstacleRepository::Size()
 
 void ObstacleRepository::GenerateObstacle()
 {
-    auto obs = std::make_unique<Obstacle>(GetEmptyId());
+    auto obs = std::make_shared<Obstacle>(GetEmptyId());
     repo_[obs->Id()] = std::move(obs);
 }
 
 void ObstacleRepository::GenerateObstacleById(std::size_t id)
 {
-    auto obs = std::make_unique<Obstacle>(id);
+    auto obs = std::make_shared<Obstacle>(id);
     repo_[obs->Id()] = std::move(obs);
 }
 
@@ -63,8 +73,6 @@ void ObstacleRepository::Erase(std::size_t id)
         throw std::invalid_argument(err_msg);
     }
 
-    ObstaclePtr null_obstacle = nullptr;
-    std::swap(found->second, null_obstacle);
     repo_.erase(found);
 }
 
@@ -76,9 +84,7 @@ const ObstaclePtr ObstacleRepository::Find(std::size_t id)
         return nullptr;
     }
 
-    ObstaclePtr result = nullptr;
-    std::swap(found->second, result);
-    repo_.erase(found);
+    ObstaclePtr result = found->second;
 
     return result;
 }
@@ -92,5 +98,30 @@ std::size_t ObstacleRepository::GetEmptyId() const
     }
 
     return candidate;
+}
+
+void ObstacleRepository::AddSubscriber(Subscriber *sub)
+{
+    subscribers.emplace_back(sub);
+}
+
+std::size_t ObstacleRepository::SubscribedCount()
+{
+    return subscribers.size();
+}
+
+void ObstacleRepository::RemoveSubscriber(Subscriber *sub)
+{
+    auto found = std::find(subscribers.begin(), subscribers.end(), sub);
+    subscribers.erase(found);
+}
+
+void ObstacleRepository::Notify()
+{
+    for (const auto &subscriber : subscribers)
+    {
+        // TODO: Update 함수는 repo_에 포함된 obstacle을 전달해야 함 (어떻게?)
+        subscriber->Update(&repo_);
+    }
 }
 } // namespace design_pattern::behavior::observer

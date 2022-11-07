@@ -18,38 +18,49 @@
 namespace
 {
 using namespace design_pattern::behavior::observer;
-TEST(ObserverTest, ImplementRepository)
+TEST(ObserverTest, Should_FindObstacle_When_GivenSpecificId)
 {
     ObstacleRepository repo;
 
     repo.GenerateObstacleById(42);
-    repo.GenerateObstacleById(23);
-    EXPECT_EQ(repo.Size(), 2);
+    EXPECT_EQ(repo.Size(), 1);
 
     EXPECT_TRUE(repo.Find(42) != nullptr);
-    EXPECT_TRUE(repo.Find(23) != nullptr);
-    EXPECT_TRUE(repo.Find(74) == nullptr);
+    EXPECT_TRUE(repo.Find(23) == nullptr);
+}
 
-    auto id_set = repo.GetUsedId();
-    for (auto id : id_set)
-    {
-        repo.Erase(id);
-    }
+TEST(ObserverTest, Should_EraseAllObstacle_When_GivenSpecificId)
+{
+    ObstacleRepository repo;
+    repo.GenerateObstacleById(42);
+    repo.Erase(42);
     EXPECT_EQ(repo.Size(), 0);
 }
 
-// TODO: Repository에는 subscriber를 등록/해제할 수 있는 기능이 있어야 함
-// TODO: Repository에서 subscriber에게 알림을 보내줘야 함
-TEST(ObserverTest, AddRemoveSubscriber)
+TEST(ObserverTest, NotificationSubscriber)
 {
-    Subscriber subs;
+    Subscriber subscriber1{};
+    Subscriber subscriber2{};
+    Subscriber subscriber3{};
 
     ObstacleRepository repo;
-    repo.AddSubscriber(subs);
-    EXPECT_EQ(repo.SubscribedCount(), 1);
 
-    repo.RemoveSubscriber(subs);
-    EXPECT_EQ(repo.SubscribedCount(), 0);
+    repo.AddSubscriber(&subscriber1);
+    repo.AddSubscriber(&subscriber2);
+    repo.AddSubscriber(&subscriber3);
+
+    repo.Notify();
+    EXPECT_EQ(subscriber1.ObstacleCount(), 0);
+    EXPECT_EQ(subscriber2.ObstacleCount(), 0);
+    EXPECT_EQ(subscriber3.ObstacleCount(), 0);
+
+    repo.GenerateObstacleById(1);
+    repo.GenerateObstacleById(2);
+
+    repo.Notify();
+    EXPECT_EQ(subscriber1.ObstacleCount(), 2);
+    EXPECT_EQ(subscriber2.ObstacleCount(), 2);
+    EXPECT_EQ(subscriber3.ObstacleCount(), 2);
 }
 
 } // namespace
