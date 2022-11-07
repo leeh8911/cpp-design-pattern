@@ -1,3 +1,5 @@
 <map id="Bicycle" name="Bicycle">
-<area shape="rect" id="node1" title="빌더 패턴에서 사용하고자 하는 &quot;복합 객체&quot;로서 class Bicycle을 사용합니다. 해당 예제에선 단순히 getter/setter를 통해 string과 int 정보만 전달 받지만..." alt="" coords="5,5,96,229"/>
+<area shape="rect" id="node1" title="빌더 패턴에서 사용하고자 하는 &quot;복합 객체&quot;로서 class Bicycle을 사용합니다. 해당 예제에선 단순히 getter/setter를 통해 string과 int 정보만 전달 받지만..." alt="" coords="23,175,114,355"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,44,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="83,5,142,83"/>
 </map>
