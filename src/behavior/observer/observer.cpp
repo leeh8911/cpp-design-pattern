@@ -25,14 +25,27 @@ std::size_t Obstacle::Id()
     return id_;
 }
 
-std::size_t Subscriber::ObstacleCount()
+void ObstacleCounter::Update(ObstacleMap *obstacle_repo)
 {
-    return obstacle_count_;
+    count = obstacle_repo->size();
 }
 
-void Subscriber::Update(ObstacleMap *obstacle_repo)
+std::size_t ObstacleCounter::operator()()
 {
-    obstacle_count_ = obstacle_repo->size();
+    return count;
+}
+
+void ObstacleIdChecker::Update(ObstacleMap *obstacle_repo)
+{
+    for (const auto &p : *obstacle_repo)
+    {
+        ids.emplace_back(p.first);
+    }
+}
+
+std::vector<std::size_t> ObstacleIdChecker::operator()()
+{
+    return ids;
 }
 
 ObstacleRepository::ObstacleRepository() = default;

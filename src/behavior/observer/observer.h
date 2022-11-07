@@ -35,20 +35,44 @@ class Obstacle
     std::size_t id_;
 };
 
-// TODO: Obstacle의 정보를 shared_ptr로 전달해야 할까?
 using ObstaclePtr = std::shared_ptr<Obstacle>;
 using ObstacleMap = std::unordered_map<std::size_t, ObstaclePtr>;
 
+/// @brief ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber 클래스입니다.
 class Subscriber
 {
   public:
-    std::size_t ObstacleCount();
-    void Update(ObstacleMap *obstacle_repo);
-
-  private:
-    std::size_t obstacle_count_;
+    virtual ~Subscriber() = default;
+    virtual void Update(ObstacleMap *obstacle_repo) = 0;
 };
 
+/// @brief ObstacleRepository 상태 중 Obstacle의 개수를 세어주는 클래스입니다.
+///
+class ObstacleCounter : public Subscriber
+{
+  public:
+    void Update(ObstacleMap *obstacle_repo) override;
+    std::size_t operator()();
+
+  private:
+    std::size_t count{};
+};
+
+/// @brief ObstacleRepository 상태 중 Obstacle Id만 찾아주는 클래스입니다.
+///
+class ObstacleIdChecker : public Subscriber
+{
+  public:
+    void Update(ObstacleMap *obstacle_repo) override;
+    std::vector<std::size_t> operator()();
+
+  private:
+    std::vector<std::size_t> ids;
+};
+
+/// @brief Obstacle을 저장하는 리포지토리 클래스입니다.
+/// 해당 저장소를 관측하고자 하는 객체가 있다면 AddSubscriber를 통해 연결해줄 수 있습니다.
+///
 class ObstacleRepository
 {
   public:
@@ -58,8 +82,6 @@ class ObstacleRepository
     void GenerateObstacle();
     void GenerateObstacleById(std::size_t id);
 
-    // TODO: Erase와 Find의 소스코드가 중복된 기능을 표현함
-    // TODO: Find를 통해 출력된 id-obstcle은 완전 제거되어야 하나? (현재는 unique_ptr을 출력해야 해서 삭제해버림)
     void Erase(std::size_t id);
     const ObstaclePtr Find(std::size_t id);
 

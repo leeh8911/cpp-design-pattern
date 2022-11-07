@@ -11,10 +11,6 @@
 
 #include <gtest/gtest.h>
 
-// Observer pattern implementation todo list
-// TODO: 리포지토리가 업데이트 되었을 때 다른 기능들이 해당 정보를 확인할 수 있도록
-// TODO: 기능을 수행하는 객체가 리포지토리의 정보를 전달받는 것을 구현
-
 namespace
 {
 using namespace design_pattern::behavior::observer;
@@ -37,30 +33,37 @@ TEST(ObserverTest, Should_EraseAllObstacle_When_GivenSpecificId)
     EXPECT_EQ(repo.Size(), 0);
 }
 
-TEST(ObserverTest, NotificationSubscriber)
+TEST(ObserverTest, Should_MultipleSubscriber)
 {
-    Subscriber subscriber1{};
-    Subscriber subscriber2{};
-    Subscriber subscriber3{};
+    std::array<std::size_t, 3> given_ids{1, 2, 3};
+
+    ObstacleCounter *counter = new ObstacleCounter();
+    ObstacleIdChecker *id_checker = new ObstacleIdChecker();
 
     ObstacleRepository repo;
 
-    repo.AddSubscriber(&subscriber1);
-    repo.AddSubscriber(&subscriber2);
-    repo.AddSubscriber(&subscriber3);
+    repo.AddSubscriber(counter);
+    repo.AddSubscriber(id_checker);
 
     repo.Notify();
-    EXPECT_EQ(subscriber1.ObstacleCount(), 0);
-    EXPECT_EQ(subscriber2.ObstacleCount(), 0);
-    EXPECT_EQ(subscriber3.ObstacleCount(), 0);
+    EXPECT_EQ((*counter)(), 0);
+    EXPECT_EQ((*id_checker)().size(), 0);
 
-    repo.GenerateObstacleById(1);
-    repo.GenerateObstacleById(2);
+    for (auto id : given_ids)
+    {
+        repo.GenerateObstacleById(id);
+    }
 
     repo.Notify();
-    EXPECT_EQ(subscriber1.ObstacleCount(), 2);
-    EXPECT_EQ(subscriber2.ObstacleCount(), 2);
-    EXPECT_EQ(subscriber3.ObstacleCount(), 2);
+    EXPECT_EQ((*counter)(), given_ids.size());
+    EXPECT_EQ((*id_checker)().size(), given_ids.size());
+
+    std::unordered_set<std::size_t> id_set(given_ids.begin(), given_ids.end());
+    for (auto id : (*id_checker)())
+    {
+        auto found = id_set.find(id);
+        EXPECT_TRUE(found != id_set.end());
+    }
 }
 
 } // namespace
