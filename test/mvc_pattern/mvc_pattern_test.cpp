@@ -19,14 +19,18 @@ namespace design_pattern::test
 {
 class MvcPatternTest : public testing::Test
 {
- public:
-    void SetUp() override {}
-    void TearDown() override {}
+  public:
+    void SetUp() override
+    {
+    }
+    void TearDown() override
+    {
+    }
 };
 
 TEST_F(MvcPatternTest, CreateModel)
 {
-    Model* student = new Model("Sangwon", "10");
+    Model *student = new Model("Sangwon", "10");
 
     EXPECT_EQ(student->Property1(), "Sangwon");
     EXPECT_EQ(student->Property2(), "10");
@@ -34,10 +38,10 @@ TEST_F(MvcPatternTest, CreateModel)
 
 TEST_F(MvcPatternTest, CreateController)
 {
-    Model* student = new Model("Sangwon", "10");
-    View* view = new View();
+    Model *student = new Model("Sangwon", "10");
+    View *view = new View();
 
-    Controller* controller = new Controller(student, view);
+    Controller *controller = new Controller(student, view);
 
     controller->UpdateView();
 
@@ -46,4 +50,4 @@ TEST_F(MvcPatternTest, CreateController)
     controller->UpdateView();
 }
 
-}  // namespace design_pattern::test
+} // namespace design_pattern::test
