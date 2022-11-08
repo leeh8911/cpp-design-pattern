@@ -10,6 +10,10 @@
 
 #include "src/behavior/state/state.h"
 
+#include <memory>
+#include <string>
+#include <utility>
+
 namespace design_pattern::behavior::state
 {
 std::string Red::StateName()
@@ -17,9 +21,9 @@ std::string Red::StateName()
     return "Red Light";
 }
 
-Color *Red::Next()
+ColorPtr Red::Next()
 {
-    return new Green;
+    return std::make_unique<Green>();
 }
 
 std::string Green::StateName()
@@ -27,9 +31,9 @@ std::string Green::StateName()
     return "Green Light";
 }
 
-Color *Green::Next()
+ColorPtr Green::Next()
 {
-    return new Yellow;
+    return std::make_unique<Yellow>();
 }
 
 std::string Yellow::StateName()
@@ -37,16 +41,16 @@ std::string Yellow::StateName()
     return "Yellow Light";
 }
 
-Color *Yellow::Next()
+ColorPtr Yellow::Next()
 {
-    return new Red;
+    return std::make_unique<Red>();
 }
 
-TrafficLight::TrafficLight() : state_(new Red)
+TrafficLight::TrafficLight() : state_(std::make_unique<Red>())
 {
 }
 
-TrafficLight::TrafficLight(Color *state) : state_(state)
+TrafficLight::TrafficLight(ColorPtr state) : state_(std::move(state))
 {
 }
 
@@ -57,7 +61,8 @@ std::string TrafficLight::CurrentState()
 
 void TrafficLight::Update()
 {
-    state_ = state_->Next();
+    auto next_state = state_->Next();
+    std::swap(next_state, state_);
 }
 
 } // namespace design_pattern::behavior::state

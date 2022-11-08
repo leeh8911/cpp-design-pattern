@@ -11,48 +11,53 @@
 #ifndef SRC_BEHAVIOR_STATE_STATE_H_
 #define SRC_BEHAVIOR_STATE_STATE_H_
 
+#include <memory>
 #include <string>
 
 namespace design_pattern::behavior::state
 {
+
+class Color;
+using ColorPtr = std::unique_ptr<Color>;
 
 class Color
 {
   public:
     virtual ~Color() = default;
     virtual std::string StateName() = 0;
-    virtual Color *Next() = 0;
+    virtual ColorPtr Next() = 0;
 };
 
 class Red : public Color
 {
     std::string StateName() override;
-    Color *Next() override;
+    ColorPtr Next() override;
 };
 
 class Green : public Color
 {
     std::string StateName() override;
-    Color *Next() override;
+    ColorPtr Next() override;
 };
 
 class Yellow : public Color
 {
     std::string StateName() override;
-    Color *Next() override;
+    ColorPtr Next() override;
 };
 
 class TrafficLight
 {
   public:
     TrafficLight();
-    TrafficLight(Color *state);
+    TrafficLight(ColorPtr state);
+    TrafficLight(TrafficLight &other) = delete;
 
     std::string CurrentState();
     void Update();
 
   private:
-    Color *state_;
+    ColorPtr state_;
 };
 
 } // namespace design_pattern::behavior::state
