@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://leeh8911/cpp-design-pattern:latest
-      volumes: 
-        - /__w/cpp-design-pattern/cpp-design-pattern:~/repository
 
     steps:
     - uses: actions/checkout@v3
