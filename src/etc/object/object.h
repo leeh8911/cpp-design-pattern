@@ -11,107 +11,52 @@
 #define SRC_ETC_OBJECT_OBJECT_H_
 
 #include <array>
+#include <map>
 #include <memory>
 
 namespace design_pattern::etc::object
 {
 constexpr double kPi = 3.14159265358979323846264338327950288;
 
-using Vector2D = std::array<double, 2>;
-
-struct IObject;
-using IObjectPtr = std::unique_ptr<IObject>;
-struct IObject
+namespace data
 {
-    virtual ~IObject() = default;
-
-    virtual Vector2D Position() const = 0;
-    virtual Vector2D Velocity() const = 0;
-    virtual Vector2D Shape() const = 0;
-    virtual double Rotation() const = 0;
-    virtual void Position(const Vector2D &src) = 0;
-    virtual void Velocity(const Vector2D &src) = 0;
-    virtual void Shape(const Vector2D &src) = 0;
-    virtual void Rotation(double src) = 0;
-
-    virtual std::size_t AliveCount() const = 0;
-
-    virtual void Assignment(IObjectPtr meas) = 0;
-    virtual bool Update() = 0;
-
-    virtual bool HasMeasurement() const = 0;
+struct ObjectData
+{
+    std::size_t id;
 };
+} // namespace data
 
-class Object;
-using ObjectPtr = std::unique_ptr<Object>;
-class Object : public IObject
+namespace entity
+{
+template <class T> class Identifiable
 {
   public:
-    Object();
-    Object(Vector2D position, Vector2D velocity);
-    Object(const Object &other);
-    ~Object() override;
+    Identifiable();
 
-    // TODO: 중복된 함수들을 제거해야 함
-    Vector2D Position() const override;
-    Vector2D Velocity() const override;
-    Vector2D Shape() const override;
-    double Rotation() const override;
-    void Position(const Vector2D &src) override;
-    void Velocity(const Vector2D &src) override;
-    void Shape(const Vector2D &src) override;
-    void Rotation(double src) override;
+    // Identifiable class cannot copy
+    Identifiable(const Identifiable &) = delete;
+    Identifiable &operator=(const Identifiable &) = delete;
 
-    std::size_t AliveCount() const override;
+    bool operator==(Identifiable &&other);
 
-    void Assignment(IObjectPtr meas) override;
-    bool Update() override;
-
-    bool HasMeasurement() const override;
-
-  protected:
-    bool UpdateByMeas(ObjectPtr meas);
-    Vector2D position_;
-    Vector2D velocity_;
-    std::size_t alive_count_;
-    IObjectPtr meas_;
+  private:
+    std::size_t id_;
+    static std::map<std::size_t, Identifiable<T>> assigned;
 };
 
-class BoxObject;
-using BoxObjectPtr = std::unique_ptr<BoxObject>;
-class BoxObject : public IObject
+class Object
 {
   public:
-    BoxObject();
-    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape, double rotation);
-    BoxObject(const BoxObject &other);
-    ~BoxObject() override = default;
+    Object(const data::ObjectData &data);
 
-    Vector2D Position() const override;
-    Vector2D Velocity() const override;
-    Vector2D Shape() const override;
-    double Rotation() const override;
-    void Position(const Vector2D &src) override;
-    void Velocity(const Vector2D &src) override;
-    void Shape(const Vector2D &src) override;
-    void Rotation(double src) override;
+    bool operator==(const data::ObjectData &other) const;
 
-    std::size_t AliveCount() const override;
+    std::size_t Id() const;
 
-    void Assignment(IObjectPtr meas) override;
-    bool Update() override;
-
-    bool HasMeasurement() const override;
-
-  protected:
-    bool UpdateByMeas(BoxObjectPtr meas);
-    Vector2D position_;
-    Vector2D velocity_;
-    Vector2D shape_;
-    double rotation_;
-    std::size_t alive_count_;
-    IObjectPtr meas_;
+  private:
+    data::ObjectData data_;
 };
+} // namespace entity
 
 } // namespace design_pattern::etc::object
 #endif // SRC_ETC_OBJECT_OBJECT_H_
