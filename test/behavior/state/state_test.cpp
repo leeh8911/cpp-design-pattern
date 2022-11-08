@@ -23,9 +23,9 @@ TEST(StateTest, Should_PrintColor_When_GivenOrNotInitialStateColor)
 
     EXPECT_EQ(traffic_light.CurrentState(), "Red Light");
 
-    TrafficLight red_state_light(std::move(std::make_unique<Red>()));
-    TrafficLight green_state_light(std::move(std::make_unique<Green>()));
-    TrafficLight yellow_state_light(std::move(std::make_unique<Yellow>()));
+    TrafficLight red_state_light(std::move(std::make_unique<Red>));
+    TrafficLight green_state_light(std::move(std::make_unique<Green>));
+    TrafficLight yellow_state_light(std::move(std::make_unique<Yellow>));
 
     EXPECT_EQ(red_state_light.CurrentState(), "Red Light");
     EXPECT_EQ(green_state_light.CurrentState(), "Green Light");
