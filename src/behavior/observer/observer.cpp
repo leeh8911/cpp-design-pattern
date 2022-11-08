@@ -133,7 +133,6 @@ void ObstacleRepository::Notify()
 {
     for (const auto &subscriber : subscribers)
     {
-        // TODO: Update 함수는 repo_에 포함된 obstacle을 전달해야 함 (어떻게?)
         subscriber->Update(&repo_);
     }
 }

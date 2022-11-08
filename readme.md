@@ -26,7 +26,7 @@
   - [ ] Adapter(Wrapper, translator)
   - [ ] Bridge
   - [ ] Composite
-  - [ ] Decorator
+  - [X] Decorator
   - [ ] Extension object
   - [ ] Facade
   - [ ] Front controller
@@ -43,7 +43,7 @@
   - [ ] Mediator
   - [X] Memento
   - [ ] Null object
-  - [ ] Observer (or Publish/subscribe)
+  - [X] Observer (or Publish/subscribe)
   - [ ] Servant
   - [ ] Specification
   - [ ] State
