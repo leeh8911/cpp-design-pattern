@@ -1,8 +1,11 @@
 <map id="BoxObject" name="BoxObject">
-<area shape="rect" id="node1" title=" " alt="" coords="307,351,469,663"/>
-<area shape="rect" id="node2" href="$structdesign__pattern_1_1etc_1_1object_1_1IObject.html" title=" " alt="" coords="5,5,168,259"/>
-<area shape="rect" id="node3" title=" " alt="" coords="192,93,339,171"/>
-<area shape="rect" id="node4" title=" " alt="" coords="363,93,429,171"/>
-<area shape="rect" id="node5" title=" " alt="" coords="462,93,522,171"/>
-<area shape="rect" id="node6" title=" " alt="" coords="546,93,713,171"/>
+<area shape="rect" id="node1" title=" " alt="" coords="360,631,523,943"/>
+<area shape="rect" id="node2" href="$structdesign__pattern_1_1etc_1_1object_1_1IObject.html" title=" " alt="" coords="5,145,168,399"/>
+<area shape="rect" id="node4" title=" " alt="" coords="161,461,327,539"/>
+<area shape="rect" id="node3" title=" " alt="" coords="499,233,565,311"/>
+<area shape="rect" id="node7" title=" " alt="" coords="368,461,515,539"/>
+<area shape="rect" id="node5" title="STL class." alt="" coords="193,233,322,311"/>
+<area shape="rect" id="node6" title=" " alt="" coords="306,5,345,83"/>
+<area shape="rect" id="node8" title="STL class." alt="" coords="346,233,441,311"/>
+<area shape="rect" id="node9" title=" " alt="" coords="677,461,737,539"/>
 </map>

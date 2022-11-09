@@ -1,5 +1,11 @@
 <map id="ObstacleRepository" name="ObstacleRepository">
-<area shape="rect" id="node1" title="Obstacle을 저장하는 리포지토리 클래스입니다. 해당 저장소를 관측하고자 하는 객체가 있다면 AddSubscriber를 통해 연결해줄 수 있습니다." alt="" coords="91,160,284,399"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,172,97"/>
-<area shape="rect" id="node3" title=" " alt="" coords="197,13,375,90"/>
+<area shape="rect" id="node1" title="Obstacle을 저장하는 리포지토리 클래스입니다. 해당 저장소를 관측하고자 하는 객체가 있다면 AddSubscriber를 통해 연결해줄 수 있습니다." alt="" coords="174,440,367,679"/>
+<area shape="rect" id="node2" title=" " alt="" coords="295,285,462,377"/>
+<area shape="rect" id="node3" title="STL class." alt="" coords="169,145,298,223"/>
+<area shape="rect" id="node8" title=" " alt="" coords="83,293,261,370"/>
+<area shape="rect" id="node4" title=" " alt="" coords="214,5,253,83"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="425,145,604,223"/>
+<area shape="rect" id="node9" title="STL class." alt="" coords="5,145,107,223"/>
+<area shape="rect" id="node5" title=" " alt="" coords="341,145,401,223"/>
+<area shape="rect" id="node7" title=" " alt="" coords="495,5,534,83"/>
 </map>
