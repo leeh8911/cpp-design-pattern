@@ -23,26 +23,13 @@ namespace data
 struct ObjectData
 {
     std::size_t id;
+    friend std::ostream &operator<<(std::ostream &os, const ObjectData &object_data);
 };
+
 } // namespace data
 
 namespace entity
 {
-template <class T> class Identifiable
-{
-  public:
-    Identifiable();
-
-    // Identifiable class cannot copy
-    Identifiable(const Identifiable &) = delete;
-    Identifiable &operator=(const Identifiable &) = delete;
-
-    bool operator==(Identifiable &&other);
-
-  private:
-    std::size_t id_;
-    static std::map<std::size_t, Identifiable<T>> assigned;
-};
 
 class Object
 {
@@ -50,8 +37,10 @@ class Object
     Object(const data::ObjectData &data);
 
     bool operator==(const data::ObjectData &other) const;
+    bool operator!=(const data::ObjectData &other) const;
 
     std::size_t Id() const;
+    friend std::ostream &operator<<(std::ostream &os, const Object &object);
 
   private:
     data::ObjectData data_;
