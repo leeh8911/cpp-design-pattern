@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['factorymap_542',['FactoryMap',['../namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe',1,'design_pattern::etc::apollo']]]
+  ['colorptr_571',['ColorPtr',['../namespacedesign__pattern_1_1behavior_1_1state.html#ae5bb20e322279c6bbe3d586d752b9c4f',1,'design_pattern::behavior::state']]]
 ];

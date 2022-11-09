@@ -1,0 +1,4 @@
+<map id="TrafficLight" name="TrafficLight">
+<area shape="rect" id="node1" title="Red, Green, Yellow 세가지 상태를 갖는 TrafficLight 클래스입니다. 현재 상태를 출력하거나, 다음 상태로 업데이트가 가능합니다." alt="" coords="18,145,147,267"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,160,83"/>
+</map>

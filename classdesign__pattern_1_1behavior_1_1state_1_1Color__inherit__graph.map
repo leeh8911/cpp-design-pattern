@@ -1,0 +1,6 @@
+<map id="Color" name="Color">
+<area shape="rect" id="node1" title="Collor 클래스는 TrafficLight 클래스가 가질 수 있는 상태에 대한 인터페이스 클래스입니다. 현재 상태의 이름을 출력하거나 다음 상태로 변경해주는 인터페이스를 갖고 있습..." alt="" coords="141,5,261,112"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1state_1_1Green.html" title=" " alt="" coords="5,160,120,252"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1state_1_1Red.html" title=" " alt="" coords="144,160,259,252"/>
+<area shape="rect" id="node4" href="$classdesign__pattern_1_1behavior_1_1state_1_1Yellow.html" title=" " alt="" coords="283,160,397,252"/>
+</map>
