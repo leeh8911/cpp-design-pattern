@@ -20,29 +20,34 @@ using namespace design_pattern::etc::apollo;
 
 class BaseClass
 {
- public:
+  public:
     BaseClass() = default;
     ~BaseClass() = default;
-    virtual std::string Name() const { return "BaseClass1"; }
+    virtual std::string Name() const
+    {
+        return "BaseClass1";
+    }
 };
 
 class DerivedClass1 : BaseClass
 {
- public:
+  public:
     DerivedClass1() = default;
     ~DerivedClass1() = default;
-    std::string Name() const override { return "DerivedClass1"; }
+    std::string Name() const override
+    {
+        return "DerivedClass1";
+    }
 };
 
 PERCEPTION_REGISTER_REGISTERER(BaseClass);
-#define PERCEPTION_REGISTER_TEST(name) \
-    PERCEPTION_REGISTER_CLASS(BaseClass, name)
+#define PERCEPTION_REGISTER_TEST(name) PERCEPTION_REGISTER_CLASS(BaseClass, name)
 
 PERCEPTION_REGISTER_TEST(DerivedClass1);
 
 TEST(RegistererTest, Test)
 {
-    BaseClass* ptr = nullptr;
+    BaseClass *ptr = nullptr;
     ptr = BaseClassRegisterer::GetInstanceByName("DerivedClass1");
     ASSERT_TRUE(ptr != nullptr);
     EXPECT_EQ(ptr->Name(), "DerivedClass1");
@@ -53,7 +58,7 @@ TEST(RegistererTest, Test)
     EXPECT_FALSE(BaseClassRegisterer::IsValid("NotExists"));
     EXPECT_EQ(BaseClassRegisterer::GetUniqInstanceName(), "DerivedClass1");
 
-    BaseClass* ptr1 = BaseClassRegisterer::GetUniqInstance();
+    BaseClass *ptr1 = BaseClassRegisterer::GetUniqInstance();
     EXPECT_NE(ptr1, nullptr);
 
     std::vector<std::string> derived_classes;
@@ -67,4 +72,4 @@ TEST(RegistererTest, Test)
     // TODO(all) enable this check
     // EXPECT_EQ(any.content_, nullptr);
 }
-}  // namespace
+} // namespace

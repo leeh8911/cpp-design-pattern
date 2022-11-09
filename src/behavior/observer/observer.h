@@ -38,7 +38,8 @@ class Obstacle
 using ObstaclePtr = std::shared_ptr<Obstacle>;
 using ObstacleMap = std::unordered_map<std::size_t, ObstaclePtr>;
 
-/// @brief ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber 클래스입니다.
+/// @brief ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber
+/// 클래스입니다.
 class Subscriber
 {
   public:
@@ -73,7 +74,8 @@ class ObstacleIdChecker : public Subscriber
 };
 
 /// @brief Obstacle을 저장하는 리포지토리 클래스입니다.
-/// 해당 저장소를 관측하고자 하는 객체가 있다면 AddSubscriber를 통해 연결해줄 수 있습니다.
+/// 해당 저장소를 관측하고자 하는 객체가 있다면 AddSubscriber를 통해 연결해줄 수
+/// 있습니다.
 ///
 class ObstacleRepository
 {

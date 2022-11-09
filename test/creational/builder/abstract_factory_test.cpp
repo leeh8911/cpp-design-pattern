@@ -21,12 +21,12 @@ using creational::abstract_factory::FactoryB;
 
 TEST(AbstractFactoryTest, Sample)
 {
-    AbstractFactory* factory_a = new FactoryA();
-    AbstractFactory* factory_b = new FactoryB();
+    AbstractFactory *factory_a = new FactoryA();
+    AbstractFactory *factory_b = new FactoryB();
 
     auto product_a = factory_a->CreateProduct();
     auto product_b = factory_b->CreateProduct();
 
     EXPECT_EQ(1, 1);
 }
-}  // namespace design_pattern::test
+} // namespace design_pattern::test
