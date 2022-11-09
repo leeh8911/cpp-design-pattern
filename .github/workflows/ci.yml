@@ -17,12 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: docker://leeh8911/cpp-design-pattern:latest
-      volumes: 
-        - /__w/cpp-design-pattern/cpp-design-pattern:~/repository
 
     steps:
     - uses: actions/checkout@v3
 
-      
     - name: build, test, and reporting
       run: make test-all-report

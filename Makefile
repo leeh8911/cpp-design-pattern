@@ -15,6 +15,7 @@ docker-run:
 .PHONY: format
 format:
 	find src -iname *.h -o -iname *.cpp | xargs clang-format -i
+	find test -iname *.h -o -iname *.cpp | xargs clang-format -i
 
 .PHONY: build
 build:

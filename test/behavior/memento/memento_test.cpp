@@ -23,9 +23,7 @@ TEST(MementoTest, MementoCreate)
 {
     auto timestamp = std::chrono::system_clock::now();
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp);
-    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
-                  timestamp.time_since_epoch()) %
-              1000;
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(timestamp.time_since_epoch()) % 1000;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;
@@ -111,4 +109,4 @@ TEST(MementoTest, CaretakerUndo)
     EXPECT_EQ(timestamp1, timestamp1_2);
 }
 
-}  // namespace
+} // namespace

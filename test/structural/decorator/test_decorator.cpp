@@ -30,4 +30,4 @@ TEST(DecoratorTest, Sample)
 
     std::cout << colored_circle.Name() << std::endl;
 }
-}  // namespace
+} // namespace

@@ -21,14 +21,18 @@
 
 namespace design_pattern::test
 {
-using namespace design_pattern::etc::mvc::app;  // NOLINT
+using namespace design_pattern::etc::mvc::app; // NOLINT
 
 class ObjectTrackingTest : public testing::Test
 {
- public:
+  public:
     ObjectTracking object_tracking_;
-    void SetUp() override {}
-    void TearDown() override {}
+    void SetUp() override
+    {
+    }
+    void TearDown() override
+    {
+    }
 };
 
 TEST_F(ObjectTrackingTest, Input)
@@ -118,4 +122,4 @@ TEST_F(ObjectTrackingTest, ObjectTracking)
     EXPECT_EQ(output[2], target_vector[2]);
 }
 
-}  // namespace design_pattern::test
+} // namespace design_pattern::test
