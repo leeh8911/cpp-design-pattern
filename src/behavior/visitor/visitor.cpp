@@ -12,5 +12,35 @@
 
 namespace design_pattern::behavior::visitor
 {
+std::size_t ConcreteVisitor::Count() const
+{
+    return count_;
+}
+
+void ConcreteVisitor::VisitA(const ConcreteElementA &A)
+{
+}
+
+void ConcreteVisitor::VisitB(const ConcreteElementB &B)
+{
+}
+
+void ConcreteElementA::Accept(std::unique_ptr<Visitor> visitor)
+{
+}
+
+bool ConcreteElementA::IsVisited()
+{
+    return visited_;
+}
+
+void ConcreteElementB::Accept(std::unique_ptr<Visitor> visitor)
+{
+}
+
+bool ConcreteElementB::IsVisited()
+{
+    return visited_;
+}
 
 } // namespace design_pattern::behavior::visitor

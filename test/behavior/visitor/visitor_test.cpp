@@ -30,13 +30,13 @@ TEST(VisitorTest, Sample)
     v.emplace_back(std::make_unique<ConcreteElementA>());
     v.emplace_back(std::make_unique<ConcreteElementB>());
 
-    EXPECT_TRUE(visitor.Count(), 0);
-    for (auto *&elm : v)
+    EXPECT_EQ(visitor.Count(), 0);
+    for (auto &elm : v)
     {
-        elm.Accept(visitor);
+        elm->Accept(std::make_shared<ConcreteVisitor>(visitor));
 
-        EXPECT_TRUE(elm.IsVisited());
+        EXPECT_TRUE(elm->IsVisited());
     }
-    EXPECT_TRUE(visitor.count(), v.size());
+    EXPECT_EQ(visitor.Count(), v.size());
 }
 } // namespace
