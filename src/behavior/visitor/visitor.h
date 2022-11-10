@@ -1,0 +1,46 @@
+/// @file visitor.h
+/// @author sangwon (leeh8911@gmail.com)
+/// @brief
+/// @version 0.1
+/// @date 2022-11-10
+///
+/// @copyright Copyright (c) 2022
+///
+//
+#ifndef SRC_BEHAVIOR_VISITOR_VISITOR_H_
+#define SRC_BEHAVIOR_VISITOR_VISITOR_H_
+
+#include <utility>
+
+namespace design_pattern::behavior::visitor
+{
+
+class Visitor
+{
+  public:
+    virtual ~Visitor();
+    virtual std::size_t Count() const;
+
+  private:
+    std::size_t count_{};
+};
+
+class ConcreteVisitor : public Visitor
+{
+};
+
+class Element
+{
+  public:
+    virtual ~Element();
+};
+
+class ConcreteElementA : public Element
+{
+};
+class ConcreteElementB : public Element
+{
+};
+
+} // namespace design_pattern::behavior::visitor
+#endif // SRC_BEHAVIOR_VISITOR_VISITOR_H_
