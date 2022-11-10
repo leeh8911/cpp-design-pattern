@@ -32,6 +32,19 @@ void PointObstacleRepository::Create(const data::PointObstacleData &obstacle_dat
     repo_[obstacle_data.id_] = std::move(ptr);
 }
 
+PointObstaclePtr PointObstacleRepository::Read(std::size_t id)
+{
+    return repo_[id];
+}
+
+void PointObstacleRepository::Update(const data::PointObstacleData &obstacle_data)
+{
+}
+
+void PointObstacleRepository::Delete(std::size_t id)
+{
+}
+
 bool PointObstacle::operator==(const data::PointObstacleData &point_obstacle_data) const
 {
     bool same_id = point_obstacle_data.id_ == data_.id_;
@@ -41,6 +54,18 @@ bool PointObstacle::operator==(const data::PointObstacleData &point_obstacle_dat
     bool same_vel = point_obstacle_data.vel_ == data_.vel_;
 
     return (same_id && same_classification && same_moving_status && same_pos && same_vel);
+}
+
+bool operator==(const data::PointObstacleData &point_obstacle_data, const PointObstacle &point_obstacle)
+{
+    std::cout << "Firend ==" << std::endl;
+    return point_obstacle == point_obstacle_data;
+}
+
+std::ostream &operator<<(std::ostream &os, const PointObstacle &point_obstacle)
+{
+    os << point_obstacle.data_;
+    return os;
 }
 
 } // namespace design_pattern::etc::obstacle::entity

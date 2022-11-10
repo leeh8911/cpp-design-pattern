@@ -36,18 +36,20 @@ TEST(PointObstacleTest, Should_Normal_When_CreateReadUpdateDelete)
     repository.Create(point_obstacle_data);
     EXPECT_EQ(repository.Size(), 1);
 
-    // auto point_obstacle = repository.Read(0);
-    // EXPECT_EQ(point_obstacle_data, *(point_obstacle.get()));
+    auto *point_obstacle = repository.Read(1).get();
+    std::cout << point_obstacle_data << "\n";
+    std::cout << (*point_obstacle) << "\n";
+    EXPECT_EQ(point_obstacle_data, (*point_obstacle));
 
-    // data::PointObstacleData other_data{.id_ = 1, .pos_ = {1.0, 1.0}};
-    // repository.Update(other_data);
-    // EXPECT_EQ(repository.Size(), 1);
+    data::PointObstacleData other_data{.id_ = 1, .pos_ = {1.0, 1.0}};
+    repository.Update(other_data);
+    EXPECT_EQ(repository.Size(), 1);
 
-    // auto other_obstacle = repository.Read(0);
-    // EXPECT_EQ(other_data, *(other_obstacle.get()));
+    auto other_obstacle = repository.Read(0);
+    EXPECT_EQ(other_data, *(other_obstacle.get()));
 
-    // repository.Delete(0);
-    // EXPECT_EQ(repository.Size(), 0);
+    repository.Delete(0);
+    EXPECT_EQ(repository.Size(), 0);
 }
 
 } // namespace

@@ -34,21 +34,29 @@ class PointObstacle
     PointObstacle() = delete;
     PointObstacle(const PointObstacle &) = delete;
     PointObstacle(const PointObstacle &&) = delete;
+    // TODO: To be privated.
     PointObstacle(const data::PointObstacleData &point_obstacle_data);
 
     bool operator==(const data::PointObstacleData &point_obstacle_data) const;
 
     friend PointObstacleRepository;
+    friend std::ostream &operator<<(std::ostream &os, const PointObstacle &point_obstacle);
 
   private:
     data::PointObstacleData data_;
 };
+
+bool operator==(const data::PointObstacleData &point_obstacle_data, const PointObstacle &point_obstacle);
+std::ostream &operator<<(std::ostream &os, const PointObstacle &point_obstacle);
 
 class PointObstacleRepository
 {
   public:
     std::size_t Size() const;
     void Create(const data::PointObstacleData &obstacle_data);
+    PointObstaclePtr Read(std::size_t id);
+    void Update(const data::PointObstacleData &obstacle_data);
+    void Delete(std::size_t id);
 
   private:
     std::map<std::size_t, PointObstaclePtr> repo_;

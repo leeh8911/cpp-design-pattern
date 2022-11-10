@@ -19,7 +19,8 @@ bool operator==(const Vector2D &lhs, const Vector2D &rhs)
 
 std::ostream &operator<<(std::ostream &os, const PointObstacleData &obstacle_data)
 {
-    os << "Id(" << obstacle_data.id_ << ")";
+    os << "Id(" << obstacle_data.id_ << ")\n";
+    os << "Pos: <" << obstacle_data.pos_[0] << ", " << obstacle_data.pos_[1] << ">\n";
     return os;
 }
 } // namespace design_pattern::etc::obstacle::data
