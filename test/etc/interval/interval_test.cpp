@@ -15,6 +15,7 @@ namespace
 {
 using namespace design_pattern::etc::interval; // NOLINT
 
+// TODO(leeh8911@gmail.com): Interval class can reverse parameter (but its same to origin interval class)
 // TODO(leeh8911@gmail.com): Interval class has from and to value
 // TODO(leeh8911@gmail.com): Interval class check included value
 // TODO(leeh8911@gmail.com): Interval class check overlap other interval
