@@ -16,9 +16,7 @@ namespace
 using namespace design_pattern::etc::interval; // NOLINT
 
 // TODO(leeh8911@gmail.com): Interval's reversable is not useful (I think from_ always smaller than to_)
-// TODO(leeh8911@gmail.com): Interval class calculate intersection other interval
 // TODO(leeh8911@gmail.com): Interval class calculate set difference other interval
-// TODO(leeh8911@gmail.com): Interval class equallity
 //
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
 
