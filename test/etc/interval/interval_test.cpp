@@ -18,7 +18,12 @@ namespace
 // TODO(leeh8911@gmail.com): Interval class check overlap other interval
 // TODO(leeh8911@gmail.com): Interval class calculate intersection other interval
 // TODO(leeh8911@gmail.com): Interval class calculate set difference other interval
-TEST(IntervalTest, CreateInterval)
+//
+// TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
+
+TEST(IntervalTest, ConstructInterval)
 {
+    Interval interval(1.0, 3.0);
+    EXPECT_EQ(interval.IsInclude(2.0));
 }
 } // namespace
