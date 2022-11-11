@@ -10,16 +10,24 @@
 
 #ifndef SRC_ETC_INTERVAL_INTERVAL_H_
 #define SRC_ETC_INTERVAL_INTERVAL_H_
+
+#include <array>
+
 namespace design_pattern::etc::interval
 {
 class Interval
 {
   public:
     Interval(double from, double to);
+    Interval(const std::array<double, 2> &arr);
     Interval &Reverse();
 
     bool IsIncluded(double value) const;
     bool IsOverlap(const Interval &other) const;
+    bool operator==(const Interval &other) const;
+    bool operator!=(const Interval &other) const;
+
+    const Interval &Intersect(const Interval &other) const;
 
   private:
     double from_{};

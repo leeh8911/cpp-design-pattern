@@ -76,6 +76,7 @@ TEST(IntervalTest, CalculateIntersection)
     Interval a{1.0, 3.0};
     Interval b{2.0, 4.0};
 
-    EXPECT_EQ(a.Intersect(b), Interval{2.0, 3.0});
+    EXPECT_EQ(a.Intersect(b), (Interval{2.0, 3.0}));
+    EXPECT_NE(a.Intersect(b), (Interval{1.0, 4.0}));
 }
 } // namespace

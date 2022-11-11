@@ -18,6 +18,10 @@ Interval::Interval(double from, double to) : from_{from}, to_{to}, min_{std::min
 {
 }
 
+Interval::Interval(const std::array<double, 2> &arr) : Interval{arr[0], arr[1]}
+{
+}
+
 Interval &Interval::Reverse()
 {
     double temp = from_;
@@ -35,6 +39,21 @@ bool Interval::IsIncluded(double value) const
 bool Interval::IsOverlap(const Interval &other) const
 {
     return IsIncluded(other.from_) || IsIncluded(other.to_);
+}
+
+bool Interval::operator==(const Interval &other) const
+{
+    return true;
+}
+
+bool Interval::operator!=(const Interval &other) const
+{
+    return !operator==(other);
+}
+
+const Interval &Interval::Intersect(const Interval &other) const
+{
+    return *this;
 }
 
 } // namespace design_pattern::etc::interval
