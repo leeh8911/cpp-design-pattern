@@ -20,6 +20,8 @@ using namespace design_pattern::etc::interval; // NOLINT
 //
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
 
+// I don't know why?
+// cppcheck-suppress syntaxError
 TEST(IntervalTest, CheckIncludingValue)
 {
     Interval interval(1.0, 3.0);
@@ -63,14 +65,26 @@ TEST(IntervalTest, CalculateIntersection)
     Interval non_overlap_case_1{4.0, 5.0};
     Interval non_overlap_case_2{0.0, 0.5};
 
-    EXPECT_EQ(origin.Intersect(overlap_case_1), (Interval{2.0, 3.0}));
-    EXPECT_NE(origin.Intersect(overlap_case_1), (Interval{1.0, 4.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_2), (Interval{1.0, 2.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_3), (Interval{1.0, 1.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
+    auto result1 = origin.Intersect(overlap_case_1);
+    EXPECT_EQ(result1, (Interval{2.0, 3.0}));
+    EXPECT_NE(result1, (Interval{1.0, 4.0}));
 
-    EXPECT_EQ(origin.Intersect(non_overlap_case_1), (Interval{0.0, 0.0}));
-    EXPECT_EQ(origin.Intersect(non_overlap_case_2), (Interval{0.0, 0.0}));
+    auto result2 = origin.Intersect(overlap_case_2);
+    EXPECT_EQ(result2, (Interval{1.0, 2.0}));
+
+    auto result3 = origin.Intersect(overlap_case_3);
+    EXPECT_EQ(result3, (Interval{1.0, 1.0}));
+
+    auto result4 = origin.Intersect(overlap_case_4);
+    EXPECT_EQ(result4, (Interval{3.0, 3.0}));
+
+    auto result5 = origin.Intersect(overlap_case_5);
+    EXPECT_EQ(result5, (Interval{1.1, 2.9}));
+
+    auto result6 = origin.Intersect(non_overlap_case_1);
+    EXPECT_EQ(result6, (Interval{0.0, 0.0}));
+
+    auto result7 = origin.Intersect(non_overlap_case_2);
+    EXPECT_EQ(result7, (Interval{0.0, 0.0}));
 }
 } // namespace

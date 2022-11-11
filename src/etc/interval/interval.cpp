@@ -23,14 +23,17 @@ Interval::Interval(const std::array<double, 2> &arr) : Interval{arr[0], arr[1]}
 {
 }
 
-Interval::Interval(const Interval &other) : Interval{other.from_, other.to_}
+Interval::Interval(const Interval &&other) : Interval{other.from_, other.to_}
 {
 }
 
-Interval &Interval::operator=(const Interval &other)
+Interval &Interval::operator=(const Interval &&other)
 {
-    Interval temp(other);
-    std::swap(*this, temp);
+    if (this != &other)
+    {
+        Interval temp(std::move(other));
+        std::swap(*this, temp);
+    }
     return *this;
 }
 
@@ -39,9 +42,19 @@ bool Interval::IsIncluded(double value) const
     return ((from_ <= value) && (value <= to_));
 }
 
+bool Interval::IsOverlap(const InterfaceInterval &other) const
+{
+    return other.IsOverlap(*this);
+}
+
 bool Interval::IsOverlap(const Interval &other) const
 {
     return IsIncluded(other.from_) || IsIncluded(other.to_);
+}
+
+bool Interval::operator==(const InterfaceInterval &other) const
+{
+    return other.operator==(*this);
 }
 
 bool Interval::operator==(const Interval &other) const
@@ -49,23 +62,32 @@ bool Interval::operator==(const Interval &other) const
     return ((from_ == other.from_) && (to_ == other.to_));
 }
 
+bool Interval::operator!=(const InterfaceInterval &other) const
+{
+    return other.operator!=(*this);
+}
+
 bool Interval::operator!=(const Interval &other) const
 {
     return !operator==(other);
 }
 
-Interval Interval::Intersect(const Interval &other) const
+const InterfaceInterval &&Interval::Intersect(const InterfaceInterval &other) const
+{
+    return other.Intersect(*this);
+}
+
+const Interval &&Interval::Intersect(const Interval &other) const
 {
     double from{}, to{};
     if (!IsOverlap(other))
     {
-        return Interval{0.0, 0.0};
+        return std::move(Interval(0.0, 0.0));
     }
 
     from = std::max(from_, other.from_);
     to = std::min(to_, other.to_);
-    Interval intersect{from, to};
-    return intersect;
+    return std::move(Interval(from, to));
 }
 
 std::ostream &operator<<(std::ostream &os, const Interval &interval)

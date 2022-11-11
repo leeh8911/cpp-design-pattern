@@ -13,32 +13,54 @@
 
 #include <array>
 #include <iostream>
+#include <memory>
 
 namespace design_pattern::etc::interval
 {
-class Interval
+// forward declaration
+struct InterfaceInterval;
+using InterfaceIntervalPtr = std::unique_ptr<InterfaceInterval>;
+class Interval;
+using IntervalPtr = std::unique_ptr<Interval>;
+
+struct InterfaceInterval
+{
+    virtual ~InterfaceInterval() = default;
+
+    virtual bool IsIncluded(double) const = 0;
+    virtual bool IsOverlap(const InterfaceInterval &other) const = 0;
+    virtual bool operator==(const InterfaceInterval &other) const = 0;
+    virtual bool operator!=(const InterfaceInterval &other) const = 0;
+    virtual const InterfaceInterval &&Intersect(const InterfaceInterval &other) const = 0;
+};
+
+class Interval : public InterfaceInterval
 {
   public:
     Interval(double from, double to);
-    Interval(const std::array<double, 2> &arr);
-    Interval(const Interval &other);
-    Interval &operator=(const Interval &other);
-    Interval &Reverse();
+    explicit Interval(const std::array<double, 2> &arr);
+    Interval(const Interval &other) = delete;
+    Interval(const Interval &&other);
+    Interval &operator=(const Interval &other) = delete;
+    Interval &operator=(const Interval &&other);
 
-    bool IsIncluded(double value) const;
+    bool IsIncluded(double value) const override;
+    bool IsOverlap(const InterfaceInterval &other) const override;
+    bool operator==(const InterfaceInterval &other) const override;
+    bool operator!=(const InterfaceInterval &other) const override;
+    const InterfaceInterval &&Intersect(const InterfaceInterval &other) const override;
+
     bool IsOverlap(const Interval &other) const;
     bool operator==(const Interval &other) const;
     bool operator!=(const Interval &other) const;
 
-    Interval Intersect(const Interval &other) const;
+    const Interval &&Intersect(const Interval &other) const;
 
     friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
 
   private:
     double from_{};
     double to_{};
-    double min_{};
-    double max_{};
 };
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_
