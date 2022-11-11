@@ -17,7 +17,8 @@ class Interval
   public:
     Interval(double from, double to);
 
-    bool IsIncluded(double value);
+    bool IsIncluded(double value) const;
+    bool IsOverlap(const Interval &other) const;
 
   private:
     double from_{};
