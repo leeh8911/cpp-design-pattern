@@ -81,7 +81,7 @@ TEST(IntervalTest, CalculateIntersection)
     Interval overlap_case_4{3.0, 4.0};
     Interval overlap_case_5{1.1, 2.9};
     Interval non_overlap_case_1{4.0, 5.0};
-    Interval non_overlap_case_2{0.0, 1.0};
+    Interval non_overlap_case_2{0.0, 0.5};
 
     EXPECT_EQ(origin.Intersect(overlap_case_1), (Interval{2.0, 3.0}));
     EXPECT_NE(origin.Intersect(overlap_case_1), (Interval{1.0, 4.0}));
