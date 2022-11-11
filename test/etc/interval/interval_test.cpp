@@ -7,11 +7,13 @@
 /// @copyright Copyright (c) 2022
 ///
 //
+#include "src/etc/interval/interval.h"
 
 #include <gtest/gtest.h>
 
 namespace
 {
+using namespace design_pattern::etc::interval; // NOLINT
 
 // TODO(leeh8911@gmail.com): Interval class has from and to value
 // TODO(leeh8911@gmail.com): Interval class check included value
@@ -24,6 +26,6 @@ namespace
 TEST(IntervalTest, ConstructInterval)
 {
     Interval interval(1.0, 3.0);
-    EXPECT_EQ(interval.IsInclude(2.0));
+    EXPECT_TRUE(interval.IsIncluded(2.0));
 }
 } // namespace
