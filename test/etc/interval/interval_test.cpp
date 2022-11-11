@@ -15,9 +15,9 @@ namespace
 {
 using namespace design_pattern::etc::interval; // NOLINT
 
-// TODO(leeh8911@gmail.com): Interval class can reverse parameter (but its same to origin interval class)
 // TODO(leeh8911@gmail.com): Interval class calculate intersection other interval
 // TODO(leeh8911@gmail.com): Interval class calculate set difference other interval
+// TODO(leeh8911@gmail.com): Interval class equallity
 //
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
 
@@ -44,7 +44,7 @@ TEST(IntervalTest, CheckIncludingValue)
     EXPECT_FALSE(interval.IsIncluded(4.0));
 }
 
-TEST(IntervalTest, OverrlapInterval)
+TEST(IntervalTest, OverlapInterval)
 {
     Interval interval_10to12(10.0, 12.0);
 
@@ -69,5 +69,13 @@ TEST(IntervalTest, OverrlapInterval)
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_11to14.Reverse()));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_12to14.Reverse()));
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14.Reverse()));
+}
+
+TEST(IntervalTest, CalculateIntersection)
+{
+    Interval a{1.0, 3.0};
+    Interval b{2.0, 4.0};
+
+    EXPECT_EQ(a.Intersect(b), Interval{2.0, 3.0});
 }
 } // namespace
