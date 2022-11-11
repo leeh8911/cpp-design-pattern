@@ -74,13 +74,23 @@ TEST(IntervalTest, OverlapInterval)
 
 TEST(IntervalTest, CalculateIntersection)
 {
-    Interval a{1.0, 3.0};
-    Interval b{2.0, 4.0};
-    Interval c{4.0, 5.0};
+    Interval origin{1.0, 3.0};
+    Interval overlap_case_1{2.0, 4.0};
+    Interval overlap_case_2{0.0, 2.0};
+    Interval overlap_case_3{0.0, 1.0};
+    Interval overlap_case_4{3.0, 4.0};
+    Interval overlap_case_5{1.1, 2.9};
+    Interval non_overlap_case_1{4.0, 5.0};
+    Interval non_overlap_case_2{0.0, 1.0};
 
-    EXPECT_EQ(a.Intersect(b), (Interval{2.0, 3.0}));
-    EXPECT_NE(a.Intersect(b), (Interval{1.0, 4.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_1), (Interval{2.0, 3.0}));
+    EXPECT_NE(origin.Intersect(overlap_case_1), (Interval{1.0, 4.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_2), (Interval{1.0, 2.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_3), (Interval{1.0, 1.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
 
-    EXPECT_EQ(a.Intersect(c), (Interval{0.0, 0.0}));
+    EXPECT_EQ(origin.Intersect(non_overlap_case_1), (Interval{0.0, 0.0}));
+    EXPECT_EQ(origin.Intersect(non_overlap_case_2), (Interval{0.0, 0.0}));
 }
 } // namespace
