@@ -12,6 +12,7 @@
 #define SRC_ETC_INTERVAL_INTERVAL_H_
 
 #include <array>
+#include <iostream>
 
 namespace design_pattern::etc::interval
 {
@@ -20,6 +21,8 @@ class Interval
   public:
     Interval(double from, double to);
     Interval(const std::array<double, 2> &arr);
+    Interval(const Interval &other);
+    Interval &operator=(const Interval &other);
     Interval &Reverse();
 
     bool IsIncluded(double value) const;
@@ -27,7 +30,9 @@ class Interval
     bool operator==(const Interval &other) const;
     bool operator!=(const Interval &other) const;
 
-    const Interval &Intersect(const Interval &other) const;
+    Interval Intersect(const Interval &other) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
 
   private:
     double from_{};

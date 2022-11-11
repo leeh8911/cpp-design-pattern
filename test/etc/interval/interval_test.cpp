@@ -15,6 +15,7 @@ namespace
 {
 using namespace design_pattern::etc::interval; // NOLINT
 
+// TODO(leeh8911@gmail.com): Interval's reversable is not useful (I think from_ always smaller than to_)
 // TODO(leeh8911@gmail.com): Interval class calculate intersection other interval
 // TODO(leeh8911@gmail.com): Interval class calculate set difference other interval
 // TODO(leeh8911@gmail.com): Interval class equallity
@@ -75,8 +76,11 @@ TEST(IntervalTest, CalculateIntersection)
 {
     Interval a{1.0, 3.0};
     Interval b{2.0, 4.0};
+    Interval c{4.0, 5.0};
 
     EXPECT_EQ(a.Intersect(b), (Interval{2.0, 3.0}));
     EXPECT_NE(a.Intersect(b), (Interval{1.0, 4.0}));
+
+    EXPECT_EQ(a.Intersect(c), (Interval{0.0, 0.0}));
 }
 } // namespace
