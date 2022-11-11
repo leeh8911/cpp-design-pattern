@@ -14,6 +14,7 @@
 #include <array>
 #include <iostream>
 #include <memory>
+#include <vector>
 
 namespace design_pattern::etc::interval
 {
@@ -26,6 +27,11 @@ using IntervalPtr = std::unique_ptr<Interval>;
 struct InterfaceInterval
 {
     virtual ~InterfaceInterval() = default;
+    InterfaceInterval() = default;
+    InterfaceInterval(const InterfaceInterval &other) = delete;
+    InterfaceInterval(const InterfaceInterval &&other);
+    InterfaceInterval &operator=(const InterfaceInterval &other) = delete;
+    InterfaceInterval &operator=(const InterfaceInterval &&other);
 
     virtual bool IsIncluded(double) const = 0;
     virtual bool IsOverlap(const InterfaceInterval &other) const = 0;
@@ -61,6 +67,27 @@ class Interval : public InterfaceInterval
   private:
     double from_{};
     double to_{};
+};
+
+class CompositeInterval : public InterfaceInterval
+{
+  public:
+    CompositeInterval(const CompositeInterval &other) = delete;
+    CompositeInterval(CompositeInterval &&other);
+    CompositeInterval &operator=(const CompositeInterval &other) = delete;
+    CompositeInterval &operator=(CompositeInterval &&other);
+
+    bool IsIncluded(double) const override;
+    bool IsOverlap(const InterfaceInterval &other) const override;
+    bool operator==(const InterfaceInterval &other) const override;
+    bool operator!=(const InterfaceInterval &other) const override;
+    const InterfaceInterval &&Intersect(const InterfaceInterval &other) const override;
+
+    void AddInterval(const InterfaceInterval &other);
+    void RemoveInterval(const InterfaceInterval &other);
+
+  private:
+    std::vector<InterfaceIntervalPtr> composite_;
 };
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_

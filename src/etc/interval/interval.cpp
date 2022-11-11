@@ -15,7 +15,16 @@
 
 namespace design_pattern::etc::interval
 {
-Interval::Interval(double from, double to) : from_{std::min(from, to)}, to_{std::max(from, to)}
+InterfaceInterval::InterfaceInterval(const InterfaceInterval &&other)
+{
+}
+
+InterfaceInterval &InterfaceInterval::operator=(const InterfaceInterval &&other)
+{
+    return *this;
+}
+
+Interval::Interval(double from, double to) : InterfaceInterval{}, from_{std::min(from, to)}, to_{std::max(from, to)}
 {
 }
 
@@ -88,6 +97,54 @@ const Interval &&Interval::Intersect(const Interval &other) const
     from = std::max(from_, other.from_);
     to = std::min(to_, other.to_);
     return std::move(Interval(from, to));
+}
+
+bool CompositeInterval::IsIncluded(double) const
+{
+    return false;
+}
+
+bool CompositeInterval::IsOverlap(const InterfaceInterval &other) const
+{
+    return false;
+}
+
+bool CompositeInterval::operator==(const InterfaceInterval &other) const
+{
+    return false;
+}
+
+bool CompositeInterval::operator!=(const InterfaceInterval &other) const
+{
+    return false;
+}
+
+const InterfaceInterval &&CompositeInterval::Intersect(const InterfaceInterval &other) const
+{
+    return std::move(*this);
+}
+
+CompositeInterval::CompositeInterval(CompositeInterval &&other)
+    : InterfaceInterval{}, composite_{std::move(other.composite_)}
+{
+}
+
+CompositeInterval &CompositeInterval::operator=(CompositeInterval &&other)
+{
+    if (this != &other)
+    {
+        auto temp(std::move(other));
+        std::swap(*this, temp);
+    }
+    return *this;
+}
+
+void CompositeInterval::AddInterval(const InterfaceInterval &other)
+{
+}
+
+void CompositeInterval::RemoveInterval(const InterfaceInterval &other)
+{
 }
 
 std::ostream &operator<<(std::ostream &os, const Interval &interval)
