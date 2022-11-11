@@ -23,7 +23,7 @@ using namespace design_pattern::etc::interval; // NOLINT
 //
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
 
-TEST(IntervalTest, ConstructInterval)
+TEST(IntervalTest, CheckIncludingValue)
 {
     Interval interval(1.0, 3.0);
 
