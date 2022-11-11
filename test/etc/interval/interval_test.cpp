@@ -26,6 +26,13 @@ using namespace design_pattern::etc::interval; // NOLINT
 TEST(IntervalTest, ConstructInterval)
 {
     Interval interval(1.0, 3.0);
+
+    EXPECT_FALSE(interval.IsIncluded(0.0));
+
+    EXPECT_TRUE(interval.IsIncluded(1.0));
     EXPECT_TRUE(interval.IsIncluded(2.0));
+    EXPECT_TRUE(interval.IsIncluded(3.0));
+
+    EXPECT_FALSE(interval.IsIncluded(4.0));
 }
 } // namespace

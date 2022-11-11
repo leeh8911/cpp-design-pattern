@@ -12,13 +12,13 @@
 
 namespace design_pattern::etc::interval
 {
-Interval::Interval(double from, double to)
+Interval::Interval(double from, double to) : from_(from), to_(to)
 {
 }
 
 bool Interval::IsIncluded(double value)
 {
-    return false;
+    return ((from_ <= value) && (value <= to_));
 }
 
 } // namespace design_pattern::etc::interval
