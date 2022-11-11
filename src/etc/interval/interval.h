@@ -16,6 +16,7 @@ class Interval
 {
   public:
     Interval(double from, double to);
+    Interval &Reverse();
 
     bool IsIncluded(double value) const;
     bool IsOverlap(const Interval &other) const;
@@ -23,6 +24,8 @@ class Interval
   private:
     double from_{};
     double to_{};
+    double min_{};
+    double max_{};
 };
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_

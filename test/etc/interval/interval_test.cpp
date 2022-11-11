@@ -33,15 +33,15 @@ TEST(IntervalTest, CheckIncludingValue)
 
     EXPECT_FALSE(interval.IsIncluded(4.0));
 
-    Interval reverse_inteval(3.0, 1.0);
+    interval.Reverse();
 
-    EXPECT_FALSE(reverse_inteval.IsIncluded(0.0));
+    EXPECT_FALSE(interval.IsIncluded(0.0));
 
-    EXPECT_TRUE(reverse_inteval.IsIncluded(1.0));
-    EXPECT_TRUE(reverse_inteval.IsIncluded(2.0));
-    EXPECT_TRUE(reverse_inteval.IsIncluded(3.0));
+    EXPECT_TRUE(interval.IsIncluded(1.0));
+    EXPECT_TRUE(interval.IsIncluded(2.0));
+    EXPECT_TRUE(interval.IsIncluded(3.0));
 
-    EXPECT_FALSE(reverse_inteval.IsIncluded(4.0));
+    EXPECT_FALSE(interval.IsIncluded(4.0));
 }
 
 TEST(IntervalTest, OverrlapInterval)
@@ -61,5 +61,13 @@ TEST(IntervalTest, OverrlapInterval)
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_11to14));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_12to14));
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14));
+
+    interval_10to12.Reverse();
+    EXPECT_FALSE(interval_10to12.IsOverlap(interval_8to9.Reverse()));
+    EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to10.Reverse()));
+    EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to11.Reverse()));
+    EXPECT_TRUE(interval_10to12.IsOverlap(interval_11to14.Reverse()));
+    EXPECT_TRUE(interval_10to12.IsOverlap(interval_12to14.Reverse()));
+    EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14.Reverse()));
 }
 } // namespace
