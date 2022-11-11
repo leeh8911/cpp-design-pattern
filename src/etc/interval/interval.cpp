@@ -10,6 +10,8 @@
 
 #include "src/etc/interval/interval.h"
 
+#include "algorithm"
+
 namespace design_pattern::etc::interval
 {
 Interval::Interval(double from, double to) : from_(from), to_(to)
@@ -18,7 +20,9 @@ Interval::Interval(double from, double to) : from_(from), to_(to)
 
 bool Interval::IsIncluded(double value)
 {
-    return ((from_ <= value) && (value <= to_));
+    double min_ = std::min(from_, to_);
+    double max_ = std::max(from_, to_);
+    return ((min_ <= value) && (value <= max_));
 }
 
 } // namespace design_pattern::etc::interval

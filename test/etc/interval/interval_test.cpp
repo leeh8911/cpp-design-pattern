@@ -34,5 +34,15 @@ TEST(IntervalTest, ConstructInterval)
     EXPECT_TRUE(interval.IsIncluded(3.0));
 
     EXPECT_FALSE(interval.IsIncluded(4.0));
+
+    Interval reverse_inteval(3.0, 1.0);
+
+    EXPECT_FALSE(reverse_inteval.IsIncluded(0.0));
+
+    EXPECT_TRUE(reverse_inteval.IsIncluded(1.0));
+    EXPECT_TRUE(reverse_inteval.IsIncluded(2.0));
+    EXPECT_TRUE(reverse_inteval.IsIncluded(3.0));
+
+    EXPECT_FALSE(reverse_inteval.IsIncluded(4.0));
 }
 } // namespace
