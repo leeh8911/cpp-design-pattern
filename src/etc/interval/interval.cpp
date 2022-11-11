@@ -15,7 +15,7 @@
 
 namespace design_pattern::etc::interval
 {
-Interval::Interval(double from, double to) : from_{from}, to_{to}, min_{std::min(from, to)}, max_{std::max(from, to)}
+Interval::Interval(double from, double to) : from_{std::min(from, to)}, to_{std::max(from, to)}
 {
 }
 
@@ -34,18 +34,9 @@ Interval &Interval::operator=(const Interval &other)
     return *this;
 }
 
-Interval &Interval::Reverse()
-{
-    double temp = from_;
-    from_ = to_;
-    to_ = temp;
-
-    return *this;
-}
-
 bool Interval::IsIncluded(double value) const
 {
-    return ((min_ <= value) && (value <= max_));
+    return ((from_ <= value) && (value <= to_));
 }
 
 bool Interval::IsOverlap(const Interval &other) const
@@ -55,7 +46,7 @@ bool Interval::IsOverlap(const Interval &other) const
 
 bool Interval::operator==(const Interval &other) const
 {
-    return ((min_ == other.min_) && (max_ == other.max_));
+    return ((from_ == other.from_) && (to_ == other.to_));
 }
 
 bool Interval::operator!=(const Interval &other) const

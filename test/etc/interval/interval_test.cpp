@@ -31,16 +31,6 @@ TEST(IntervalTest, CheckIncludingValue)
     EXPECT_TRUE(interval.IsIncluded(3.0));
 
     EXPECT_FALSE(interval.IsIncluded(4.0));
-
-    interval.Reverse();
-
-    EXPECT_FALSE(interval.IsIncluded(0.0));
-
-    EXPECT_TRUE(interval.IsIncluded(1.0));
-    EXPECT_TRUE(interval.IsIncluded(2.0));
-    EXPECT_TRUE(interval.IsIncluded(3.0));
-
-    EXPECT_FALSE(interval.IsIncluded(4.0));
 }
 
 TEST(IntervalTest, OverlapInterval)
@@ -60,14 +50,6 @@ TEST(IntervalTest, OverlapInterval)
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_11to14));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_12to14));
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14));
-
-    interval_10to12.Reverse();
-    EXPECT_FALSE(interval_10to12.IsOverlap(interval_8to9.Reverse()));
-    EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to10.Reverse()));
-    EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to11.Reverse()));
-    EXPECT_TRUE(interval_10to12.IsOverlap(interval_11to14.Reverse()));
-    EXPECT_TRUE(interval_10to12.IsOverlap(interval_12to14.Reverse()));
-    EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14.Reverse()));
 }
 
 TEST(IntervalTest, CalculateIntersection)
