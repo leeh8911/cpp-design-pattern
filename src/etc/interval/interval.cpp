@@ -27,7 +27,7 @@ bool Interval::IsIncluded(double value) const
 
 bool Interval::IsOverlap(const Interval &other) const
 {
-    return false;
+    return IsIncluded(other.from_) || IsIncluded(other.to_);
 }
 
 } // namespace design_pattern::etc::interval

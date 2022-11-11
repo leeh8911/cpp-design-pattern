@@ -58,11 +58,11 @@ TEST(IntervalTest, OverrlapInterval)
     Interval interval_12to14(12.0, 14.0);
     Interval interval_13to14(13.0, 14.0);
 
-    EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to9));
+    EXPECT_FALSE(interval_10to12.IsOverlap(interval_8to9));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to10));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to11));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_11to14));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_12to14));
-    EXPECT_TRUE(interval_10to12.IsOverlap(interval_13to14));
+    EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14));
 }
 } // namespace
