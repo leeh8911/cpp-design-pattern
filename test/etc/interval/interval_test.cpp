@@ -20,6 +20,7 @@ using namespace design_pattern::etc::interval; // NOLINT
 //
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
 
+// cppcheck-suppress syntaxError
 TEST(IntervalTest, CheckIncludingValue)
 {
     SingleInterval interval(1.0, 3.0);
@@ -86,5 +87,24 @@ TEST(MultiIntervalTest, CheckIncludingValue)
     EXPECT_TRUE(interval.IsIncluded(3.0));
 
     EXPECT_FALSE(interval.IsIncluded(4.0));
+}
+TEST(MultiIntervalTest, OverlapInterval)
+{
+    MultInterval interval{};
+    interval.Append(*std::make_shared<SingleInterval>(10.0, 12.0));
+
+    SingleInterval interval_8to9(8.0, 9.0);
+    SingleInterval interval_8to10(8.0, 10.0);
+    SingleInterval interval_8to11(8.0, 11.0);
+    SingleInterval interval_11to14(11.0, 14.0);
+    SingleInterval interval_12to14(12.0, 14.0);
+    SingleInterval interval_13to14(13.0, 14.0);
+
+    EXPECT_FALSE(interval.IsOverlap(interval_8to9));
+    EXPECT_TRUE(interval.IsOverlap(interval_8to10));
+    EXPECT_TRUE(interval.IsOverlap(interval_8to11));
+    EXPECT_TRUE(interval.IsOverlap(interval_11to14));
+    EXPECT_TRUE(interval.IsOverlap(interval_12to14));
+    EXPECT_FALSE(interval.IsOverlap(interval_13to14));
 }
 } // namespace

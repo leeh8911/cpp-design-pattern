@@ -104,8 +104,16 @@ MultInterval::MultInterval(const MultInterval &other)
 
 bool MultInterval::IsIncluded(double value) const
 {
-    // TODO(leeh8911@gmail.com) : to be implemented
-    return value == value;
+    bool included = false;
+    for (const auto &elm : composite)
+    {
+        included = elm->IsIncluded(value);
+        if (included)
+        {
+            break;
+        }
+    }
+    return included;
 }
 
 bool MultInterval::IsOverlap(const InterfaceInterval &other) const
