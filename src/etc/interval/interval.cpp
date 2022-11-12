@@ -99,9 +99,18 @@ const Interval &&Interval::Intersect(const Interval &other) const
     return std::move(Interval(from, to));
 }
 
-bool CompositeInterval::IsIncluded(double) const
+bool CompositeInterval::IsIncluded(double value) const
 {
-    return false;
+    bool included = false;
+    for (const auto &elm : composite_)
+    {
+        included = elm->IsIncluded(value);
+        if (included)
+        {
+            break;
+        }
+    }
+    return included;
 }
 
 bool CompositeInterval::IsOverlap(const InterfaceInterval &other) const
@@ -139,8 +148,9 @@ CompositeInterval &CompositeInterval::operator=(CompositeInterval &&other)
     return *this;
 }
 
-void CompositeInterval::AddInterval(const InterfaceInterval &other)
+void CompositeInterval::AddInterval(InterfaceIntervalPtr other)
 {
+    composite_.emplace_back(std::move(other));
 }
 
 void CompositeInterval::RemoveInterval(const InterfaceInterval &other)

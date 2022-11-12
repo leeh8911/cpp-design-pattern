@@ -72,6 +72,7 @@ class Interval : public InterfaceInterval
 class CompositeInterval : public InterfaceInterval
 {
   public:
+    CompositeInterval() = default;
     CompositeInterval(const CompositeInterval &other) = delete;
     CompositeInterval(CompositeInterval &&other);
     CompositeInterval &operator=(const CompositeInterval &other) = delete;
@@ -83,11 +84,11 @@ class CompositeInterval : public InterfaceInterval
     bool operator!=(const InterfaceInterval &other) const override;
     const InterfaceInterval &&Intersect(const InterfaceInterval &other) const override;
 
-    void AddInterval(const InterfaceInterval &other);
+    void AddInterval(InterfaceIntervalPtr other);
     void RemoveInterval(const InterfaceInterval &other);
 
   private:
-    std::vector<InterfaceIntervalPtr> composite_;
+    std::vector<InterfaceIntervalPtr> composite_{};
 };
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_

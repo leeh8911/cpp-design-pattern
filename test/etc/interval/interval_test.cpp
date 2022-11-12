@@ -87,4 +87,15 @@ TEST(IntervalTest, CalculateIntersection)
     auto result7 = origin.Intersect(non_overlap_case_2);
     EXPECT_EQ(result7, (Interval{0.0, 0.0}));
 }
+
+TEST(IntervalTest, CompositeIntervalCreate)
+{
+
+    CompositeInterval comp_interval{};
+    Interval interval{1.0, 3.0};
+
+    comp_interval.AddInterval(std::make_unique<Interval>(1.0, 3.0));
+
+    EXPECT_TRUE(comp_interval.IsIncluded(2.0));
+}
 } // namespace
