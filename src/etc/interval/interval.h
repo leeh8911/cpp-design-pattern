@@ -13,29 +13,65 @@
 
 #include <array>
 #include <iostream>
+#include <memory>
+#include <vector>
 
 namespace design_pattern::etc::interval
 {
-class Interval
+class InterfaceInterval
 {
   public:
-    Interval(double from, double to);
-    Interval(const std::array<double, 2> &arr);
-    Interval(const Interval &other);
-    Interval &operator=(const Interval &other);
+    virtual ~InterfaceInterval() = default;
 
-    bool IsIncluded(double value) const;
-    bool IsOverlap(const Interval &other) const;
-    bool operator==(const Interval &other) const;
-    bool operator!=(const Interval &other) const;
+    virtual bool IsIncluded(double value) const = 0;
+    virtual bool IsOverlap(const InterfaceInterval &other) const = 0;
+    virtual bool operator==(const InterfaceInterval &other) const = 0;
+    virtual bool operator!=(const InterfaceInterval &other) const = 0;
 
-    Interval Intersect(const Interval &other) const;
+    virtual InterfaceInterval &Intersect(const InterfaceInterval &other) const = 0;
+};
 
-    friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
+class SingleInterval : public InterfaceInterval
+{
+  public:
+    SingleInterval(double from, double to);
+    explicit SingleInterval(const std::array<double, 2> &arr);
+
+    bool IsIncluded(double value) const override;
+    bool IsOverlap(const InterfaceInterval &other) const override;
+    bool operator==(const InterfaceInterval &other) const override;
+    bool operator!=(const InterfaceInterval &other) const override;
+
+    InterfaceInterval &Intersect(const InterfaceInterval &other) const override;
+
+    bool IsOverlap(const SingleInterval &other) const;
+    bool operator==(const SingleInterval &other) const;
+    bool operator!=(const SingleInterval &other) const;
+
+    SingleInterval Intersect(const SingleInterval &other) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const SingleInterval &interval);
 
   private:
     double from_{};
     double to_{};
+};
+
+class MultInterval : public InterfaceInterval
+{
+  public:
+  private:
+    std::vector<InterfaceInterval *> composite;
+};
+
+class Interval
+{
+  public:
+    Interval(double from, double to);
+    explicit Interval(const InterfaceInterval &interval);
+
+  private:
+    std::unique_ptr<InterfaceInterval> pimpl;
 };
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_

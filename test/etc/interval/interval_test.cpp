@@ -22,7 +22,7 @@ using namespace design_pattern::etc::interval; // NOLINT
 
 TEST(IntervalTest, CheckIncludingValue)
 {
-    Interval interval(1.0, 3.0);
+    SingleInterval interval(1.0, 3.0);
 
     EXPECT_FALSE(interval.IsIncluded(0.0));
 
@@ -35,14 +35,14 @@ TEST(IntervalTest, CheckIncludingValue)
 
 TEST(IntervalTest, OverlapInterval)
 {
-    Interval interval_10to12(10.0, 12.0);
+    SingleInterval interval_10to12(10.0, 12.0);
 
-    Interval interval_8to9(8.0, 9.0);
-    Interval interval_8to10(8.0, 10.0);
-    Interval interval_8to11(8.0, 11.0);
-    Interval interval_11to14(11.0, 14.0);
-    Interval interval_12to14(12.0, 14.0);
-    Interval interval_13to14(13.0, 14.0);
+    SingleInterval interval_8to9(8.0, 9.0);
+    SingleInterval interval_8to10(8.0, 10.0);
+    SingleInterval interval_8to11(8.0, 11.0);
+    SingleInterval interval_11to14(11.0, 14.0);
+    SingleInterval interval_12to14(12.0, 14.0);
+    SingleInterval interval_13to14(13.0, 14.0);
 
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_8to9));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to10));
@@ -54,23 +54,27 @@ TEST(IntervalTest, OverlapInterval)
 
 TEST(IntervalTest, CalculateIntersection)
 {
-    Interval origin{1.0, 3.0};
-    Interval overlap_case_1{2.0, 4.0};
-    Interval overlap_case_2{0.0, 2.0};
-    Interval overlap_case_3{0.0, 1.0};
-    Interval overlap_case_4{3.0, 4.0};
-    Interval overlap_case_5{1.1, 2.9};
-    Interval non_overlap_case_1{4.0, 5.0};
-    Interval non_overlap_case_2{0.0, 0.5};
+    SingleInterval origin{1.0, 3.0};
+    SingleInterval overlap_case_1{2.0, 4.0};
+    SingleInterval overlap_case_2{0.0, 2.0};
+    SingleInterval overlap_case_3{0.0, 1.0};
+    SingleInterval overlap_case_4{3.0, 4.0};
+    SingleInterval overlap_case_5{1.1, 2.9};
+    SingleInterval non_overlap_case_1{4.0, 5.0};
+    SingleInterval non_overlap_case_2{0.0, 0.5};
 
-    EXPECT_EQ(origin.Intersect(overlap_case_1), (Interval{2.0, 3.0}));
-    EXPECT_NE(origin.Intersect(overlap_case_1), (Interval{1.0, 4.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_2), (Interval{1.0, 2.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_3), (Interval{1.0, 1.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
+    EXPECT_EQ(origin.Intersect(overlap_case_1), (SingleInterval{2.0, 3.0}));
+    EXPECT_NE(origin.Intersect(overlap_case_1), (SingleInterval{1.0, 4.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_2), (SingleInterval{1.0, 2.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_3), (SingleInterval{1.0, 1.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_4), (SingleInterval{3.0, 3.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_5), (SingleInterval{1.1, 2.9}));
 
-    EXPECT_EQ(origin.Intersect(non_overlap_case_1), (Interval{0.0, 0.0}));
-    EXPECT_EQ(origin.Intersect(non_overlap_case_2), (Interval{0.0, 0.0}));
+    EXPECT_EQ(origin.Intersect(non_overlap_case_1), (SingleInterval{0.0, 0.0}));
+    EXPECT_EQ(origin.Intersect(non_overlap_case_2), (SingleInterval{0.0, 0.0}));
+}
+
+TEST(MultiIntervalTest, SomeTest)
+{
 }
 } // namespace
