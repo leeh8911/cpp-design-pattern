@@ -23,7 +23,6 @@ class Interval
     Interval(const std::array<double, 2> &arr);
     Interval(const Interval &other);
     Interval &operator=(const Interval &other);
-    Interval &Reverse();
 
     bool IsIncluded(double value) const;
     bool IsOverlap(const Interval &other) const;
@@ -37,8 +36,6 @@ class Interval
   private:
     double from_{};
     double to_{};
-    double min_{};
-    double max_{};
 };
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_
