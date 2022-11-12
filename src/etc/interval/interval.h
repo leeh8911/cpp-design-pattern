@@ -18,6 +18,10 @@
 
 namespace design_pattern::etc::interval
 {
+class InterfaceInterval;
+class MultInterval;
+class SingleInterval;
+
 class InterfaceInterval
 {
   public:
@@ -25,10 +29,13 @@ class InterfaceInterval
 
     virtual bool IsIncluded(double value) const = 0;
     virtual bool IsOverlap(const InterfaceInterval &other) const = 0;
+
     virtual bool operator==(const InterfaceInterval &other) const = 0;
     virtual bool operator!=(const InterfaceInterval &other) const = 0;
 
     virtual InterfaceInterval &Intersect(const InterfaceInterval &other) const = 0;
+    virtual InterfaceInterval &Union(const InterfaceInterval &other) const = 0;
+    virtual InterfaceInterval &SetDiff(const InterfaceInterval &other) const = 0;
 };
 
 class SingleInterval : public InterfaceInterval
@@ -39,10 +46,13 @@ class SingleInterval : public InterfaceInterval
 
     bool IsIncluded(double value) const override;
     bool IsOverlap(const InterfaceInterval &other) const override;
+
     bool operator==(const InterfaceInterval &other) const override;
     bool operator!=(const InterfaceInterval &other) const override;
 
     InterfaceInterval &Intersect(const InterfaceInterval &other) const override;
+    InterfaceInterval &Union(const InterfaceInterval &other) const override;
+    InterfaceInterval &SetDiff(const InterfaceInterval &other) const override;
 
     bool IsOverlap(const SingleInterval &other) const;
     bool operator==(const SingleInterval &other) const;
@@ -60,8 +70,23 @@ class SingleInterval : public InterfaceInterval
 class MultInterval : public InterfaceInterval
 {
   public:
+    MultInterval() = default;
+    MultInterval(const MultInterval &other);
+
+    bool IsIncluded(double value) const override;
+    bool IsOverlap(const InterfaceInterval &other) const override;
+
+    bool operator==(const InterfaceInterval &other) const override;
+    bool operator!=(const InterfaceInterval &other) const override;
+
+    InterfaceInterval &Intersect(const InterfaceInterval &other) const override;
+    InterfaceInterval &Union(const InterfaceInterval &other) const override;
+    InterfaceInterval &SetDiff(const InterfaceInterval &other) const override;
+
+    void Append(const SingleInterval &single_interval);
+
   private:
-    std::vector<InterfaceInterval *> composite;
+    std::vector<std::shared_ptr<InterfaceInterval>> composite{};
 };
 
 class Interval

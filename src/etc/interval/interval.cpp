@@ -79,6 +79,91 @@ SingleInterval SingleInterval::Intersect(const SingleInterval &other) const
     return intersect;
 }
 
+InterfaceInterval &SingleInterval::Union(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<SingleInterval>(dynamic_cast<const SingleInterval &>(other));
+    temp = nullptr;
+    auto result = std::make_shared<SingleInterval>(*this);
+    return *result;
+}
+
+InterfaceInterval &SingleInterval::SetDiff(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<SingleInterval>(dynamic_cast<const SingleInterval &>(other));
+    temp = nullptr;
+    auto result = std::make_shared<SingleInterval>(*this);
+    return *result;
+}
+
+MultInterval::MultInterval(const MultInterval &other)
+{
+    std::copy(other.composite.begin(), other.composite.end(), composite.begin());
+}
+
+bool MultInterval::IsIncluded(double value) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    return value == value;
+}
+
+bool MultInterval::IsOverlap(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    temp = nullptr;
+    return false;
+}
+
+bool MultInterval::operator==(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    temp = nullptr;
+    return false;
+}
+
+bool MultInterval::operator!=(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    temp = nullptr;
+    return false;
+}
+
+InterfaceInterval &MultInterval::Intersect(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    temp = nullptr;
+    auto result = std::make_shared<MultInterval>(*this);
+    return *result;
+}
+
+InterfaceInterval &MultInterval::Union(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    temp = nullptr;
+    auto result = std::make_shared<MultInterval>(*this);
+    return *result;
+}
+
+InterfaceInterval &MultInterval::SetDiff(const InterfaceInterval &other) const
+{
+    // TODO(leeh8911@gmail.com) : to be implemented
+    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    temp = nullptr;
+    auto result = std::make_shared<MultInterval>(*this);
+    return *result;
+}
+
+void MultInterval::Append(const SingleInterval &single_interval)
+{
+    composite.emplace_back(std::make_shared<SingleInterval>(single_interval));
+}
+
 std::ostream &operator<<(std::ostream &os, const SingleInterval &interval)
 {
     os << "<" << interval.from_ << ", " << interval.to_ << ">";

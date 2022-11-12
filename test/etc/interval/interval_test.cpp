@@ -74,7 +74,17 @@ TEST(IntervalTest, CalculateIntersection)
     EXPECT_EQ(origin.Intersect(non_overlap_case_2), (SingleInterval{0.0, 0.0}));
 }
 
-TEST(MultiIntervalTest, SomeTest)
+TEST(MultiIntervalTest, CheckIncludingValue)
 {
+    MultInterval interval{};
+    interval.Append(*std::make_shared<SingleInterval>(1.0, 3.0));
+
+    EXPECT_FALSE(interval.IsIncluded(0.0));
+
+    EXPECT_TRUE(interval.IsIncluded(1.0));
+    EXPECT_TRUE(interval.IsIncluded(2.0));
+    EXPECT_TRUE(interval.IsIncluded(3.0));
+
+    EXPECT_FALSE(interval.IsIncluded(4.0));
 }
 } // namespace
