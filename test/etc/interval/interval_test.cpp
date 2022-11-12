@@ -92,10 +92,31 @@ TEST(IntervalTest, CompositeIntervalCreate)
 {
 
     CompositeInterval comp_interval{};
-    Interval interval{1.0, 3.0};
 
     comp_interval.AddInterval(std::make_unique<Interval>(1.0, 3.0));
+    comp_interval.AddInterval(std::make_unique<Interval>(6.0, 8.0));
 
     EXPECT_TRUE(comp_interval.IsIncluded(2.0));
+    EXPECT_TRUE(comp_interval.IsIncluded(7.0));
+}
+
+TEST(IntervalTest, CompositeIntervalOverlap)
+{
+    CompositeInterval comp_interval{};
+
+    comp_interval.AddInterval(std::make_unique<Interval>(1.0, 3.0));
+    comp_interval.AddInterval(std::make_unique<Interval>(6.0, 8.0));
+
+    Interval interval_0to2{0.0, 2.0};
+    Interval interval_2to4{2.0, 4.0};
+    Interval interval_2to7{2.0, 7.0};
+    Interval interval_5to7{5.0, 7.0};
+    Interval interval_7to9{7.0, 9.0};
+
+    EXPECT_TRUE(comp_interval.IsOverlap(interval_0to2));
+    EXPECT_TRUE(comp_interval.IsOverlap(interval_2to4));
+    EXPECT_TRUE(comp_interval.IsOverlap(interval_2to7));
+    EXPECT_TRUE(comp_interval.IsOverlap(interval_5to7));
+    EXPECT_TRUE(comp_interval.IsOverlap(interval_7to9));
 }
 } // namespace

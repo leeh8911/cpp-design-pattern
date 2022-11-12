@@ -27,17 +27,14 @@ using IntervalPtr = std::unique_ptr<Interval>;
 struct InterfaceInterval
 {
     virtual ~InterfaceInterval() = default;
-    InterfaceInterval() = default;
-    InterfaceInterval(const InterfaceInterval &other) = delete;
-    InterfaceInterval(const InterfaceInterval &&other);
-    InterfaceInterval &operator=(const InterfaceInterval &other) = delete;
-    InterfaceInterval &operator=(const InterfaceInterval &&other);
 
     virtual bool IsIncluded(double) const = 0;
     virtual bool IsOverlap(const InterfaceInterval &other) const = 0;
     virtual bool operator==(const InterfaceInterval &other) const = 0;
     virtual bool operator!=(const InterfaceInterval &other) const = 0;
     virtual const InterfaceInterval &&Intersect(const InterfaceInterval &other) const = 0;
+
+    friend std::ostream &operator<<(std::ostream &os, const InterfaceInterval &interface_interval);
 };
 
 class Interval : public InterfaceInterval
@@ -86,6 +83,8 @@ class CompositeInterval : public InterfaceInterval
 
     void AddInterval(InterfaceIntervalPtr other);
     void RemoveInterval(const InterfaceInterval &other);
+
+    friend std::ostream &operator<<(std::ostream &os, const CompositeInterval &composite_interval);
 
   private:
     std::vector<InterfaceIntervalPtr> composite_{};

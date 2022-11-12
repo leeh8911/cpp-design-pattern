@@ -15,17 +15,9 @@
 
 namespace design_pattern::etc::interval
 {
-InterfaceInterval::InterfaceInterval(const InterfaceInterval &&other)
+Interval::Interval(double from, double to) : from_{std::min(from, to)}, to_{std::max(from, to)}
 {
-}
-
-InterfaceInterval &InterfaceInterval::operator=(const InterfaceInterval &&other)
-{
-    return *this;
-}
-
-Interval::Interval(double from, double to) : InterfaceInterval{}, from_{std::min(from, to)}, to_{std::max(from, to)}
-{
+    std::cout << "From-To: " << from_ << ", " << to_ << std::endl;
 }
 
 Interval::Interval(const std::array<double, 2> &arr) : Interval{arr[0], arr[1]}
@@ -34,6 +26,7 @@ Interval::Interval(const std::array<double, 2> &arr) : Interval{arr[0], arr[1]}
 
 Interval::Interval(const Interval &&other) : Interval{other.from_, other.to_}
 {
+    std::cout << "Move constructor : " << other << std::endl;
 }
 
 Interval &Interval::operator=(const Interval &&other)
@@ -89,14 +82,23 @@ const InterfaceInterval &&Interval::Intersect(const InterfaceInterval &other) co
 const Interval &&Interval::Intersect(const Interval &other) const
 {
     double from{}, to{};
+    std::cout << "Call Construct on Intersect: " << std::endl;
+    std::unique_ptr<Interval> result = nullptr;
     if (!IsOverlap(other))
     {
-        return std::move(Interval(0.0, 0.0));
+        Interval temp{0.0, 0.0};
+        std::cout << temp;
+        result = std::make_unique<Interval>(std::move(temp));
+        return std::move(*result);
     }
 
     from = std::max(from_, other.from_);
     to = std::min(to_, other.to_);
-    return std::move(Interval(from, to));
+
+    Interval temp{from, to};
+    std::cout << temp;
+    result = std::make_unique<Interval>(std::move(temp));
+    return std::move(*result);
 }
 
 bool CompositeInterval::IsIncluded(double value) const
@@ -115,26 +117,37 @@ bool CompositeInterval::IsIncluded(double value) const
 
 bool CompositeInterval::IsOverlap(const InterfaceInterval &other) const
 {
-    return false;
+    bool overlap{};
+    for (const auto &elm : composite_)
+    {
+        overlap = elm->IsOverlap(other);
+        if (overlap)
+        {
+            break;
+        }
+    }
+    return overlap;
 }
 
 bool CompositeInterval::operator==(const InterfaceInterval &other) const
 {
+    other.IsIncluded(0.0);
     return false;
 }
 
 bool CompositeInterval::operator!=(const InterfaceInterval &other) const
 {
+    other.IsIncluded(0.0);
     return false;
 }
 
 const InterfaceInterval &&CompositeInterval::Intersect(const InterfaceInterval &other) const
 {
+    other.IsIncluded(0.0);
     return std::move(*this);
 }
 
-CompositeInterval::CompositeInterval(CompositeInterval &&other)
-    : InterfaceInterval{}, composite_{std::move(other.composite_)}
+CompositeInterval::CompositeInterval(CompositeInterval &&other) : composite_{std::move(other.composite_)}
 {
 }
 
@@ -155,11 +168,22 @@ void CompositeInterval::AddInterval(InterfaceIntervalPtr other)
 
 void CompositeInterval::RemoveInterval(const InterfaceInterval &other)
 {
+    other.IsIncluded(0.0);
 }
 
 std::ostream &operator<<(std::ostream &os, const Interval &interval)
 {
     os << "<" << interval.from_ << ", " << interval.to_ << ">";
+    return os;
+}
+
+std::ostream &operator<<(std::ostream &os, const CompositeInterval &composite_interval)
+{
+    const auto &composite = composite_interval.composite_;
+    for (const auto &elm : composite)
+    {
+        os << *(dynamic_cast<Interval *>(elm.get()));
+    }
     return os;
 }
 } // namespace design_pattern::etc::interval
