@@ -19,7 +19,7 @@
 namespace design_pattern::etc::interval
 {
 class InterfaceInterval;
-class MultInterval;
+class MultiInterval;
 class SingleInterval;
 
 class InterfaceInterval
@@ -30,8 +30,8 @@ class InterfaceInterval
     virtual bool IsIncluded(double value) const = 0;
     virtual bool IsOverlap(const InterfaceInterval &other) const = 0;
 
-    virtual bool operator==(const InterfaceInterval &other) const = 0;
-    virtual bool operator!=(const InterfaceInterval &other) const = 0;
+    virtual bool Equal(const InterfaceInterval &other) const = 0;
+    virtual bool NotEqual(const InterfaceInterval &other) const = 0;
 
     virtual InterfaceInterval &Intersect(const InterfaceInterval &other) const = 0;
     virtual InterfaceInterval &Union(const InterfaceInterval &other) const = 0;
@@ -47,16 +47,14 @@ class SingleInterval : public InterfaceInterval
     bool IsIncluded(double value) const override;
     bool IsOverlap(const InterfaceInterval &other) const override;
 
-    bool operator==(const InterfaceInterval &other) const override;
-    bool operator!=(const InterfaceInterval &other) const override;
+    bool Equal(const InterfaceInterval &other) const override;
+    bool NotEqual(const InterfaceInterval &other) const override;
 
     InterfaceInterval &Intersect(const InterfaceInterval &other) const override;
     InterfaceInterval &Union(const InterfaceInterval &other) const override;
     InterfaceInterval &SetDiff(const InterfaceInterval &other) const override;
 
     bool IsOverlap(const SingleInterval &other) const;
-    bool operator==(const SingleInterval &other) const;
-    bool operator!=(const SingleInterval &other) const;
 
     SingleInterval Intersect(const SingleInterval &other) const;
 
@@ -67,17 +65,17 @@ class SingleInterval : public InterfaceInterval
     double to_{};
 };
 
-class MultInterval : public InterfaceInterval
+class MultiInterval : public InterfaceInterval
 {
   public:
-    MultInterval() = default;
-    MultInterval(const MultInterval &other);
+    MultiInterval() = default;
+    MultiInterval(const MultiInterval &other);
 
     bool IsIncluded(double value) const override;
     bool IsOverlap(const InterfaceInterval &other) const override;
 
-    bool operator==(const InterfaceInterval &other) const override;
-    bool operator!=(const InterfaceInterval &other) const override;
+    bool Equal(const InterfaceInterval &other) const override;
+    bool NotEqual(const InterfaceInterval &other) const override;
 
     InterfaceInterval &Intersect(const InterfaceInterval &other) const override;
     InterfaceInterval &Union(const InterfaceInterval &other) const override;

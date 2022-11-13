@@ -38,24 +38,15 @@ bool SingleInterval::IsOverlap(const SingleInterval &other) const
     return IsIncluded(other.from_) || IsIncluded(other.to_);
 }
 
-bool SingleInterval::operator==(const InterfaceInterval &other) const
+bool SingleInterval::Equal(const InterfaceInterval &other) const
 {
-    return operator==(dynamic_cast<const SingleInterval &>(other));
-}
-
-bool SingleInterval::operator==(const SingleInterval &other) const
-{
-    return ((from_ == other.from_) && (to_ == other.to_));
+    const SingleInterval &another = dynamic_cast<const SingleInterval &>(other);
+    return ((from_ == another.from_) && (to_ == another.to_));
 }
 
 bool SingleInterval::operator!=(const InterfaceInterval &other) const
 {
-    return operator!=(dynamic_cast<const SingleInterval &>(other));
-}
-
-bool SingleInterval::operator!=(const SingleInterval &other) const
-{
-    return !(operator==(other));
+    return !(*this == (other));
 }
 
 InterfaceInterval &SingleInterval::Intersect(const InterfaceInterval &other) const
@@ -97,12 +88,12 @@ InterfaceInterval &SingleInterval::SetDiff(const InterfaceInterval &other) const
     return *result;
 }
 
-MultInterval::MultInterval(const MultInterval &other)
+MultiInterval::MultiInterval(const MultiInterval &other)
 {
     std::copy(other.composite.begin(), other.composite.end(), composite.begin());
 }
 
-bool MultInterval::IsIncluded(double value) const
+bool MultiInterval::IsIncluded(double value) const
 {
     bool included = false;
     for (const auto &elm : composite)
@@ -116,58 +107,71 @@ bool MultInterval::IsIncluded(double value) const
     return included;
 }
 
-bool MultInterval::IsOverlap(const InterfaceInterval &other) const
+bool MultiInterval::IsOverlap(const InterfaceInterval &other) const
 {
     // TODO(leeh8911@gmail.com) : to be implemented
-    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
-    temp = nullptr;
-    return false;
+    // Dynamic cast to reference of wrong case than std::bad_cast error!
+
+    bool overlap = false;
+    for (const auto &elm : composite)
+    {
+        overlap = other.IsOverlap(*elm);
+        if (overlap)
+        {
+            break;
+        }
+    }
+    return overlap;
 }
 
-bool MultInterval::operator==(const InterfaceInterval &other) const
+bool MultiInterval::Equal(const InterfaceInterval &other) const
 {
     // TODO(leeh8911@gmail.com) : to be implemented
-    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
-    temp = nullptr;
-    return false;
+    bool equal = true;
+    for (const auto &elm : composite)
+    {
+        equal = (other == (*elm));
+        if (!equal)
+        {
+            break;
+        }
+    }
+    return equal;
 }
 
-bool MultInterval::operator!=(const InterfaceInterval &other) const
+bool MultiInterval::operator!=(const InterfaceInterval &other) const
 {
-    // TODO(leeh8911@gmail.com) : to be implemented
-    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
-    temp = nullptr;
-    return false;
+    return !(*this == other);
 }
 
-InterfaceInterval &MultInterval::Intersect(const InterfaceInterval &other) const
+InterfaceInterval &MultiInterval::Intersect(const InterfaceInterval &other) const
 {
     // TODO(leeh8911@gmail.com) : to be implemented
-    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    auto temp = std::make_shared<MultiInterval>(dynamic_cast<const MultiInterval &>(other));
     temp = nullptr;
-    auto result = std::make_shared<MultInterval>(*this);
+    auto result = std::make_shared<MultiInterval>(*this);
     return *result;
 }
 
-InterfaceInterval &MultInterval::Union(const InterfaceInterval &other) const
+InterfaceInterval &MultiInterval::Union(const InterfaceInterval &other) const
 {
     // TODO(leeh8911@gmail.com) : to be implemented
-    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    auto temp = std::make_shared<MultiInterval>(dynamic_cast<const MultiInterval &>(other));
     temp = nullptr;
-    auto result = std::make_shared<MultInterval>(*this);
+    auto result = std::make_shared<MultiInterval>(*this);
     return *result;
 }
 
-InterfaceInterval &MultInterval::SetDiff(const InterfaceInterval &other) const
+InterfaceInterval &MultiInterval::SetDiff(const InterfaceInterval &other) const
 {
     // TODO(leeh8911@gmail.com) : to be implemented
-    auto temp = std::make_shared<MultInterval>(dynamic_cast<const MultInterval &>(other));
+    auto temp = std::make_shared<MultiInterval>(dynamic_cast<const MultiInterval &>(other));
     temp = nullptr;
-    auto result = std::make_shared<MultInterval>(*this);
+    auto result = std::make_shared<MultiInterval>(*this);
     return *result;
 }
 
-void MultInterval::Append(const SingleInterval &single_interval)
+void MultiInterval::Append(const SingleInterval &single_interval)
 {
     composite.emplace_back(std::make_shared<SingleInterval>(single_interval));
 }

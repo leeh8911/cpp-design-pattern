@@ -77,7 +77,7 @@ TEST(IntervalTest, CalculateIntersection)
 
 TEST(MultiIntervalTest, CheckIncludingValue)
 {
-    MultInterval interval{};
+    MultiInterval interval{};
     interval.Append(*std::make_shared<SingleInterval>(1.0, 3.0));
 
     EXPECT_FALSE(interval.IsIncluded(0.0));
@@ -90,7 +90,7 @@ TEST(MultiIntervalTest, CheckIncludingValue)
 }
 TEST(MultiIntervalTest, OverlapInterval)
 {
-    MultInterval interval{};
+    MultiInterval interval{};
     interval.Append(*std::make_shared<SingleInterval>(10.0, 12.0));
 
     SingleInterval interval_8to9(8.0, 9.0);
@@ -106,5 +106,15 @@ TEST(MultiIntervalTest, OverlapInterval)
     EXPECT_TRUE(interval.IsOverlap(interval_11to14));
     EXPECT_TRUE(interval.IsOverlap(interval_12to14));
     EXPECT_FALSE(interval.IsOverlap(interval_13to14));
+}
+
+TEST(MultiIntervalTest, MultiAndSingleIntervalEqual)
+{
+    MultiInterval a{};
+    a.Append(*std::make_shared<SingleInterval>(1.0, 2.0));
+
+    SingleInterval b{1.0, 2.0};
+
+    EXPECT_EQ(a, b);
 }
 } // namespace

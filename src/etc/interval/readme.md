@@ -20,13 +20,28 @@ Interval 클래스는 집합에서 제공하는 기본적인 연산들을 제공
 classDiagram
 
 class IntervalData {
-    double from_
-    double to_
+    +double from_
+    +double to_
+}
+
+class InterfaceInterval {
+    +InterfaceInterval()
+    +Intersect(InterfaceInterval&) InterfaceInterval
+}
+class MultiInterval {
+    +Intersect(InterfaceInterval&) InterfaceInterval
+    -Vector~InterfaceInterval&~ composite
+}
+class SingleInterval {
+    -IntervalData data_
 }
 
 class Interval {
-    -List~IntervalData*~ data_
+    -InterfaceInterval& impl
 }
 
-IntervalData "1..*" <.. "1" Interval
+IntervalData "1" <.. "1" SingleInterval
+InterfaceInterval <|-- MultiInterval
+InterfaceInterval <|-- SingleInterval
+InterfaceInterval <.. Interval
 ```
