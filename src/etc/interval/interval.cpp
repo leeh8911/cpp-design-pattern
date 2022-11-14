@@ -149,26 +149,45 @@ bool ContinuousSet::operator==(const Interval &interval) const
     return intervals_.at(0) == interval;
 }
 
+bool ContinuousSet::operator==(const ContinuousSet &other) const
+{
+    if (intervals_.size() != other.intervals_.size())
+    {
+        return false;
+    }
+
+    auto this_it = intervals_.begin();
+    auto other_it = other.intervals_.begin();
+    for (; this_it != intervals_.end(); this_it++, other_it++)
+    {
+        if ((*this_it) != (*other_it))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 void ContinuousSet::RemoveOverlappedInterval()
 {
     auto first = intervals_.begin();
     auto second = first + 1;
-    std::vector<Interval> result{};
-    for (; second != intervals_.end(); first++, second++)
+
+    for (; (first != intervals_.end()) && (second != intervals_.end()); first++, second++)
     {
-        Interval interval(*first);
         if ((*first).IsOverlap(*second))
         {
-            interval = (*first).Union(*second);
+            Interval interval = (*first).Union(*second);
+            intervals_.erase(first, second + 1);
+            intervals_.insert(first, interval);
             first++, second++;
         }
-        result.emplace_back(interval);
-        if (second == intervals_.end())
+
+        if ((first == intervals_.end()) || (second == intervals_.end()))
         {
             break;
         }
     }
-    std::swap(intervals_, result);
 }
 
 std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set)

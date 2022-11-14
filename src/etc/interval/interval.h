@@ -51,6 +51,7 @@ class ContinuousSet
     ContinuousSet &Union(const Interval &interval);
 
     bool operator==(const Interval &interval) const;
+    bool operator==(const ContinuousSet &other) const;
 
     friend std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set);
 
