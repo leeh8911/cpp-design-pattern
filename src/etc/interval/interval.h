@@ -13,16 +13,20 @@
 
 #include <array>
 #include <iostream>
+#include <vector>
 
 namespace design_pattern::etc::interval
 {
 class Interval
 {
   public:
+    Interval();
     Interval(double from, double to);
-    Interval(const std::array<double, 2> &arr);
+    Interval(const Interval &&other);
     Interval(const Interval &other);
-    Interval &operator=(const Interval &other);
+    explicit Interval(const std::array<double, 2> &arr);
+    Interval &operator=(const Interval &other) = default;
+    Interval &operator=(Interval &&other);
 
     bool IsIncluded(double value) const;
     bool IsOverlap(const Interval &other) const;
@@ -30,12 +34,30 @@ class Interval
     bool operator!=(const Interval &other) const;
 
     Interval Intersect(const Interval &other) const;
+    Interval Union(const Interval &other) const;
 
     friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
+    static Interval kEmptyInterval;
 
   private:
     double from_{};
     double to_{};
 };
+
+class ContinuousSet
+{
+  public:
+    std::size_t Size() const;
+    ContinuousSet &Union(const Interval &interval);
+
+    bool operator==(const Interval &interval) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set);
+
+  private:
+    void RemoveOverlappedInterval();
+    std::vector<Interval> intervals_{};
+};
+
 } // namespace design_pattern::etc::interval
 #endif // SRC_ETC_INTERVAL_INTERVAL_H_

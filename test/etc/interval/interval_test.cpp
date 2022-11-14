@@ -70,7 +70,26 @@ TEST(IntervalTest, CalculateIntersection)
     EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
     EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
 
-    EXPECT_EQ(origin.Intersect(non_overlap_case_1), (Interval{0.0, 0.0}));
-    EXPECT_EQ(origin.Intersect(non_overlap_case_2), (Interval{0.0, 0.0}));
+    EXPECT_EQ(origin.Intersect(non_overlap_case_1), Interval::kEmptyInterval);
+    EXPECT_EQ(origin.Intersect(non_overlap_case_2), Interval::kEmptyInterval);
+}
+
+TEST(IntervalTest, ContinuousSetUnion)
+{
+    Interval interval(1.0, 3.0);
+    ContinuousSet continuous_set{};
+
+    continuous_set.Union(Interval{1.0, 3.0});
+    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+
+    continuous_set.Union(Interval{3.0, 5.0});
+    EXPECT_EQ(continuous_set, (Interval{1.0, 5.0}));
+
+    continuous_set.Union(Interval{7.0, 8.0});
+    EXPECT_EQ(continuous_set.Size(), 2);
+
+    continuous_set.Union(Interval{5.0, 7.0});
+    EXPECT_EQ(continuous_set.Size(), 1);
+    EXPECT_EQ(continuous_set, (Interval{1.0, 8.0}));
 }
 } // namespace
