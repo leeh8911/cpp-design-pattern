@@ -139,6 +139,17 @@ ContinuousSet &ContinuousSet::Union(const Interval &interval)
     return *this;
 }
 
+ContinuousSet &ContinuousSet::Intersect(const Interval &interval)
+{
+    Interval interval2{};
+    interval2.Union(interval);
+    if (interval2 == interval)
+    {
+        return *this;
+    }
+    return *this;
+}
+
 bool ContinuousSet::operator==(const Interval &interval) const
 {
     if (intervals_.size() != 1)
@@ -168,6 +179,16 @@ bool ContinuousSet::operator==(const ContinuousSet &other) const
     return true;
 }
 
+bool ContinuousSet::operator!=(const ContinuousSet &other) const
+{
+    return !((*this) == other);
+}
+
+bool ContinuousSet::operator!=(const Interval &interval) const
+{
+    return !((*this) == interval);
+}
+
 void ContinuousSet::RemoveOverlappedInterval()
 {
     auto first = intervals_.begin();
@@ -188,6 +209,12 @@ void ContinuousSet::RemoveOverlappedInterval()
             break;
         }
     }
+}
+
+void ContinuousSet::Order()
+{
+    // TODO: Ordering continuous set
+    // Do Nothing;
 }
 
 std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set)

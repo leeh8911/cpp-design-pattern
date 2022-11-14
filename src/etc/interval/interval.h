@@ -48,15 +48,20 @@ class ContinuousSet
 {
   public:
     std::size_t Size() const;
+
     ContinuousSet &Union(const Interval &interval);
+    ContinuousSet &Intersect(const Interval &interval);
 
     bool operator==(const Interval &interval) const;
+    bool operator!=(const Interval &interval) const;
     bool operator==(const ContinuousSet &other) const;
+    bool operator!=(const ContinuousSet &other) const;
 
     friend std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set);
 
   private:
     void RemoveOverlappedInterval();
+    void Order();
     std::vector<Interval> intervals_{};
 };
 

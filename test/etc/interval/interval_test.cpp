@@ -92,4 +92,14 @@ TEST(IntervalTest, ContinuousSetUnion)
     EXPECT_EQ(continuous_set.Size(), 1);
     EXPECT_EQ(continuous_set, (Interval{1.0, 8.0}));
 }
+
+TEST(IntervalTest, ContinuousSetIntersection)
+{
+    Interval interval(1.0, 3.0);
+    ContinuousSet continuous_set{};
+
+    continuous_set.Union(Interval{1.0, 3.0});
+    continuous_set.Intersect(Interval{1.0, 3.0});
+    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+}
 } // namespace
