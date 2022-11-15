@@ -33,7 +33,7 @@ namespace design_pattern::etc::mvc {
  *
  */
 class Model {
-   public:
+ public:
     Model(const std::string &&property1, const std::string &&property2)
         : property1_(property1), property2_(property2) {}
 
@@ -43,7 +43,7 @@ class Model {
     void Property2(std::string property2) { property2_ = property2; }
     std::string Property2() const { return property2_; }
 
-   private:
+ private:
     std::string property1_;
     std::string property2_;
 };
@@ -56,7 +56,7 @@ class Model {
  *
  */
 class View {
-   public:
+ public:
     View() = default;
     void Print(std::pair<std::string, std::string> src) {
         std::cout << "--------------------------\n";
@@ -74,7 +74,7 @@ class View {
  *
  */
 class Controller {
-   public:
+ public:
     Controller(const Controller &other) {
         model_ = other.model_;
         view_ = other.view_;
@@ -91,7 +91,7 @@ class Controller {
     void Property1(std::string property1) { model_->Property1(property1); }
     void Property2(std::string property2) { model_->Property2(property2); }
 
-   private:
+ private:
     Model *model_;
     View *view_;
 };

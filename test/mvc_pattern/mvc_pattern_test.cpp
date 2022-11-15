@@ -17,7 +17,7 @@ using namespace design_pattern::etc::mvc;
 
 namespace design_pattern::test {
 class MvcPatternTest : public testing::Test {
-   public:
+ public:
     void SetUp() override {}
     void TearDown() override {}
 };

@@ -31,7 +31,7 @@ using ColorPtr = std::unique_ptr<Color>;
 /// 변경해주는 인터페이스를 갖고 있습니다.
 //
 class Color {
-   public:
+ public:
     virtual ~Color() = default;
     virtual std::string StateName() = 0;
     virtual ColorPtr Next() = 0;
@@ -56,14 +56,14 @@ class Yellow : public Color {
 /// 현재 상태를 출력하거나, 다음 상태로 업데이트가 가능합니다.
 //
 class TrafficLight {
-   public:
+ public:
     TrafficLight();
     TrafficLight(ColorPtr state);
 
     std::string CurrentState();
     void Update();
 
-   private:
+ private:
     ColorPtr state_;
 };
 

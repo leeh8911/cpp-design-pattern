@@ -32,13 +32,13 @@ struct Sensor {
  *
  */
 class Input {
-   public:
+ public:
     Input() = default;
     void Update(const std::vector<Sensor> &sensor_vector);
     const Sensor &GetItem(size_t idx) const;
     size_t Size() const;
 
-   private:
+ private:
     std::vector<Sensor> container_;
 };
 

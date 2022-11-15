@@ -23,7 +23,7 @@ namespace design_pattern::test {
 using namespace design_pattern::etc::mvc::app;  // NOLINT
 
 class ObjectTrackingTest : public testing::Test {
-   public:
+ public:
     ObjectTracking object_tracking_;
     void SetUp() override {}
     void TearDown() override {}

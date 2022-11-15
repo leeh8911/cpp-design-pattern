@@ -23,12 +23,12 @@ struct BuilderInterface {
 };
 
 class HouseBuilder : public BuilderInterface {
-   public:
+ public:
     HouseBuilder() = default;
     ~HouseBuilder() override = default;
     std::stringstream Build() final;
 
-   private:
+ private:
     virtual std::string Start();
     virtual std::string MakeBasement();
     virtual std::string MakePillar();
@@ -38,14 +38,14 @@ class HouseBuilder : public BuilderInterface {
     virtual std::string End();
 };
 class ApartmentBuilder : public HouseBuilder {
-   public:
+ public:
     ApartmentBuilder() = default;
     ~ApartmentBuilder() override = default;
 
     void BasementDepth(int depth);
     void NumberOfRooms(int num);
 
-   private:
+ private:
     std::string Start() override;
     std::string MakeBasement() override;
     std::string MakePillar() override;

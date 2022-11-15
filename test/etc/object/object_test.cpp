@@ -18,7 +18,7 @@ namespace {
 using namespace design_pattern::etc::object;
 
 class ObjectTest : public testing::Test {
-   public:
+ public:
     void SetUp() override {}
     void TearDown() override {}
 };

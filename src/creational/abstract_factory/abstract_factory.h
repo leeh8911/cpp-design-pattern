@@ -23,7 +23,7 @@ struct IProduct {
 };
 
 class ConcreteProductA : public IProduct {
-   public:
+ public:
     ConcreteProductA() {
         std::cout << "Construct concrete product A instance" << std::endl;
     }
@@ -33,7 +33,7 @@ class ConcreteProductA : public IProduct {
 };
 
 class ConcreteProductB : public IProduct {
-   public:
+ public:
     ConcreteProductB() {
         std::cout << "Construct concrete product B instance" << std::endl;
     }
@@ -43,20 +43,20 @@ class ConcreteProductB : public IProduct {
 };
 
 struct AbstractFactory {
-   public:
+ public:
     virtual ~AbstractFactory() = default;
     virtual std::unique_ptr<IProduct> CreateProduct() = 0;
 };
 
 class FactoryA : public AbstractFactory {
-   public:
+ public:
     std::unique_ptr<IProduct> CreateProduct() override {
         return std::make_unique<IProduct>(ConcreteProductA());
     }
 };
 
 class FactoryB : public AbstractFactory {
-   public:
+ public:
     std::unique_ptr<IProduct> CreateProduct() override {
         return std::make_unique<IProduct>(ConcreteProductB());
     }

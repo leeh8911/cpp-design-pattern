@@ -43,7 +43,7 @@ struct IObject {
 class Object;
 using ObjectPtr = std::unique_ptr<Object>;
 class Object : public IObject {
-   public:
+ public:
     Object();
     Object(Vector2D position, Vector2D velocity);
     Object(const Object &other);
@@ -66,7 +66,7 @@ class Object : public IObject {
 
     bool HasMeasurement() const override;
 
-   protected:
+ protected:
     bool UpdateByMeas(ObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
@@ -77,7 +77,7 @@ class Object : public IObject {
 class BoxObject;
 using BoxObjectPtr = std::unique_ptr<BoxObject>;
 class BoxObject : public IObject {
-   public:
+ public:
     BoxObject();
     BoxObject(Vector2D position, Vector2D velocity, Vector2D shape,
               double rotation);
@@ -100,7 +100,7 @@ class BoxObject : public IObject {
 
     bool HasMeasurement() const override;
 
-   protected:
+ protected:
     bool UpdateByMeas(BoxObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;

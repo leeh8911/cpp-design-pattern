@@ -25,7 +25,7 @@ namespace design_pattern::etc::mvc::app {
  *
  */
 class Tracker {
-   public:
+ public:
     void Update(Input *input, Output *output);
 };
 
@@ -37,7 +37,7 @@ class Tracker {
  *
  */
 class Tracking {
-   public:
+ public:
     Tracking(Input *input, Output *output);
     ~Tracking();
     void InputSensor(const std::vector<Sensor> &sensor_vector);
@@ -47,7 +47,7 @@ class Tracking {
     size_t InputSize() const;
     size_t OutputSize() const;
 
-   private:
+ private:
     Input *input_;
     Output *output_;
     Tracker *tracker_;

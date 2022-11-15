@@ -17,26 +17,26 @@
 
 namespace design_pattern::structural::decorator {
 class Shape {
-   public:
+ public:
     Shape() = default;
     virtual ~Shape() = default;
     virtual std::string Name() const = 0;
 };
 
 class Circle : public Shape {
-   public:
+ public:
     void Resize(float factor) { radius_ *= factor; }
 
     std::string Name() const override {
         return std::string("A circle of radius " + std::to_string(radius_));
     };
 
-   private:
+ private:
     float radius_ = 10.0f;
 };
 
 class ColoredShape : public Shape {
-   public:
+ public:
     ColoredShape(const std::string &&color, Shape *shape)
         : color_(color), shape_(shape) {}
 
@@ -44,19 +44,19 @@ class ColoredShape : public Shape {
         return shape_->Name() + " which is colored " + color_;
     }
 
-   private:
+ private:
     std::string color_;
     Shape *shape_;
 };
 
 class PunchedShape : public Shape {
-   public:
+ public:
     PunchedShape(const std::pair<float, float> &&position, Shape *shape)
         : position_(position), shape_(shape) {}
 
     std::string Name() const override { return shape_->Name() + " punched "; }
 
-   private:
+ private:
     std::pair<float, float> position_;
     Shape *shape_;
 };

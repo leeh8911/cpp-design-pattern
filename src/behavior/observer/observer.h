@@ -24,12 +24,12 @@ namespace design_pattern::behavior::observer {
 /// Pattern에 초점을 맞추기 위해 식별자만 기능으로 추가합니다.
 ///
 class Obstacle {
-   public:
+ public:
     explicit Obstacle(std::size_t id);
     ~Obstacle() = default;
     std::size_t Id();
 
-   private:
+ private:
     std::size_t id_;
 };
 
@@ -39,7 +39,7 @@ using ObstacleMap = std::unordered_map<std::size_t, ObstaclePtr>;
 /// @brief ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber
 /// 클래스입니다.
 class Subscriber {
-   public:
+ public:
     virtual ~Subscriber() = default;
     virtual void Update(ObstacleMap *obstacle_repo) = 0;
 };
@@ -49,22 +49,22 @@ using SubscriberPtr = std::shared_ptr<Subscriber>;
 /// @brief ObstacleRepository 상태 중 Obstacle의 개수를 세어주는 클래스입니다.
 ///
 class ObstacleCounter : public Subscriber {
-   public:
+ public:
     void Update(ObstacleMap *obstacle_repo) override;
     std::size_t operator()();
 
-   private:
+ private:
     std::size_t count{};
 };
 
 /// @brief ObstacleRepository 상태 중 Obstacle Id만 찾아주는 클래스입니다.
 ///
 class ObstacleIdChecker : public Subscriber {
-   public:
+ public:
     void Update(ObstacleMap *obstacle_repo) override;
     std::vector<std::size_t> operator()();
 
-   private:
+ private:
     std::vector<std::size_t> ids;
 };
 
@@ -73,7 +73,7 @@ class ObstacleIdChecker : public Subscriber {
 /// 있습니다.
 ///
 class ObstacleRepository {
-   public:
+ public:
     ObstacleRepository();
     std::size_t Size();
 
@@ -92,7 +92,7 @@ class ObstacleRepository {
     void RemoveSubscriber(SubscriberPtr sub);
     void Notify();
 
-   private:
+ private:
     ObstacleMap repo_;
     std::vector<SubscriberPtr> subscribers;
 };

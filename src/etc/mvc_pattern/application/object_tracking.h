@@ -35,7 +35,7 @@ namespace design_pattern::etc::mvc::app {
  *
  */
 class ObjectTracking {
-   public:
+ public:
     ObjectTracking();
     ~ObjectTracking();
 
@@ -47,7 +47,7 @@ class ObjectTracking {
 
     void Update();
 
-   private:
+ private:
     Input *input_;
     Output *output_;
     Tracking *tracking_;

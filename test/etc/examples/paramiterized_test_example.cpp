@@ -13,7 +13,7 @@
 namespace {
 class ParameterizedTest : public testing::TestWithParam<
                               std::tuple<double, double, double, double>> {
-   public:
+ public:
     void SetUp() override {}
     void TearDown() override {}
 };

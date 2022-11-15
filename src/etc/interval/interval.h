@@ -17,7 +17,7 @@
 
 namespace design_pattern::etc::interval {
 class Interval {
-   public:
+ public:
     Interval();
     Interval(double from, double to);
     Interval(const Interval &&other);
@@ -37,13 +37,13 @@ class Interval {
     friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
     static Interval kEmptyInterval;
 
-   private:
+ private:
     double from_{};
     double to_{};
 };
 
 class ContinuousSet {
-   public:
+ public:
     std::size_t Size() const;
 
     ContinuousSet &Union(const Interval &interval);
@@ -57,7 +57,7 @@ class ContinuousSet {
     friend std::ostream &operator<<(std::ostream &os,
                                     const ContinuousSet &continuous_set);
 
-   private:
+ private:
     void RemoveOverlappedInterval();
     void Order();
     std::vector<Interval> intervals_{};

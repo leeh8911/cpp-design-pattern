@@ -18,14 +18,14 @@ namespace {
 using namespace design_pattern::etc::apollo;
 
 class BaseClass {
-   public:
+ public:
     BaseClass() = default;
     ~BaseClass() = default;
     virtual std::string Name() const { return "BaseClass1"; }
 };
 
 class DerivedClass1 : BaseClass {
-   public:
+ public:
     DerivedClass1() = default;
     ~DerivedClass1() = default;
     std::string Name() const override { return "DerivedClass1"; }

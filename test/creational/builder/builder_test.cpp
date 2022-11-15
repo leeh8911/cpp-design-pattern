@@ -15,7 +15,7 @@
 
 namespace design_pattern::creational::builder::test {
 class BuilderTest : public testing::Test {
-   public:
+ public:
     void SetUp() override {}
     void TearDown() override {}
 };

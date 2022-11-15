@@ -35,13 +35,13 @@ struct Target {
  *
  */
 class Output {
-   public:
+ public:
     Output() = default;
     void Update(const std::vector<Target> &target_vector);
     Target GetItem(size_t idx) const;
     size_t Size() const;
 
-   private:
+ private:
     std::vector<Target> container_;
 };
 }  // namespace design_pattern::etc::mvc::app
