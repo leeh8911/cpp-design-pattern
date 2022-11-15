@@ -94,6 +94,7 @@ std::size_t ContinuousSet::Size() const
     return intervals_.size();
 }
 
+// TODO(sangwon): find_if와 같은 iterator 기반으로 연산을 변경해야 함
 ContinuousSet &ContinuousSet::Union(const Interval &interval)
 {
     if (intervals_.size() == 0)
