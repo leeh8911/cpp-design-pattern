@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classdesign__pattern_1_1etc_1_1mvc_1_1app_1_1Tracker.html" title="비즈니스 모델의 역할을 수행하는 Tracker 클래스입니다. 요구사항에 따라 더 복잡한 기능을 수행하지만, MVC 모델 설명에 불필요한 내용은 생략하였습니다." alt="" coords="5,5,73,32"/>
+<area shape="rect" id="node1" href="$classdesign__pattern_1_1behavior_1_1observer_1_1Subscriber.html" title="ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber 클래스입니다." alt="" coords="5,31,96,57"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1observer_1_1ObstacleCounter.html" title="ObstacleRepository 상태 중 Obstacle의 개수를 세어주는 클래스입니다." alt="" coords="150,5,281,32"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1observer_1_1ObstacleIdChecker.html" title="ObstacleRepository 상태 중 Obstacle Id만 찾아주는 클래스입니다." alt="" coords="144,56,287,83"/>
 </map>
