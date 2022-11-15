@@ -18,9 +18,8 @@
  * @copyright Copyright (c) 2022
  *
  */
-
-#ifndef SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
-#define SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+#ifndef SRC_ETC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+#define SRC_ETC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
 
 #include <vector>
 
@@ -53,4 +52,4 @@ class ObjectTracking {
     Tracking *tracking_;
 };
 }  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+#endif  // SRC_ETC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_

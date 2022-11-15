@@ -1,11 +1,11 @@
 ///
-///@file register_test.cpp
-///@author sangwon (leeh8911@gmail.com)
-///@brief
-///@version 0.1
-///@date 2022-10-23
+/// @file register_test.cpp
+/// @author sangwon (leeh8911@gmail.com)
+/// @brief
+/// @version 0.1
+/// @date 2022-10-23
 ///
-///@copyright Copyright (c) 2022
+/// @copyright Copyright (c) 2022
 ///
 
 #include "src/etc/register/register.h"

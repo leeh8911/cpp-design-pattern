@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef SRC_MVC_PATTERN_MVC_PATTERN_H_
-#define SRC_MVC_PATTERN_MVC_PATTERN_H_
+#ifndef SRC_ETC_MVC_PATTERN_MVC_PATTERN_H_
+#define SRC_ETC_MVC_PATTERN_MVC_PATTERN_H_
 
 #include <iostream>
 #include <string>
@@ -97,4 +97,4 @@ class Controller {
 };
 
 }  // namespace design_pattern::etc::mvc
-#endif  // SRC_MVC_PATTERN_MVC_PATTERN_H_
+#endif  // SRC_ETC_MVC_PATTERN_MVC_PATTERN_H_

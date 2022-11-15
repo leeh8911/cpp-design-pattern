@@ -10,8 +10,9 @@
  * @copyright Copyright (c) 2022
  *
  */
-#ifndef SRC_MVC_PATTERN_APPLICATION_INPUT_H_
-#define SRC_MVC_PATTERN_APPLICATION_INPUT_H_
+
+#ifndef SRC_ETC_MVC_PATTERN_APPLICATION_INPUT_H_
+#define SRC_ETC_MVC_PATTERN_APPLICATION_INPUT_H_
 
 #include <vector>
 
@@ -43,4 +44,4 @@ class Input {
 };
 
 }  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_INPUT_H_
+#endif  // SRC_ETC_MVC_PATTERN_APPLICATION_INPUT_H_

@@ -12,8 +12,8 @@
  *
  */
 
-#ifndef SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
-#define SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
+#ifndef SRC_ETC_MVC_PATTERN_APPLICATION_TRACKING_H_
+#define SRC_ETC_MVC_PATTERN_APPLICATION_TRACKING_H_
 
 #include "src/etc/mvc_pattern/application/input.h"
 #include "src/etc/mvc_pattern/application/output.h"
@@ -53,4 +53,4 @@ class Tracking {
     Tracker *tracker_;
 };
 }  // namespace design_pattern::etc::mvc::app
-#endif  // SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
+#endif  // SRC_ETC_MVC_PATTERN_APPLICATION_TRACKING_H_
