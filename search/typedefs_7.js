@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timepoint_620',['Timepoint',['../namespacedesign__pattern_1_1behavior_1_1memento.html#a1011d2c843389d98ef427d07e7d01e19',1,'design_pattern::behavior::memento']]]
+  ['subscriberptr_688',['SubscriberPtr',['../namespacedesign__pattern_1_1behavior_1_1observer.html#a63b066b912e395282a4b2bc0ad0db960',1,'design_pattern::behavior::observer']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['subscriberptr_619',['SubscriberPtr',['../namespacedesign__pattern_1_1behavior_1_1observer.html#a63b066b912e395282a4b2bc0ad0db960',1,'design_pattern::behavior::observer']]]
+  ['pointobstacleptr_687',['PointObstaclePtr',['../namespacedesign__pattern_1_1etc_1_1obstacle_1_1entity.html#afef12a8e95a0e23bbc7ca8de0091a6f7',1,'design_pattern::etc::obstacle::entity']]]
 ];

@@ -1,0 +1,5 @@
+<map id="Element" name="Element">
+<area shape="rect" id="node1" title="Interface of Elements." alt="" coords="89,5,233,156"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1visitor_1_1ConcreteElementA.html" title=" " alt="" coords="5,204,149,340"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1visitor_1_1ConcreteElementB.html" title=" " alt="" coords="173,204,317,340"/>
+</map>

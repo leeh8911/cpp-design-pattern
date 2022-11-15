@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['factorymap_612',['FactoryMap',['../namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe',1,'design_pattern::etc::apollo']]]
+  ['factorymap_680',['FactoryMap',['../namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe',1,'design_pattern::etc::apollo']]]
 ];
