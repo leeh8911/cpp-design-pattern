@@ -7,7 +7,7 @@
 ///
 /// @copyright Copyright (c) 2022
 ///
-
+//
 #include "src/etc/register/register.h"
 
 #include <gtest/gtest.h>
