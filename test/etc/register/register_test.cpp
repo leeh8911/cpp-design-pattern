@@ -14,30 +14,21 @@
 
 #include <string>
 
-namespace
-{
+namespace {
 using namespace design_pattern::etc::apollo;
 
-class BaseClass
-{
-  public:
+class BaseClass {
+   public:
     BaseClass() = default;
     ~BaseClass() = default;
-    virtual std::string Name() const
-    {
-        return "BaseClass1";
-    }
+    virtual std::string Name() const { return "BaseClass1"; }
 };
 
-class DerivedClass1 : BaseClass
-{
-  public:
+class DerivedClass1 : BaseClass {
+   public:
     DerivedClass1() = default;
     ~DerivedClass1() = default;
-    std::string Name() const override
-    {
-        return "DerivedClass1";
-    }
+    std::string Name() const override { return "DerivedClass1"; }
 };
 
 PERCEPTION_REGISTER_REGISTERER(BaseClass);
@@ -45,8 +36,7 @@ PERCEPTION_REGISTER_REGISTERER(BaseClass);
 
 PERCEPTION_REGISTER_TEST(DerivedClass1);
 
-TEST(RegistererTest, Test)
-{
+TEST(RegistererTest, Test) {
     BaseClass *ptr = nullptr;
     ptr = BaseClassRegisterer::GetInstanceByName("DerivedClass1");
     ASSERT_TRUE(ptr != nullptr);
@@ -72,4 +62,4 @@ TEST(RegistererTest, Test)
     // TODO(all) enable this check
     // EXPECT_EQ(any.content_, nullptr);
 }
-} // namespace
+}  // namespace

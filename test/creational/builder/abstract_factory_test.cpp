@@ -13,14 +13,12 @@
 
 #include <gtest/gtest.h>
 
-namespace design_pattern::test
-{
+namespace design_pattern::test {
 using creational::abstract_factory::AbstractFactory;
 using creational::abstract_factory::FactoryA;
 using creational::abstract_factory::FactoryB;
 
-TEST(AbstractFactoryTest, Sample)
-{
+TEST(AbstractFactoryTest, Sample) {
     AbstractFactory *factory_a = new FactoryA();
     AbstractFactory *factory_b = new FactoryB();
 
@@ -29,4 +27,4 @@ TEST(AbstractFactoryTest, Sample)
 
     EXPECT_EQ(1, 1);
 }
-} // namespace design_pattern::test
+}  // namespace design_pattern::test

@@ -10,21 +10,15 @@
 
 #include <gtest/gtest.h>
 
-namespace
-{
-class ParameterizedTest : public testing::TestWithParam<std::tuple<double, double, double, double>>
-{
-  public:
-    void SetUp() override
-    {
-    }
-    void TearDown() override
-    {
-    }
+namespace {
+class ParameterizedTest
+    : public testing::TestWithParam<std::tuple<double, double, double, double>> {
+   public:
+    void SetUp() override {}
+    void TearDown() override {}
 };
 
-TEST_P(ParameterizedTest, Sample)
-{
+TEST_P(ParameterizedTest, Sample) {
     auto test_case = GetParam();
     EXPECT_EQ(0, 0);
 }
@@ -38,8 +32,8 @@ INSTANTIATE_TEST_SUITE_P(ParameterizedObject, ParameterizedTest,
                              double vel0 = std::get<2>(info.param) + 1;
                              double vel1 = std::get<3>(info.param) + 1;
 
-                             std::string dst =
-                                 std::to_string(static_cast<int>(pos0 * 1000 + pos1 * 100 + vel0 * 10 + vel1));
+                             std::string dst = std::to_string(
+                                 static_cast<int>(pos0 * 1000 + pos1 * 100 + vel0 * 10 + vel1));
                              return dst;
                          });
-} // namespace
+}  // namespace

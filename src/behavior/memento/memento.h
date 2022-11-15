@@ -15,15 +15,13 @@
 #include <memory>
 #include <string>
 
-namespace design_pattern::behavior::memento
-{
+namespace design_pattern::behavior::memento {
 using Timepoint = std::chrono::time_point<std::chrono::system_clock>;
 
 /// @brief 메멘토 구현을 위한 인터페이스 클래스
 ///
-class IMemento
-{
-  public:
+class IMemento {
+   public:
     IMemento() = default;
     IMemento(std::string state, Timepoint timestamp);
     virtual ~IMemento() = default;
@@ -36,9 +34,8 @@ using IMementoPtr = std::unique_ptr<IMemento>;
 
 /// @brief 메멘토의 구현 클래스
 ///
-class Memento : public IMemento
-{
-  public:
+class Memento : public IMemento {
+   public:
     Memento() = default;
     Memento(std::string state);
     Memento(std::string state, Timepoint timestamp);
@@ -49,7 +46,7 @@ class Memento : public IMemento
     std::string Timestamp() const override;
     Timepoint RawTimestamp() const override;
 
-  private:
+   private:
     std::string state_;
     Timepoint timestamp_;
 };
@@ -58,9 +55,8 @@ using MementoPtr = std::unique_ptr<Memento>;
 
 /// @brief 상태를 생성하는 클래스
 ///
-class Originator : public Memento
-{
-  public:
+class Originator : public Memento {
+   public:
     Originator() = default;
     explicit Originator(std::string state);
 
@@ -71,25 +67,24 @@ class Originator : public Memento
     std::string Timestamp() const override;
     Timepoint RawTimestamp() const override;
 
-  private:
+   private:
     std::string state_;
     Timepoint timestamp_;
 };
 
 /// @brief 현재 상태를 제어하는 클래스
 ///
-class Caretaker
-{
-  public:
+class Caretaker {
+   public:
     void Update(std::string state);
     std::string State() const;
     std::string Timestamp() const;
     void Undo();
 
-  private:
+   private:
     Originator originator_;
     std::deque<IMementoPtr> history;
 };
 
-} // namespace design_pattern::behavior::memento
-#endif // SRC_BEHAVIOR_MEMENTO_MEMENTO_H_
+}  // namespace design_pattern::behavior::memento
+#endif  // SRC_BEHAVIOR_MEMENTO_MEMENTO_H_

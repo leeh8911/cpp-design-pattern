@@ -19,24 +19,17 @@
 #include "src/etc/mvc_pattern/application/output.h"
 #include "src/etc/mvc_pattern/application/tracking.h"
 
-namespace design_pattern::test
-{
-using namespace design_pattern::etc::mvc::app; // NOLINT
+namespace design_pattern::test {
+using namespace design_pattern::etc::mvc::app;  // NOLINT
 
-class ObjectTrackingTest : public testing::Test
-{
-  public:
+class ObjectTrackingTest : public testing::Test {
+   public:
     ObjectTracking object_tracking_;
-    void SetUp() override
-    {
-    }
-    void TearDown() override
-    {
-    }
+    void SetUp() override {}
+    void TearDown() override {}
 };
 
-TEST_F(ObjectTrackingTest, Input)
-{
+TEST_F(ObjectTrackingTest, Input) {
     std::vector<Sensor> sensor_vector{};
     sensor_vector.push_back(Sensor{.id = 1});
     sensor_vector.push_back(Sensor{.id = 2});
@@ -50,8 +43,7 @@ TEST_F(ObjectTrackingTest, Input)
     EXPECT_EQ(input.GetItem(1), sensor_vector[1]);
     EXPECT_EQ(input.GetItem(2), sensor_vector[2]);
 }
-TEST_F(ObjectTrackingTest, Output)
-{
+TEST_F(ObjectTrackingTest, Output) {
     std::vector<Target> target_vector{};
     target_vector.push_back(Target{.id = 1});
     target_vector.push_back(Target{.id = 2});
@@ -65,8 +57,7 @@ TEST_F(ObjectTrackingTest, Output)
     EXPECT_EQ(output.GetItem(1), target_vector[1]);
     EXPECT_EQ(output.GetItem(2), target_vector[2]);
 }
-TEST_F(ObjectTrackingTest, Tracking)
-{
+TEST_F(ObjectTrackingTest, Tracking) {
     std::vector<Sensor> sensor_vector{};
     sensor_vector.push_back(Sensor{.id = 1});
     sensor_vector.push_back(Sensor{.id = 2});
@@ -94,8 +85,7 @@ TEST_F(ObjectTrackingTest, Tracking)
     EXPECT_EQ(target_output[1], target_vector[1]);
     EXPECT_EQ(target_output[2], target_vector[2]);
 }
-TEST_F(ObjectTrackingTest, ObjectTracking)
-{
+TEST_F(ObjectTrackingTest, ObjectTracking) {
     std::vector<Sensor> sensor_vector{};
     sensor_vector.push_back(Sensor{.id = 1});
     sensor_vector.push_back(Sensor{.id = 2});
@@ -122,4 +112,4 @@ TEST_F(ObjectTrackingTest, ObjectTracking)
     EXPECT_EQ(output[2], target_vector[2]);
 }
 
-} // namespace design_pattern::test
+}  // namespace design_pattern::test

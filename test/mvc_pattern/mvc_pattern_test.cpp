@@ -15,29 +15,21 @@
 
 using namespace design_pattern::etc::mvc;
 
-namespace design_pattern::test
-{
-class MvcPatternTest : public testing::Test
-{
-  public:
-    void SetUp() override
-    {
-    }
-    void TearDown() override
-    {
-    }
+namespace design_pattern::test {
+class MvcPatternTest : public testing::Test {
+   public:
+    void SetUp() override {}
+    void TearDown() override {}
 };
 
-TEST_F(MvcPatternTest, CreateModel)
-{
+TEST_F(MvcPatternTest, CreateModel) {
     Model *student = new Model("Sangwon", "10");
 
     EXPECT_EQ(student->Property1(), "Sangwon");
     EXPECT_EQ(student->Property2(), "10");
 }
 
-TEST_F(MvcPatternTest, CreateController)
-{
+TEST_F(MvcPatternTest, CreateController) {
     Model *student = new Model("Sangwon", "10");
     View *view = new View();
 
@@ -50,4 +42,4 @@ TEST_F(MvcPatternTest, CreateController)
     controller->UpdateView();
 }
 
-} // namespace design_pattern::test
+}  // namespace design_pattern::test

@@ -15,15 +15,14 @@
 #include <iostream>
 #include <thread>
 
-namespace
-{
+namespace {
 using namespace design_pattern::behavior::memento;
 
-TEST(MementoTest, MementoCreate)
-{
+TEST(MementoTest, MementoCreate) {
     auto timestamp = std::chrono::system_clock::now();
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp);
-    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(timestamp.time_since_epoch()) % 1000;
+    auto ms =
+        std::chrono::duration_cast<std::chrono::milliseconds>(timestamp.time_since_epoch()) % 1000;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;
@@ -35,14 +34,12 @@ TEST(MementoTest, MementoCreate)
     EXPECT_EQ(m.Timestamp(), oss.str());
 }
 
-TEST(MementoTest, OriginatorCreate)
-{
+TEST(MementoTest, OriginatorCreate) {
     Originator o("state string");
     EXPECT_EQ(o.State(), "state string");
 }
 
-TEST(MementoTest, OriginatorSave)
-{
+TEST(MementoTest, OriginatorSave) {
     Originator o("state string");
     IMementoPtr m = o.Save();
     EXPECT_EQ(m->State(), "state string");
@@ -50,8 +47,7 @@ TEST(MementoTest, OriginatorSave)
     EXPECT_EQ(m->Timestamp(), o.Timestamp());
 }
 
-TEST(MementoTest, OriginatorRestore)
-{
+TEST(MementoTest, OriginatorRestore) {
     auto timestamp = std::chrono::system_clock::now();
     IMementoPtr m = std::make_unique<Memento>("state string", timestamp);
 
@@ -66,15 +62,13 @@ TEST(MementoTest, OriginatorRestore)
     EXPECT_EQ(o.Timestamp(), m_timestamp);
 }
 
-TEST(MementoTest, CaretakerCreate)
-{
+TEST(MementoTest, CaretakerCreate) {
     Caretaker c;
     c.Update("1");
     EXPECT_EQ(c.State(), "1");
 }
 
-TEST(MementoTest, CaretakerUpdate)
-{
+TEST(MementoTest, CaretakerUpdate) {
     using namespace std::chrono_literals;
     Caretaker c;
 
@@ -89,8 +83,7 @@ TEST(MementoTest, CaretakerUpdate)
     EXPECT_NE(timestamp1, timestamp2);
 }
 
-TEST(MementoTest, CaretakerUndo)
-{
+TEST(MementoTest, CaretakerUndo) {
     using namespace std::chrono_literals;
 
     Caretaker c;
@@ -109,4 +102,4 @@ TEST(MementoTest, CaretakerUndo)
     EXPECT_EQ(timestamp1, timestamp1_2);
 }
 
-} // namespace
+}  // namespace

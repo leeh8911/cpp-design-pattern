@@ -16,21 +16,16 @@
 
 #include <vector>
 
-namespace design_pattern::etc::mvc::app
-{
+namespace design_pattern::etc::mvc::app {
 /**
  * @brief 타겟 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더
  * 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다.
  *
  */
-struct Target
-{
+struct Target {
     size_t id;
 
-    bool operator==(const Target &other) const
-    {
-        return id == other.id;
-    }
+    bool operator==(const Target &other) const { return id == other.id; }
 };
 
 /**
@@ -39,16 +34,15 @@ struct Target
  * 수행합니다.
  *
  */
-class Output
-{
-  public:
+class Output {
+   public:
     Output() = default;
     void Update(const std::vector<Target> &target_vector);
     Target GetItem(size_t idx) const;
     size_t Size() const;
 
-  private:
+   private:
     std::vector<Target> container_;
 };
-} // namespace design_pattern::etc::mvc::app
-#endif // SRC_MVC_PATTERN_APPLICATION_OUTPUT_H_
+}  // namespace design_pattern::etc::mvc::app
+#endif  // SRC_MVC_PATTERN_APPLICATION_OUTPUT_H_

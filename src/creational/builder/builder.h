@@ -29,51 +29,25 @@
 #include <optional>
 #include <string>
 
-namespace design_pattern::creational::builder
-{
+namespace design_pattern::creational::builder {
 /**
  * @brief 빌더 패턴에서 사용하고자 하는 "복합 객체"로서 class Bicycle을
  * 사용합니다. 해당 예제에선 단순히 getter/setter를 통해 string과 int 정보만
  * 전달 받지만, 실전에서는 더욱 복잡한 방식의 파라미터를 갖게 됩니다.
  *
  */
-class Bicycle
-{
-  public:
-    std::string Make() const
-    {
-        return make_;
-    }
-    void Make(std::string make)
-    {
-        make_ = make;
-    }
-    std::string Model() const
-    {
-        return model_;
-    }
-    void Model(std::string model)
-    {
-        model_ = model;
-    }
-    std::string Color() const
-    {
-        return color_;
-    }
-    void Color(std::string color)
-    {
-        color_ = color;
-    }
-    int Height() const
-    {
-        return height_;
-    }
-    void Height(int height)
-    {
-        height_ = height;
-    }
+class Bicycle {
+   public:
+    std::string Make() const { return make_; }
+    void Make(std::string make) { make_ = make; }
+    std::string Model() const { return model_; }
+    void Model(std::string model) { model_ = model; }
+    std::string Color() const { return color_; }
+    void Color(std::string color) { color_ = color; }
+    int Height() const { return height_; }
+    void Height(int height) { height_ = height; }
 
-  private:
+   private:
     std::string make_;
     std::string model_;
     std::string color_;
@@ -84,8 +58,7 @@ class Bicycle
  * @brief class Bicycle을 생성하기 위한 Builder들의 인터페이스 클래스입니다.
  *
  */
-struct IBicycleBuilder
-{
+struct IBicycleBuilder {
     virtual ~IBicycleBuilder() = default;
     virtual std::string Color() const = 0;
     virtual void Color(std::string color) = 0;
@@ -99,30 +72,15 @@ struct IBicycleBuilder
  * @brief "GTBike"를 생성하기 위한 빌더의 구현 클래스입니다.
  *
  */
-class GTBuilder : public IBicycleBuilder
-{
-  public:
-    std::string Color() const override
-    {
-        return color_;
-    }
-    void Color(std::string color) override
-    {
-        color_ = color;
-    }
-    int Height() const override
-    {
-        return height_;
-    }
-    void Height(int height) override
-    {
-        height_ = height;
-    }
+class GTBuilder : public IBicycleBuilder {
+   public:
+    std::string Color() const override { return color_; }
+    void Color(std::string color) override { color_ = color; }
+    int Height() const override { return height_; }
+    void Height(int height) override { height_ = height; }
 
-    std::optional<Bicycle *> GetResult() override
-    {
-        if (height_ == 29)
-        {
+    std::optional<Bicycle *> GetResult() override {
+        if (height_ == 29) {
             Bicycle *res = new Bicycle;
             res->Make("GT");
             res->Model("Avalache");
@@ -130,14 +88,12 @@ class GTBuilder : public IBicycleBuilder
             res->Color(color_);
 
             return res;
-        }
-        else
-        {
+        } else {
             return std::nullopt;
         }
     }
 
-  private:
+   private:
     std::string color_;
     int height_{};
 };
@@ -147,26 +103,19 @@ class GTBuilder : public IBicycleBuilder
  * 담당하는 클래스입니다.
  *
  */
-class MountainBikeBuildDirector
-{
-  public:
+class MountainBikeBuildDirector {
+   public:
     MountainBikeBuildDirector() = delete;
-    MountainBikeBuildDirector(IBicycleBuilder &builder) : builder_(builder)
-    {
-    }
+    MountainBikeBuildDirector(IBicycleBuilder &builder) : builder_(builder) {}
 
-    void Construct()
-    {
+    void Construct() {
         builder_.Color("Red");
         builder_.Height(29);
     }
-    std::optional<Bicycle *> GetResult()
-    {
-        return builder_.GetResult();
-    }
+    std::optional<Bicycle *> GetResult() { return builder_.GetResult(); }
 
-  private:
+   private:
     IBicycleBuilder &builder_;
 };
-} // namespace design_pattern::creational::builder
-#endif // SRC_CREATIONAL_BUILDER_BUILDER_H_
+}  // namespace design_pattern::creational::builder
+#endif  // SRC_CREATIONAL_BUILDER_BUILDER_H_

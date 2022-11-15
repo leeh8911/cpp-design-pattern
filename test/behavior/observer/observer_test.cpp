@@ -11,11 +11,9 @@
 
 #include <gtest/gtest.h>
 
-namespace
-{
+namespace {
 using namespace design_pattern::behavior::observer;
-TEST(ObserverTest, Should_FindObstacle_When_GivenSpecificId)
-{
+TEST(ObserverTest, Should_FindObstacle_When_GivenSpecificId) {
     ObstacleRepository repo;
 
     repo.GenerateObstacleById(42);
@@ -25,16 +23,14 @@ TEST(ObserverTest, Should_FindObstacle_When_GivenSpecificId)
     EXPECT_TRUE(repo.Find(23) == nullptr);
 }
 
-TEST(ObserverTest, Should_EraseAllObstacle_When_GivenSpecificId)
-{
+TEST(ObserverTest, Should_EraseAllObstacle_When_GivenSpecificId) {
     ObstacleRepository repo;
     repo.GenerateObstacleById(42);
     repo.Erase(42);
     EXPECT_EQ(repo.Size(), 0);
 }
 
-TEST(ObserverTest, Should_MultipleSubscriber)
-{
+TEST(ObserverTest, Should_MultipleSubscriber) {
     std::array<std::size_t, 3> given_ids{1, 2, 3};
 
     auto counter = std::make_shared<ObstacleCounter>();
@@ -49,8 +45,7 @@ TEST(ObserverTest, Should_MultipleSubscriber)
     EXPECT_EQ((*counter)(), 0);
     EXPECT_EQ((*id_checker)().size(), 0);
 
-    for (auto id : given_ids)
-    {
+    for (auto id : given_ids) {
         repo.GenerateObstacleById(id);
     }
 
@@ -59,11 +54,10 @@ TEST(ObserverTest, Should_MultipleSubscriber)
     EXPECT_EQ((*id_checker)().size(), given_ids.size());
 
     std::unordered_set<std::size_t> id_set(given_ids.begin(), given_ids.end());
-    for (auto id : (*id_checker)())
-    {
+    for (auto id : (*id_checker)()) {
         auto found = id_set.find(id);
         EXPECT_TRUE(found != id_set.end());
     }
 }
 
-} // namespace
+}  // namespace

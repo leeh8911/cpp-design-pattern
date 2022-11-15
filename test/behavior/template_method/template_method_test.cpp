@@ -14,12 +14,10 @@
 #include <sstream>
 #include <string>
 
-namespace
-{
+namespace {
 using namespace design_pattern::behavior::template_method;
 
-TEST(TemplateMethodTest, HouseBuild)
-{
+TEST(TemplateMethodTest, HouseBuild) {
     HouseBuilder builder;
 
     std::stringstream ss = builder.Build();
@@ -35,8 +33,7 @@ TEST(TemplateMethodTest, HouseBuild)
 
     std::string s = "";
     std::string expect_s = "";
-    while (ss && expect_ss)
-    {
+    while (ss && expect_ss) {
         std::getline(ss, s);
         std::getline(expect_ss, expect_s);
 
@@ -44,8 +41,7 @@ TEST(TemplateMethodTest, HouseBuild)
     }
 }
 
-TEST(TemplateMethodTest, ApartmentBuild)
-{
+TEST(TemplateMethodTest, ApartmentBuild) {
     ApartmentBuilder builder;
     builder.BasementDepth(3);
     builder.NumberOfRooms(4);
@@ -63,12 +59,11 @@ TEST(TemplateMethodTest, ApartmentBuild)
 
     std::string s = "";
     std::string expect_s = "";
-    while (ss && expect_ss)
-    {
+    while (ss && expect_ss) {
         std::getline(ss, s);
         std::getline(expect_ss, expect_s);
 
         EXPECT_EQ(s, expect_s);
     }
 }
-} // namespace
+}  // namespace

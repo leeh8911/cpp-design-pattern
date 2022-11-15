@@ -11,17 +11,16 @@
 
 #include <gtest/gtest.h>
 
-namespace
-{
-using namespace design_pattern::etc::interval; // NOLINT
+namespace {
+using namespace design_pattern::etc::interval;  // NOLINT
 
-// TODO(leeh8911@gmail.com): Interval's reversable is not useful (I think from_ always smaller than to_)
+// TODO(leeh8911@gmail.com): Interval's reversable is not useful (I think from_ always smaller than
+// to_)
 // TODO(leeh8911@gmail.com): Interval class calculate set difference other interval
 //
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are circular value
 
-TEST(IntervalTest, CheckIncludingValue)
-{
+TEST(IntervalTest, CheckIncludingValue) {
     Interval interval(1.0, 3.0);
 
     EXPECT_FALSE(interval.IsIncluded(0.0));
@@ -33,8 +32,7 @@ TEST(IntervalTest, CheckIncludingValue)
     EXPECT_FALSE(interval.IsIncluded(4.0));
 }
 
-TEST(IntervalTest, OverlapInterval)
-{
+TEST(IntervalTest, OverlapInterval) {
     Interval interval_10to12(10.0, 12.0);
 
     Interval interval_8to9(8.0, 9.0);
@@ -52,8 +50,7 @@ TEST(IntervalTest, OverlapInterval)
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_13to14));
 }
 
-TEST(IntervalTest, CalculateIntersection)
-{
+TEST(IntervalTest, CalculateIntersection) {
     Interval origin{1.0, 3.0};
     Interval overlap_case_1{2.0, 4.0};
     Interval overlap_case_2{0.0, 2.0};
@@ -74,8 +71,7 @@ TEST(IntervalTest, CalculateIntersection)
     EXPECT_EQ(origin.Intersect(non_overlap_case_2), Interval::kEmptyInterval);
 }
 
-TEST(IntervalTest, ContinuousSetUnion)
-{
+TEST(IntervalTest, ContinuousSetUnion) {
     Interval interval(1.0, 3.0);
     ContinuousSet continuous_set{};
 
@@ -93,8 +89,7 @@ TEST(IntervalTest, ContinuousSetUnion)
     EXPECT_EQ(continuous_set, (Interval{1.0, 8.0}));
 }
 
-TEST(IntervalTest, ContinuousSetIntersection)
-{
+TEST(IntervalTest, ContinuousSetIntersection) {
     Interval interval(1.0, 3.0);
     ContinuousSet continuous_set{};
 
@@ -102,4 +97,4 @@ TEST(IntervalTest, ContinuousSetIntersection)
     continuous_set.Intersect(Interval{1.0, 3.0});
     EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
 }
-} // namespace
+}  // namespace

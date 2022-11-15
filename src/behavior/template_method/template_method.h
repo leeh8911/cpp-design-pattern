@@ -14,24 +14,21 @@
 
 #include <sstream>
 
-namespace design_pattern::behavior::template_method
-{
+namespace design_pattern::behavior::template_method {
 
-struct BuilderInterface
-{
+struct BuilderInterface {
     BuilderInterface() = default;
     virtual ~BuilderInterface() = default;
     virtual std::stringstream Build() = 0;
 };
 
-class HouseBuilder : public BuilderInterface
-{
-  public:
+class HouseBuilder : public BuilderInterface {
+   public:
     HouseBuilder() = default;
     ~HouseBuilder() override = default;
     std::stringstream Build() final;
 
-  private:
+   private:
     virtual std::string Start();
     virtual std::string MakeBasement();
     virtual std::string MakePillar();
@@ -40,16 +37,15 @@ class HouseBuilder : public BuilderInterface
     virtual std::string MakeRooms();
     virtual std::string End();
 };
-class ApartmentBuilder : public HouseBuilder
-{
-  public:
+class ApartmentBuilder : public HouseBuilder {
+   public:
     ApartmentBuilder() = default;
     ~ApartmentBuilder() override = default;
 
     void BasementDepth(int depth);
     void NumberOfRooms(int num);
 
-  private:
+   private:
     std::string Start() override;
     std::string MakeBasement() override;
     std::string MakePillar() override;
@@ -62,5 +58,5 @@ class ApartmentBuilder : public HouseBuilder
     int number_of_rooms{};
 };
 
-} // namespace design_pattern::behavior::template_method
-#endif // SRC_BEHAVIOR_TEMPLATE_METHOD_TEMPLATE_METHOD_H_
+}  // namespace design_pattern::behavior::template_method
+#endif  // SRC_BEHAVIOR_TEMPLATE_METHOD_TEMPLATE_METHOD_H_

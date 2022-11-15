@@ -18,16 +18,14 @@
 #include "src/etc/mvc_pattern/application/input.h"
 #include "src/etc/mvc_pattern/application/output.h"
 
-namespace design_pattern::etc::mvc::app
-{
+namespace design_pattern::etc::mvc::app {
 /**
  * @brief 비즈니스 모델의 역할을 수행하는 Tracker 클래스입니다. 요구사항에 따라
  * 더 복잡한 기능을 수행하지만, MVC 모델 설명에 불필요한 내용은 생략하였습니다.
  *
  */
-class Tracker
-{
-  public:
+class Tracker {
+   public:
     void Update(Input *input, Output *output);
 };
 
@@ -38,9 +36,8 @@ class Tracker
  * 다시 전송해줍니다.
  *
  */
-class Tracking
-{
-  public:
+class Tracking {
+   public:
     Tracking(Input *input, Output *output);
     ~Tracking();
     void InputSensor(const std::vector<Sensor> &sensor_vector);
@@ -50,10 +47,10 @@ class Tracking
     size_t InputSize() const;
     size_t OutputSize() const;
 
-  private:
+   private:
     Input *input_;
     Output *output_;
     Tracker *tracker_;
 };
-} // namespace design_pattern::etc::mvc::app
-#endif // SRC_MVC_PATTERN_APPLICATION_TRACKING_H_
+}  // namespace design_pattern::etc::mvc::app
+#endif  // SRC_MVC_PATTERN_APPLICATION_TRACKING_H_

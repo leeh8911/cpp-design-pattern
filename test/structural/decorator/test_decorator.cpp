@@ -15,13 +15,11 @@
 
 #include "src/structural/decorator/decorator.h"
 
-namespace
-{
+namespace {
 
 using namespace design_pattern::structural::decorator;
 
-TEST(DecoratorTest, Sample)
-{
+TEST(DecoratorTest, Sample) {
     Circle circle1;
 
     std::cout << circle1.Name() << std::endl;
@@ -30,4 +28,4 @@ TEST(DecoratorTest, Sample)
 
     std::cout << colored_circle.Name() << std::endl;
 }
-} // namespace
+}  // namespace
