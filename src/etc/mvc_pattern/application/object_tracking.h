@@ -18,9 +18,8 @@
  * @copyright Copyright (c) 2022
  *
  */
-
-#ifndef SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
-#define SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+#ifndef SRC_ETC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+#define SRC_ETC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
 
 #include <vector>
 
@@ -28,16 +27,14 @@
 #include "src/etc/mvc_pattern/application/output.h"
 #include "src/etc/mvc_pattern/application/tracking.h"
 
-namespace design_pattern::etc::mvc::app
-{
+namespace design_pattern::etc::mvc::app {
 /**
  * @brief 객체 추적을 모사하기 위한 클래스입니다. 객체 추적의 세부 클래스인
  * Input, Output, 그리고 Tracking을 통합하는 역할을 수행합니다.
  *
  */
-class ObjectTracking
-{
-  public:
+class ObjectTracking {
+ public:
     ObjectTracking();
     ~ObjectTracking();
 
@@ -49,10 +46,10 @@ class ObjectTracking
 
     void Update();
 
-  private:
+ private:
     Input *input_;
     Output *output_;
     Tracking *tracking_;
 };
-} // namespace design_pattern::etc::mvc::app
-#endif // SRC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_
+}  // namespace design_pattern::etc::mvc::app
+#endif  // SRC_ETC_MVC_PATTERN_APPLICATION_OBJECT_TRACKING_H_

@@ -12,10 +12,8 @@
 
 #include <sstream>
 
-namespace design_pattern::behavior::template_method
-{
-std::stringstream HouseBuilder::Build()
-{
+namespace design_pattern::behavior::template_method {
+std::stringstream HouseBuilder::Build() {
     std::stringstream oss;
     oss << Start();
     oss << MakeBasement();
@@ -27,88 +25,44 @@ std::stringstream HouseBuilder::Build()
     return oss;
 }
 
-std::string HouseBuilder::Start()
-{
-    return "Build House Start\n";
-}
+std::string HouseBuilder::Start() { return "Build House Start\n"; }
 
-std::string HouseBuilder::MakeBasement()
-{
-    return "Make Basement\n";
-}
+std::string HouseBuilder::MakeBasement() { return "Make Basement\n"; }
 
-std::string HouseBuilder::MakePillar()
-{
-    return "Make Pillar\n";
-}
+std::string HouseBuilder::MakePillar() { return "Make Pillar\n"; }
 
-std::string HouseBuilder::MakeWall()
-{
-    return "Make Wall\n";
-}
+std::string HouseBuilder::MakeWall() { return "Make Wall\n"; }
 
-std::string HouseBuilder::MakeRoof()
-{
-    return "Make Roof\n";
-}
+std::string HouseBuilder::MakeRoof() { return "Make Roof\n"; }
 
-std::string HouseBuilder::MakeRooms()
-{
-    return "Make Rooms\n";
-}
+std::string HouseBuilder::MakeRooms() { return "Make Rooms\n"; }
 
-std::string HouseBuilder::End()
-{
-    return "Build House End\n";
-}
+std::string HouseBuilder::End() { return "Build House End\n"; }
 
-void ApartmentBuilder::BasementDepth(int depth)
-{
-    basement_depth = depth;
-}
+void ApartmentBuilder::BasementDepth(int depth) { basement_depth = depth; }
 
-void ApartmentBuilder::NumberOfRooms(int num)
-{
-    number_of_rooms = num;
-}
+void ApartmentBuilder::NumberOfRooms(int num) { number_of_rooms = num; }
 
-std::string ApartmentBuilder::Start()
-{
-    return "Build Apartment Start\n";
-}
+std::string ApartmentBuilder::Start() { return "Build Apartment Start\n"; }
 
-std::string ApartmentBuilder::MakeBasement()
-{
+std::string ApartmentBuilder::MakeBasement() {
     std::stringstream oss;
     oss << "Make Basement - " << basement_depth << "m\n";
     return oss.str();
 }
 
-std::string ApartmentBuilder::MakePillar()
-{
-    return "Make Pillar\n";
-}
+std::string ApartmentBuilder::MakePillar() { return "Make Pillar\n"; }
 
-std::string ApartmentBuilder::MakeWall()
-{
-    return "Make Wall\n";
-}
+std::string ApartmentBuilder::MakeWall() { return "Make Wall\n"; }
 
-std::string ApartmentBuilder::MakeRoof()
-{
-    return "Make Roof\n";
-}
+std::string ApartmentBuilder::MakeRoof() { return "Make Roof\n"; }
 
-std::string ApartmentBuilder::MakeRooms()
-{
+std::string ApartmentBuilder::MakeRooms() {
     std::stringstream oss;
     oss << "Make Rooms - " << number_of_rooms << "\n";
     return oss.str();
 }
 
-std::string ApartmentBuilder::End()
-{
-    return "Build Apartment End\n";
-}
+std::string ApartmentBuilder::End() { return "Build Apartment End\n"; }
 
-} // namespace design_pattern::behavior::template_method
+}  // namespace design_pattern::behavior::template_method

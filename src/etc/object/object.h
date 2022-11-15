@@ -13,16 +13,14 @@
 #include <array>
 #include <memory>
 
-namespace design_pattern::etc::object
-{
+namespace design_pattern::etc::object {
 constexpr double kPi = 3.14159265358979323846264338327950288;
 
 using Vector2D = std::array<double, 2>;
 
 struct IObject;
 using IObjectPtr = std::unique_ptr<IObject>;
-struct IObject
-{
+struct IObject {
     virtual ~IObject() = default;
 
     virtual Vector2D Position() const = 0;
@@ -44,15 +42,14 @@ struct IObject
 
 class Object;
 using ObjectPtr = std::unique_ptr<Object>;
-class Object : public IObject
-{
-  public:
+class Object : public IObject {
+ public:
     Object();
     Object(Vector2D position, Vector2D velocity);
     Object(const Object &other);
     ~Object() override;
 
-    // TODO: 중복된 함수들을 제거해야 함
+    // TODO(sangwon):  중복된 함수들을 제거해야 함
     Vector2D Position() const override;
     Vector2D Velocity() const override;
     Vector2D Shape() const override;
@@ -69,7 +66,7 @@ class Object : public IObject
 
     bool HasMeasurement() const override;
 
-  protected:
+ protected:
     bool UpdateByMeas(ObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
@@ -79,11 +76,11 @@ class Object : public IObject
 
 class BoxObject;
 using BoxObjectPtr = std::unique_ptr<BoxObject>;
-class BoxObject : public IObject
-{
-  public:
+class BoxObject : public IObject {
+ public:
     BoxObject();
-    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape, double rotation);
+    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape,
+              double rotation);
     BoxObject(const BoxObject &other);
     ~BoxObject() override = default;
 
@@ -103,7 +100,7 @@ class BoxObject : public IObject
 
     bool HasMeasurement() const override;
 
-  protected:
+ protected:
     bool UpdateByMeas(BoxObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
@@ -113,5 +110,5 @@ class BoxObject : public IObject
     IObjectPtr meas_;
 };
 
-} // namespace design_pattern::etc::object
-#endif // SRC_ETC_OBJECT_OBJECT_H_
+}  // namespace design_pattern::etc::object
+#endif  // SRC_ETC_OBJECT_OBJECT_H_

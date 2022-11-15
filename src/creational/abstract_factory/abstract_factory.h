@@ -17,63 +17,50 @@
 #include <string>
 #include <utility>
 
-namespace design_pattern::creational::abstract_factory
-{
-struct IProduct
-{
+namespace design_pattern::creational::abstract_factory {
+struct IProduct {
     virtual ~IProduct() = default;
 };
 
-class ConcreteProductA : public IProduct
-{
-  public:
-    ConcreteProductA()
-    {
+class ConcreteProductA : public IProduct {
+ public:
+    ConcreteProductA() {
         std::cout << "Construct concrete product A instance" << std::endl;
     }
-    ~ConcreteProductA() override
-    {
+    ~ConcreteProductA() override {
         std::cout << "Destruct concrete product A instance" << std::endl;
     }
 };
 
-class ConcreteProductB : public IProduct
-{
-  public:
-    ConcreteProductB()
-    {
+class ConcreteProductB : public IProduct {
+ public:
+    ConcreteProductB() {
         std::cout << "Construct concrete product B instance" << std::endl;
     }
-    ~ConcreteProductB() override
-    {
+    ~ConcreteProductB() override {
         std::cout << "Destruct concrete product B instance" << std::endl;
     }
 };
 
-struct AbstractFactory
-{
-  public:
+struct AbstractFactory {
+ public:
     virtual ~AbstractFactory() = default;
     virtual std::unique_ptr<IProduct> CreateProduct() = 0;
 };
 
-class FactoryA : public AbstractFactory
-{
-  public:
-    std::unique_ptr<IProduct> CreateProduct() override
-    {
+class FactoryA : public AbstractFactory {
+ public:
+    std::unique_ptr<IProduct> CreateProduct() override {
         return std::make_unique<IProduct>(ConcreteProductA());
     }
 };
 
-class FactoryB : public AbstractFactory
-{
-  public:
-    std::unique_ptr<IProduct> CreateProduct() override
-    {
+class FactoryB : public AbstractFactory {
+ public:
+    std::unique_ptr<IProduct> CreateProduct() override {
         return std::make_unique<IProduct>(ConcreteProductB());
     }
 };
 
-} // namespace design_pattern::creational::abstract_factory
-#endif // SRC_CREATIONAL_ABSTRACT_FACTORY_ABSTRACT_FACTORY_H_
+}  // namespace design_pattern::creational::abstract_factory
+#endif  // SRC_CREATIONAL_ABSTRACT_FACTORY_ABSTRACT_FACTORY_H_

@@ -18,20 +18,18 @@
 #include <utility>
 #include <vector>
 
-namespace design_pattern::behavior::observer
-{
+namespace design_pattern::behavior::observer {
 
 /// @brief 주변 환경의 장애물에 대한 클래스 정보입니다.
 /// Pattern에 초점을 맞추기 위해 식별자만 기능으로 추가합니다.
 ///
-class Obstacle
-{
-  public:
+class Obstacle {
+ public:
     explicit Obstacle(std::size_t id);
     ~Obstacle() = default;
     std::size_t Id();
 
-  private:
+ private:
     std::size_t id_;
 };
 
@@ -40,9 +38,8 @@ using ObstacleMap = std::unordered_map<std::size_t, ObstaclePtr>;
 
 /// @brief ObstacleRepository 관측하기 위한 인터페이스를 제공하는 Subscriber
 /// 클래스입니다.
-class Subscriber
-{
-  public:
+class Subscriber {
+ public:
     virtual ~Subscriber() = default;
     virtual void Update(ObstacleMap *obstacle_repo) = 0;
 };
@@ -51,25 +48,23 @@ using SubscriberPtr = std::shared_ptr<Subscriber>;
 
 /// @brief ObstacleRepository 상태 중 Obstacle의 개수를 세어주는 클래스입니다.
 ///
-class ObstacleCounter : public Subscriber
-{
-  public:
+class ObstacleCounter : public Subscriber {
+ public:
     void Update(ObstacleMap *obstacle_repo) override;
     std::size_t operator()();
 
-  private:
+ private:
     std::size_t count{};
 };
 
 /// @brief ObstacleRepository 상태 중 Obstacle Id만 찾아주는 클래스입니다.
 ///
-class ObstacleIdChecker : public Subscriber
-{
-  public:
+class ObstacleIdChecker : public Subscriber {
+ public:
     void Update(ObstacleMap *obstacle_repo) override;
     std::vector<std::size_t> operator()();
 
-  private:
+ private:
     std::vector<std::size_t> ids;
 };
 
@@ -77,9 +72,8 @@ class ObstacleIdChecker : public Subscriber
 /// 해당 저장소를 관측하고자 하는 객체가 있다면 AddSubscriber를 통해 연결해줄 수
 /// 있습니다.
 ///
-class ObstacleRepository
-{
-  public:
+class ObstacleRepository {
+ public:
     ObstacleRepository();
     std::size_t Size();
 
@@ -98,10 +92,10 @@ class ObstacleRepository
     void RemoveSubscriber(SubscriberPtr sub);
     void Notify();
 
-  private:
+ private:
     ObstacleMap repo_;
     std::vector<SubscriberPtr> subscribers;
 };
 
-} // namespace design_pattern::behavior::observer
-#endif // SRC_BEHAVIOR_OBSERVER_OBSERVER_H_
+}  // namespace design_pattern::behavior::observer
+#endif  // SRC_BEHAVIOR_OBSERVER_OBSERVER_H_

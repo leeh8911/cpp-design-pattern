@@ -10,25 +10,21 @@
  * @copyright Copyright (c) 2022
  *
  */
-#ifndef SRC_MVC_PATTERN_APPLICATION_INPUT_H_
-#define SRC_MVC_PATTERN_APPLICATION_INPUT_H_
+
+#ifndef SRC_ETC_MVC_PATTERN_APPLICATION_INPUT_H_
+#define SRC_ETC_MVC_PATTERN_APPLICATION_INPUT_H_
 
 #include <vector>
 
-namespace design_pattern::etc::mvc::app
-{
+namespace design_pattern::etc::mvc::app {
 /**
  * @brief 센서 입력 정보를 모사하기 위한 임시 구조체입니다. 실제 구현사항은 더
  * 복잡하겠지만, MVC 패턴을 설명하는데 불필요한 내용은 생략하였습니다.
  *
  */
-struct Sensor
-{
+struct Sensor {
     size_t id;
-    bool operator==(const Sensor &other) const
-    {
-        return id == other.id;
-    }
+    bool operator==(const Sensor &other) const { return id == other.id; }
 };
 
 /**
@@ -36,17 +32,16 @@ struct Sensor
  * 수행합니다.
  *
  */
-class Input
-{
-  public:
+class Input {
+ public:
     Input() = default;
     void Update(const std::vector<Sensor> &sensor_vector);
     const Sensor &GetItem(size_t idx) const;
     size_t Size() const;
 
-  private:
+ private:
     std::vector<Sensor> container_;
 };
 
-} // namespace design_pattern::etc::mvc::app
-#endif // SRC_MVC_PATTERN_APPLICATION_INPUT_H_
+}  // namespace design_pattern::etc::mvc::app
+#endif  // SRC_ETC_MVC_PATTERN_APPLICATION_INPUT_H_

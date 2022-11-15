@@ -13,20 +13,12 @@
 
 #include <vector>
 
-namespace design_pattern::etc::mvc::app
-{
-size_t Output::Size() const
-{
-    return container_.size();
-}
+namespace design_pattern::etc::mvc::app {
+size_t Output::Size() const { return container_.size(); }
 
-Target Output::GetItem(size_t idx) const
-{
-    return container_[idx];
-}
+Target Output::GetItem(size_t idx) const { return container_[idx]; }
 
-void Output::Update(const std::vector<Target> &target_vector)
-{
+void Output::Update(const std::vector<Target> &target_vector) {
     container_ = target_vector;
 }
-} // namespace design_pattern::etc::mvc::app
+}  // namespace design_pattern::etc::mvc::app

@@ -13,21 +13,14 @@
 
 #include <gtest/gtest.h>
 
-namespace design_pattern::creational::builder::test
-{
-class BuilderTest : public testing::Test
-{
-  public:
-    void SetUp() override
-    {
-    }
-    void TearDown() override
-    {
-    }
+namespace design_pattern::creational::builder::test {
+class BuilderTest : public testing::Test {
+ public:
+    void SetUp() override {}
+    void TearDown() override {}
 };
 
-TEST_F(BuilderTest, Sample)
-{
+TEST_F(BuilderTest, Sample) {
     GTBuilder *builder = new GTBuilder();
     MountainBikeBuildDirector director(*builder);
 
@@ -42,4 +35,4 @@ TEST_F(BuilderTest, Sample)
     EXPECT_EQ(bicycle->Make(), "GT");
     EXPECT_EQ(bicycle->Model(), "Avalache");
 }
-} // namespace design_pattern::creational::builder::test
+}  // namespace design_pattern::creational::builder::test

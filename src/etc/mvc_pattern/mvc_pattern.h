@@ -17,48 +17,33 @@
  *
  */
 
-#ifndef SRC_MVC_PATTERN_MVC_PATTERN_H_
-#define SRC_MVC_PATTERN_MVC_PATTERN_H_
+#ifndef SRC_ETC_MVC_PATTERN_MVC_PATTERN_H_
+#define SRC_ETC_MVC_PATTERN_MVC_PATTERN_H_
 
 #include <iostream>
 #include <string>
 #include <utility>
 #include <vector>
 
-namespace design_pattern::etc::mvc
-{
+namespace design_pattern::etc::mvc {
 /**
  * @brief MVC 패턴에서의 Model 클래스입니다.
  * MVC 패턴에서 Model은 애플리케이션의 정보(데이터)를 의미합니다.
  * Model 클래스는 자신의 상태 변화가 있을 때, 컨트롤러와 뷰에 이를 통보합니다.
  *
  */
-class Model
-{
-  public:
-    Model(const std::string &&property1, const std::string &&property2) : property1_(property1), property2_(property2)
-    {
-    }
+class Model {
+ public:
+    Model(const std::string &&property1, const std::string &&property2)
+        : property1_(property1), property2_(property2) {}
 
-    void Property1(std::string property1)
-    {
-        property1_ = property1;
-    }
-    std::string Property1() const
-    {
-        return property1_;
-    }
+    void Property1(std::string property1) { property1_ = property1; }
+    std::string Property1() const { return property1_; }
 
-    void Property2(std::string property2)
-    {
-        property2_ = property2;
-    }
-    std::string Property2() const
-    {
-        return property2_;
-    }
+    void Property2(std::string property2) { property2_ = property2; }
+    std::string Property2() const { return property2_; }
 
-  private:
+ private:
     std::string property1_;
     std::string property2_;
 };
@@ -70,12 +55,10 @@ class Model
  * 정보를 획득합니다.
  *
  */
-class View
-{
-  public:
+class View {
+ public:
     View() = default;
-    void Print(std::pair<std::string, std::string> src)
-    {
+    void Print(std::pair<std::string, std::string> src) {
         std::cout << "--------------------------\n";
         std::cout << "Property1 : " << src.first << "\n";
         std::cout << "Property2 : " << src.second << "\n";
@@ -90,39 +73,28 @@ class View
  * 있습니다.
  *
  */
-class Controller
-{
-  public:
-    Controller(const Controller &other)
-    {
+class Controller {
+ public:
+    Controller(const Controller &other) {
         model_ = other.model_;
         view_ = other.view_;
     }
-    Controller(Model *model, View *view) : model_(model), view_(view)
-    {
-    }
+    Controller(Model *model, View *view) : model_(model), view_(view) {}
 
-    void UpdateView()
-    {
+    void UpdateView() {
         std::string property1 = model_->Property1();
         std::string property2 = model_->Property2();
         std::pair<std::string, std::string> result{property1, property2};
         view_->Print(result);
     }
 
-    void Property1(std::string property1)
-    {
-        model_->Property1(property1);
-    }
-    void Property2(std::string property2)
-    {
-        model_->Property2(property2);
-    }
+    void Property1(std::string property1) { model_->Property1(property1); }
+    void Property2(std::string property2) { model_->Property2(property2); }
 
-  private:
+ private:
     Model *model_;
     View *view_;
 };
 
-} // namespace design_pattern::etc::mvc
-#endif // SRC_MVC_PATTERN_MVC_PATTERN_H_
+}  // namespace design_pattern::etc::mvc
+#endif  // SRC_ETC_MVC_PATTERN_MVC_PATTERN_H_

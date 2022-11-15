@@ -14,55 +14,28 @@
 #include <string>
 #include <utility>
 
-namespace design_pattern::behavior::state
-{
-std::string Red::StateName()
-{
-    return "Red Light";
-}
+namespace design_pattern::behavior::state {
+std::string Red::StateName() { return "Red Light"; }
 
-ColorPtr Red::Next()
-{
-    return std::make_unique<Green>();
-}
+ColorPtr Red::Next() { return std::make_unique<Green>(); }
 
-std::string Green::StateName()
-{
-    return "Green Light";
-}
+std::string Green::StateName() { return "Green Light"; }
 
-ColorPtr Green::Next()
-{
-    return std::make_unique<Yellow>();
-}
+ColorPtr Green::Next() { return std::make_unique<Yellow>(); }
 
-std::string Yellow::StateName()
-{
-    return "Yellow Light";
-}
+std::string Yellow::StateName() { return "Yellow Light"; }
 
-ColorPtr Yellow::Next()
-{
-    return std::make_unique<Red>();
-}
+ColorPtr Yellow::Next() { return std::make_unique<Red>(); }
 
-TrafficLight::TrafficLight() : state_(std::make_unique<Red>())
-{
-}
+TrafficLight::TrafficLight() : state_(std::make_unique<Red>()) {}
 
-TrafficLight::TrafficLight(ColorPtr state) : state_(std::move(state))
-{
-}
+TrafficLight::TrafficLight(ColorPtr state) : state_(std::move(state)) {}
 
-std::string TrafficLight::CurrentState()
-{
-    return state_->StateName();
-}
+std::string TrafficLight::CurrentState() { return state_->StateName(); }
 
-void TrafficLight::Update()
-{
+void TrafficLight::Update() {
     auto next_state = state_->Next();
     std::swap(next_state, state_);
 }
 
-} // namespace design_pattern::behavior::state
+}  // namespace design_pattern::behavior::state

@@ -8,17 +8,15 @@
 ///
 //
 
-#include <gtest/gtest.h>
-
 #include "src/behavior/state/state.h"
 
-namespace
-{
+#include <gtest/gtest.h>
+
+namespace {
 
 using namespace design_pattern::behavior::state;
 
-TEST(StateTest, Should_PrintColor_When_GivenOrNotInitialStateColor)
-{
+TEST(StateTest, Should_PrintColor_When_GivenOrNotInitialStateColor) {
     TrafficLight traffic_light{};
 
     EXPECT_EQ(traffic_light.CurrentState(), "Red Light");
@@ -32,8 +30,8 @@ TEST(StateTest, Should_PrintColor_When_GivenOrNotInitialStateColor)
     EXPECT_EQ(yellow_state_light.CurrentState(), "Yellow Light");
 }
 
-TEST(StateTest, Should_PrintColor_When_StartingRedStateAndUpdatingTrafficLight)
-{
+TEST(StateTest,
+     Should_PrintColor_When_StartingRedStateAndUpdatingTrafficLight) {
     TrafficLight traffic_light{};
     EXPECT_EQ(traffic_light.CurrentState(), "Red Light");
 
@@ -46,4 +44,4 @@ TEST(StateTest, Should_PrintColor_When_StartingRedStateAndUpdatingTrafficLight)
     traffic_light.Update();
     EXPECT_EQ(traffic_light.CurrentState(), "Red Light");
 }
-} // namespace
+}  // namespace
