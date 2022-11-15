@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classdesign__pattern_1_1behavior_1_1state_1_1Color.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1Color.html">Color</a> {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1Color.html#a89880a1e6a1bd42cb107edd3b1642099">~Color</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1Color.html#af55f70519de1a16c2ddc363bb88ee2d6">StateName</a>() = 0;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="namespacedesign__pattern_1_1behavior_1_1state.html#ae5bb20e322279c6bbe3d586d752b9c4f">ColorPtr</a> <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1Color.html#ae8310ddc62d214417c802655feadef07">Next</a>() = 0;</div>
@@ -116,14 +116,14 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html">   58</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html">TrafficLight</a> {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html#a305b1956b55df40b3345dbe2d9a04146">TrafficLight</a>();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html#a305b1956b55df40b3345dbe2d9a04146">TrafficLight</a>(<a class="code" href="namespacedesign__pattern_1_1behavior_1_1state.html#ae5bb20e322279c6bbe3d586d752b9c4f">ColorPtr</a> state);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::string <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html#a4f049e7c21945abb16776dfaefba0a93">CurrentState</a>();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html#aec0783b5a136e042adcc47bae4fe5291">Update</a>();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html#a9832a580585283f9e0824cc51307c3db">   67</a></span>&#160;    <a class="code" href="namespacedesign__pattern_1_1behavior_1_1state.html#ae5bb20e322279c6bbe3d586d752b9c4f">ColorPtr</a> <a class="code" href="classdesign__pattern_1_1behavior_1_1state_1_1TrafficLight.html#a9832a580585283f9e0824cc51307c3db">state_</a>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
