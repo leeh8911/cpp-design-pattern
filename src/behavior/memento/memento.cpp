@@ -16,6 +16,8 @@
 #include <string>
 #include <utility>
 
+constexpr std::size_t kTimeConstant = 1000;
+
 namespace design_pattern::behavior::memento {
 Memento::Memento(std::string state)
     : state_(std::move(state)), timestamp_(std::chrono::system_clock::now()) {}
@@ -28,7 +30,7 @@ std::string Memento::Timestamp() const {
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp_);
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                   timestamp_.time_since_epoch()) %
-              1000;
+              kTimeConstant;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;
@@ -58,7 +60,7 @@ std::string Originator::Timestamp() const {
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp_);
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                   timestamp_.time_since_epoch()) %
-              1000;
+              kTimeConstant;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;

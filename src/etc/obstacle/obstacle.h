@@ -17,10 +17,8 @@
 
 #include "src/etc/obstacle/obstacle_data.h"
 
-namespace design_pattern::etc::obstacle
-{
-namespace entity
-{
+namespace design_pattern::etc::obstacle {
+namespace entity {
 
 /// @brief Forward declarations
 class PointObstacleRepository;
@@ -28,9 +26,8 @@ class PointObstacle;
 
 using PointObstaclePtr = std::shared_ptr<PointObstacle>;
 
-class PointObstacle
-{
-  public:
+class PointObstacle {
+ public:
     PointObstacle() = delete;
     PointObstacle(const PointObstacle &) = delete;
     PointObstacle(const PointObstacle &&) = delete;
@@ -40,29 +37,30 @@ class PointObstacle
     bool operator==(const data::PointObstacleData &point_obstacle_data) const;
 
     friend PointObstacleRepository;
-    friend std::ostream &operator<<(std::ostream &os, const PointObstacle &point_obstacle);
+    friend std::ostream &operator<<(std::ostream &os,
+                                    const PointObstacle &point_obstacle);
 
-  private:
+ private:
     data::PointObstacleData data_;
 };
 
-bool operator==(const data::PointObstacleData &point_obstacle_data, const PointObstacle &point_obstacle);
+bool operator==(const data::PointObstacleData &point_obstacle_data,
+                const PointObstacle &point_obstacle);
 std::ostream &operator<<(std::ostream &os, const PointObstacle &point_obstacle);
 
-class PointObstacleRepository
-{
-  public:
+class PointObstacleRepository {
+ public:
     std::size_t Size() const;
     void Create(const data::PointObstacleData &obstacle_data);
     PointObstaclePtr Read(std::size_t id);
     void Update(const data::PointObstacleData &obstacle_data);
     void Delete(std::size_t id);
 
-  private:
+ private:
     std::map<std::size_t, PointObstaclePtr> repo_;
 };
 
-} // namespace entity
+}  // namespace entity
 
-} // namespace design_pattern::etc::obstacle
-#endif // SRC_ETC_OBJECT_OBJECT_H_
+}  // namespace design_pattern::etc::obstacle
+#endif  // SRC_ETC_OBJECT_OBJECT_H_

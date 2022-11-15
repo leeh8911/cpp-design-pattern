@@ -12,21 +12,21 @@
 #include <gtest/gtest.h>
 
 namespace {
-using namespace design_pattern::behavior::observer;
+using namespace design_pattern::behavior::observer;  // NOLINT
 TEST(ObserverTest, Should_FindObstacle_When_GivenSpecificId) {
     ObstacleRepository repo;
 
-    repo.GenerateObstacleById(42);
+    repo.GenerateObstacleById(42);  // NOLINT
     EXPECT_EQ(repo.Size(), 1);
 
-    EXPECT_TRUE(repo.Find(42) != nullptr);
-    EXPECT_TRUE(repo.Find(23) == nullptr);
+    EXPECT_TRUE(repo.Find(42) != nullptr);  // NOLINT
+    EXPECT_TRUE(repo.Find(23) == nullptr);  // NOLINT
 }
 
 TEST(ObserverTest, Should_EraseAllObstacle_When_GivenSpecificId) {
     ObstacleRepository repo;
-    repo.GenerateObstacleById(42);
-    repo.Erase(42);
+    repo.GenerateObstacleById(42);  // NOLINT
+    repo.Erase(42);                 // NOLINT
     EXPECT_EQ(repo.Size(), 0);
 }
 

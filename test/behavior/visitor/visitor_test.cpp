@@ -14,29 +14,23 @@
 #include <memory>
 #include <vector>
 
-using namespace design_pattern::behavior::visitor; // NOLINT
+using namespace design_pattern::behavior::visitor;  // NOLINT
 
-namespace
-{
+namespace {
 
-TEST(VisitorTest, Sample)
-{
-    ConcreteVisitor visitor;
+TEST(VisitorTest, Sample) {
+    std::vector<std::unique_ptr<Element>> element_vector{};
+    element_vector.emplace_back(std::make_unique<ConcreteElementA>());
+    element_vector.emplace_back(std::make_unique<ConcreteElementB>());
 
-    ConcreteElementA A;
-    ConcreteElementB B;
-
-    std::vector<std::unique_ptr<Element>> v;
-    v.emplace_back(std::make_unique<ConcreteElementA>());
-    v.emplace_back(std::make_unique<ConcreteElementB>());
-
-    EXPECT_EQ(visitor.Count(), 0);
-    for (auto &elm : v)
-    {
-        elm->Accept(std::make_shared<ConcreteVisitor>(visitor));
+    auto visitor = std::make_shared<ConcreteVisitor>();
+    EXPECT_EQ(visitor->Count(), 0);
+    for (auto &elm : element_vector) {
+        elm->Accept(visitor);
 
         EXPECT_TRUE(elm->IsVisited());
+        EXPECT_EQ(elm->PrintCommand(), "invoke");
     }
-    EXPECT_EQ(visitor.Count(), v.size());
+    EXPECT_EQ(visitor->Count(), element_vector.size());
 }
-} // namespace
+}  // namespace

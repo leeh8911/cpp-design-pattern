@@ -10,37 +10,42 @@
 
 #include "src/behavior/visitor/visitor.h"
 
-namespace design_pattern::behavior::visitor
-{
-std::size_t ConcreteVisitor::Count() const
-{
-    return count_;
+#include <iostream>
+#include <memory>
+#include <string>
+#include <utility>
+
+namespace design_pattern::behavior::visitor {
+std::size_t ConcreteVisitor::Count() const { return count_; }
+
+void ConcreteElementA::Invoke(std::string command) { command_ = command; }
+std::string ConcreteElementA::PrintCommand() { return command_; }
+
+void ConcreteElementB::Invoke(std::string command) { command_ = command; }
+std::string ConcreteElementB::PrintCommand() { return command_; }
+
+void ConcreteVisitor::VisitA(ConcreteElementA &A) {
+    A.Invoke("invoke");
+    count_ += 1;
 }
 
-void ConcreteVisitor::VisitA(const ConcreteElementA &A)
-{
+void ConcreteVisitor::VisitB(ConcreteElementB &B) {
+    B.Invoke("invoke");
+    count_ += 1;
 }
 
-void ConcreteVisitor::VisitB(const ConcreteElementB &B)
-{
+void ConcreteElementA::Accept(const std::shared_ptr<Visitor> &visitor) {
+    visitor->VisitA(*this);
+    visited_ = true;
 }
 
-void ConcreteElementA::Accept(std::unique_ptr<Visitor> visitor)
-{
+bool ConcreteElementA::IsVisited() { return visited_; }
+
+void ConcreteElementB::Accept(const std::shared_ptr<Visitor> &visitor) {
+    visitor->VisitB(*this);
+    visited_ = true;
 }
 
-bool ConcreteElementA::IsVisited()
-{
-    return visited_;
-}
+bool ConcreteElementB::IsVisited() { return visited_; }
 
-void ConcreteElementB::Accept(std::unique_ptr<Visitor> visitor)
-{
-}
-
-bool ConcreteElementB::IsVisited()
-{
-    return visited_;
-}
-
-} // namespace design_pattern::behavior::visitor
+}  // namespace design_pattern::behavior::visitor
