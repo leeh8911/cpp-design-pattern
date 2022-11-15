@@ -22,7 +22,7 @@
 
 namespace design_pattern::etc::apollo {
 class Any {
-   public:
+ public:
     Any() : content_(nullptr) {}
 
     template <typename ValueType>
@@ -38,16 +38,16 @@ class Any {
                         : nullptr;
     }
 
-   private:
+ private:
     class PlaceHolder {
-       public:
+     public:
         virtual ~PlaceHolder() = default;
         virtual PlaceHolder *Clone() const = 0;
     };
 
     template <typename ValueType>
     class Holder : public PlaceHolder {
-       public:
+     public:
         explicit Holder(const ValueType &value) : held_(value) {}
         ~Holder() override = default;
         PlaceHolder *Clone() const override { return new Holder(held_); }
@@ -58,7 +58,7 @@ class Any {
 };
 
 class ObjectFactory {
-   public:
+ public:
     ObjectFactory() = default;
     virtual ~ObjectFactory() = default;
     virtual Any NewInstance() { return Any(); }
@@ -67,7 +67,7 @@ class ObjectFactory {
     ObjectFactory(const ObjectFactory &) = delete;
     ObjectFactory &operator=(const ObjectFactory &) = delete;
 
-   private:
+ private:
 };
 
 typedef std::map<std::string, ObjectFactory *> FactoryMap;
@@ -85,7 +85,7 @@ bool GetRegisteredClasses(
         typedef design_pattern::etc::apollo::Any Any;                     \
         typedef design_pattern::etc::apollo::FactoryMap FactoryMap;       \
                                                                           \
-       public:                                                            \
+     public:                                                              \
         static base_class *GetInstanceByName(const ::std::string &name) { \
             auto GlobalFactoryMap =                                       \
                 design_pattern::etc::apollo::GlobalFactoryMap;            \
@@ -140,7 +140,7 @@ bool GetRegisteredClasses(
     namespace {                                                                \
     class ObjectFactory##name                                                  \
         : public design_pattern::etc::apollo::ObjectFactory {                  \
-       public:                                                                 \
+     public:                                                                   \
         virtual ~ObjectFactory##name() {}                                      \
         virtual design_pattern::etc::apollo::Any NewInstance() {               \
             return design_pattern::etc::apollo::Any(new name());               \
