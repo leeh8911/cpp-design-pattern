@@ -238,35 +238,31 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">namespace                                                                                                          </span>\</div>
-<div class="line">    {                                                                                                                  \</div>
-<div class="line">    class ObjectFactory##name : <span class="keyword">public</span> <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a>                                      \</div>
-<div class="line">    {                                                                                                                  \</div>
-<div class="line">      public:                                                                                                          \</div>
-<div class="line">        virtual ~ObjectFactory##name()                                                                                 \</div>
-<div class="line">        {                                                                                                              \</div>
-<div class="line">        }                                                                                                              \</div>
-<div class="line">        virtual <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a> NewInstance()                                                         \</div>
-<div class="line">        {                                                                                                              \</div>
-<div class="line">            return <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a>(<span class="keyword">new</span> name());                                                       \</div>
-<div class="line">        }                                                                                                              \</div>
-<div class="line">    };                                                                                                                 \</div>
-<div class="line">    __attribute__((constructor)) <span class="keywordtype">void</span> RegisterFactory##name()                                                          \</div>
-<div class="line">    {                                                                                                                  \</div>
-<div class="line">        auto <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">GlobalFactoryMap</a> = <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">design_pattern::etc::apollo::GlobalFactoryMap</a>;                                         <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe">\</a></div>
-<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe">        design_pattern::etc::apollo::FactoryMap</a> &amp;map1 = <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">design_pattern::etc::apollo::GlobalFactoryMap</a>()[#clazz];       \</div>
-<div class="line">        if (map1.find(#name) == map1.end())                                                                            \</div>
-<div class="line">            map1[#name] = <span class="keyword">new</span> ObjectFactory##name();                                                                   \</div>
-<div class="line">    }                                                                                                                  \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">namespace </span>{                                                                \</div>
+<div class="line">    class ObjectFactory##name                                                  \</div>
+<div class="line">        : <span class="keyword">public</span> <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a> {                  \</div>
+<div class="line">     public:                                                                   \</div>
+<div class="line">        virtual ~ObjectFactory##name() {}                                      \</div>
+<div class="line">        virtual <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a> NewInstance() {               \</div>
+<div class="line">            return <a class="code" href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a>(<span class="keyword">new</span> name());               \</div>
+<div class="line">        }                                                                      \</div>
+<div class="line">    };                                                                         \</div>
+<div class="line">    __attribute__((constructor)) <span class="keywordtype">void</span> RegisterFactory##name() {                \</div>
+<div class="line">        auto <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">GlobalFactoryMap</a> = <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">design_pattern::etc::apollo::GlobalFactoryMap</a>; <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe">\</a></div>
+<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe">        design_pattern::etc::apollo::FactoryMap</a> &amp;map1 =                        <a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">\</a></div>
+<div class="line"><a class="code" href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">            design_pattern::etc::apollo::GlobalFactoryMap</a>()[#clazz];           \</div>
+<div class="line">        if (map1.find(#name) == map1.end())                                    \</div>
+<div class="line">            map1[#name] = <span class="keyword">new</span> ObjectFactory##name();                           \</div>
+<div class="line">    }                                                                          \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1Any_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a></div><div class="ttdef"><b>Definition:</b> register.h:25</div></div>
-<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a32bd196b031cdc94c105e5bd63779cfe"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe">design_pattern::etc::apollo::FactoryMap</a></div><div class="ttdeci">std::map&lt; std::string, ObjectFactory * &gt; FactoryMap</div><div class="ttdef"><b>Definition:</b> register.h:87</div></div>
-<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_ae98a72a6647a539520276a56b4198118"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">design_pattern::etc::apollo::GlobalFactoryMap</a></div><div class="ttdeci">BaseClassMap &amp; GlobalFactoryMap()</div><div class="ttdef"><b>Definition:</b> register.cpp:19</div></div>
-<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a></div><div class="ttdef"><b>Definition:</b> register.h:70</div></div>
+<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1Any_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1Any.html">design_pattern::etc::apollo::Any</a></div><div class="ttdef"><b>Definition:</b> register.h:24</div></div>
+<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_a32bd196b031cdc94c105e5bd63779cfe"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe">design_pattern::etc::apollo::FactoryMap</a></div><div class="ttdeci">std::map&lt; std::string, ObjectFactory * &gt; FactoryMap</div><div class="ttdef"><b>Definition:</b> register.h:73</div></div>
+<div class="ttc" id="anamespacedesign__pattern_1_1etc_1_1apollo_html_ae98a72a6647a539520276a56b4198118"><div class="ttname"><a href="namespacedesign__pattern_1_1etc_1_1apollo.html#ae98a72a6647a539520276a56b4198118">design_pattern::etc::apollo::GlobalFactoryMap</a></div><div class="ttdeci">BaseClassMap &amp; GlobalFactoryMap()</div><div class="ttdef"><b>Definition:</b> register.cpp:18</div></div>
+<div class="ttc" id="aclassdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory_html"><div class="ttname"><a href="classdesign__pattern_1_1etc_1_1apollo_1_1ObjectFactory.html">design_pattern::etc::apollo::ObjectFactory</a></div><div class="ttdef"><b>Definition:</b> register.h:60</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
