@@ -66,7 +66,7 @@ class Object : public IObject {
 
     bool HasMeasurement() const override;
 
- protected:
+ private:
     bool UpdateByMeas(ObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;
@@ -100,7 +100,7 @@ class BoxObject : public IObject {
 
     bool HasMeasurement() const override;
 
- protected:
+ private:
     bool UpdateByMeas(BoxObjectPtr meas);
     Vector2D position_;
     Vector2D velocity_;

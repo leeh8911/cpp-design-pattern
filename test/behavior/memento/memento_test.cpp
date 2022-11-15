@@ -16,14 +16,16 @@
 #include <thread>
 
 namespace {
-using namespace design_pattern::behavior::memento;
+using namespace design_pattern::behavior::memento;  // NOLINT
+
+constexpr std::size_t kTimeConstant = 1000;
 
 TEST(MementoTest, MementoCreate) {
     auto timestamp = std::chrono::system_clock::now();
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp);
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                   timestamp.time_since_epoch()) %
-              1000;
+              kTimeConstant;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;
@@ -70,7 +72,7 @@ TEST(MementoTest, CaretakerCreate) {
 }
 
 TEST(MementoTest, CaretakerUpdate) {
-    using namespace std::chrono_literals;
+    using namespace std::chrono_literals;  // NOLINT
     Caretaker c;
 
     c.Update("1");
@@ -85,7 +87,7 @@ TEST(MementoTest, CaretakerUpdate) {
 }
 
 TEST(MementoTest, CaretakerUndo) {
-    using namespace std::chrono_literals;
+    using namespace std::chrono_literals;  // NOLINT
 
     Caretaker c;
     c.Update("1");
