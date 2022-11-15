@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef SRC_ETC_REGISTER_REGISTER_H_
-#define SRC_ETC_REGISTER_REGISTER_H_
+#ifndef ETC_REGISTER_REGISTER_H_
+#define ETC_REGISTER_REGISTER_H_
 
 #include <algorithm>
 #include <iostream>
@@ -154,4 +154,4 @@ bool GetRegisteredClasses(
             map1[#name] = new ObjectFactory##name();                           \
     }                                                                          \
     }   // namespace
-#endif  // SRC_ETC_REGISTER_REGISTER_H_
+#endif  // ETC_REGISTER_REGISTER_H_
