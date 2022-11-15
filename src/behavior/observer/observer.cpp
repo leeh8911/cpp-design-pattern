@@ -19,7 +19,9 @@ namespace design_pattern::behavior::observer {
 Obstacle::Obstacle(std::size_t id) : id_(id) {}
 std::size_t Obstacle::Id() { return id_; }
 
-void ObstacleCounter::Update(ObstacleMap *obstacle_repo) { count = obstacle_repo->size(); }
+void ObstacleCounter::Update(ObstacleMap *obstacle_repo) {
+    count = obstacle_repo->size();
+}
 
 std::size_t ObstacleCounter::operator()() { return count; }
 
@@ -83,7 +85,9 @@ std::size_t ObstacleRepository::GetEmptyId() const {
     return candidate;
 }
 
-void ObstacleRepository::AddSubscriber(SubscriberPtr sub) { subscribers.emplace_back(sub); }
+void ObstacleRepository::AddSubscriber(SubscriberPtr sub) {
+    subscribers.emplace_back(sub);
+}
 
 std::size_t ObstacleRepository::SubscribedCount() { return subscribers.size(); }
 

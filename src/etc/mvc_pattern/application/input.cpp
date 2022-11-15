@@ -14,7 +14,9 @@
 #include <vector>
 
 namespace design_pattern::etc::mvc::app {
-void Input::Update(const std::vector<Sensor> &sensor_vector) { container_ = sensor_vector; }
+void Input::Update(const std::vector<Sensor> &sensor_vector) {
+    container_ = sensor_vector;
+}
 
 const Sensor &Input::GetItem(size_t idx) const { return container_[idx]; }
 

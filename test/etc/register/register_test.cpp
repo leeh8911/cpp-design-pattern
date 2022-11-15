@@ -32,7 +32,8 @@ class DerivedClass1 : BaseClass {
 };
 
 PERCEPTION_REGISTER_REGISTERER(BaseClass);
-#define PERCEPTION_REGISTER_TEST(name) PERCEPTION_REGISTER_CLASS(BaseClass, name)
+#define PERCEPTION_REGISTER_TEST(name) \
+    PERCEPTION_REGISTER_CLASS(BaseClass, name)
 
 PERCEPTION_REGISTER_TEST(DerivedClass1);
 

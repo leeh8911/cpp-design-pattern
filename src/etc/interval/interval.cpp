@@ -21,9 +21,11 @@ Interval Interval::kEmptyInterval{std::numeric_limits<float>::max(),
 
 Interval::Interval() : Interval(kEmptyInterval) {}
 
-Interval::Interval(double from, double to) : from_{std::min(from, to)}, to_{std::max(from, to)} {}
+Interval::Interval(double from, double to)
+    : from_{std::min(from, to)}, to_{std::max(from, to)} {}
 
-Interval::Interval(const std::array<double, 2> &arr) : Interval{arr[0], arr[1]} {}
+Interval::Interval(const std::array<double, 2> &arr)
+    : Interval{arr[0], arr[1]} {}
 
 Interval::Interval(const Interval &&other) : Interval{other.from_, other.to_} {}
 Interval::Interval(const Interval &other) : Interval{other.from_, other.to_} {}
@@ -34,7 +36,9 @@ Interval &Interval::operator=(Interval &&other) {
     return *this;
 }
 
-bool Interval::IsIncluded(double value) const { return ((from_ <= value) && (value <= to_)); }
+bool Interval::IsIncluded(double value) const {
+    return ((from_ <= value) && (value <= to_));
+}
 
 bool Interval::IsOverlap(const Interval &other) const {
     return IsIncluded(other.from_) || IsIncluded(other.to_);
@@ -44,7 +48,9 @@ bool Interval::operator==(const Interval &other) const {
     return ((from_ == other.from_) && (to_ == other.to_));
 }
 
-bool Interval::operator!=(const Interval &other) const { return !operator==(other); }
+bool Interval::operator!=(const Interval &other) const {
+    return !operator==(other);
+}
 
 Interval Interval::Intersect(const Interval &other) const {
     if (!IsOverlap(other)) {
@@ -135,15 +141,20 @@ bool ContinuousSet::operator==(const ContinuousSet &other) const {
     return true;
 }
 
-bool ContinuousSet::operator!=(const ContinuousSet &other) const { return !((*this) == other); }
+bool ContinuousSet::operator!=(const ContinuousSet &other) const {
+    return !((*this) == other);
+}
 
-bool ContinuousSet::operator!=(const Interval &interval) const { return !((*this) == interval); }
+bool ContinuousSet::operator!=(const Interval &interval) const {
+    return !((*this) == interval);
+}
 
 void ContinuousSet::RemoveOverlappedInterval() {
     auto first = intervals_.begin();
     auto second = first + 1;
 
-    for (; (first != intervals_.end()) && (second != intervals_.end()); first++, second++) {
+    for (; (first != intervals_.end()) && (second != intervals_.end());
+         first++, second++) {
         if ((*first).IsOverlap(*second)) {
             Interval interval = (*first).Union(*second);
             intervals_.erase(first, second + 1);
@@ -162,7 +173,8 @@ void ContinuousSet::Order() {
     // Do Nothing;
 }
 
-std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set) {
+std::ostream &operator<<(std::ostream &os,
+                         const ContinuousSet &continuous_set) {
     os << "{";
     for (const auto &elm : continuous_set.intervals_) {
         os << elm << " ";

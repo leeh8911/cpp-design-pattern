@@ -24,7 +24,9 @@ struct IProduct {
 
 class ConcreteProductA : public IProduct {
    public:
-    ConcreteProductA() { std::cout << "Construct concrete product A instance" << std::endl; }
+    ConcreteProductA() {
+        std::cout << "Construct concrete product A instance" << std::endl;
+    }
     ~ConcreteProductA() override {
         std::cout << "Destruct concrete product A instance" << std::endl;
     }
@@ -32,7 +34,9 @@ class ConcreteProductA : public IProduct {
 
 class ConcreteProductB : public IProduct {
    public:
-    ConcreteProductB() { std::cout << "Construct concrete product B instance" << std::endl; }
+    ConcreteProductB() {
+        std::cout << "Construct concrete product B instance" << std::endl;
+    }
     ~ConcreteProductB() override {
         std::cout << "Destruct concrete product B instance" << std::endl;
     }

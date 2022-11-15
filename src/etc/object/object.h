@@ -79,7 +79,8 @@ using BoxObjectPtr = std::unique_ptr<BoxObject>;
 class BoxObject : public IObject {
    public:
     BoxObject();
-    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape, double rotation);
+    BoxObject(Vector2D position, Vector2D velocity, Vector2D shape,
+              double rotation);
     BoxObject(const BoxObject &other);
     ~BoxObject() override = default;
 

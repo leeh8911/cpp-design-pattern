@@ -32,7 +32,9 @@ void ObjectTracking::InputSensor(const std::vector<Sensor> &sensor_vector) {
     tracking_->InputSensor(sensor_vector);
 }
 
-std::vector<Target> ObjectTracking::OutputTarget() { return tracking_->OutputTarget(); }
+std::vector<Target> ObjectTracking::OutputTarget() {
+    return tracking_->OutputTarget();
+}
 
 size_t ObjectTracking::InputSize() const { return tracking_->InputSize(); }
 size_t ObjectTracking::OutputSize() const { return tracking_->OutputSize(); }

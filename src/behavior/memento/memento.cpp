@@ -26,8 +26,9 @@ std::string Memento::State() const { return state_; }
 
 std::string Memento::Timestamp() const {
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp_);
-    auto ms =
-        std::chrono::duration_cast<std::chrono::milliseconds>(timestamp_.time_since_epoch()) % 1000;
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                  timestamp_.time_since_epoch()) %
+              1000;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;
@@ -55,8 +56,9 @@ std::string Originator::State() const { return state_; }
 
 std::string Originator::Timestamp() const {
     std::time_t t_time = std::chrono::system_clock::to_time_t(timestamp_);
-    auto ms =
-        std::chrono::duration_cast<std::chrono::milliseconds>(timestamp_.time_since_epoch()) % 1000;
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+                  timestamp_.time_since_epoch()) %
+              1000;
     std::tm tm_time = *std::localtime(&t_time);
 
     std::ostringstream oss;

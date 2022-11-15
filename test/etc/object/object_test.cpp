@@ -95,8 +95,8 @@ TEST_F(ObjectTest, BoxObjectMeasuredUpdate) {
     auto meas_shape = Vector2D({1.0, 1.0});
     double meas_rotation = kPi / 12;
     auto obj = std::make_unique<BoxObject>();
-    auto meas =
-        std::make_unique<BoxObject>(meas_position, meas_velocity, meas_shape, meas_rotation);
+    auto meas = std::make_unique<BoxObject>(meas_position, meas_velocity,
+                                            meas_shape, meas_rotation);
 
     obj->Assignment(std::move(meas));
     EXPECT_TRUE(obj->HasMeasurement());

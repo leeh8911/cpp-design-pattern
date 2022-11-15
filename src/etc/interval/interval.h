@@ -54,7 +54,8 @@ class ContinuousSet {
     bool operator==(const ContinuousSet &other) const;
     bool operator!=(const ContinuousSet &other) const;
 
-    friend std::ostream &operator<<(std::ostream &os, const ContinuousSet &continuous_set);
+    friend std::ostream &operator<<(std::ostream &os,
+                                    const ContinuousSet &continuous_set);
 
    private:
     void RemoveOverlappedInterval();

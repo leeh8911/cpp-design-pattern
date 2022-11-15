@@ -37,9 +37,12 @@ class Circle : public Shape {
 
 class ColoredShape : public Shape {
    public:
-    ColoredShape(const std::string &&color, Shape *shape) : color_(color), shape_(shape) {}
+    ColoredShape(const std::string &&color, Shape *shape)
+        : color_(color), shape_(shape) {}
 
-    std::string Name() const override { return shape_->Name() + " which is colored " + color_; }
+    std::string Name() const override {
+        return shape_->Name() + " which is colored " + color_;
+    }
 
    private:
     std::string color_;

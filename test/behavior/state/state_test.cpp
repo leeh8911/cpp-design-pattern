@@ -30,7 +30,8 @@ TEST(StateTest, Should_PrintColor_When_GivenOrNotInitialStateColor) {
     EXPECT_EQ(yellow_state_light.CurrentState(), "Yellow Light");
 }
 
-TEST(StateTest, Should_PrintColor_When_StartingRedStateAndUpdatingTrafficLight) {
+TEST(StateTest,
+     Should_PrintColor_When_StartingRedStateAndUpdatingTrafficLight) {
     TrafficLight traffic_light{};
     EXPECT_EQ(traffic_light.CurrentState(), "Red Light");
 

@@ -13,7 +13,11 @@
 #include <utility>
 
 namespace design_pattern::etc::object {
-Object::Object() : position_(Vector2D{}), velocity_(Vector2D{}), alive_count_(1), meas_(nullptr) {}
+Object::Object()
+    : position_(Vector2D{}),
+      velocity_(Vector2D{}),
+      alive_count_(1),
+      meas_(nullptr) {}
 
 Object::Object(const Object &other)
     : position_(other.Position()),
@@ -22,7 +26,10 @@ Object::Object(const Object &other)
       meas_(nullptr) {}
 
 Object::Object(Vector2D position, Vector2D velocity)
-    : position_(position), velocity_(velocity), alive_count_(1), meas_(nullptr) {}
+    : position_(position),
+      velocity_(velocity),
+      alive_count_(1),
+      meas_(nullptr) {}
 
 Object::~Object() {
     IObjectPtr temp = nullptr;
@@ -50,7 +57,8 @@ bool Object::Update() {
         return false;
     }
 
-    auto meas = std::make_unique<Object>(*(dynamic_cast<Object *>(meas_.get())));
+    auto meas =
+        std::make_unique<Object>(*(dynamic_cast<Object *>(meas_.get())));
     IObjectPtr temp = nullptr;
     std::swap(meas_, temp);
     return UpdateByMeas(std::move(meas));
@@ -88,7 +96,8 @@ bool BoxObject::Update() {
         return false;
     }
 
-    auto meas = std::make_unique<BoxObject>(*(dynamic_cast<BoxObject *>(meas_.get())));
+    auto meas =
+        std::make_unique<BoxObject>(*(dynamic_cast<BoxObject *>(meas_.get())));
     IObjectPtr temp = nullptr;
     std::swap(meas_, temp);
     return UpdateByMeas(std::move(meas));
@@ -119,7 +128,8 @@ BoxObject::BoxObject()
       alive_count_(1),
       meas_(nullptr) {}
 
-BoxObject::BoxObject(Vector2D position, Vector2D velocity, Vector2D shape, double rotation)
+BoxObject::BoxObject(Vector2D position, Vector2D velocity, Vector2D shape,
+                     double rotation)
     : position_(position),
       velocity_(velocity),
       shape_(shape),
