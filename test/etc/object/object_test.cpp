@@ -78,7 +78,7 @@ TEST_F(ObjectTest, BoxObjectMutate) {
     auto meas_position = Vector2D({1.0, 1.0});
     auto meas_velocity = Vector2D({1.0, 1.0});
     auto meas_shape = Vector2D({1.0, 1.0});
-    double meas_rotation = kPi / 12;
+    double meas_rotation = kPi / 12;  // NOLINT
     meas->Position(meas_position);
     meas->Velocity(meas_velocity);
     meas->Shape(meas_shape);
@@ -93,7 +93,7 @@ TEST_F(ObjectTest, BoxObjectMeasuredUpdate) {
     auto meas_position = Vector2D({1.0, 1.0});
     auto meas_velocity = Vector2D({1.0, 1.0});
     auto meas_shape = Vector2D({1.0, 1.0});
-    double meas_rotation = kPi / 12;
+    double meas_rotation = kPi / 12;  // NOLINT
     auto obj = std::make_unique<BoxObject>();
     auto meas = std::make_unique<BoxObject>(meas_position, meas_velocity,
                                             meas_shape, meas_rotation);

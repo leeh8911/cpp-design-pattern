@@ -37,7 +37,7 @@ using IMementoPtr = std::unique_ptr<IMemento>;
 class Memento : public IMemento {
  public:
     Memento() = default;
-    Memento(std::string state);
+    explicit Memento(std::string state);
     Memento(std::string state, Timepoint timestamp);
 
     ~Memento() override = default;

@@ -169,8 +169,7 @@ void ContinuousSet::RemoveOverlappedInterval() {
 }
 
 void ContinuousSet::Order() {
-    // TODO: Ordering continuous set
-    // Do Nothing;
+    // TODO(sangwon): Ordering continuous set
 }
 
 std::ostream &operator<<(std::ostream &os,
