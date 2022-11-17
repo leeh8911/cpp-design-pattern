@@ -12,6 +12,7 @@
 #define SRC_ETC_INTERVAL_INTERVAL_H_
 
 #include <array>
+#include <cmath>
 #include <iostream>
 #include <vector>
 
@@ -61,6 +62,21 @@ class ContinuousSet {
     void RemoveOverlappedInterval();
     void Order();
     std::vector<Interval> intervals_{};
+};
+
+class Angle {
+ public:
+    Angle() = default;
+
+    double Radian() const;
+    double Degree() const;
+    void Radian(double value);
+    void Degree(double value);
+
+ private:
+    double degree_value_{};
+    static constexpr double degree_to_radian = 180. * M_1_PI;
+    static constexpr double radian_to_degree = 1 / degree_to_radian;
 };
 
 }  // namespace design_pattern::etc::interval

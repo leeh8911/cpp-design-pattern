@@ -11,6 +11,7 @@
 #include "src/etc/interval/interval.h"
 
 #include <algorithm>
+#include <cmath>
 #include <limits>
 #include <utility>
 
@@ -186,4 +187,16 @@ std::ostream &operator<<(std::ostream &os, const Interval &interval) {
     os << "<" << interval.from_ << ", " << interval.to_ << ">";
     return os;
 }
+
+constexpr double Angle::degree_to_radian;
+constexpr double Angle::radian_to_degree;
+
+double Angle::Radian() const { return degree_value_ * radian_to_degree; }
+
+double Angle::Degree() const { return degree_value_; }
+
+void Angle::Radian(double value) { degree_value_ = value * degree_to_radian; }
+
+void Angle::Degree(double value) { degree_value_ = value; }
+
 }  // namespace design_pattern::etc::interval

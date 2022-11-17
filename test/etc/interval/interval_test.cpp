@@ -11,6 +11,8 @@
 
 #include <gtest/gtest.h>
 
+#include <cmath>
+
 namespace {
 using namespace design_pattern::etc::interval;  // NOLINT
 
@@ -22,6 +24,7 @@ using namespace design_pattern::etc::interval;  // NOLINT
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are
 // circular value
 
+// cppcheck-suppress syntaxError
 TEST(IntervalTest, CheckIncludingValue) {
     Interval interval(1.0, 3.0);
 
@@ -98,5 +101,21 @@ TEST(IntervalTest, ContinuousSetIntersection) {
     continuous_set.Union(Interval{1.0, 3.0});
     continuous_set.Intersect(Interval{1.0, 3.0});
     EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+}
+
+// TODO(sangwon): angle value operators (+, -, *, /);
+// TODO(sangwon): angle value is bounded(-180, 180) << could be change?
+TEST(AngleTest, BaseAngleTest) {
+    Angle a;
+    EXPECT_DOUBLE_EQ(0.0, a.Radian());
+    EXPECT_DOUBLE_EQ(0.0, a.Degree());
+
+    a.Degree(180.0);
+    EXPECT_DOUBLE_EQ(M_PI, a.Radian());
+    EXPECT_DOUBLE_EQ(180.0, a.Degree());
+
+    a.Radian(M_PI);
+    EXPECT_DOUBLE_EQ(M_PI, a.Radian());
+    EXPECT_DOUBLE_EQ(180.0, a.Degree());
 }
 }  // namespace
