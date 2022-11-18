@@ -18,16 +18,16 @@
 namespace {
 using namespace design_pattern::etc::interval;  // NOLINT
 
-// TODO(leeh8911@gmail.com): Interval's reversible is not useful (I think from_
-// always smaller than to_)
-// TODO(leeh8911@gmail.com): Interval class calculate set difference other
+// TODO(leeh8911@gmail.com): NumberInterval's reversible is not useful (I think
+// from_ always smaller than to_)
+// TODO(leeh8911@gmail.com): NumberInterval class calculate set difference other
 // interval
-// TODO(leeh8911@gmail.com): Circular Interval class from, to values are
+// TODO(leeh8911@gmail.com): Circular NumberInterval class from, to values are
 // circular value
 
 // cppcheck-suppress syntaxError
 TEST(IntervalTest, CheckIncludingValue) {
-    Interval interval(1.0, 3.0);
+    NumberInterval interval(1.0, 3.0);
 
     EXPECT_FALSE(interval.IsIncluded(0.0));
 
@@ -39,14 +39,14 @@ TEST(IntervalTest, CheckIncludingValue) {
 }
 
 TEST(IntervalTest, OverlapInterval) {
-    Interval interval_10to12(10.0, 12.0);
+    NumberInterval interval_10to12(10.0, 12.0);
 
-    Interval interval_8to9(8.0, 9.0);
-    Interval interval_8to10(8.0, 10.0);
-    Interval interval_8to11(8.0, 11.0);
-    Interval interval_11to14(11.0, 14.0);
-    Interval interval_12to14(12.0, 14.0);
-    Interval interval_13to14(13.0, 14.0);
+    NumberInterval interval_8to9(8.0, 9.0);
+    NumberInterval interval_8to10(8.0, 10.0);
+    NumberInterval interval_8to11(8.0, 11.0);
+    NumberInterval interval_11to14(11.0, 14.0);
+    NumberInterval interval_12to14(12.0, 14.0);
+    NumberInterval interval_13to14(13.0, 14.0);
 
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_8to9));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to10));
@@ -57,21 +57,21 @@ TEST(IntervalTest, OverlapInterval) {
 }
 
 TEST(IntervalTest, CalculateIntersection) {
-    Interval origin{1.0, 3.0};
-    Interval overlap_case_1{2.0, 4.0};
-    Interval overlap_case_2{0.0, 2.0};
-    Interval overlap_case_3{0.0, 1.0};
-    Interval overlap_case_4{3.0, 4.0};
-    Interval overlap_case_5{1.1, 2.9};
-    Interval non_overlap_case_1{4.0, 5.0};
-    Interval non_overlap_case_2{0.0, 0.5};
+    NumberInterval origin{1.0, 3.0};
+    NumberInterval overlap_case_1{2.0, 4.0};
+    NumberInterval overlap_case_2{0.0, 2.0};
+    NumberInterval overlap_case_3{0.0, 1.0};
+    NumberInterval overlap_case_4{3.0, 4.0};
+    NumberInterval overlap_case_5{1.1, 2.9};
+    NumberInterval non_overlap_case_1{4.0, 5.0};
+    NumberInterval non_overlap_case_2{0.0, 0.5};
 
-    EXPECT_EQ(origin.Intersect(overlap_case_1), (Interval{2.0, 3.0}));
-    EXPECT_NE(origin.Intersect(overlap_case_1), (Interval{1.0, 4.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_2), (Interval{1.0, 2.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_3), (Interval{1.0, 1.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
+    EXPECT_EQ(origin.Intersect(overlap_case_1), (NumberInterval{2.0, 3.0}));
+    EXPECT_NE(origin.Intersect(overlap_case_1), (NumberInterval{1.0, 4.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_2), (NumberInterval{1.0, 2.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_3), (NumberInterval{1.0, 1.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_4), (NumberInterval{3.0, 3.0}));
+    EXPECT_EQ(origin.Intersect(overlap_case_5), (NumberInterval{1.1, 2.9}));
 
     EXPECT_TRUE(origin.Intersect(non_overlap_case_1).IsEmpty());
     EXPECT_TRUE(origin.Intersect(non_overlap_case_2).IsEmpty());

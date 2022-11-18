@@ -13,70 +13,84 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include <memory>
 #include <utility>
 
 namespace design_pattern::etc::interval {
 
-const Interval Interval::kEmptyInterval{};
+const NumberInterval NumberInterval::kEmptyInterval{};
 
-Interval::Interval(double from, double to)
+NumberInterval::NumberInterval(double from, double to)
     : from_{std::min(from, to)}, to_{std::max(from, to)} {}
 
-Interval::Interval(const std::array<double, 2> &arr)
-    : Interval{arr[0], arr[1]} {}
+NumberInterval::NumberInterval(const std::array<double, 2> &arr)
+    : NumberInterval{arr[0], arr[1]} {}
 
-Interval::Interval(const Interval &&other) : Interval{other.from_, other.to_} {}
-Interval::Interval(const Interval &other) : Interval{other.from_, other.to_} {}
+NumberInterval::NumberInterval(const NumberInterval &&other)
+    : NumberInterval{other.from_, other.to_} {}
+NumberInterval::NumberInterval(const NumberInterval &other)
+    : NumberInterval{other.from_, other.to_} {}
 
-Interval &Interval::operator=(Interval &&other) {
+NumberInterval &NumberInterval::operator=(NumberInterval &&other) {
     from_ = other.from_;
     to_ = other.to_;
     return *this;
 }
 
-bool Interval::IsIncluded(double value) const {
+bool NumberInterval::IsIncluded(double value) const {
     return ((from_ <= value) && (value <= to_));
 }
 
-bool Interval::IsOverlap(const Interval &other) const {
-    return IsIncluded(other.from_) || IsIncluded(other.to_);
+bool NumberInterval::IsOverlap(const Interval &other) const {
+    NumberInterval other_ = dynamic_cast<const NumberInterval &>(other);
+    return IsIncluded(other_.from_) || IsIncluded(other_.to_);
 }
 
-bool Interval::IsEmpty() const { return (*this) == kEmptyInterval; }
-
-bool Interval::operator==(const Interval &other) const {
-    return ((from_ == other.from_) && (to_ == other.to_));
+bool NumberInterval::IsEmpty() {
+    auto temporal_interval = std::make_unique<NumberInterval>(kEmptyInterval);
+    return (*this) == (*std::move(temporal_interval));
 }
 
-bool Interval::operator!=(const Interval &other) const {
+bool NumberInterval::operator==(const Interval &other) const {
+    NumberInterval other_ = dynamic_cast<const NumberInterval &>(other);
+    return ((from_ == other_.from_) && (to_ == other_.to_));
+}
+
+bool NumberInterval::operator!=(const Interval &other) const {
     return !operator==(other);
 }
 
-bool Interval::operator<(const Interval &other) const {
-    return (from_ + to_) / 2. < (other.from_ + other.to_) / 2.;
+bool NumberInterval::operator<(const Interval &other) const {
+    NumberInterval other_ = dynamic_cast<const NumberInterval &>(other);
+    return (from_ + to_) / 2. < (other_.from_ + other_.to_) / 2.;
 }
 
-Interval Interval::Intersect(const Interval &other) const {
+Interval &NumberInterval::Intersect(const Interval &other) const {
     if (!IsOverlap(other)) {
-        return kEmptyInterval;
+        return *std::move(std::make_unique<Interval>(kEmptyInterval));
     }
+    NumberInterval other_ = dynamic_cast<const NumberInterval &>(other);
 
-    double from = std::max(from_, other.from_);
-    double to = std::min(to_, other.to_);
-    Interval intersect{from, to};
-    return intersect;
+    double from = std::max(from_, other_.from_);
+    double to = std::min(to_, other_.to_);
+    auto intersect = std::make_unique<NumberInterval>(from, to);
+    return *std::move(intersect);
 }
 
-Interval Interval::Union(const Interval &other) const {
+Interval &NumberInterval::Union(const Interval &other) const {
     if (!IsOverlap(other)) {
-        return kEmptyInterval;
+        return *std::move(std::make_unique<Interval>(kEmptyInterval));
     }
-    double from = std::min(from_, other.from_);
-    double to = std::max(to_, other.to_);
-    return Interval(from, to);
+    NumberInterval other_ = dynamic_cast<const NumberInterval &>(other);
+
+    double from = std::min(from_, other_.from_);
+    double to = std::max(to_, other_.to_);
+    auto union_interval = std::make_unique<NumberInterval>(from, to);
+
+    return *std::move(union_interval);
 }
 
-std::ostream &operator<<(std::ostream &os, const Interval &interval) {
+std::ostream &operator<<(std::ostream &os, const NumberInterval &interval) {
     os << "<" << interval.from_ << ", " << interval.to_ << ">";
     return os;
 }

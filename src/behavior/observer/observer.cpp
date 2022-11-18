@@ -92,8 +92,11 @@ void ObstacleRepository::AddSubscriber(SubscriberPtr sub) {
 std::size_t ObstacleRepository::SubscribedCount() { return subscribers.size(); }
 
 void ObstacleRepository::RemoveSubscriber(SubscriberPtr sub) {
-    auto found = std::find(subscribers.begin(), subscribers.end(), sub);
-    subscribers.erase(found);
+    for (auto it = subscribers.begin(); it != subscribers.end(); it++) {
+        if (it->get() == sub.get()) {
+            subscribers.erase(it);
+        }
+    }
 }
 
 void ObstacleRepository::Notify() {

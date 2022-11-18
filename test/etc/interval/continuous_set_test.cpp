@@ -18,30 +18,30 @@ using namespace design_pattern::etc::interval;
 
 // cppcheck-suppress syntaxError
 TEST(ContinuousSetTest, ContinuousSetUnion) {
-    Interval interval(1.0, 3.0);
+    NumberInterval interval(1.0, 3.0);
     ContinuousSet continuous_set{};
 
-    continuous_set.Union(Interval{1.0, 3.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+    continuous_set.Union(NumberInterval{1.0, 3.0});
+    EXPECT_EQ(continuous_set, (NumberInterval{1.0, 3.0}));
 
-    continuous_set.Union(Interval{3.0, 5.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 5.0}));
+    continuous_set.Union(NumberInterval{3.0, 5.0});
+    EXPECT_EQ(continuous_set, (NumberInterval{1.0, 5.0}));
 
-    continuous_set.Union(Interval{7.0, 8.0});
+    continuous_set.Union(NumberInterval{7.0, 8.0});
     EXPECT_EQ(continuous_set.Size(), 2);
 
-    continuous_set.Union(Interval{5.0, 7.0});
+    continuous_set.Union(NumberInterval{5.0, 7.0});
     EXPECT_EQ(continuous_set.Size(), 1);
-    EXPECT_EQ(continuous_set, (Interval{1.0, 8.0}));
+    EXPECT_EQ(continuous_set, (NumberInterval{1.0, 8.0}));
 }
 
 TEST(ContinuousSetTest, ContinuousSetIntersection) {
-    Interval interval(1.0, 3.0);
+    NumberInterval interval(1.0, 3.0);
     ContinuousSet continuous_set{};
 
-    continuous_set.Union(Interval{1.0, 3.0});
-    continuous_set.Intersect(Interval{1.0, 3.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+    continuous_set.Union(NumberInterval{1.0, 3.0});
+    continuous_set.Intersect(NumberInterval{1.0, 3.0});
+    EXPECT_EQ(continuous_set, (NumberInterval{1.0, 3.0}));
 }
 
 }  // namespace

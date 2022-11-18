@@ -10,6 +10,7 @@
 #include "src/etc/interval/continuous_set.h"
 
 #include <algorithm>
+#include <memory>
 #include <utility>
 #include <vector>
 
@@ -28,7 +29,7 @@ ContinuousSet &ContinuousSet::Union(const Interval &interval) {
 }
 
 ContinuousSet &ContinuousSet::Intersect(const Interval &interval) {
-    Interval interval2{};
+    NumberInterval interval2{};
     interval2.Union(interval);
     if (interval2 == interval) {
         return *this;
@@ -70,17 +71,17 @@ bool ContinuousSet::operator!=(const Interval &interval) const {
 void ContinuousSet::RemoveOverlappedInterval() {
     auto iter = intervals_.begin();
 
-    std::vector<Interval> temporal_vector{};
+    std::vector<IntervalPtr> temporal_vector{};
     temporal_vector.reserve(intervals_.size());
 
-    Interval interval{};
+    NumberInterval interval{};
     for (; (iter != intervals_.end()); iter++) {
         if (temporal_vector.empty()) {
             temporal_vector.emplace_back(*iter);
         } else {
             interval = temporal_vector.back();
             if (interval.IsOverlap(*iter)) {
-                temporal_vector.back() = interval.Union(*iter);
+                temporal_vector.back() = std::move(interval.Union(*iter));
             } else {
                 temporal_vector.emplace_back(*iter);
             }

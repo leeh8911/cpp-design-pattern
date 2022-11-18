@@ -34,7 +34,7 @@ class ContinuousSet {
 
  private:
     void RemoveOverlappedInterval();
-    std::vector<Interval> intervals_{};
+    std::vector<IntervalPtr> intervals_{};
 };
 }  // namespace design_pattern::etc::interval
 #endif  // SRC_ETC_INTERVAL_CONTINUOUS_SET_H_

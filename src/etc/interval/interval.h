@@ -15,33 +15,52 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
+#include <memory>
 #include <vector>
 
 namespace design_pattern::etc::interval {
-class Interval {
+
+struct Interval {
+    virtual ~Interval() = default;
+
+    virtual bool IsIncluded(double value) const;
+    virtual bool IsOverlap(const Interval &other) const;
+    virtual bool IsEmpty();
+    virtual bool operator==(const Interval &other) const;
+    virtual bool operator!=(const Interval &other) const;
+    virtual bool operator<(const Interval &other) const;
+
+    virtual Interval &Intersect(const Interval &other) const;
+    virtual Interval &Union(const Interval &other) const;
+};
+
+using IntervalPtr = std::unique_ptr<Interval>;
+
+class NumberInterval : public Interval {
  public:
-    Interval() = default;
-    Interval(double from, double to);
-    Interval(const Interval &&other);
-    Interval(const Interval &other);
-    explicit Interval(const std::array<double, 2> &arr);
-    Interval &operator=(const Interval &other) = default;
-    Interval &operator=(Interval &&other);
+    NumberInterval() = default;
+    NumberInterval(double from, double to);
+    NumberInterval(const NumberInterval &&other);
+    NumberInterval(const NumberInterval &other);
+    explicit NumberInterval(const std::array<double, 2> &arr);
+    NumberInterval &operator=(const NumberInterval &other) = default;
+    NumberInterval &operator=(NumberInterval &&other);
 
-    bool IsIncluded(double value) const;
-    bool IsOverlap(const Interval &other) const;
-    bool IsEmpty() const;
-    bool operator==(const Interval &other) const;
-    bool operator!=(const Interval &other) const;
-    bool operator<(const Interval &other) const;
+    bool IsIncluded(double value) const override;
+    bool IsOverlap(const Interval &other) const override;
+    bool IsEmpty() override;
+    bool operator==(const Interval &other) const override;
+    bool operator!=(const Interval &other) const override;
+    bool operator<(const Interval &other) const override;
 
-    Interval Intersect(const Interval &other) const;
-    Interval Union(const Interval &other) const;
+    Interval &Intersect(const Interval &other) const override;
+    Interval &Union(const Interval &other) const override;
 
-    friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
+    friend std::ostream &operator<<(std::ostream &os,
+                                    const NumberInterval &interval);
 
  private:
-    static const Interval kEmptyInterval;
+    static const NumberInterval kEmptyInterval;
 
     double from_{std::numeric_limits<float>::max()};
     double to_{std::numeric_limits<float>::max()};
