@@ -13,14 +13,15 @@
 
 #include <cmath>
 
+#include "src/etc/interval/continuous_set.h"
+
 namespace {
 using namespace design_pattern::etc::interval;  // NOLINT
 
-// TODO(leeh8911@gmail.com): Interval's reversable is not useful (I think from_
+// TODO(leeh8911@gmail.com): Interval's reversible is not useful (I think from_
 // always smaller than to_)
 // TODO(leeh8911@gmail.com): Interval class calculate set difference other
 // interval
-//
 // TODO(leeh8911@gmail.com): Circular Interval class from, to values are
 // circular value
 
@@ -72,34 +73,7 @@ TEST(IntervalTest, CalculateIntersection) {
     EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
     EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
 
-    EXPECT_EQ(origin.Intersect(non_overlap_case_1), Interval::kEmptyInterval);
-    EXPECT_EQ(origin.Intersect(non_overlap_case_2), Interval::kEmptyInterval);
-}
-
-TEST(IntervalTest, ContinuousSetUnion) {
-    Interval interval(1.0, 3.0);
-    ContinuousSet continuous_set{};
-
-    continuous_set.Union(Interval{1.0, 3.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
-
-    continuous_set.Union(Interval{3.0, 5.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 5.0}));
-
-    continuous_set.Union(Interval{7.0, 8.0});
-    EXPECT_EQ(continuous_set.Size(), 2);
-
-    continuous_set.Union(Interval{5.0, 7.0});
-    EXPECT_EQ(continuous_set.Size(), 1);
-    EXPECT_EQ(continuous_set, (Interval{1.0, 8.0}));
-}
-
-TEST(IntervalTest, ContinuousSetIntersection) {
-    Interval interval(1.0, 3.0);
-    ContinuousSet continuous_set{};
-
-    continuous_set.Union(Interval{1.0, 3.0});
-    continuous_set.Intersect(Interval{1.0, 3.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+    EXPECT_TRUE(origin.Intersect(non_overlap_case_1).IsEmpty());
+    EXPECT_TRUE(origin.Intersect(non_overlap_case_2).IsEmpty());
 }
 }  // namespace

@@ -1,0 +1,9 @@
+Checks: '
+-cppcoreguidelines-avoid-magic-numbers,
+-cppcoreguidelines-avoid-non-const-global-variables
+'
+WarningsAsErrors: '*'
+CheckOptions:
+  - key:             some-check.GlobalOption
+    value:           '0'
+    

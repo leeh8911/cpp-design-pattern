@@ -72,4 +72,6 @@ CheckOptions:
     value:           1
   - key:             modernize-use-default-member-init.UseAssignment
     value:           1
+  - key:             some-check.GlobalOption
+    value:           '1'
     

@@ -29,6 +29,7 @@ class Interval {
 
     bool IsIncluded(double value) const;
     bool IsOverlap(const Interval &other) const;
+    bool IsEmpty() const;
     bool operator==(const Interval &other) const;
     bool operator!=(const Interval &other) const;
 
@@ -36,32 +37,12 @@ class Interval {
     Interval Union(const Interval &other) const;
 
     friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
-    static Interval kEmptyInterval;
 
  private:
+    static const Interval kEmptyInterval;
+
     double from_{};
     double to_{};
-};
-
-class ContinuousSet {
- public:
-    std::size_t Size() const;
-
-    ContinuousSet &Union(const Interval &interval);
-    ContinuousSet &Intersect(const Interval &interval);
-
-    bool operator==(const Interval &interval) const;
-    bool operator!=(const Interval &interval) const;
-    bool operator==(const ContinuousSet &other) const;
-    bool operator!=(const ContinuousSet &other) const;
-
-    friend std::ostream &operator<<(std::ostream &os,
-                                    const ContinuousSet &continuous_set);
-
- private:
-    void RemoveOverlappedInterval();
-    void Order();
-    std::vector<Interval> intervals_{};
 };
 
 }  // namespace design_pattern::etc::interval
