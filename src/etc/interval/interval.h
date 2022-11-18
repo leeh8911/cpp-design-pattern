@@ -14,12 +14,13 @@
 #include <array>
 #include <cmath>
 #include <iostream>
+#include <limits>
 #include <vector>
 
 namespace design_pattern::etc::interval {
 class Interval {
  public:
-    Interval();
+    Interval() = default;
     Interval(double from, double to);
     Interval(const Interval &&other);
     Interval(const Interval &other);
@@ -32,6 +33,7 @@ class Interval {
     bool IsEmpty() const;
     bool operator==(const Interval &other) const;
     bool operator!=(const Interval &other) const;
+    bool operator<(const Interval &other) const;
 
     Interval Intersect(const Interval &other) const;
     Interval Union(const Interval &other) const;
@@ -41,8 +43,8 @@ class Interval {
  private:
     static const Interval kEmptyInterval;
 
-    double from_{};
-    double to_{};
+    double from_{std::numeric_limits<float>::max()};
+    double to_{std::numeric_limits<float>::max()};
 };
 
 }  // namespace design_pattern::etc::interval

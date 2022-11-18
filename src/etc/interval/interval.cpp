@@ -19,10 +19,6 @@ namespace design_pattern::etc::interval {
 
 const Interval Interval::kEmptyInterval{};
 
-Interval::Interval()
-    : from_{std::numeric_limits<float>::max()},
-      to_{std::numeric_limits<float>::max()} {}
-
 Interval::Interval(double from, double to)
     : from_{std::min(from, to)}, to_{std::max(from, to)} {}
 
@@ -54,6 +50,10 @@ bool Interval::operator==(const Interval &other) const {
 
 bool Interval::operator!=(const Interval &other) const {
     return !operator==(other);
+}
+
+bool Interval::operator<(const Interval &other) const {
+    return (from_ + to_) / 2. < (other.from_ + other.to_) / 2.;
 }
 
 Interval Interval::Intersect(const Interval &other) const {

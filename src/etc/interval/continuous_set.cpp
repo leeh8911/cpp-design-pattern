@@ -9,6 +9,10 @@
 
 #include "src/etc/interval/continuous_set.h"
 
+#include <algorithm>
+#include <utility>
+#include <vector>
+
 namespace design_pattern::etc::interval {
 
 std::size_t ContinuousSet::Size() const { return intervals_.size(); }
@@ -19,32 +23,25 @@ ContinuousSet &ContinuousSet::Union(const Interval &interval) {
         intervals_.emplace_back(interval);
         return *this;
     }
-    if (intervals_.size() == 1) {
-        if (intervals_[0].IsOverlap(interval)) {
-            intervals_[0] = intervals_[0].Union(interval);
-        } else {
-            intervals_.emplace_back(interval);
-        }
-        return *this;
-    }
-
     auto it = intervals_.begin();
-    Interval unioned{};
+    Interval union_interval{};
 
     for (; it != intervals_.end(); it++) {
-        unioned = (*it).Union(interval);
-        if (unioned.IsEmpty()) {
+        if ((*it).IsOverlap(interval)) {
             break;
         }
     }
-    if (unioned.IsEmpty()) {
-        std::swap(*it, unioned);
+
+    if (it != intervals_.end()) {
+        union_interval = (*it).Union(interval);
+        std::swap(*it, union_interval);
     } else {
         intervals_.emplace_back(interval);
     }
+    std::cout << interval << std::endl;
+    std::cout << *this << std::endl;
 
     RemoveOverlappedInterval();
-
     return *this;
 }
 
@@ -89,27 +86,30 @@ bool ContinuousSet::operator!=(const Interval &interval) const {
 }
 
 void ContinuousSet::RemoveOverlappedInterval() {
-    auto first = intervals_.begin();
-    auto second = first + 1;
+    auto iter = intervals_.begin();
 
-    for (; (first != intervals_.end()) && (second != intervals_.end());
-         first++, second++) {
-        if ((*first).IsOverlap(*second)) {
-            Interval interval = (*first).Union(*second);
-            intervals_.erase(first, second + 1);
-            intervals_.insert(first, interval);
-            first++, second++;
-        }
+    std::vector<Interval> temporal_vector{};
+    temporal_vector.reserve(intervals_.size());
 
-        if ((first == intervals_.end()) || (second == intervals_.end())) {
-            break;
+    Interval interval{};
+    for (; (iter != intervals_.end()); iter++) {
+        if (temporal_vector.empty()) {
+            temporal_vector.emplace_back(*iter);
+        } else {
+            interval = temporal_vector.back();
+            if (interval.IsOverlap(*iter)) {
+                temporal_vector.back() = interval.Union(*iter);
+            } else {
+                temporal_vector.emplace_back(*iter);
+            }
         }
     }
+
+    intervals_.swap(temporal_vector);
 }
 
-void ContinuousSet::Order() {
-    // TODO(sangwon): Ordering continuous set
-}
+void ContinuousSet::Order() { std::sort(intervals_.begin(), intervals_.end()); }
+
 std::ostream &operator<<(std::ostream &os,
                          const ContinuousSet &continuous_set) {
     os << "{";

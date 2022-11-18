@@ -32,9 +32,10 @@ class ContinuousSet {
     friend std::ostream &operator<<(std::ostream &os,
                                     const ContinuousSet &continuous_set);
 
+    void Order();
+
  private:
     void RemoveOverlappedInterval();
-    void Order();
     std::vector<Interval> intervals_{};
 };
 }  // namespace design_pattern::etc::interval
