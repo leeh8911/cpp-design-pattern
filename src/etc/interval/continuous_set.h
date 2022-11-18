@@ -33,7 +33,6 @@ class ContinuousSet {
                                     const ContinuousSet &continuous_set);
 
  private:
-    ContinuousSet &Order();
     void RemoveOverlappedInterval();
     std::vector<Interval> intervals_{};
 };
