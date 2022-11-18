@@ -64,29 +64,5 @@ class ContinuousSet {
     std::vector<Interval> intervals_{};
 };
 
-class Angle {
- public:
-    Angle() = default;
-    explicit Angle(double degree);
-
-    double Radian() const;
-    double Degree() const;
-    void Radian(double value);
-    void Degree(double value);
-
-    bool operator==(Angle other) const;
-    bool operator!=(Angle other) const;
-
-    friend std::ostream &operator<<(std::ostream &os, Angle angle);
- private:
-    double SaturateMinMaxRange(double degree);
-
-    double degree_value_{};
-    static constexpr double kMinAngleDegree = 0.0;
-    static constexpr double kMaxAngleDegree = 360.0;
-    static constexpr double kDegreeToRadian = 180. * M_1_PI;
-    static constexpr double kRadianToDegree = 1 / kDegreeToRadian;
-};
-
 }  // namespace design_pattern::etc::interval
 #endif  // SRC_ETC_INTERVAL_INTERVAL_H_

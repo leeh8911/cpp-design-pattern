@@ -102,29 +102,4 @@ TEST(IntervalTest, ContinuousSetIntersection) {
     continuous_set.Intersect(Interval{1.0, 3.0});
     EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
 }
-
-// TODO(sangwon): angle value operators (+, -, *, /);
-TEST(AngleTest, BaseAngleTest) {
-    Angle a;
-    EXPECT_DOUBLE_EQ(0.0, a.Radian());
-    EXPECT_DOUBLE_EQ(0.0, a.Degree());
-
-    a.Degree(180.0);
-    EXPECT_DOUBLE_EQ(M_PI, a.Radian());
-    EXPECT_DOUBLE_EQ(180.0, a.Degree());
-
-    a.Radian(M_PI);
-    EXPECT_DOUBLE_EQ(M_PI, a.Radian());
-    EXPECT_DOUBLE_EQ(180.0, a.Degree());
-}
-
-TEST(AngleTest, AngleExistRange0To360) {
-    EXPECT_EQ(Angle(360), Angle(0));
-    EXPECT_EQ(Angle(360 * 2), Angle(0));
-    EXPECT_EQ(Angle(-360), Angle(0));
-    EXPECT_EQ(Angle(-360 * 2), Angle(0));
-
-    EXPECT_EQ(Angle(-1), Angle(359));
-    EXPECT_EQ(Angle(-360.0 + -1.), Angle(359));
-}
 }  // namespace

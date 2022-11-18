@@ -173,8 +173,6 @@ void ContinuousSet::Order() {
     // TODO(sangwon): Ordering continuous set
 }
 
-Angle::Angle(double degree) : degree_value_(SaturateMinMaxRange(degree)) {}
-
 std::ostream &operator<<(std::ostream &os,
                          const ContinuousSet &continuous_set) {
     os << "{";
@@ -187,35 +185,6 @@ std::ostream &operator<<(std::ostream &os,
 
 std::ostream &operator<<(std::ostream &os, const Interval &interval) {
     os << "<" << interval.from_ << ", " << interval.to_ << ">";
-    return os;
-}
-
-constexpr double Angle::kDegreeToRadian;
-constexpr double Angle::kRadianToDegree;
-constexpr double Angle::kMinAngleDegree;
-constexpr double Angle::kMaxAngleDegree;
-
-double Angle::Radian() const { return degree_value_ * kRadianToDegree; }
-
-double Angle::Degree() const { return degree_value_; }
-
-void Angle::Radian(double value) { degree_value_ = value * kDegreeToRadian; }
-
-void Angle::Degree(double value) { degree_value_ = value; }
-
-bool Angle::operator==(Angle other) const {
-    return degree_value_ == other.degree_value_;
-}
-
-bool Angle::operator!=(Angle other) const { return !(*this == other); }
-
-double Angle::SaturateMinMaxRange(double degree) {
-    degree = std::fmod(degree, kMaxAngleDegree);
-    return degree < 0 ? (degree + 360.) : degree;
-}
-
-std::ostream &operator<<(std::ostream &os, Angle angle) {
-    os << angle.degree_value_;
     return os;
 }
 
