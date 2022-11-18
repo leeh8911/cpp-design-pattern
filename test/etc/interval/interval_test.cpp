@@ -104,7 +104,6 @@ TEST(IntervalTest, ContinuousSetIntersection) {
 }
 
 // TODO(sangwon): angle value operators (+, -, *, /);
-// TODO(sangwon): angle value is bounded(-180, 180) << could be change?
 TEST(AngleTest, BaseAngleTest) {
     Angle a;
     EXPECT_DOUBLE_EQ(0.0, a.Radian());
@@ -117,5 +116,15 @@ TEST(AngleTest, BaseAngleTest) {
     a.Radian(M_PI);
     EXPECT_DOUBLE_EQ(M_PI, a.Radian());
     EXPECT_DOUBLE_EQ(180.0, a.Degree());
+}
+
+TEST(AngleTest, AngleExistRange0To360) {
+    EXPECT_EQ(Angle(360), Angle(0));
+    EXPECT_EQ(Angle(360 * 2), Angle(0));
+    EXPECT_EQ(Angle(-360), Angle(0));
+    EXPECT_EQ(Angle(-360 * 2), Angle(0));
+
+    EXPECT_EQ(Angle(-1), Angle(359));
+    EXPECT_EQ(Angle(-360.0 + -1.), Angle(359));
 }
 }  // namespace
