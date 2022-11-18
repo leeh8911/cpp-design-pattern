@@ -44,17 +44,4 @@ TEST(ContinuousSetTest, ContinuousSetIntersection) {
     EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
 }
 
-TEST(ContinuousSetTest, Order) {
-    ContinuousSet continuous_set{};
-    continuous_set.Union(Interval{0.0, 1.0});
-    continuous_set.Union(Interval{2.0, 3.0});
-    continuous_set.Union(Interval{4.0, 5.0});
-    continuous_set.Union(Interval{6.0, 7.0});
-    continuous_set.Union(Interval{8.0, 9.0});
-
-    std::cout << continuous_set << std::endl;
-    continuous_set.Order();
-    std::cout << continuous_set << std::endl;
-}
-
 }  // namespace

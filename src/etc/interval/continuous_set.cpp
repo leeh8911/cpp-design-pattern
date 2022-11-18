@@ -19,29 +19,12 @@ std::size_t ContinuousSet::Size() const { return intervals_.size(); }
 
 // TODO(sangwon): find_if와 같은 iterator 기반으로 연산을 변경해야 함
 ContinuousSet &ContinuousSet::Union(const Interval &interval) {
-    if (intervals_.size() == 0) {
-        intervals_.emplace_back(interval);
-        return *this;
-    }
-    auto it = intervals_.begin();
-    Interval union_interval{};
+    intervals_.emplace_back(interval);
 
-    for (; it != intervals_.end(); it++) {
-        if ((*it).IsOverlap(interval)) {
-            break;
-        }
-    }
-
-    if (it != intervals_.end()) {
-        union_interval = (*it).Union(interval);
-        std::swap(*it, union_interval);
-    } else {
-        intervals_.emplace_back(interval);
-    }
-    std::cout << interval << std::endl;
-    std::cout << *this << std::endl;
+    Order();
 
     RemoveOverlappedInterval();
+
     return *this;
 }
 
@@ -108,7 +91,10 @@ void ContinuousSet::RemoveOverlappedInterval() {
     intervals_.swap(temporal_vector);
 }
 
-void ContinuousSet::Order() { std::sort(intervals_.begin(), intervals_.end()); }
+ContinuousSet &ContinuousSet::Order() {
+    std::sort(intervals_.begin(), intervals_.end());
+    return *this;
+}
 
 std::ostream &operator<<(std::ostream &os,
                          const ContinuousSet &continuous_set) {
