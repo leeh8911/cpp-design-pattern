@@ -45,7 +45,13 @@ bool NumberInterval::IsIncluded(double value) const {
 }
 
 bool NumberInterval::IsOverlap(const Interval &other) const {
-    return other.IsIncluded(from_) || other.IsIncluded(to_);
+    if (other.IsIncluded(from_) || other.IsIncluded(to_)) {
+        return true;
+    }
+    if (IsIncluded(other.From()) && IsIncluded(other.To())) {
+        return true;
+    }
+    return false;
 }
 
 bool NumberInterval::IsEmpty() { return (*this) == (kEmptyInterval); }
