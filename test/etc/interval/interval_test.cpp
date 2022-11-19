@@ -78,8 +78,6 @@ TEST(IntervalTest, CalculateIntersection) {
     EXPECT_EQ(*origin.Intersect(std::move(overlap_case_4)),
               (NumberInterval{3.0, 3.0}));
 
-    std::cout << origin << " and " << *overlap_case_5 << " are overlap? \n"
-              << origin.IsOverlap(*overlap_case_5);
     EXPECT_EQ(*origin.Intersect(std::move(overlap_case_5)),
               (NumberInterval{1.1, 2.9}));
 
