@@ -11,19 +11,23 @@
 
 #include <gtest/gtest.h>
 
+#include <cmath>
+
+#include "src/etc/interval/continuous_set.h"
+
 namespace {
 using namespace design_pattern::etc::interval;  // NOLINT
 
-// TODO(leeh8911@gmail.com): Interval's reversable is not useful (I think from_
-// always smaller than to_)
-// TODO(leeh8911@gmail.com): Interval class calculate set difference other
+// TODO(leeh8911@gmail.com): NumberInterval's reversible is not useful (I think
+// from_ always smaller than to_)
+// TODO(leeh8911@gmail.com): NumberInterval class calculate set difference other
 // interval
-//
-// TODO(leeh8911@gmail.com): Circular Interval class from, to values are
+// TODO(leeh8911@gmail.com): Circular NumberInterval class from, to values are
 // circular value
 
+// cppcheck-suppress syntaxError
 TEST(IntervalTest, CheckIncludingValue) {
-    Interval interval(1.0, 3.0);
+    NumberInterval interval(1.0, 3.0);
 
     EXPECT_FALSE(interval.IsIncluded(0.0));
 
@@ -35,14 +39,14 @@ TEST(IntervalTest, CheckIncludingValue) {
 }
 
 TEST(IntervalTest, OverlapInterval) {
-    Interval interval_10to12(10.0, 12.0);
+    NumberInterval interval_10to12(10.0, 12.0);
 
-    Interval interval_8to9(8.0, 9.0);
-    Interval interval_8to10(8.0, 10.0);
-    Interval interval_8to11(8.0, 11.0);
-    Interval interval_11to14(11.0, 14.0);
-    Interval interval_12to14(12.0, 14.0);
-    Interval interval_13to14(13.0, 14.0);
+    NumberInterval interval_8to9(8.0, 9.0);
+    NumberInterval interval_8to10(8.0, 10.0);
+    NumberInterval interval_8to11(8.0, 11.0);
+    NumberInterval interval_11to14(11.0, 14.0);
+    NumberInterval interval_12to14(12.0, 14.0);
+    NumberInterval interval_13to14(13.0, 14.0);
 
     EXPECT_FALSE(interval_10to12.IsOverlap(interval_8to9));
     EXPECT_TRUE(interval_10to12.IsOverlap(interval_8to10));
@@ -53,50 +57,33 @@ TEST(IntervalTest, OverlapInterval) {
 }
 
 TEST(IntervalTest, CalculateIntersection) {
-    Interval origin{1.0, 3.0};
-    Interval overlap_case_1{2.0, 4.0};
-    Interval overlap_case_2{0.0, 2.0};
-    Interval overlap_case_3{0.0, 1.0};
-    Interval overlap_case_4{3.0, 4.0};
-    Interval overlap_case_5{1.1, 2.9};
-    Interval non_overlap_case_1{4.0, 5.0};
-    Interval non_overlap_case_2{0.0, 0.5};
+    NumberInterval origin{1.0, 3.0};
+    auto overlap_case_1 = std::make_unique<NumberInterval>(2.0, 4.0);
+    auto overlap_case_11 = std::make_unique<NumberInterval>(2.0, 4.0);
+    auto overlap_case_2 = std::make_unique<NumberInterval>(0.0, 2.0);
+    auto overlap_case_3 = std::make_unique<NumberInterval>(0.0, 1.0);
+    auto overlap_case_4 = std::make_unique<NumberInterval>(3.0, 4.0);
+    auto overlap_case_5 = std::make_unique<NumberInterval>(1.1, 2.9);
+    auto non_overlap_case_1 = std::make_unique<NumberInterval>(4.0, 5.0);
+    auto non_overlap_case_2 = std::make_unique<NumberInterval>(0.0, 0.5);
 
-    EXPECT_EQ(origin.Intersect(overlap_case_1), (Interval{2.0, 3.0}));
-    EXPECT_NE(origin.Intersect(overlap_case_1), (Interval{1.0, 4.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_2), (Interval{1.0, 2.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_3), (Interval{1.0, 1.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_4), (Interval{3.0, 3.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_5), (Interval{1.1, 2.9}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_1)),
+              (NumberInterval{2.0, 3.0}));
+    EXPECT_NE(*origin.Intersect(std::move(overlap_case_11)),
+              (NumberInterval{1.0, 4.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_2)),
+              (NumberInterval{1.0, 2.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_3)),
+              (NumberInterval{1.0, 1.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_4)),
+              (NumberInterval{3.0, 3.0}));
 
-    EXPECT_EQ(origin.Intersect(non_overlap_case_1), Interval::kEmptyInterval);
-    EXPECT_EQ(origin.Intersect(non_overlap_case_2), Interval::kEmptyInterval);
-}
+    std::cout << origin << " and " << *overlap_case_5 << " are overlap? \n"
+              << origin.IsOverlap(*overlap_case_5);
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_5)),
+              (NumberInterval{1.1, 2.9}));
 
-TEST(IntervalTest, ContinuousSetUnion) {
-    Interval interval(1.0, 3.0);
-    ContinuousSet continuous_set{};
-
-    continuous_set.Union(Interval{1.0, 3.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
-
-    continuous_set.Union(Interval{3.0, 5.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 5.0}));
-
-    continuous_set.Union(Interval{7.0, 8.0});
-    EXPECT_EQ(continuous_set.Size(), 2);
-
-    continuous_set.Union(Interval{5.0, 7.0});
-    EXPECT_EQ(continuous_set.Size(), 1);
-    EXPECT_EQ(continuous_set, (Interval{1.0, 8.0}));
-}
-
-TEST(IntervalTest, ContinuousSetIntersection) {
-    Interval interval(1.0, 3.0);
-    ContinuousSet continuous_set{};
-
-    continuous_set.Union(Interval{1.0, 3.0});
-    continuous_set.Intersect(Interval{1.0, 3.0});
-    EXPECT_EQ(continuous_set, (Interval{1.0, 3.0}));
+    EXPECT_TRUE(origin.Intersect(std::move(non_overlap_case_1))->IsEmpty());
+    EXPECT_TRUE(origin.Intersect(std::move(non_overlap_case_2))->IsEmpty());
 }
 }  // namespace

@@ -12,56 +12,76 @@
 #define SRC_ETC_INTERVAL_INTERVAL_H_
 
 #include <array>
+#include <cmath>
 #include <iostream>
+#include <limits>
+#include <memory>
+#include <string>
 #include <vector>
 
 namespace design_pattern::etc::interval {
-class Interval {
- public:
-    Interval();
-    Interval(double from, double to);
-    Interval(const Interval &&other);
-    Interval(const Interval &other);
-    explicit Interval(const std::array<double, 2> &arr);
-    Interval &operator=(const Interval &other) = default;
-    Interval &operator=(Interval &&other);
 
-    bool IsIncluded(double value) const;
-    bool IsOverlap(const Interval &other) const;
-    bool operator==(const Interval &other) const;
-    bool operator!=(const Interval &other) const;
+// Forward declaration for IntervalPtr(using directive)
+struct Interval;
+using IntervalPtr = std::unique_ptr<Interval>;
 
-    Interval Intersect(const Interval &other) const;
-    Interval Union(const Interval &other) const;
+struct Interval {
+    Interval() = default;
+    Interval(const Interval &) = default;
+    Interval(Interval &&) = default;
+    Interval &operator=(const Interval &) = default;
+    Interval &operator=(Interval &&) = default;
+    virtual ~Interval() = default;
 
+    virtual bool IsIncluded(double value) const = 0;
+    virtual bool IsOverlap(const Interval &other) const = 0;
+    virtual bool IsEmpty() = 0;
+    virtual bool operator==(const Interval &other) const = 0;
+    virtual bool operator!=(const Interval &other) const = 0;
+    virtual bool operator<(const Interval &other) const = 0;
+
+    virtual IntervalPtr Intersect(IntervalPtr other) const = 0;
+    virtual IntervalPtr Union(IntervalPtr other) const = 0;
+
+    virtual std::string ToString() const = 0;
     friend std::ostream &operator<<(std::ostream &os, const Interval &interval);
-    static Interval kEmptyInterval;
 
- private:
-    double from_{};
-    double to_{};
+    virtual double From() const = 0;
+    virtual double To() const = 0;
 };
 
-class ContinuousSet {
+class NumberInterval : public Interval {
  public:
-    std::size_t Size() const;
+    NumberInterval() = default;
+    NumberInterval(double from, double to);
+    NumberInterval(NumberInterval &&other);
+    NumberInterval(const NumberInterval &other);
+    explicit NumberInterval(const std::array<double, 2> &arr);
+    NumberInterval &operator=(const NumberInterval &other) = default;
+    NumberInterval &operator=(NumberInterval &&other);
 
-    ContinuousSet &Union(const Interval &interval);
-    ContinuousSet &Intersect(const Interval &interval);
+    bool IsIncluded(double value) const override;
+    bool IsOverlap(const Interval &other) const override;
+    bool IsEmpty() override;
+    bool operator==(const Interval &other) const override;
+    bool operator!=(const Interval &other) const override;
+    bool operator<(const Interval &other) const override;
 
-    bool operator==(const Interval &interval) const;
-    bool operator!=(const Interval &interval) const;
-    bool operator==(const ContinuousSet &other) const;
-    bool operator!=(const ContinuousSet &other) const;
+    IntervalPtr Intersect(IntervalPtr other) const override;
+    IntervalPtr Union(IntervalPtr other) const override;
 
-    friend std::ostream &operator<<(std::ostream &os,
-                                    const ContinuousSet &continuous_set);
+    std::string ToString() const override;
+
+    double From() const override;
+    double To() const override;
 
  private:
-    void RemoveOverlappedInterval();
-    void Order();
-    std::vector<Interval> intervals_{};
+    static const NumberInterval kEmptyInterval;
+
+    double from_{std::numeric_limits<float>::max()};
+    double to_{std::numeric_limits<float>::max()};
 };
+using NumberIntervalPtr = std::unique_ptr<NumberInterval>;
 
 }  // namespace design_pattern::etc::interval
 #endif  // SRC_ETC_INTERVAL_INTERVAL_H_
