@@ -1,5 +1,8 @@
 <map id="TEST" name="TEST">
-<area shape="rect" id="node1" title=" " alt="" coords="5,20,60,47"/>
-<area shape="rect" id="node2" href="$classdesign__pattern_1_1etc_1_1interval_1_1Interval.html#a2b8a96cbb8a305ce9d8af621ebb937a4" title=" " alt="" coords="108,5,255,61"/>
-<area shape="rect" id="node3" href="$classdesign__pattern_1_1etc_1_1interval_1_1Interval.html#a4e8b3a6c3b400d4e5659441aff7dfa2e" title=" " alt="" coords="303,5,449,61"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,126,60,153"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1etc_1_1interval_1_1NumberInterval.html#ad48c69e237c809428ae7df3304aada8f" title=" " alt="" coords="108,111,299,167"/>
+<area shape="rect" id="node3" href="$structdesign__pattern_1_1etc_1_1interval_1_1Interval.html#adb0057759c56dd51255b7d214e4cfb32" title=" " alt="" coords="353,5,531,47"/>
+<area shape="rect" id="node4" href="$structdesign__pattern_1_1etc_1_1interval_1_1Interval.html#a66aab3d4778ef20b678021747572db5b" title=" " alt="" coords="369,71,515,127"/>
+<area shape="rect" id="node5" href="$classdesign__pattern_1_1etc_1_1interval_1_1NumberInterval.html#a9a0a7f54a366918ed3fac31fc3ac46af" title=" " alt="" coords="347,151,537,207"/>
+<area shape="rect" id="node6" href="$structdesign__pattern_1_1etc_1_1interval_1_1Interval.html#ad425e2af0747d12c2f5c7fd270800805" title=" " alt="" coords="362,232,522,273"/>
 </map>

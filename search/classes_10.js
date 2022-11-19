@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['yellow_400',['Yellow',['../classdesign__pattern_1_1behavior_1_1state_1_1Yellow.html',1,'design_pattern::behavior::state']]]
+  ['view_431',['View',['../classdesign__pattern_1_1etc_1_1mvc_1_1View.html',1,'design_pattern::etc::mvc']]],
+  ['visitor_432',['Visitor',['../structdesign__pattern_1_1behavior_1_1visitor_1_1Visitor.html',1,'design_pattern::behavior::visitor']]]
 ];

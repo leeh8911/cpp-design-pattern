@@ -75,23 +75,32 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">interval.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for interval.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="interval_8h__incl.png" border="0" usemap="#src_2etc_2interval_2interval_8h" alt=""/></div>
 <map name="src_2etc_2interval_2interval_8h" id="src_2etc_2interval_2interval_8h">
-<area shape="rect" title=" " alt="" coords="33,5,218,32"/>
+<area shape="rect" title=" " alt="" coords="214,5,399,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,61,107"/>
-<area shape="rect" title=" " alt="" coords="85,80,165,107"/>
-<area shape="rect" title=" " alt="" coords="190,80,253,107"/>
+<area shape="rect" title=" " alt="" coords="86,80,149,107"/>
+<area shape="rect" title=" " alt="" coords="173,80,253,107"/>
+<area shape="rect" title=" " alt="" coords="277,80,336,107"/>
+<area shape="rect" title=" " alt="" coords="360,80,437,107"/>
+<area shape="rect" title=" " alt="" coords="461,80,520,107"/>
+<area shape="rect" title=" " alt="" coords="545,80,607,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -99,9 +108,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="interval_8h__dep__incl.png" border="0" usemap="#src_2etc_2interval_2interval_8hdep" alt=""/></div>
 <map name="src_2etc_2interval_2interval_8hdep" id="src_2etc_2interval_2interval_8hdep">
-<area shape="rect" title=" " alt="" coords="119,5,305,32"/>
-<area shape="rect" href="interval_8cpp.html" title=" " alt="" coords="5,87,205,114"/>
-<area shape="rect" href="interval__test_8cpp.html" title=" " alt="" coords="229,80,408,121"/>
+<area shape="rect" title=" " alt="" coords="369,5,554,32"/>
+<area shape="rect" href="continuous__set_8h.html" title=" " alt="" coords="229,80,424,121"/>
+<area shape="rect" href="continuous__set__test_8cpp.html" title=" " alt="" coords="5,169,205,211"/>
+<area shape="rect" href="interval__test_8cpp.html" title=" " alt="" coords="448,169,627,211"/>
+<area shape="rect" href="interval_8cpp.html" title=" " alt="" coords="499,87,699,114"/>
+<area shape="rect" href="angular__interval__test_8cpp.html" title=" " alt="" coords="723,80,901,121"/>
+<area shape="rect" href="continuous__set_8cpp.html" title=" " alt="" coords="229,169,424,211"/>
 </map>
 </div>
 </div>
@@ -109,9 +122,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1etc_1_1interval_1_1Interval.html">Interval</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdesign__pattern_1_1etc_1_1interval_1_1Interval.html">Interval</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1etc_1_1interval_1_1ContinuousSet.html">ContinuousSet</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1etc_1_1interval_1_1NumberInterval.html">NumberInterval</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -122,6 +135,13 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacedesign__pattern_1_1etc_1_1interval"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1interval.html">design_pattern::etc::interval</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:abf673a4d58006133cb1ef018fa689d97"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1interval.html#abf673a4d58006133cb1ef018fa689d97">IntervalPtr</a> = std::unique_ptr&lt; Interval &gt;</td></tr>
+<tr class="separator:abf673a4d58006133cb1ef018fa689d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f99197b563aabab065852546dd321c5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1etc_1_1interval.html#a0f99197b563aabab065852546dd321c5">NumberIntervalPtr</a> = std::unique_ptr&lt; NumberInterval &gt;</td></tr>
+<tr class="separator:a0f99197b563aabab065852546dd321c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>sangwon (<a href="#" onclick="location.href='mai'+'lto:'+'lee'+'h8'+'911'+'@g'+'mai'+'l.'+'com'; return false;">leeh8<span style="display: none;">.nosp@m.</span>911@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com</a>) </dd></dl>

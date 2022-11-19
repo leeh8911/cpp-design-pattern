@@ -1,8 +1,13 @@
 <map id="test/etc/interval/interval_test.cpp" name="test/etc/interval/interval_test.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="120,5,299,47"/>
-<area shape="rect" id="node2" href="$interval_8h.html" title=" " alt="" coords="33,95,218,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="243,95,347,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,169,61,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="85,169,165,196"/>
-<area shape="rect" id="node5" title=" " alt="" coords="190,169,253,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="283,5,462,47"/>
+<area shape="rect" id="node2" href="$interval_8h.html" title=" " alt="" coords="213,184,399,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,259,68,285"/>
+<area shape="rect" id="node10" title=" " alt="" coords="562,102,666,129"/>
+<area shape="rect" id="node11" href="$continuous__set_8h.html" title=" " alt="" coords="343,95,538,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,259,149,285"/>
+<area shape="rect" id="node5" title=" " alt="" coords="439,259,519,285"/>
+<area shape="rect" id="node6" title=" " alt="" coords="173,259,231,285"/>
+<area shape="rect" id="node7" title=" " alt="" coords="255,259,333,285"/>
+<area shape="rect" id="node8" title=" " alt="" coords="357,259,415,285"/>
+<area shape="rect" id="node9" title=" " alt="" coords="544,259,607,285"/>
 </map>
