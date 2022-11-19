@@ -18,9 +18,10 @@ using creational::abstract_factory::AbstractFactory;
 using creational::abstract_factory::FactoryA;
 using creational::abstract_factory::FactoryB;
 
+// cppcheck-suppress syntaxError
 TEST(AbstractFactoryTest, Sample) {
-    AbstractFactory *factory_a = new FactoryA();
-    AbstractFactory *factory_b = new FactoryB();
+    auto factory_a = std::make_unique<FactoryA>();
+    auto factory_b = std::make_unique<FactoryB>();
 
     auto product_a = factory_a->CreateProduct();
     auto product_b = factory_b->CreateProduct();

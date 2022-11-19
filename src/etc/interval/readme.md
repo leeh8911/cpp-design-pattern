@@ -30,3 +30,32 @@ class Interval {
 
 IntervalData "1..*" <.. "1" Interval
 ```
+
+연속된 숫자들의 집합을 계산하기 위해 ContinuousSet 클래스를 도입
+```mermaid
+classDiagram
+
+class Interval {
+    <<interface>>
+    +Intersect(Interval*)*
+    +Union(Interval*)*
+}
+class NumberInterval{
+    +Intersect(Interval*)
+    +Union(Interval*)
+}
+class AngleInterval{
+    +Intersect(Interval*)
+    +Union(Interval*)
+}
+class ContinuousSet{
+    -vector~Interval*~ container_
+    +Union(Interval) ContinuousSet
+    +Intersect(Interval) ContinuousSet
+}
+
+Interval --|> NumberInterval
+Interval --|> AngleInterval
+
+ContinuousSet o--> Interval : container_
+```

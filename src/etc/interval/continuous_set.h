@@ -21,8 +21,8 @@ class ContinuousSet {
  public:
     std::size_t Size() const;
 
-    ContinuousSet &Union(const Interval &interval);
-    ContinuousSet &Intersect(const Interval &interval);
+    ContinuousSet &Union(const IntervalPtr interval);
+    ContinuousSet &Intersect(const IntervalPtr interval);
 
     bool operator==(const Interval &interval) const;
     bool operator!=(const Interval &interval) const;

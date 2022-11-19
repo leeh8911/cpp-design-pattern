@@ -18,8 +18,8 @@ namespace design_pattern::etc::interval {
 
 std::size_t ContinuousSet::Size() const { return intervals_.size(); }
 
-ContinuousSet &ContinuousSet::Union(const Interval &interval) {
-    intervals_.emplace_back(interval);
+ContinuousSet &ContinuousSet::Union(IntervalPtr interval) {
+    intervals_.emplace_back(std::move(interval));
 
     std::sort(intervals_.begin(), intervals_.end());
 
@@ -28,10 +28,10 @@ ContinuousSet &ContinuousSet::Union(const Interval &interval) {
     return *this;
 }
 
-ContinuousSet &ContinuousSet::Intersect(const Interval &interval) {
+ContinuousSet &ContinuousSet::Intersect(IntervalPtr interval) {
     NumberInterval interval2{};
-    interval2.Union(interval);
-    if (interval2 == interval) {
+    interval2.Union(std::move(interval));
+    if (interval2.IsEmpty()) {
         return *this;
     }
     return *this;
@@ -42,7 +42,8 @@ bool ContinuousSet::operator==(const Interval &interval) const {
         return false;
     }
 
-    return intervals_.at(0) == interval;
+    Interval &this_interval = *(intervals_.at(0).get());
+    return this_interval == interval;
 }
 
 bool ContinuousSet::operator==(const ContinuousSet &other) const {
@@ -69,22 +70,31 @@ bool ContinuousSet::operator!=(const Interval &interval) const {
 }
 
 void ContinuousSet::RemoveOverlappedInterval() {
-    auto iter = intervals_.begin();
-
     std::vector<IntervalPtr> temporal_vector{};
     temporal_vector.reserve(intervals_.size());
 
-    NumberInterval interval{};
-    for (; (iter != intervals_.end()); iter++) {
+    // [NOTE]
+    // Do intervals_ elements move to temporal vector.
+    // When move element, if there is overlapped area to temporal vector's
+    // element moved element change to union(element, overlapped temporal
+    // vector's element)
+    // Otherwise, just move into temporal vector
+    for (auto iter = intervals_.begin(); (iter != intervals_.end()); iter++) {
         if (temporal_vector.empty()) {
-            temporal_vector.emplace_back(*iter);
+            temporal_vector.emplace_back(std::move(*iter));
+            continue;
+        }
+
+        IntervalPtr interval = nullptr;
+        std::swap(interval, temporal_vector.back());
+        temporal_vector.pop_back();
+
+        if (interval->IsOverlap((**iter))) {
+            auto union_ptr = (interval->Union(std::move(*iter)));
+            temporal_vector.emplace_back(std::move(union_ptr));
         } else {
-            interval = temporal_vector.back();
-            if (interval.IsOverlap(*iter)) {
-                temporal_vector.back() = std::move(interval.Union(*iter));
-            } else {
-                temporal_vector.emplace_back(*iter);
-            }
+            temporal_vector.emplace_back(std::move(interval));
+            temporal_vector.emplace_back(std::move(*iter));
         }
     }
 
@@ -95,7 +105,7 @@ std::ostream &operator<<(std::ostream &os,
                          const ContinuousSet &continuous_set) {
     os << "{";
     for (const auto &elm : continuous_set.intervals_) {
-        os << elm << " ";
+        os << *elm.get() << " ";
     }
     os << "}";
     return os;

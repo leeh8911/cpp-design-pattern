@@ -58,22 +58,28 @@ TEST(IntervalTest, OverlapInterval) {
 
 TEST(IntervalTest, CalculateIntersection) {
     NumberInterval origin{1.0, 3.0};
-    NumberInterval overlap_case_1{2.0, 4.0};
-    NumberInterval overlap_case_2{0.0, 2.0};
-    NumberInterval overlap_case_3{0.0, 1.0};
-    NumberInterval overlap_case_4{3.0, 4.0};
-    NumberInterval overlap_case_5{1.1, 2.9};
-    NumberInterval non_overlap_case_1{4.0, 5.0};
-    NumberInterval non_overlap_case_2{0.0, 0.5};
+    auto overlap_case_1 = std::make_unique<NumberInterval>(2.0, 4.0);
+    auto overlap_case_2 = std::make_unique<NumberInterval>(0.0, 2.0);
+    auto overlap_case_3 = std::make_unique<NumberInterval>(0.0, 1.0);
+    auto overlap_case_4 = std::make_unique<NumberInterval>(3.0, 4.0);
+    auto overlap_case_5 = std::make_unique<NumberInterval>(1.1, 2.9);
+    auto non_overlap_case_1 = std::make_unique<NumberInterval>(4.0, 5.0);
+    auto non_overlap_case_2 = std::make_unique<NumberInterval>(0.0, 0.5);
 
-    EXPECT_EQ(origin.Intersect(overlap_case_1), (NumberInterval{2.0, 3.0}));
-    EXPECT_NE(origin.Intersect(overlap_case_1), (NumberInterval{1.0, 4.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_2), (NumberInterval{1.0, 2.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_3), (NumberInterval{1.0, 1.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_4), (NumberInterval{3.0, 3.0}));
-    EXPECT_EQ(origin.Intersect(overlap_case_5), (NumberInterval{1.1, 2.9}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_1)),
+              (NumberInterval{2.0, 3.0}));
+    EXPECT_NE(*origin.Intersect(std::move(overlap_case_1)),
+              (NumberInterval{1.0, 4.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_2)),
+              (NumberInterval{1.0, 2.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_3)),
+              (NumberInterval{1.0, 1.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_4)),
+              (NumberInterval{3.0, 3.0}));
+    EXPECT_EQ(*origin.Intersect(std::move(overlap_case_5)),
+              (NumberInterval{1.1, 2.9}));
 
-    EXPECT_TRUE(origin.Intersect(non_overlap_case_1).IsEmpty());
-    EXPECT_TRUE(origin.Intersect(non_overlap_case_2).IsEmpty());
+    EXPECT_TRUE(origin.Intersect(std::move(non_overlap_case_1))->IsEmpty());
+    EXPECT_TRUE(origin.Intersect(std::move(non_overlap_case_2))->IsEmpty());
 }
 }  // namespace
