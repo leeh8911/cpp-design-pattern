@@ -19,6 +19,8 @@
 #include <string>
 #include <vector>
 
+#include "src/etc/interval/angle.h"
+
 namespace design_pattern::etc::interval {
 
 // Forward declaration for IntervalPtr(using directive)
@@ -82,6 +84,39 @@ class NumberInterval : public Interval {
     double to_{std::numeric_limits<float>::max()};
 };
 using NumberIntervalPtr = std::unique_ptr<NumberInterval>;
+
+class AngleInterval : public Interval {
+ public:
+    AngleInterval() = default;
+    AngleInterval(Angle from, Angle to);
+    AngleInterval(AngleInterval &&other);
+    AngleInterval(const AngleInterval &other);
+    explicit AngleInterval(const std::array<Angle, 2> &arr);
+    AngleInterval &operator=(const AngleInterval &other) = default;
+    AngleInterval &operator=(AngleInterval &&other);
+
+    bool IsIncluded(Angle value) const override;
+    bool IsOverlap(const Interval &other) const override;
+    bool IsEmpty() override;
+    bool operator==(const Interval &other) const override;
+    bool operator!=(const Interval &other) const override;
+    bool operator<(const Interval &other) const override;
+
+    IntervalPtr Intersect(IntervalPtr other) const override;
+    IntervalPtr Union(IntervalPtr other) const override;
+
+    std::string ToString() const override;
+
+    Angle From() const override;
+    Angle To() const override;
+
+ private:
+    static const AngleInterval kEmptyInterval;
+
+    Angle from_{Angle::kMaxAngleDegree};
+    Angle to_{Angle::kMaxAngleDegree};
+};
+using AngleIntervalPtr = std::unique_ptr<AngleInterval>;
 
 }  // namespace design_pattern::etc::interval
 #endif  // SRC_ETC_INTERVAL_INTERVAL_H_
