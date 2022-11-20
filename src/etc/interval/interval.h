@@ -85,6 +85,12 @@ class NumberInterval : public Interval {
 };
 using NumberIntervalPtr = std::unique_ptr<NumberInterval>;
 
+// AngleInterval
+// from --> to (CW)
+// if from = 0, to = 90 ==> |------->|                          |
+//                          0        90                         360
+// if from = 90, to = 0 ==> |        |------------------------->|
+//                          0        90                         360
 class AngleInterval : public Interval {
  public:
     AngleInterval() = default;
@@ -95,7 +101,7 @@ class AngleInterval : public Interval {
     AngleInterval &operator=(const AngleInterval &other) = default;
     AngleInterval &operator=(AngleInterval &&other);
 
-    bool IsIncluded(Angle value) const override;
+    bool IsIncluded(double value) const override;
     bool IsOverlap(const Interval &other) const override;
     bool IsEmpty() override;
     bool operator==(const Interval &other) const override;
@@ -107,14 +113,15 @@ class AngleInterval : public Interval {
 
     std::string ToString() const override;
 
-    Angle From() const override;
-    Angle To() const override;
+    double From() const override;
+    double To() const override;
 
  private:
-    static const AngleInterval kEmptyInterval;
+    static const AngleInterval kEmptyAngleInterval;
 
     Angle from_{Angle::kMaxAngleDegree};
     Angle to_{Angle::kMaxAngleDegree};
+    Angle bias{Angle::kMinAngleDegree};
 };
 using AngleIntervalPtr = std::unique_ptr<AngleInterval>;
 

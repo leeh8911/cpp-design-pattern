@@ -28,6 +28,10 @@ class Angle {
 
     bool operator==(Angle other) const;
     bool operator!=(Angle other) const;
+    bool operator<(Angle other) const;
+    bool operator<=(Angle other) const;
+    bool operator>(Angle other) const;
+    bool operator>=(Angle other) const;
 
     Angle operator+(Angle other) const;
     Angle operator-(Angle other) const;
@@ -37,12 +41,14 @@ class Angle {
 
     friend std::ostream &operator<<(std::ostream &os, Angle angle);
 
+    static constexpr double kMinAngleDegree = 0.0;
+    static constexpr double kMaxAngleDegree = 360.0;
+    explicit operator double() const { return degree_value_; }
+
  private:
     double SaturateMinMaxRange(double degree);
 
     double degree_value_{};
-    static constexpr double kMinAngleDegree = 0.0;
-    static constexpr double kMaxAngleDegree = 360.0;
     static constexpr double kDegreeToRadian = 180. * M_1_PI;
     static constexpr double kRadianToDegree = 1 / kDegreeToRadian;
 };

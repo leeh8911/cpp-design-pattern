@@ -32,6 +32,18 @@ bool Angle::operator==(Angle other) const {
 
 bool Angle::operator!=(Angle other) const { return !(*this == other); }
 
+bool Angle::operator<(Angle other) const {
+    return degree_value_ < other.degree_value_;
+}
+
+bool Angle::operator<=(Angle other) const {
+    return ((*this) < other) || ((*this) == other);
+}
+
+bool Angle::operator>(Angle other) const { return !((*this) <= other); }
+
+bool Angle::operator>=(Angle other) const { return !((*this) < other); }
+
 Angle Angle::operator-(Angle other) const { return (*this + -other); }
 
 Angle Angle::operator/(double scalar) const { return (*this) * (1 / scalar); }
