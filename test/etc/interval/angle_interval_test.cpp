@@ -1,4 +1,4 @@
-/// @file angular_interval_test.cpp
+/// @file angle_interval_test.cpp
 /// @author sangwon (leeh8911@gmail.com)
 /// @brief
 /// @version 0.1
@@ -19,6 +19,7 @@ using namespace design_pattern::etc::interval;  // NOLINT
 // TODO(leeh8911@gmail.com): AngularInterval have almost same Interval class
 // (therefore we need Interface Interval class and make derived classes, which
 // are AngularInterval and Interval)
+// TODO(leeh8911@gmail.com): NEED TO UPDATE TEST CASES FOR ANGLE_INTERVAL!!!
 
 // cppcheck-suppress syntaxError
 // TEST(AngularIntervalTest, CheckIncludingValue) {
