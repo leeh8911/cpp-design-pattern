@@ -154,10 +154,9 @@ IntervalPtr AngleInterval::Intersect(IntervalPtr other) const {
     if (!IsOverlap(*other)) {
         return std::make_unique<AngleInterval>(kEmptyAngleInterval);
     }
-    AngleInterval other_ = dynamic_cast<const AngleInterval &>(other);
 
-    Angle from = std::max(from_, other_.from_);
-    Angle to = std::min(to_, other_.to_);
+    Angle from = std::max(from_, Angle(other->From()));
+    Angle to = std::min(to_, Angle(other->To()));
     auto intersect = std::make_unique<AngleInterval>(from, to);
     return intersect;
 }
@@ -166,13 +165,19 @@ IntervalPtr AngleInterval::Union(IntervalPtr other) const {
     if (!IsOverlap(*other)) {
         return std::make_unique<AngleInterval>(kEmptyAngleInterval);
     }
-    AngleInterval other_ = dynamic_cast<const AngleInterval &>(other);
 
-    Angle from = std::min(from_, other_.from_);
-    Angle to = std::max(to_, other_.to_);
+    Angle from = std::min(from_, Angle(other->From()));
+    Angle to = std::max(to_, Angle(other->To()));
     auto union_interval = std::make_unique<AngleInterval>(from, to);
 
     return union_interval;
+}
+
+std::string AngleInterval::ToString() const {
+    std::string result{};
+    result = "<" + std::to_string(static_cast<double>(from_)) + ", " +
+             std::to_string(static_cast<double>(to_)) + ">";
+    return result;
 }
 
 double AngleInterval::From() const { return static_cast<double>(from_); }
