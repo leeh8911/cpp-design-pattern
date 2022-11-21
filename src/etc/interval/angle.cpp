@@ -26,25 +26,37 @@ void Angle::Radian(double value) { degree_value_ = value * kDegreeToRadian; }
 
 void Angle::Degree(double value) { degree_value_ = value; }
 
-bool Angle::operator==(Angle other) const {
+bool Angle::operator==(const Angle& other) const {
     return degree_value_ == other.degree_value_;
 }
 
-bool Angle::operator!=(Angle other) const { return !(*this == other); }
+bool Angle::operator!=(const Angle& other) const { return !(*this == other); }
 
-bool Angle::operator<(Angle other) const {
+bool Angle::operator<(const Angle& other) const {
     return degree_value_ < other.degree_value_;
 }
 
-bool Angle::operator<=(Angle other) const {
+bool Angle::operator<=(const Angle& other) const {
     return ((*this) < other) || ((*this) == other);
 }
 
-bool Angle::operator>(Angle other) const { return !((*this) <= other); }
+bool Angle::operator>(const Angle& other) const { return !((*this) <= other); }
 
-bool Angle::operator>=(Angle other) const { return !((*this) < other); }
+bool Angle::operator>=(const Angle& other) const { return !((*this) < other); }
 
-Angle Angle::operator-(Angle other) const { return (*this + -other); }
+Angle& Angle::operator-=(const Angle& other) {
+    *this += (-other);
+    return *this;
+}
+
+Angle& Angle::operator+=(const Angle& other) {
+    degree_value_ += other.degree_value_;
+    degree_value_ = SaturateMinMaxRange(degree_value_);
+
+    return *this;
+}
+
+Angle Angle::operator-(const Angle& other) const { return (*this + -other); }
 
 Angle Angle::operator/(double scalar) const { return (*this) * (1 / scalar); }
 
@@ -54,8 +66,10 @@ Angle Angle::operator*(double scalar) const {
     return Angle(degree_value_ * scalar);
 }
 
-Angle Angle::operator+(Angle other) const {
-    return Angle(degree_value_ + other.degree_value_);
+Angle Angle::operator+(const Angle& other) const {
+    Angle add(*this);
+    add += other;
+    return add;
 }
 
 double Angle::SaturateMinMaxRange(double degree) {
@@ -63,7 +77,7 @@ double Angle::SaturateMinMaxRange(double degree) {
     return degree < 0 ? (degree + 360.) : degree;
 }
 
-std::ostream &operator<<(std::ostream &os, Angle angle) {
+std::ostream& operator<<(std::ostream& os, const Angle& angle) {
     os << angle.degree_value_;
     return os;
 }

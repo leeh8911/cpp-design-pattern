@@ -94,10 +94,10 @@ using NumberIntervalPtr = std::unique_ptr<NumberInterval>;
 class AngleInterval : public Interval {
  public:
     AngleInterval() = default;
+    AngleInterval(double from, double to);
     AngleInterval(Angle from, Angle to);
     AngleInterval(AngleInterval &&other);
     AngleInterval(const AngleInterval &other);
-    explicit AngleInterval(const std::array<Angle, 2> &arr);
     AngleInterval &operator=(const AngleInterval &other) = default;
     AngleInterval &operator=(AngleInterval &&other);
 
@@ -107,6 +107,8 @@ class AngleInterval : public Interval {
     bool operator==(const Interval &other) const override;
     bool operator!=(const Interval &other) const override;
     bool operator<(const Interval &other) const override;
+
+    AngleInterval operator+(const Angle &angle) const;
 
     IntervalPtr Intersect(IntervalPtr other) const override;
     IntervalPtr Union(IntervalPtr other) const override;

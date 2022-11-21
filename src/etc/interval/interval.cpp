@@ -102,25 +102,40 @@ double NumberInterval::From() const { return from_; }
 
 double NumberInterval::To() const { return to_; }
 
-AngleInterval::AngleInterval(Angle from, Angle to) : from_(from), to_(to) {}
+// Angle Interval Cases
+// [0, 360]
+// [350, 20] ([-10, 20])
+// [350, 320] ([-10, 320]) -> (0, 330){-10}
+AngleInterval::AngleInterval(Angle from, Angle to) : from_(from), to_(to) {
+    if (from_ > to_) {
+        bias = Angle(360.0) - from_;
+        from_ += bias;
+        to_ += bias;
+    }
+}
+
+AngleInterval::AngleInterval(double from, double to)
+    : AngleInterval(Angle(from), Angle(to)) {}
 
 AngleInterval::AngleInterval(AngleInterval &&other)
-    : from_(other.from_), to_(other.to_) {}
+    : AngleInterval(other.from_, other.to_) {}
 
 AngleInterval::AngleInterval(const AngleInterval &other)
-    : from_(other.from_), to_(other.to_) {}
-
-AngleInterval::AngleInterval(const std::array<Angle, 2> &arr)
-    : from_(arr[0]), to_(arr[1]) {}
+    : AngleInterval(other.from_, other.to_) {}
 
 AngleInterval &AngleInterval::operator=(AngleInterval &&other) {
-    from_ = other.from_;
-    to_ = other.to_;
+    if (*this == other) {
+        return *this;
+    }
+
+    std::swap(*this, other);
+
     return *this;
 }
 
 bool AngleInterval::IsIncluded(double value) const {
     Angle angle(value);
+    angle += bias;
 
     return ((from_ <= angle) && (angle <= to_));
 }
@@ -147,7 +162,13 @@ bool AngleInterval::operator!=(const Interval &other) const {
 
 bool AngleInterval::operator<(const Interval &other) const {
     AngleInterval other_ = dynamic_cast<const AngleInterval &>(other);
+
     return (from_ + to_) / 2. < (other_.from_ + other_.to_) / 2.;
+}
+
+AngleInterval AngleInterval::operator+(const Angle &angle) const {
+    AngleInterval result(from_ + angle, to_ + angle);
+    return result;
 }
 
 IntervalPtr AngleInterval::Intersect(IntervalPtr other) const {
@@ -155,9 +176,10 @@ IntervalPtr AngleInterval::Intersect(IntervalPtr other) const {
         return std::make_unique<AngleInterval>(kEmptyAngleInterval);
     }
 
-    Angle from = std::max(from_, Angle(other->From()));
-    Angle to = std::min(to_, Angle(other->To()));
+    double from = std::max(From(), other->From());
+    double to = std::min(To(), other->To());
     auto intersect = std::make_unique<AngleInterval>(from, to);
+
     return intersect;
 }
 
@@ -166,8 +188,9 @@ IntervalPtr AngleInterval::Union(IntervalPtr other) const {
         return std::make_unique<AngleInterval>(kEmptyAngleInterval);
     }
 
-    Angle from = std::min(from_, Angle(other->From()));
-    Angle to = std::max(to_, Angle(other->To()));
+    double from = std::min(From(), other->From());
+    double to = std::max(To(), other->To());
+
     auto union_interval = std::make_unique<AngleInterval>(from, to);
 
     return union_interval;
@@ -176,13 +199,14 @@ IntervalPtr AngleInterval::Union(IntervalPtr other) const {
 std::string AngleInterval::ToString() const {
     std::string result{};
     result = "<" + std::to_string(static_cast<double>(from_)) + ", " +
-             std::to_string(static_cast<double>(to_)) + ">";
+             std::to_string(static_cast<double>(to_)) + "|" +
+             std::to_string(static_cast<double>(bias)) + ">";
     return result;
 }
 
-double AngleInterval::From() const { return static_cast<double>(from_); }
+double AngleInterval::From() const { return static_cast<double>(from_ - bias); }
 
-double AngleInterval::To() const { return static_cast<double>(to_); }
+double AngleInterval::To() const { return static_cast<double>(to_ - bias); }
 
 std::ostream &operator<<(std::ostream &os, const Interval &interval) {
     os << "<" << interval.ToString() << ">";

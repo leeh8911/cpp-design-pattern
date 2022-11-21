@@ -26,20 +26,22 @@ class Angle {
     void Radian(double value);
     void Degree(double value);
 
-    bool operator==(Angle other) const;
-    bool operator!=(Angle other) const;
-    bool operator<(Angle other) const;
-    bool operator<=(Angle other) const;
-    bool operator>(Angle other) const;
-    bool operator>=(Angle other) const;
+    bool operator==(const Angle& other) const;
+    bool operator!=(const Angle& other) const;
+    bool operator<(const Angle& other) const;
+    bool operator<=(const Angle& other) const;
+    bool operator>(const Angle& other) const;
+    bool operator>=(const Angle& other) const;
 
-    Angle operator+(Angle other) const;
-    Angle operator-(Angle other) const;
+    Angle& operator+=(const Angle& other);
+    Angle& operator-=(const Angle& other);
+    Angle operator+(const Angle& other) const;
+    Angle operator-(const Angle& other) const;
     Angle operator*(double scalar) const;
     Angle operator/(double scalar) const;
     Angle operator-() const;
 
-    friend std::ostream &operator<<(std::ostream &os, Angle angle);
+    friend std::ostream& operator<<(std::ostream& os, const Angle& angle);
 
     static constexpr double kMinAngleDegree = 0.0;
     static constexpr double kMaxAngleDegree = 360.0;

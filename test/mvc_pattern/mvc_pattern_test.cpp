@@ -15,7 +15,7 @@
 
 using namespace design_pattern::etc::mvc;
 
-namespace design_pattern::test {
+namespace {
 class MvcPatternTest : public testing::Test {
  public:
     void SetUp() override {}
@@ -42,4 +42,4 @@ TEST_F(MvcPatternTest, CreateController) {
     controller->UpdateView();
 }
 
-}  // namespace design_pattern::test
+}  // namespace

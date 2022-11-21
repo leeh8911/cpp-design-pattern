@@ -10,6 +10,7 @@
 #include "src/etc/interval/continuous_set.h"
 
 #include <algorithm>
+#include <functional>
 #include <memory>
 #include <utility>
 #include <vector>
@@ -21,7 +22,8 @@ std::size_t ContinuousSet::Size() const { return intervals_.size(); }
 ContinuousSet &ContinuousSet::Union(IntervalPtr interval) {
     intervals_.emplace_back(std::move(interval));
 
-    std::sort(intervals_.begin(), intervals_.end());
+    std::sort(intervals_.begin(), intervals_.end(),
+              [](const auto &a, const auto &b) -> bool { return (*a) < (*b); });
 
     RemoveOverlappedInterval();
 
