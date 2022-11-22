@@ -11,179 +11,99 @@
 #include "src/etc/interval/interval.h"
 
 #include <algorithm>
+#include <cmath>
+#include <exception>
 #include <limits>
+#include <memory>
+#include <string>
 #include <utility>
 
 namespace design_pattern::etc::interval {
 
-Interval Interval::kEmptyInterval{std::numeric_limits<float>::max(),
-                                  std::numeric_limits<float>::max()};
+const NumberInterval NumberInterval::kEmptyInterval{};
 
-Interval::Interval() : Interval(kEmptyInterval) {}
-
-Interval::Interval(double from, double to)
+NumberInterval::NumberInterval(double from, double to)
     : from_{std::min(from, to)}, to_{std::max(from, to)} {}
 
-Interval::Interval(const std::array<double, 2> &arr)
-    : Interval{arr[0], arr[1]} {}
+NumberInterval::NumberInterval(const std::array<double, 2> &arr)
+    : NumberInterval{arr[0], arr[1]} {}
 
-Interval::Interval(const Interval &&other) : Interval{other.from_, other.to_} {}
-Interval::Interval(const Interval &other) : Interval{other.from_, other.to_} {}
+NumberInterval::NumberInterval(NumberInterval &&other)
+    : NumberInterval{other.from_, other.to_} {}
 
-Interval &Interval::operator=(Interval &&other) {
+NumberInterval::NumberInterval(const NumberInterval &other)
+    : NumberInterval{other.from_, other.to_} {}
+
+NumberInterval &NumberInterval::operator=(NumberInterval &&other) {
     from_ = other.from_;
     to_ = other.to_;
     return *this;
 }
 
-bool Interval::IsIncluded(double value) const {
+bool NumberInterval::IsIncluded(double value) const {
     return ((from_ <= value) && (value <= to_));
 }
 
-bool Interval::IsOverlap(const Interval &other) const {
-    return IsIncluded(other.from_) || IsIncluded(other.to_);
+bool NumberInterval::IsOverlap(const Interval &other) const {
+    if (other.IsIncluded(from_) || other.IsIncluded(to_)) {
+        return true;
+    }
+    if (IsIncluded(other.From()) && IsIncluded(other.To())) {
+        return true;
+    }
+    return false;
 }
 
-bool Interval::operator==(const Interval &other) const {
-    return ((from_ == other.from_) && (to_ == other.to_));
+bool NumberInterval::IsEmpty() { return (*this) == (kEmptyInterval); }
+
+bool NumberInterval::operator==(const Interval &other) const {
+    return ((from_ == other.From()) && (to_ == other.To()));
 }
 
-bool Interval::operator!=(const Interval &other) const {
+bool NumberInterval::operator!=(const Interval &other) const {
     return !operator==(other);
 }
 
-Interval Interval::Intersect(const Interval &other) const {
-    if (!IsOverlap(other)) {
-        return kEmptyInterval;
+bool NumberInterval::operator<(const Interval &other) const {
+    NumberInterval other_ = dynamic_cast<const NumberInterval &>(other);
+    return (from_ + to_) / 2. < (other_.from_ + other_.to_) / 2.;
+}
+
+IntervalPtr NumberInterval::Intersect(IntervalPtr other) const {
+    if (!IsOverlap(*other)) {
+        return std::make_unique<NumberInterval>(kEmptyInterval);
     }
 
-    double from = std::max(from_, other.from_);
-    double to = std::min(to_, other.to_);
-    Interval intersect{from, to};
+    double from = std::max(from_, other->From());
+    double to = std::min(to_, other->To());
+    auto intersect = std::make_unique<NumberInterval>(from, to);
     return intersect;
 }
 
-Interval Interval::Union(const Interval &other) const {
-    if (!IsOverlap(other)) {
-        return kEmptyInterval;
+IntervalPtr NumberInterval::Union(IntervalPtr other) const {
+    if (!IsOverlap(*other)) {
+        return std::make_unique<NumberInterval>(kEmptyInterval);
     }
-    double from = std::min(from_, other.from_);
-    double to = std::max(to_, other.to_);
-    return Interval(from, to);
+    double from = std::min(from_, other->From());
+    double to = std::max(to_, other->To());
+    auto union_interval = std::make_unique<NumberInterval>(from, to);
+
+    return union_interval;
 }
 
-std::size_t ContinuousSet::Size() const { return intervals_.size(); }
-
-// TODO(sangwon): find_if와 같은 iterator 기반으로 연산을 변경해야 함
-ContinuousSet &ContinuousSet::Union(const Interval &interval) {
-    if (intervals_.size() == 0) {
-        intervals_.emplace_back(interval);
-        return *this;
-    }
-    if (intervals_.size() == 1) {
-        if (intervals_[0].IsOverlap(interval)) {
-            intervals_[0] = intervals_[0].Union(interval);
-        } else {
-            intervals_.emplace_back(interval);
-        }
-        return *this;
-    }
-
-    auto it = intervals_.begin();
-    Interval unioned{};
-
-    for (; it != intervals_.end(); it++) {
-        unioned = (*it).Union(interval);
-        if (unioned != Interval::kEmptyInterval) {
-            break;
-        }
-    }
-    if (unioned != Interval::kEmptyInterval) {
-        std::swap(*it, unioned);
-    } else {
-        intervals_.emplace_back(interval);
-    }
-
-    RemoveOverlappedInterval();
-
-    return *this;
+std::string NumberInterval::ToString() const {
+    std::string result{};
+    result = "<" + std::to_string(from_) + ", " + std::to_string(to_) + ">";
+    return result;
 }
 
-ContinuousSet &ContinuousSet::Intersect(const Interval &interval) {
-    Interval interval2{};
-    interval2.Union(interval);
-    if (interval2 == interval) {
-        return *this;
-    }
-    return *this;
-}
+double NumberInterval::From() const { return from_; }
 
-bool ContinuousSet::operator==(const Interval &interval) const {
-    if (intervals_.size() != 1) {
-        return false;
-    }
-
-    return intervals_.at(0) == interval;
-}
-
-bool ContinuousSet::operator==(const ContinuousSet &other) const {
-    if (intervals_.size() != other.intervals_.size()) {
-        return false;
-    }
-
-    auto this_it = intervals_.begin();
-    auto other_it = other.intervals_.begin();
-    for (; this_it != intervals_.end(); this_it++, other_it++) {
-        if ((*this_it) != (*other_it)) {
-            return false;
-        }
-    }
-    return true;
-}
-
-bool ContinuousSet::operator!=(const ContinuousSet &other) const {
-    return !((*this) == other);
-}
-
-bool ContinuousSet::operator!=(const Interval &interval) const {
-    return !((*this) == interval);
-}
-
-void ContinuousSet::RemoveOverlappedInterval() {
-    auto first = intervals_.begin();
-    auto second = first + 1;
-
-    for (; (first != intervals_.end()) && (second != intervals_.end());
-         first++, second++) {
-        if ((*first).IsOverlap(*second)) {
-            Interval interval = (*first).Union(*second);
-            intervals_.erase(first, second + 1);
-            intervals_.insert(first, interval);
-            first++, second++;
-        }
-
-        if ((first == intervals_.end()) || (second == intervals_.end())) {
-            break;
-        }
-    }
-}
-
-void ContinuousSet::Order() {
-    // TODO(sangwon): Ordering continuous set
-}
-
-std::ostream &operator<<(std::ostream &os,
-                         const ContinuousSet &continuous_set) {
-    os << "{";
-    for (const auto &elm : continuous_set.intervals_) {
-        os << elm << " ";
-    }
-    os << "}";
-    return os;
-}
+double NumberInterval::To() const { return to_; }
 
 std::ostream &operator<<(std::ostream &os, const Interval &interval) {
-    os << "<" << interval.from_ << ", " << interval.to_ << ">";
+    os << "<" << interval.ToString() << ">";
     return os;
 }
+
 }  // namespace design_pattern::etc::interval
