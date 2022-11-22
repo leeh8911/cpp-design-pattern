@@ -11,22 +11,23 @@
 #include "src/behavior/strategy/strategy.h"
 
 namespace design_pattern::behavior::strategy {
-void Transportation::Distance(double distance) { distance_ = distance; }
+// void Transportation::Distance(double distance) { distance_ = distance; }
 
-double Transportation::Distance() const { return distance_; }
+// double Transportation::Distance() const { return distance_; }
 
-double Transportation::EstimateMoney() {
-    return distance_ * MoneyDistanceRatio();
-}
+// double Transportation::EstimateMoney() {
+//     return distance_ * MoneyDistanceRatio();
+// }
 
-double Transportation::EstimateTime() {
-    return distance_ * TimeDistanceRatio();
-}
+// double Transportation::EstimateTime() {
+//     return distance_ * TimeDistanceRatio();
+// }
 
-double Transportation::TimeDistanceRatio() const { return time_distance_ratio; }
+// double Transportation::TimeDistanceRatio() const { return
+// time_distance_ratio; }
 
-double Transportation::MoneyDistanceRatio() const {
-    return money_distance_ratio;
-}
+// double Transportation::MoneyDistanceRatio() const {
+//     return money_distance_ratio;
+// }
 
 }  // namespace design_pattern::behavior::strategy

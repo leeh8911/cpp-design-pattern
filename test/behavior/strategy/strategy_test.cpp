@@ -21,12 +21,12 @@ namespace {
 // 추정하자
 // TODO(sangwon): 다양한 탈 것들을 적용하기 위한 추상화.
 // TODO(sangwon): 자전거를 타고 갔을 때를 추가한다.
-TEST(StrategyTest, WhenUsingCarEstimateTimeAndMoney) {
-    auto car = std::make_unique<Car>();
-    car->Distance(1);  // Move 1 km
+// TEST(StrategyTest, WhenUsingCarEstimateTimeAndMoney) {
+//     auto car = std::make_unique<Car>();
+//     car->Distance(1);  // Move 1 km
 
-    EXPECT_EQ(car->EstimateTime(), 0.25);  // 1/4 hour
-    EXPECT_EQ(car->EstimateMoney(), 1);    // 1 dollar
-}
+//     EXPECT_EQ(car->EstimateTime(), 0.25);  // 1/4 hour
+//     EXPECT_EQ(car->EstimateMoney(), 1);    // 1 dollar
+// }
 
 }  // namespace
