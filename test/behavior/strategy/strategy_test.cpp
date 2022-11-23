@@ -12,21 +12,47 @@
 
 #include <gtest/gtest.h>
 
+#include <vector>
+
 using namespace design_pattern::behavior::strategy;  // NOLINT
 
 namespace {
-// TODO(sangwon): 주어진 돈과 시간 제약을 고려한 운송 수단 선택을 도와주는
-// 기능을 만들자
-// DONE(sangwon): 자동차를 타고 특정 거리만 큼 이동했을 때 걸리는 시간과 돈을
-// 추정하자
-// TODO(sangwon): 다양한 탈 것들을 적용하기 위한 추상화.
-// TODO(sangwon): 자전거를 타고 갔을 때를 추가한다.
-// TEST(StrategyTest, WhenUsingCarEstimateTimeAndMoney) {
-//     auto car = std::make_unique<Car>();
-//     car->Distance(1);  // Move 1 km
+// TODO(sangwon): 군집화 알고리즘을 다양하게 사용하기 위해 전략 패턴을
+// 적용해보자!
+// TODO(sangwon): 우선 간단하게 포인트를 정의 (포인트는 <x,y> 2차원의 위치정보를
+// 갖는 벡터, 산술연산이 필요함)
 
-//     EXPECT_EQ(car->EstimateTime(), 0.25);  // 1/4 hour
-//     EXPECT_EQ(car->EstimateMoney(), 1);    // 1 dollar
+// std::ostream& operator<<(std::ostream& os, const std::vector<Point>& pv) {
+//     os << "[";
+//     for (auto& p : pv) {
+//         os << p << " ";
+//     }
+//     os << "]";
+//     return os;
+// }
+
+// std::vector<Point> MakePointsOnCircle(const Point& begin, const Point& end,
+//                                       std::size_t size) {
+//     assert(size > 2);
+//     Point delta = (end - begin) / static_cast<double>(size - 1);
+
+//     std::vector<Point> result{};
+//     result.reserve(size);
+
+//     result.push_back(begin);
+
+//     for (std::size_t idx = 1; idx < size - 1; ++idx) {
+//         result.push_back(result.back() + delta);
+//     }
+//     result.push_back(end);
+
+//     return result;
+// }
+
+// TEST(StrategyExampleTest, SampleCase) {
+//     Clusterer cluster;
+
+//     std::vector<Point> MakePointsOnCircle({0.0, 0.0}, 1.0, 3.0);
 // }
 
 }  // namespace
