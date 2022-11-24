@@ -2,4 +2,7 @@ BasedOnStyle: Google
 IndentWidth: 4
 AccessModifierOffset : -3
 UseTab: Never
-ColumnLimit: 80
+ColumnLimit: 120
+AlignEscapedNewlines: Right
+AlignTrailingComments: Never
+AllowShortBlocksOnASingleLine: Never
