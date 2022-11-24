@@ -17,7 +17,7 @@ namespace design_pattern::behavior::strategy::test {
 
 std::ostream& operator<<(std::ostream& os, const std::vector<Point>& pv);
 
-std::vector<Point> MakePointsOnCircle(const Point& begin, const Point& end,
-                                      std::size_t size);
+std::vector<Point> MakePointsOnLineSegment(const Point& begin, const Point& end,
+                                           std::size_t size);
 
 }  // namespace design_pattern::behavior::strategy::test

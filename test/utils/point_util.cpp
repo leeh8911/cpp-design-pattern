@@ -26,8 +26,8 @@ std::ostream& operator<<(std::ostream& os, const std::vector<Point>& pv) {
     return os;
 }
 
-std::vector<Point> MakePointsOnCircle(const Point& begin, const Point& end,
-                                      std::size_t size) {
+std::vector<Point> MakePointsOnLineSegment(const Point& begin, const Point& end,
+                                           std::size_t size) {
     if (size < 2) {
         throw std::invalid_argument("size must be greater equal to 2");
     }

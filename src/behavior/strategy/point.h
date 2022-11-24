@@ -39,9 +39,13 @@ class Point {
     Point operator*(double scalar) const;
     Point operator/(double scalar) const;
 
+    double Norm2() const;
+
     friend Point operator*(double scalar, const Point& rhs);
     friend Point operator/(double scalar, const Point& rhs);
     friend std::ostream& operator<<(std::ostream& os, const Point& p);
+
+    static double Distance(const Point& lhs, const Point& rhs);
 
  private:
     double x_{}, y_{};

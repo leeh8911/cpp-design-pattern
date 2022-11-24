@@ -9,39 +9,32 @@
 //
 #ifndef SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
 #define SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
+
+#include <unordered_set>
+#include <vector>
+
+#include "src/behavior/strategy/point.h"
+
 namespace design_pattern::behavior::strategy {
+class Cluster {
+ public:
+    Cluster() = default;
+    explicit Cluster(double distance_threshold);
 
-// struct ITransportation {
-//     virtual ~ITransportation() = default;
-//     virtual double EstimateMoney() = 0;
-//     virtual double EstimateTime() = 0;
-//     virtual void Distance(double distance) = 0;
-//     virtual double Distance() const = 0;
-//     virtual double TimeDistanceRatio() const;
-//     virtual double MoneyDistanceRatio() const;
-// };
+    bool Fit(const std::vector<Point>& data);
 
-// class Transportation : public ITransportation {
-//  public:
-//     void Distance(double distance) override;
-//     double Distance() const override;
-//     double EstimateMoney() override;
-//     double EstimateTime() override;
+    std::size_t LabelSize() const;
+    std::vector<std::size_t> Label() const;
 
-//  private:
-//     double TimeDistanceRatio() const override;
-//     double MoneyDistanceRatio() const override;
-//     double distance_{};
-//     double time_distance_ratio{1.0};   // NOLINT
-//     double money_distance_ratio{1.0};  // NOLINT
-// };
+    friend std::ostream& operator<<(std::ostream& os, const Cluster& cluster);
 
-// class Car : public Transportation {
-//  public:
-//  private:
-//     double time_distance_ratio{0.25};  // NOLINT
-//     double money_distance_ratio{1.0};  // NOLINT
-// };
+ private:
+    double distance_threshold_{};
+    std::vector<Point> data_{};
+    std::vector<std::size_t> label{};
+    std::unordered_set<std::size_t> label_set{};
+};
 
+std::ostream& operator<<(std::ostream& os, const Cluster& cluster);
 }  // namespace design_pattern::behavior::strategy
 #endif  // SRC_BEHAVIOR_STRATEGY_STRATEGY_H_

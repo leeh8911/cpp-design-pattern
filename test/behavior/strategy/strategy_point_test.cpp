@@ -88,4 +88,20 @@ TEST(StrategyPointTest, DivOperatorWrongCase) {
     EXPECT_EQ(Point(5.0, 5.0), div_over_point);
     EXPECT_EQ(Point(1.0 / 5.0, 1.0 / 5.0), div_over_scalar);
 }
+
+TEST(StrategyPointTest, DistanceTrivialCase) {
+    Point p(10.0, 10.0);
+
+    double distance = Point::Distance(p, p);
+
+    EXPECT_EQ(0.0, distance);
+}
+TEST(StrategyPointTest, DistanceOneMeterCase) {
+    Point lhs(10.0, 10.0);
+    Point rhs(10.0, 9.0);
+
+    double distance = Point::Distance(lhs, rhs);
+
+    EXPECT_EQ(1.0, distance);
+}
 }  // namespace

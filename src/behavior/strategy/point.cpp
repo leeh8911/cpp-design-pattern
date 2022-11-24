@@ -10,6 +10,7 @@
 
 #include "src/behavior/strategy/point.h"
 
+#include <cmath>
 #include <iostream>
 #include <stdexcept>
 #include <utility>
@@ -46,9 +47,7 @@ Point& Point::operator/=(double scalar) {
 
 Point::Point(double x, double y) noexcept : x_(x), y_(y) {}
 
-bool Point::operator==(const Point& rhs) const {
-    return ((x_ == rhs.x_) && (y_ == rhs.y_));
-}
+bool Point::operator==(const Point& rhs) const { return ((x_ == rhs.x_) && (y_ == rhs.y_)); }
 
 bool Point::operator!=(const Point& rhs) const { return !(*this == rhs); }
 
@@ -97,9 +96,12 @@ Point Point::operator/(double scalar) const {
     return scalar_div;
 }
 
+double Point::Norm2() const { return std::pow(std::pow(x_, 2) + std::pow(y_, 2), std::pow(2, -1)); }
+
+double Point::Distance(const Point& lhs, const Point& rhs) { return (lhs - rhs).Norm2(); }
+
 Point operator/(double scalar, const Point& rhs) {
-    if ((rhs.x_ == 0.0) || (rhs.y_ == 0.0))
-        throw std::invalid_argument("scalar is zero");
+    if ((rhs.x_ == 0.0) || (rhs.y_ == 0.0)) throw std::invalid_argument("scalar is zero");
     Point inv_rhs(1 / rhs.x_, 1 / rhs.y_);
     return scalar * inv_rhs;
 }

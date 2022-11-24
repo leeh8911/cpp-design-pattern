@@ -23,7 +23,7 @@ TEST(PointGeneratorTest, GenerateTwoPointsCase) {
     Point begin(0.0, 0.0);
     Point end(1.0, 1.0);
 
-    auto points = MakePointsOnCircle(begin, end, 2);
+    auto points = MakePointsOnLineSegment(begin, end, 2);
     EXPECT_EQ(points.front(), begin);
     EXPECT_EQ(points.back(), end);
 }
@@ -33,14 +33,14 @@ TEST(PointGeneratorTest, GenerateWrongCase) {
     Point begin(0.0, 0.0);
     Point end(1.0, 1.0);
 
-    EXPECT_THROW(MakePointsOnCircle(begin, end, 1), std::invalid_argument);
+    EXPECT_THROW(MakePointsOnLineSegment(begin, end, 1), std::invalid_argument);
 }
 
 TEST(PointGeneratorTest, GenerateTenPointsCase) {
     Point begin(0.0, 0.0);
     Point end(1.0, 1.0);
 
-    auto points = MakePointsOnCircle(begin, end, 10);
+    auto points = MakePointsOnLineSegment(begin, end, 10);
 
     EXPECT_EQ(10, points.size());
     EXPECT_EQ(begin, points.front());
