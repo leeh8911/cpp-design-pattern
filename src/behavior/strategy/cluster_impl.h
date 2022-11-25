@@ -17,6 +17,7 @@
 #include <unordered_set>
 #include <vector>
 
+#include "src/behavior/strategy/cluster_param.h"
 #include "src/behavior/strategy/point.h"
 
 namespace design_pattern::behavior::strategy {
@@ -32,6 +33,7 @@ using IClusterPtr = std::unique_ptr<IClusterImpl>;
 class BasicCluster : public IClusterImpl {
  public:
     explicit BasicCluster(double distance_threshold);
+    explicit BasicCluster(const IClusterParam& param);
 
     std::vector<std::size_t> Fit(const std::vector<Point>& data) override;
 
@@ -42,16 +44,18 @@ class BasicCluster : public IClusterImpl {
 class DBSCAN : public IClusterImpl {
  public:
     explicit DBSCAN(double eps, std::size_t min_samples);
+    explicit DBSCAN(const IClusterParam& param);
 
     std::vector<std::size_t> Fit(const std::vector<Point>& data) override;
 
  private:
+    static constexpr std::size_t kUnDefined = 0;
+    static constexpr std::size_t kNoise = std::numeric_limits<std::size_t>::max();
+
     double eps_{};
     std::size_t min_samples_{};
 
     std::deque<std::size_t> QueryInBoundSamples(const std::vector<Point>& data, double eps, const Point& p);
-    static constexpr std::size_t kUnDefined = 0;
-    static constexpr std::size_t kNoise = std::numeric_limits<std::size_t>::max();
 };
 
 }  // namespace design_pattern::behavior::strategy

@@ -7,8 +7,8 @@
 /// @copyright Copyright (c) 2022
 ///
 //
-#ifndef SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
-#define SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
+#ifndef SRC_BEHAVIOR_STRATEGY_CLUSTER_H_
+#define SRC_BEHAVIOR_STRATEGY_CLUSTER_H_
 
 #include <memory>
 #include <unordered_set>
@@ -21,11 +21,15 @@ namespace design_pattern::behavior::strategy {
 // forward declaration for pimpl;
 class IClusterImpl;
 using IClusterPtr = std::unique_ptr<IClusterImpl>;
+class IClusterParam;
 
 class Cluster {
  public:
+    enum class Implement { kBasic, kDbscan };
+
     Cluster() = default;
     explicit Cluster(IClusterPtr pimpl_);
+    explicit Cluster(Implement impl, const IClusterParam& param);
 
     bool Fit(const std::vector<Point>& data);
 
@@ -45,4 +49,4 @@ class Cluster {
 
 std::ostream& operator<<(std::ostream& os, const Cluster& cluster);
 }  // namespace design_pattern::behavior::strategy
-#endif  // SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
+#endif  // SRC_BEHAVIOR_STRATEGY_CLUSTER_H_

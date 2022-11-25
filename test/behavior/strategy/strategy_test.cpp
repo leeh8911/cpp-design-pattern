@@ -8,8 +8,6 @@
 ///
 //
 
-#include "src/behavior/strategy/strategy.h"
-
 #include <gtest/gtest.h>
 
 #include <algorithm>
@@ -19,7 +17,8 @@
 #include <utility>
 #include <vector>
 
-#include "behavior/strategy/cluster_impl.h"
+#include "src/behavior/strategy/cluster.h"
+#include "src/behavior/strategy/cluster_impl.h"
 #include "src/behavior/strategy/point.h"
 #include "test/utils/point_util.h"
 
@@ -36,7 +35,6 @@ class StrategyExampleTest : public testing::Test {
         std::vector<Point> X_1 = MakePointsOnLineSegment(Point(1.0, -1.0), Point(1.0, 1.0), 10);
         std::vector<Point> X_2 = MakePointsOnLineSegment(Point(1.0, 2.0), Point(1.0, 3.0), 10);
 
-        std::vector<Point> X{};
         X.reserve(X_1.size() + X_2.size());
 
         std::copy(X_1.begin(), X_1.end(), std::back_inserter(X));
@@ -44,12 +42,16 @@ class StrategyExampleTest : public testing::Test {
     }
     void TearDown() override {}
 
-    std::vector<Point> X;
+    std::vector<Point> X{};
 };
 
-TEST_F(StrategyExampleTest, TwoLabelCase) {
+TEST_F(StrategyExampleTest, BasicTwoLabelCase) {
     Cluster cluster(std::make_unique<BasicCluster>(1.0));
 
+    for (auto x : X) {
+        std::cout << x << " ";
+    }
+    std::cout << "\n";
     bool success = cluster.Fit(X);
 
     EXPECT_TRUE(success);
@@ -58,6 +60,53 @@ TEST_F(StrategyExampleTest, TwoLabelCase) {
 
 TEST_F(StrategyExampleTest, DBSCANTwoLabelCase) {
     Cluster cluster(std::make_unique<DBSCAN>(1.0, 5));
+
+    bool success = cluster.Fit(X);
+
+    EXPECT_TRUE(success);
+    EXPECT_EQ(2, cluster.LabelSize()) << cluster;
+}
+
+TEST_F(StrategyExampleTest, BasicTwoLabelParamBasedCase) {
+    BasicClusterParam param{};
+    param.DistanceThreshold(1.0);
+
+    Cluster cluster(std::make_unique<BasicCluster>(param));
+
+    bool success = cluster.Fit(X);
+
+    EXPECT_TRUE(success);
+    EXPECT_EQ(2, cluster.LabelSize());
+}
+
+TEST_F(StrategyExampleTest, DBSCANTwoLabelBasedCase) {
+    DBSCANParam param{};
+    param.DistanceThreshold(1.0);
+    param.MinSamples(5);
+    Cluster cluster(std::make_unique<DBSCAN>(param));
+
+    bool success = cluster.Fit(X);
+
+    EXPECT_TRUE(success);
+    EXPECT_EQ(2, cluster.LabelSize()) << cluster;
+}
+TEST_F(StrategyExampleTest, BasicTwoLabelParamBasedBuildInsideCase) {
+    BasicClusterParam param{};
+    param.DistanceThreshold(1.0);
+
+    Cluster cluster(Cluster::Implement::kBasic, param);
+
+    bool success = cluster.Fit(X);
+
+    EXPECT_TRUE(success);
+    EXPECT_EQ(2, cluster.LabelSize());
+}
+
+TEST_F(StrategyExampleTest, DBSCANTwoLabelBasedBuildInsideCase) {
+    DBSCANParam param{};
+    param.DistanceThreshold(1.0);
+    param.MinSamples(5);
+    Cluster cluster(Cluster::Implement::kDbscan, param);
 
     bool success = cluster.Fit(X);
 

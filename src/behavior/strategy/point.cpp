@@ -98,7 +98,10 @@ Point Point::operator/(double scalar) const {
 
 double Point::Norm2() const { return std::pow(std::pow(x_, 2) + std::pow(y_, 2), std::pow(2, -1)); }
 
-double Point::Distance(const Point& lhs, const Point& rhs) { return (lhs - rhs).Norm2(); }
+double Point::Distance(const Point& lhs, const Point& rhs) {
+    std::cout << "Calculate Dist : " << lhs << " to " << rhs << "\n";
+    return (lhs - rhs).Norm2();
+}
 
 Point operator/(double scalar, const Point& rhs) {
     if ((rhs.x_ == 0.0) || (rhs.y_ == 0.0)) throw std::invalid_argument("scalar is zero");

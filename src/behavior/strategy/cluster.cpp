@@ -8,7 +8,7 @@
 ///
 //
 
-#include "src/behavior/strategy/strategy.h"
+#include "src/behavior/strategy/cluster.h"
 
 #include <memory>
 #include <unordered_set>
@@ -20,6 +20,19 @@
 
 namespace design_pattern::behavior::strategy {
 Cluster::Cluster(IClusterPtr pimpl_) : pimpl(std::move(pimpl_)) {}
+
+Cluster::Cluster(Implement impl, const IClusterParam& param) {
+    switch (impl) {
+        case (Implement::kBasic):
+            pimpl = std::make_unique<BasicCluster>(param);
+            break;
+        case (Implement::kDbscan):
+            pimpl = std::make_unique<DBSCAN>(param);
+            break;
+        default:
+            pimpl = nullptr;
+    }
+}
 
 bool Cluster::Fit(const std::vector<Point>& data) {
     data_ = data;
