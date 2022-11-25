@@ -11,6 +11,7 @@
 #ifndef SRC_BEHAVIOR_STRATEGY_CLUSTER_IMPL_H_
 #define SRC_BEHAVIOR_STRATEGY_CLUSTER_IMPL_H_
 
+#include <memory>
 #include <unordered_set>
 #include <vector>
 
@@ -24,6 +25,7 @@ class IClusterImpl {
 
     virtual std::vector<std::size_t> Fit(const std::vector<Point>& data) = 0;
 };
+using IClusterPtr = std::unique_ptr<IClusterImpl>;
 
 class BasicCluster : public IClusterImpl {
  public:

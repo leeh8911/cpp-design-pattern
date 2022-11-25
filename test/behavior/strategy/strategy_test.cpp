@@ -17,6 +17,7 @@
 #include <utility>
 #include <vector>
 
+#include "behavior/strategy/cluster_impl.h"
 #include "src/behavior/strategy/point.h"
 #include "test/utils/point_util.h"
 
@@ -28,7 +29,7 @@ namespace {
 // 적용해보자!
 
 TEST(StrategyExampleTest, NoClusteringCase) {
-    Cluster cluster(0.0);
+    Cluster cluster(std::make_unique<BasicCluster>(0.0));
     std::vector<Point> X = MakePointsOnLineSegment(Point(1.0, -1.0), Point(1.0, 1.0), 10);
 
     bool success = cluster.Fit(X);
@@ -38,7 +39,7 @@ TEST(StrategyExampleTest, NoClusteringCase) {
 }
 
 TEST(StrategyExampleTest, OneLabelCase) {
-    Cluster cluster(1.0);
+    Cluster cluster(std::make_unique<BasicCluster>(1.0));
     std::vector<Point> X = MakePointsOnLineSegment(Point(1.0, -1.0), Point(1.0, 1.0), 10);
 
     bool success = cluster.Fit(X);
@@ -48,7 +49,7 @@ TEST(StrategyExampleTest, OneLabelCase) {
 }
 
 TEST(StrategyExampleTest, TwoLabelCase) {
-    Cluster cluster(1.0);
+    Cluster cluster(std::make_unique<BasicCluster>(1.0));
     std::vector<Point> X_1 = MakePointsOnLineSegment(Point(1.0, -1.0), Point(1.0, 1.0), 10);
     std::vector<Point> X_2 = MakePointsOnLineSegment(Point(1.0, 2.0), Point(1.0, 3.0), 10);
 

@@ -10,6 +10,7 @@
 #ifndef SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
 #define SRC_BEHAVIOR_STRATEGY_STRATEGY_H_
 
+#include <memory>
 #include <unordered_set>
 #include <vector>
 
@@ -19,11 +20,12 @@ namespace design_pattern::behavior::strategy {
 
 // forward declaration for pimpl;
 class IClusterImpl;
+using IClusterPtr = std::unique_ptr<IClusterImpl>;
 
 class Cluster {
  public:
     Cluster() = default;
-    explicit Cluster(double distance_threshold);
+    explicit Cluster(IClusterPtr pimpl_);
 
     bool Fit(const std::vector<Point>& data);
 
@@ -33,7 +35,7 @@ class Cluster {
     friend std::ostream& operator<<(std::ostream& os, const Cluster& cluster);
 
  private:
-    IClusterImpl* pimpl{};
+    IClusterPtr pimpl{};
 
     double distance_threshold_{};
     std::vector<Point> data_{};

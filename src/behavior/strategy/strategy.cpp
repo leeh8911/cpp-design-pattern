@@ -10,14 +10,16 @@
 
 #include "src/behavior/strategy/strategy.h"
 
+#include <memory>
+#include <unordered_set>
+#include <utility>
 #include <vector>
 
 #include "src/behavior/strategy/cluster_impl.h"
 #include "src/behavior/strategy/point.h"
 
 namespace design_pattern::behavior::strategy {
-Cluster::Cluster(double distance_threshold)
-    : pimpl(new BasicCluster(distance_threshold)), distance_threshold_{distance_threshold} {}
+Cluster::Cluster(IClusterPtr pimpl_) : pimpl(std::move(pimpl_)) {}
 
 bool Cluster::Fit(const std::vector<Point>& data) {
     data_ = data;
