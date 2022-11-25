@@ -90,7 +90,7 @@ Inheritance diagram for DBSCAN:</div>
 <div class="dyncontent">
 <div class="center"><img src="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN__inherit__graph.png" border="0" usemap="#DBSCAN_inherit__map" alt="Inheritance graph"/></div>
 <map name="DBSCAN_inherit__map" id="DBSCAN_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,195,296"/>
+<area shape="rect" title=" " alt="" coords="5,145,195,311"/>
 <area shape="rect" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html" title=" " alt="" coords="31,5,169,97"/>
 </map>
 </div>
@@ -99,7 +99,7 @@ Collaboration diagram for DBSCAN:</div>
 <div class="dyncontent">
 <div class="center"><img src="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN__coll__graph.png" border="0" usemap="#DBSCAN_coll__map" alt="Collaboration graph"/></div>
 <map name="DBSCAN_coll__map" id="DBSCAN_coll__map">
-<area shape="rect" title=" " alt="" coords="141,175,330,281"/>
+<area shape="rect" title=" " alt="" coords="141,175,330,296"/>
 <area shape="rect" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html" title=" " alt="" coords="5,5,143,97"/>
 <area shape="rect" title=" " alt="" coords="167,13,234,90"/>
 <area shape="rect" title=" " alt="" coords="317,13,377,90"/>
@@ -110,6 +110,8 @@ Collaboration diagram for DBSCAN:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae4dad70a1ef0347d042f242d10433599"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html#ae4dad70a1ef0347d042f242d10433599">DBSCAN</a> (double eps, std::size_t min_samples)</td></tr>
 <tr class="separator:ae4dad70a1ef0347d042f242d10433599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d25c92d9f90dcfbe2fa46902234e8a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html#a0d25c92d9f90dcfbe2fa46902234e8a3">DBSCAN</a> (const <a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterParam.html">IClusterParam</a> &amp;param)</td></tr>
+<tr class="separator:a0d25c92d9f90dcfbe2fa46902234e8a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a907c0a71aeed637e50a7924633661d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html#a1a907c0a71aeed637e50a7924633661d">Fit</a> (const std::vector&lt; <a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1Point.html">Point</a> &gt; &amp;data) override</td></tr>
 <tr class="separator:a1a907c0a71aeed637e50a7924633661d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -134,7 +136,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae4dad70a1ef0347d042f242d10433599"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4dad70a1ef0347d042f242d10433599">&#9670;&nbsp;</a></span>DBSCAN()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4dad70a1ef0347d042f242d10433599">&#9670;&nbsp;</a></span>DBSCAN() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,6 +160,32 @@ Static Private Attributes</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d25c92d9f90dcfbe2fa46902234e8a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d25c92d9f90dcfbe2fa46902234e8a3">&#9670;&nbsp;</a></span>DBSCAN() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html">DBSCAN</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterParam.html">IClusterParam</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -259,50 +287,6 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a92918be88430888e3a2879fe331cc98c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92918be88430888e3a2879fe331cc98c">&#9670;&nbsp;</a></span>eps_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double eps_ {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa8caa6e8f1637a16106b39766570e2f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8caa6e8f1637a16106b39766570e2f6">&#9670;&nbsp;</a></span>min_samples_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::size_t min_samples_ {}</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aedd754e97efc37689b4ba561f1ede7ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aedd754e97efc37689b4ba561f1ede7ba">&#9670;&nbsp;</a></span>kUnDefined</h2>
 
@@ -341,6 +325,50 @@ Here is the caller graph for this function:</div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92918be88430888e3a2879fe331cc98c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92918be88430888e3a2879fe331cc98c">&#9670;&nbsp;</a></span>eps_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double eps_ {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8caa6e8f1637a16106b39766570e2f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8caa6e8f1637a16106b39766570e2f6">&#9670;&nbsp;</a></span>min_samples_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t min_samples_ {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
