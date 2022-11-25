@@ -16,6 +16,7 @@
 
 namespace design_pattern::behavior::strategy {
 BasicCluster::BasicCluster(double distance_threshold) : distance_threshold_{distance_threshold} {}
+BasicCluster::BasicCluster(const IClusterParam& param) : distance_threshold_(param.DistanceThreshold()) {}
 
 std::vector<std::size_t> BasicCluster::Fit(const std::vector<Point>& data) {
     auto curr = data.begin();
@@ -41,6 +42,8 @@ std::vector<std::size_t> BasicCluster::Fit(const std::vector<Point>& data) {
 }
 
 DBSCAN::DBSCAN(double eps, std::size_t min_samples) : eps_(eps), min_samples_(min_samples) {}
+
+DBSCAN::DBSCAN(const IClusterParam& param) : eps_(param.DistanceThreshold()), min_samples_(param.MinSamples()) {}
 
 std::vector<std::size_t> DBSCAN::Fit(const std::vector<Point>& data) {
     std::vector<std::size_t> label(data.size(), kUnDefined);
