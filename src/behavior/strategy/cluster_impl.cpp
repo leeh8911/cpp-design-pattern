@@ -11,12 +11,8 @@
 #include "src/behavior/strategy/cluster_impl.h"
 
 #include <algorithm>
-#include <limits>
 #include <unordered_map>
 #include <utility>
-
-constexpr std::size_t UNDEFINED{0};
-constexpr std::size_t NOISE{std::numeric_limits<std::size_t>::max()};
 
 namespace design_pattern::behavior::strategy {
 BasicCluster::BasicCluster(double distance_threshold) : distance_threshold_{distance_threshold} {}
@@ -47,17 +43,17 @@ std::vector<std::size_t> BasicCluster::Fit(const std::vector<Point>& data) {
 DBSCAN::DBSCAN(double eps, std::size_t min_samples) : eps_(eps), min_samples_(min_samples) {}
 
 std::vector<std::size_t> DBSCAN::Fit(const std::vector<Point>& data) {
-    std::vector<std::size_t> label(data.size(), UNDEFINED);
+    std::vector<std::size_t> label(data.size(), kUnDefined);
 
     std::size_t C = 0;
     for (std::size_t idx = 0; idx < data.size(); ++idx) {
-        if (label[idx] != UNDEFINED) {
+        if (label[idx] != kUnDefined) {
             continue;
         }
         std::deque<std::size_t> seed_group = QueryInBoundSamples(data, eps_, data[idx]);
 
         if (seed_group.size() < min_samples_) {
-            label[idx] = NOISE;
+            label[idx] = kNoise;
             continue;
         }
 
@@ -73,10 +69,10 @@ std::vector<std::size_t> DBSCAN::Fit(const std::vector<Point>& data) {
             auto seed = seed_group.front();
             seed_group.pop_front();
 
-            if (label[seed] == NOISE) {
+            if (label[seed] == kNoise) {
                 label[seed] = C;
             }
-            if (label[seed] != UNDEFINED) {
+            if (label[seed] != kUnDefined) {
                 continue;
             }
             label[seed] = C;

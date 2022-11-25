@@ -12,6 +12,7 @@
 #define SRC_BEHAVIOR_STRATEGY_CLUSTER_IMPL_H_
 
 #include <deque>
+#include <limits>
 #include <memory>
 #include <unordered_set>
 #include <vector>
@@ -49,6 +50,8 @@ class DBSCAN : public IClusterImpl {
     std::size_t min_samples_{};
 
     std::deque<std::size_t> QueryInBoundSamples(const std::vector<Point>& data, double eps, const Point& p);
+    static constexpr std::size_t kUnDefined = 0;
+    static constexpr std::size_t kNoise = std::numeric_limits<std::size_t>::max();
 };
 
 }  // namespace design_pattern::behavior::strategy
