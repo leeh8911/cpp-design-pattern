@@ -74,4 +74,6 @@ CheckOptions:
     value:           1
   - key:             some-check.GlobalOption
     value:           '1'
+  - key:             bugprone-easily-swappable-parameters.MinimumLength
+    value:           3
     

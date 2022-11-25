@@ -10,35 +10,24 @@
 
 #include "src/behavior/strategy/strategy.h"
 
+#include <memory>
+#include <unordered_set>
+#include <utility>
 #include <vector>
 
+#include "src/behavior/strategy/cluster_impl.h"
 #include "src/behavior/strategy/point.h"
 
 namespace design_pattern::behavior::strategy {
-Cluster::Cluster(double distance_threshold) : distance_threshold_{distance_threshold} {}
+Cluster::Cluster(IClusterPtr pimpl_) : pimpl(std::move(pimpl_)) {}
 
 bool Cluster::Fit(const std::vector<Point>& data) {
     data_ = data;
 
-    auto curr = data.begin();
-    auto next = std::next(curr);
+    label = pimpl->Fit(data);
 
-    label.emplace_back(1);
-    label_set.emplace(label.back());
+    label_set = std::unordered_set<std::size_t>(label.begin(), label.end());
 
-    while (next != data.end()) {
-        double distance = Point::Distance(*curr, *next);
-
-        if (distance < distance_threshold_) {
-            label.emplace_back(label.back());
-        } else {
-            label.emplace_back(label.back() + 1);
-            label_set.emplace(label.back());
-        }
-
-        curr = next;
-        next = std::next(next);
-    }
     return true;
 }
 
