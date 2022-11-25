@@ -13,6 +13,8 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <deque>
+#include <map>
 #include <stdexcept>
 #include <utility>
 #include <vector>
@@ -63,6 +65,24 @@ TEST(StrategyExampleTest, TwoLabelCase) {
 
     EXPECT_TRUE(success);
     EXPECT_EQ(2, cluster.LabelSize());
+}
+
+TEST(StrategyExampleTest, DBSCANTwoLabelCase) {
+    Cluster cluster(std::make_unique<DBSCAN>(1.0, 5));
+
+    std::vector<Point> X_1 = MakePointsOnLineSegment(Point(1.0, -1.0), Point(1.0, 1.0), 10);
+    std::vector<Point> X_2 = MakePointsOnLineSegment(Point(1.0, 2.0), Point(1.0, 3.0), 10);
+
+    std::vector<Point> X{};
+    X.reserve(X_1.size() + X_2.size());
+
+    std::copy(X_1.begin(), X_1.end(), std::back_inserter(X));
+    std::copy(X_2.begin(), X_2.end(), std::back_inserter(X));
+
+    bool success = cluster.Fit(X);
+
+    EXPECT_TRUE(success);
+    EXPECT_EQ(2, cluster.LabelSize()) << cluster;
 }
 
 }  // namespace
