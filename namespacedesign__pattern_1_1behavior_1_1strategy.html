@@ -76,6 +76,7 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">design_pattern::behavior::strategy Namespace Reference</div>  </div>
@@ -89,10 +90,21 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1BasicCluster.html">BasicCluster</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1Cluster.html">Cluster</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html">DBSCAN</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html">IClusterImpl</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1Point.html">Point</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a36484d8e9e60b91d82740ec5f718db21"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1behavior_1_1strategy.html#a36484d8e9e60b91d82740ec5f718db21">IClusterPtr</a> = std::unique_ptr&lt; <a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html">IClusterImpl</a> &gt;</td></tr>
+<tr class="separator:a36484d8e9e60b91d82740ec5f718db21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -105,6 +117,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a3b19fb4d234bd880515c07bbdde69b94"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedesign__pattern_1_1behavior_1_1strategy.html#a3b19fb4d234bd880515c07bbdde69b94">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1Cluster.html">Cluster</a> &amp;cluster)</td></tr>
 <tr class="separator:a3b19fb4d234bd880515c07bbdde69b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a36484d8e9e60b91d82740ec5f718db21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36484d8e9e60b91d82740ec5f718db21">&#9670;&nbsp;</a></span>IClusterPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::unique_ptr&lt; <a class="el" href="classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html">IClusterImpl</a> &gt; <a class="el" href="namespacedesign__pattern_1_1behavior_1_1strategy.html#a36484d8e9e60b91d82740ec5f718db21">IClusterPtr</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="adb8aa1e762c3468b494017624c7c5632"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adb8aa1e762c3468b494017624c7c5632">&#9670;&nbsp;</a></span>operator/()</h2>

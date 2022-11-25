@@ -1,0 +1,5 @@
+<map id="IClusterImpl" name="IClusterImpl">
+<area shape="rect" id="node1" title=" " alt="" coords="117,5,255,97"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1BasicCluster.html" title=" " alt="" coords="5,175,167,267"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html" title=" " alt="" coords="191,145,381,296"/>
+</map>

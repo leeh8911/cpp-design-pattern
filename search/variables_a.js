@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['number_5fof_5frooms_781',['number_of_rooms',['../classdesign__pattern_1_1behavior_1_1template__method_1_1ApartmentBuilder.html#a549e013c3a9bc1da44e7d8e077e8a27a',1,'design_pattern::behavior::template_method::ApartmentBuilder']]]
+  ['make_5f_805',['make_',['../classdesign__pattern_1_1creational_1_1builder_1_1Bicycle.html#ab3129cbbbdd48c800b87813d2f48aa67',1,'design_pattern::creational::builder::Bicycle']]],
+  ['maker_5f_806',['maker_',['../structdesign__pattern_1_1creational_1_1builder_1_1DefaultMountainBike.html#a172a77637458c7d31226e87173b3b8d3',1,'design_pattern::creational::builder::DefaultMountainBike']]],
+  ['meas_5f_807',['meas_',['../classdesign__pattern_1_1etc_1_1object_1_1Object.html#aab78274d7e625a20f015ac66f6a95999',1,'design_pattern::etc::object::Object::meas_()'],['../classdesign__pattern_1_1etc_1_1object_1_1BoxObject.html#aab78274d7e625a20f015ac66f6a95999',1,'design_pattern::etc::object::BoxObject::meas_()']]],
+  ['min_5fsamples_5f_808',['min_samples_',['../classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html#aa8caa6e8f1637a16106b39766570e2f6',1,'design_pattern::behavior::strategy::DBSCAN']]],
+  ['model_5f_809',['model_',['../structdesign__pattern_1_1creational_1_1builder_1_1DefaultMountainBike.html#a0800d30321124a3d8719d40eba04c0d1',1,'design_pattern::creational::builder::DefaultMountainBike::model_()'],['../classdesign__pattern_1_1creational_1_1builder_1_1Bicycle.html#a0800d30321124a3d8719d40eba04c0d1',1,'design_pattern::creational::builder::Bicycle::model_()'],['../classdesign__pattern_1_1etc_1_1mvc_1_1Controller.html#a33868065bc07a9c94fba332fd89fc502',1,'design_pattern::etc::mvc::Controller::model_()']]]
 ];
