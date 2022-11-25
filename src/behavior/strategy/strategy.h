@@ -16,6 +16,10 @@
 #include "src/behavior/strategy/point.h"
 
 namespace design_pattern::behavior::strategy {
+
+// forward declaration for pimpl;
+class IClusterImpl;
+
 class Cluster {
  public:
     Cluster() = default;
@@ -29,6 +33,8 @@ class Cluster {
     friend std::ostream& operator<<(std::ostream& os, const Cluster& cluster);
 
  private:
+    IClusterImpl* pimpl{};
+
     double distance_threshold_{};
     std::vector<Point> data_{};
     std::vector<std::size_t> label{};
