@@ -46,10 +46,10 @@
   - [X] Observer (or Publish/subscribe)
   - [ ] Servant
   - [ ] Specification
-  - [ ] State
-  - [ ] Strategy
+  - [X] State
+  - [X] Strategy
   - [X] Template method
-  - [ ] Visitor
+  - [X] Visitor
   - [ ] Fluent Interface
 - [ ] Concurrency pattern
   - [ ] Activate object
