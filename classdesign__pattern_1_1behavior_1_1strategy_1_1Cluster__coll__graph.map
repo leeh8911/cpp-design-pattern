@@ -1,16 +1,3 @@
 <map id="Cluster" name="Cluster">
-<area shape="rect" id="node1" title=" " alt="" coords="529,748,638,899"/>
-<area shape="rect" id="node2" title=" " alt="" coords="325,593,484,671"/>
-<area shape="rect" id="node3" title=" " alt="" coords="328,292,388,369"/>
-<area shape="rect" id="node10" title=" " alt="" coords="508,586,659,678"/>
-<area shape="rect" id="node4" title="STL class." alt="" coords="415,292,517,369"/>
-<area shape="rect" id="node13" title=" " alt="" coords="683,579,857,685"/>
-<area shape="rect" id="node5" title=" " alt="" coords="331,5,369,83"/>
-<area shape="rect" id="node8" title="STL class." alt="" coords="169,292,299,369"/>
-<area shape="rect" id="node6" title=" " alt="" coords="38,593,238,671"/>
-<area shape="rect" id="node7" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html" title=" " alt="" coords="5,285,143,377"/>
-<area shape="rect" id="node9" title=" " alt="" coords="979,5,1046,83"/>
-<area shape="rect" id="node14" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1Point.html" title=" " alt="" coords="888,160,1012,501"/>
-<area shape="rect" id="node11" title="STL class." alt="" coords="709,292,863,369"/>
-<area shape="rect" id="node12" title=" " alt="" coords="767,5,805,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,167,215"/>
 </map>

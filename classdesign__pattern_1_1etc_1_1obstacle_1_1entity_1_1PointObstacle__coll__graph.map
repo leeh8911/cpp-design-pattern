@@ -1,5 +1,3 @@
 <map id="PointObstacle" name="PointObstacle">
-<area shape="rect" id="node1" title=" " alt="" coords="71,145,208,281"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,148,83"/>
-<area shape="rect" id="node3" title=" " alt="" coords="172,5,232,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,203,156"/>
 </map>

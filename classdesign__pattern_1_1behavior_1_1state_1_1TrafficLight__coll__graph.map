@@ -1,7 +1,3 @@
 <map id="TrafficLight" name="TrafficLight">
-<area shape="rect" id="node1" title="Red, Green, Yellow 세가지 상태를 갖는 TrafficLight 클래스입니다. 현재 상태를 출력하거나, 다음 상태로 업데이트가 가능합니다." alt="" coords="33,455,162,576"/>
-<area shape="rect" id="node2" title=" " alt="" coords="20,315,175,392"/>
-<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1state_1_1Color.html" title="Collor 클래스는 TrafficLight 클래스가 가질 수 있는 상태에 대한 인터페이스 클래스입니다. 현재 상태의 이름을 출력하거나 다음 상태로 변경해주는 인터페이스를 갖고 있습..." alt="" coords="5,145,125,252"/>
-<area shape="rect" id="node4" title="STL class." alt="" coords="150,160,279,237"/>
-<area shape="rect" id="node5" title=" " alt="" coords="195,5,234,83"/>
+<area shape="rect" id="node1" title="Red, Green, Yellow 세가지 상태를 갖는 TrafficLight 클래스입니다. 현재 상태를 출력하거나, 다음 상태로 업데이트가 가능합니다." alt="" coords="5,5,135,127"/>
 </map>

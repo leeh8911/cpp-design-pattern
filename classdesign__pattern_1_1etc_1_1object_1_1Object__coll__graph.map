@@ -1,11 +1,4 @@
 <map id="Object" name="Object">
-<area shape="rect" id="node1" title=" " alt="" coords="220,616,383,928"/>
-<area shape="rect" id="node2" href="$structdesign__pattern_1_1etc_1_1object_1_1IObject.html" title=" " alt="" coords="5,145,168,399"/>
-<area shape="rect" id="node3" title=" " alt="" coords="127,461,294,539"/>
-<area shape="rect" id="node4" title="STL class." alt="" coords="193,233,322,311"/>
-<area shape="rect" id="node5" title=" " alt="" coords="306,5,345,83"/>
-<area shape="rect" id="node8" title="STL class." alt="" coords="346,233,441,311"/>
-<area shape="rect" id="node6" title=" " alt="" coords="319,461,465,539"/>
-<area shape="rect" id="node7" title=" " alt="" coords="484,233,551,311"/>
-<area shape="rect" id="node9" title=" " alt="" coords="490,461,550,539"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,307,168,663"/>
+<area shape="rect" id="node2" href="$structdesign__pattern_1_1etc_1_1object_1_1IObject.html" title=" " alt="" coords="5,5,168,259"/>
 </map>
