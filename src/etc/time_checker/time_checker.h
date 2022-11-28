@@ -16,6 +16,9 @@
 #include <list>
 #include <map>
 #include <string>
+#include <vector>
+
+#include "src/etc/time_checker/series.h"
 
 namespace design_pattern::etc::time_checker {
 
@@ -25,14 +28,13 @@ class ElapseDataBase {
  public:
     static ElapseDataBase& GetInstance();
 
-    void PushBack(std::string name, std::size_t time);
-    std::size_t Back(std::string name);
+    Series<std::size_t>& operator[](std::string name);
 
     std::list<std::string> GetKeyList();
 
  private:
     ElapseDataBase() = default;
-    std::map<std::string, std::deque<std::size_t>> db_{};
+    std::map<std::string, Series<std::size_t>> db_{};
 };
 
 class AutoElapseChecker {

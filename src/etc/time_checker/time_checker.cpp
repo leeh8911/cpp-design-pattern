@@ -22,9 +22,7 @@ ElapseDataBase& ElapseDataBase::GetInstance() {
     return instance;
 }
 
-void ElapseDataBase::PushBack(std::string name, std::size_t time) { db_[name].push_back(time); }
-
-std::size_t ElapseDataBase::Back(std::string name) { return db_[name].back(); }
+Series<std::size_t>& ElapseDataBase::operator[](std::string name) { return db_[name]; }
 
 std::list<std::string> ElapseDataBase::GetKeyList() {
     std::list<std::string> key_list{};
@@ -36,16 +34,13 @@ std::list<std::string> ElapseDataBase::GetKeyList() {
     return key_list;
 }
 
-AutoElapseChecker::AutoElapseChecker(std::string name) : name_(std::move(name)), begin_(steady_clock::now()), end_() {
-    std::cout << "Construct AutoElapseChecker\n";
-}
+AutoElapseChecker::AutoElapseChecker(std::string name) : name_(std::move(name)), begin_(steady_clock::now()), end_() {}
 
 AutoElapseChecker::~AutoElapseChecker() {
-    std::cout << "Destroy AutoElapseChecker\n";
     end_ = steady_clock::now();
     auto& instance = ElapseDataBase::GetInstance();
 
-    instance.PushBack(name_, std::chrono::duration_cast<ElapseTime>(begin_ - end_).count());
+    instance[name_].PushBack(std::chrono::duration_cast<ElapseTime>(end_ - begin_).count());
 }
 
 //'std::chrono::duration<long, std::ratio<1, 1000000>>::rep'
