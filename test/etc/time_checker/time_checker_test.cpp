@@ -49,6 +49,7 @@ TEST(TestTimeChecker, Elapse10TimesCase) {
 
     EXPECT_EQ(10, (db_instance[key_list.back()].Size()));
 }
+
 TEST(TestTimeChecker, Elapse10TimesCalculateMeanCase) {
     auto helper = [](void) {
         AutoElapseChecker checker(_FUNCTION_INFO);
@@ -65,5 +66,22 @@ TEST(TestTimeChecker, Elapse10TimesCalculateMeanCase) {
 
     std::cout << (db_instance[key_list.back()].Mean()) << "\n";
     EXPECT_NE(0, (db_instance[key_list.back()].Mean()));
+}
+TEST(TestTimeChecker, Elapse10TimesCalculateVarianceCase) {
+    auto helper = [](void) {
+        AutoElapseChecker checker(_FUNCTION_INFO);
+        for (std::size_t i = 0; i < 1000000; i++) {
+        }
+    };
+
+    for (std::size_t i = 0; i < 10; ++i) {
+        helper();
+    }
+
+    ElapseDataBase& db_instance = ElapseDataBase::GetInstance();
+    std::list<std::string> key_list = db_instance.GetKeyList();
+
+    std::cout << (db_instance[key_list.back()].Variance()) << "\n";
+    EXPECT_NE(0, (db_instance[key_list.back()].Variance()));
 }
 }  // namespace design_pattern::etc::time_checker::test

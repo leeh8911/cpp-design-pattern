@@ -12,6 +12,8 @@
 #ifndef SRC_ETC_TIME_CHECKER_SERIES_H_
 #define SRC_ETC_TIME_CHECKER_SERIES_H_
 
+#include <algorithm>
+#include <cmath>
 #include <numeric>
 #include <vector>
 
@@ -31,6 +33,19 @@ class Series {
         int sum = std::accumulate(std::begin(data_), std::end(data_), 0);
         return static_cast<double>(sum) / data_.size();
     }
+
+    double Variance() {
+        double mean = Mean();
+
+        double variance = std::transform_reduce(std::begin(data_), std::end(data_), 0.0, std::plus{},
+                                                [mean](auto val) { return (val - mean) * (val - mean); });
+        return variance;
+    }
+
+    double StandardDeviation() { return std::sqrt(Variance()); }
+
+    std::size_t Min() { return std::min(data_); }
+    std::size_t Max() { return std::max(data_); }
 
  private:
     std::vector<T> data_{};
