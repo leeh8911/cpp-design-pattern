@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['factorymap_857',['FactoryMap',['../namespacedesign__pattern_1_1etc_1_1apollo.html#a32bd196b031cdc94c105e5bd63779cfe',1,'design_pattern::etc::apollo']]]
+  ['elapsetime_915',['ElapseTime',['../namespacedesign__pattern_1_1etc_1_1time__checker.html#af26cea83939a2a0fae31032566086995',1,'design_pattern::etc::time_checker']]]
 ];

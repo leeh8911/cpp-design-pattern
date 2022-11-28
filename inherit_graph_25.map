@@ -1,8 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,107,53,133"/>
-<area shape="rect" id="node2" href="$classanonymous__namespace_02object__test_8cpp_03_1_1ObjectTest.html" title=" " alt="" coords="136,5,227,32"/>
-<area shape="rect" id="node3" href="$classanonymous__namespace_02strategy__test_8cpp_03_1_1StrategyExampleTest.html" title=" " alt="" coords="101,56,261,83"/>
-<area shape="rect" id="node4" href="$classdesign__pattern_1_1creational_1_1builder_1_1test_1_1BuilderTest.html" title=" " alt="" coords="134,107,229,133"/>
-<area shape="rect" id="node5" href="$classdesign__pattern_1_1test_1_1MvcPatternTest.html" title=" " alt="" coords="121,157,242,184"/>
-<area shape="rect" id="node6" href="$classdesign__pattern_1_1test_1_1ObjectTrackingTest.html" title=" " alt="" coords="109,208,253,235"/>
+<area shape="rect" id="node1" href="$classdesign__pattern_1_1creational_1_1builder_1_1MountainBikeBuildDirector.html" title="Builder를 통해 직접 생성을 담당하는 Director 클래스 중 MountainBike를 담당하는 클래스입니다." alt="" coords="5,5,201,32"/>
 </map>

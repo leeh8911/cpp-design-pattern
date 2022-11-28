@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numberintervalptr_863',['NumberIntervalPtr',['../namespacedesign__pattern_1_1etc_1_1interval.html#a0f99197b563aabab065852546dd321c5',1,'design_pattern::etc::interval']]]
+  ['mementoptr_921',['MementoPtr',['../namespacedesign__pattern_1_1behavior_1_1memento.html#adfd5d0478ba86ec87d6099d10f70e820',1,'design_pattern::behavior::memento']]]
 ];

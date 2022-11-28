@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1IClusterImpl.html" title=" " alt="" coords="5,31,107,57"/>
-<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1BasicCluster.html" title=" " alt="" coords="155,5,257,32"/>
-<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1strategy_1_1DBSCAN.html" title=" " alt="" coords="167,56,245,83"/>
+<area shape="rect" id="node1" href="$structdesign__pattern_1_1behavior_1_1visitor_1_1Element.html" title="Interface of Elements." alt="" coords="5,31,81,57"/>
+<area shape="rect" id="node2" href="$classdesign__pattern_1_1behavior_1_1visitor_1_1ConcreteElementA.html" title=" " alt="" coords="129,5,272,32"/>
+<area shape="rect" id="node3" href="$classdesign__pattern_1_1behavior_1_1visitor_1_1ConcreteElementB.html" title=" " alt="" coords="129,56,272,83"/>
 </map>
